@@ -6,9 +6,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private tokenKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJiNTJlZWFkMC1iMWNjLTQ3YmItYmI5MS1iNWJkMDRiNGE0MGMiLCJlbWFpbCI6IlRlc3RAZ21haWwuY29tIiwicm9sZSI6IlBhdGllbnQiLCJuYmYiOjE3MTg2MjE1NDcsImV4cCI6MTcxODYyNTE0NywiaWF0IjoxNzE4NjIxNTQ3LCJpc3MiOiJBcHBvaW50bWVudEJvb2tpbmdBcHBJc3N1ZXIiLCJhdWQiOiJBcHBvaW50bWVudEJvb2tpbmdBcHBBdWRpZW5jZSJ9.xIVjlJW5y-y1HbYDsNwE3YfXZVUa2wi5XwmGlG2th_I'
-  baseUrl: string = environment.baseurl
-  loginUrl:string='/Auth/login';
+ baseUrl: string = environment.baseurl
+  loginUrl:string='/Auth/mobile_login';
   LogOutUrl:string='/Auth/logout';
   constructor(private http:HttpClient) {
    }

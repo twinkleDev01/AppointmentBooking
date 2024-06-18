@@ -9,6 +9,7 @@ export class PatientsService {
   baseUrl: string = environment.baseurl
   getprescription:string ='/Prescription'
   getappointment:string ='/Appointment/appointments'
+  deleteprescription:string ='/Prescription/DeletePrescription'
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Detail:any;
   constructor(private http:HttpClient) { 
@@ -30,16 +31,40 @@ export class PatientsService {
     }
 
   getPrescription(){
-  const url=`${this.baseUrl}${this.getprescription}?PatientId=${this.Detail.nameid}`
+  const url=`${this.baseUrl}${this.getprescription}?PatientId=${this.Detail?.nameid}`
     return this.http.get(url);
   }
 
-  getAppointment(){
-    const url=`${this.baseUrl}${this.getappointment}?userId=${this.Detail.nameid}`
-      return this.http.get(url);
+  getAppointment(startDate?: string, endDate?: string, IsCanCelled?: boolean, IsCanCompleted?: boolean, IsUpcomming?: boolean) {
+    let url = `${this.baseUrl}${this.getappointment}?userId=${this.Detail.nameid}`;
+  
+    if (startDate) {
+      url += `&startDate=${startDate}`;
     }
+    if (endDate) {
+      url += `&endDate=${endDate}`;
+    }
+    if (IsCanCelled !== undefined) {
+      url += `&IsCanCelled=${IsCanCelled}`;
+    }
+    if (IsCanCompleted !== undefined) {
+      url += `&IsCanCompleted=${IsCanCompleted}`;
+    }
+    if (IsUpcomming !== undefined) {
+      url += `&IsUpcomming=${IsUpcomming}`;
+    }
+  
+    return this.http.get(url);
+  }
+  
+
+ deletePrescription(prescriptionID:string){
+const url=`${this.baseUrl}${this.deleteprescription}?PrescriptionId=${prescriptionID}`
+return this.http.delete(url);
+}
+ }
 
  
   
 
-}
+ 

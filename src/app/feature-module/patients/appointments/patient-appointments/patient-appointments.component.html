@@ -34,22 +34,46 @@
                 </div>
                 <div class="appointment-tab-head">
                     <div class="appointment-tabs">
-                        <ul class="nav nav-pills inner-tab " id="pills-tab" role="tablist">
+                        <ul class="nav nav-pills inner-tab" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-upcoming-tab" data-bs-toggle="pill" data-bs-target="#pills-upcoming" type="button" role="tab" aria-controls="pills-upcoming" aria-selected="false">Upcoming<span>21</span></button>
-                            </li>	
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-cancel-tab" data-bs-toggle="pill" data-bs-target="#pills-cancel" type="button" role="tab" aria-controls="pills-cancel" aria-selected="true">Cancelled<span>16</span></button>
+                              <button
+                                class="nav-link"
+                                [class.active]="activeTab === 'upcoming'"
+                                [attr.aria-selected]="activeTab === 'upcoming'"
+                                (click)="showFilterData('upcoming')">
+                                Upcoming<span>{{appointmentsDetail?.data.upcomingCount}}</span>
+                              </button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-complete-tab" data-bs-toggle="pill" data-bs-target="#pills-complete" type="button" role="tab" aria-controls="pills-complete" aria-selected="true">Completed<span>214</span></button>
+                              <button
+                                class="nav-link"
+                                [class.active]="activeTab === 'cancelled'"
+                                [attr.aria-selected]="activeTab === 'cancelled'"
+                                (click)="showFilterData('cancelled')">
+                                Cancelled<span>{{appointmentsDetail?.data.cancelledCount}}</span>
+                              </button>
                             </li>
-                        </ul>
+                            <li class="nav-item" role="presentation">
+                              <button
+                                class="nav-link"
+                                [class.active]="activeTab === 'completed'"
+                                [attr.aria-selected]="activeTab === 'completed'"
+                                (click)="showFilterData('completed')">
+                                Completed<span>{{appointmentsDetail?.data.completedCount}}</span>
+                              </button>
+                            </li>
+                          </ul>
+                          
+                          
                     </div>
                     <div class="filter-head">
                         <div class="position-relative daterange-wraper me-2">
                             <div class="input-groupicon calender-input">
-                                <input type="text" class="form-control  date-range bookingrange" placeholder="From Date - To Date " bsDaterangepicker [(ngModel)]="bsRangeValue">
+                                <input type="text" class="form-control date-range bookingrange" 
+                                placeholder="From Date - To Date" 
+                                bsDaterangepicker 
+                                [(ngModel)]="bsRangeValue"
+                                (bsValueChange)="dateSelectionChanged($event)">
                             </div>
                             <i class="fa-solid fa-calendar-days"></i>
                         </div>
@@ -201,54 +225,57 @@
                 <div class="tab-content appointment-tab-content">
                     <div class="tab-pane fade show active" id="pills-upcoming" role="tabpanel" aria-labelledby="pills-upcoming-tab">
                         <!-- Appointment List -->
-                        <div class="appointment-wrap">
-                            <ul>
-                                <li>
-                                    <div class="patinet-information">
-                                        <a [routerLink] = "routes.patientUpcomingAppointment">
-                                            <img src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
-                                        </a>
-                                        <div class="patient-info">
-                                            <p>#Apt0001</p>
-                                            <h6><a [routerLink] = "routes.patientUpcomingAppointment">Dr Edalin</a></h6>
+                         @for (data of this.appointmentsDetail?.data.appointments; track data){
+                            <div class="appointment-wrap">
+                                <ul>
+                                    <li>
+                                        <div class="patinet-information">
+                                            <a [routerLink] = "routes.patientUpcomingAppointment">
+                                                <img src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
+                                            </a>
+                                            <div class="patient-info">
+                                                <p>#Apt0001</p>
+                                                <h6><a [routerLink] = "routes.patientUpcomingAppointment">{{data.doctorName}}</a></h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="appointment-info">
-                                    <p><i class="fa-solid fa-clock"></i>11 Nov 2024 10.45 AM</p>
-                                    <ul class="d-flex apponitment-types">
-                                        <li>General Visit</li>
-                                        <li>Video Call</li>
-                                    </ul>												
-                                </li>
-                                <li class="mail-info-patient">
-                                    <ul>
-                                        <li><i class="fa-solid fa-envelope"></i>edalin&#64;example.com</li>
-                                        <li><i class="fa-solid fa-phone"></i>+1 504 368 6874</li>
-                                    </ul>
-                                </li>
-                                <li class="appointment-action">
-                                    <ul>
-                                        <li>
-                                            <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
-                                        </li>
-                                        <!-- <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                        </li> -->
-                                        <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="appointment-detail-btn">
-                                    <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
-                                </li>
-                            </ul>
-                        </div>
+                                    </li>
+                                    <li class="appointment-info">
+                                        <p><i class="fa-solid fa-clock"></i>{{data.appointmentDate | date: 'dd/MMM/yy'}} {{data.appointmentTime}}</p>
+                                        <ul class="d-flex apponitment-types">
+                                            <li>General Visit</li>
+                                            <li>Video Call</li>
+                                        </ul>												
+                                    </li>
+                                    <li class="mail-info-patient">
+                                        <ul>
+                                            <li><i class="fa-solid fa-envelope"></i>{{data.doctorEmail}}</li>
+                                            <li><i class="fa-solid fa-phone"></i>{{data.doctorPhone}}</li>
+                                        </ul>
+                                    </li>
+                                    <li class="appointment-action">
+                                        <ul>
+                                            <li>
+                                                <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
+                                            </li>
+                                            <!-- <li>
+                                                <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
+                                            </li> -->
+                                            <li>
+                                                <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="appointment-detail-btn">
+                                        <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
+                                    </li>
+                                </ul>
+                            </div>
+                         }
+                        
                         <!-- /Appointment List -->
 
                         <!-- Appointment List -->
-                        <div class="appointment-wrap">
+                        <!-- <div class="appointment-wrap">
                             <ul>
                                 <li>
                                     <div class="patinet-information">
@@ -280,9 +307,6 @@
                                         <li>
                                             <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                        </li> -->
                                         <li>
                                             <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
                                         </li>
@@ -292,11 +316,11 @@
                                     <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- /Appointment List -->
 
                         <!-- Appointment List -->
-                        <div class="appointment-wrap">
+                        <!-- <div class="appointment-wrap">
                             <ul>
                                 <li>
                                     <div class="patinet-information">
@@ -328,9 +352,6 @@
                                         <li>
                                             <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                        </li> -->
                                         <li>
                                             <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
                                         </li>
@@ -340,11 +361,11 @@
                                     <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- /Appointment List -->
 
                         <!-- Appointment List -->
-                        <div class="appointment-wrap">
+                        <!-- <div class="appointment-wrap">
                             <ul>
                                 <li>
                                     <div class="patinet-information">
@@ -376,9 +397,6 @@
                                         <li>
                                             <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                        </li> -->
                                         <li>
                                             <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
                                         </li>
@@ -388,11 +406,11 @@
                                     <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- /Appointment List -->
 
                         <!-- Appointment List -->
-                        <div class="appointment-wrap">
+                        <!-- <div class="appointment-wrap">
                             <ul>
                                 <li>
                                     <div class="patinet-information">
@@ -424,9 +442,6 @@
                                         <li>
                                             <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                        </li> -->
                                         <li>
                                             <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
                                         </li>
@@ -436,11 +451,11 @@
                                     <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- /Appointment List -->
 
                         <!-- Appointment List -->
-                        <div class="appointment-wrap">
+                        <!-- <div class="appointment-wrap">
                             <ul>
                                 <li>
                                     <div class="patinet-information">
@@ -472,9 +487,6 @@
                                         <li>
                                             <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                        </li> -->
                                         <li>
                                             <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
                                         </li>
@@ -484,11 +496,11 @@
                                     <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- /Appointment List -->
 
                         <!-- Appointment List -->
-                        <div class="appointment-wrap">
+                        <!-- <div class="appointment-wrap">
                             <ul>
                                 <li>
                                     <div class="patinet-information">
@@ -520,9 +532,6 @@
                                         <li>
                                             <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                        </li> -->
                                         <li>
                                             <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
                                         </li>
@@ -532,11 +541,11 @@
                                     <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- /Appointment List -->
 
                         <!-- Appointment List -->
-                        <div class="appointment-wrap">
+                        <!-- <div class="appointment-wrap">
                             <ul>
                                 <li>
                                     <div class="patinet-information">
@@ -568,9 +577,6 @@
                                         <li>
                                             <a [routerLink] = "routes.patientUpcomingAppointment"><i class="fa-solid fa-eye"></i></a>
                                         </li>
-                                        <!-- <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                        </li> -->
                                         <li>
                                             <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
                                         </li>
@@ -580,7 +586,7 @@
                                     <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <!-- /Appointment List -->
 
                         <!-- Pagination -->

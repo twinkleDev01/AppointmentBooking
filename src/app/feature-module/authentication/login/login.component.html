@@ -18,7 +18,7 @@
                 <h3>Login <span>Doccure</span></h3>
               </div>
               <!-- app.component.html -->
-              <form [formGroup]="loginForm" (ngSubmit)="Submit()">
+              <!-- <form [formGroup]="loginForm" (ngSubmit)="Submit()">
                 <div class="mb-3 form-focus">
                   <input
                     type="email"
@@ -67,14 +67,63 @@
                 >
                   Login
                 </button>
-              </form>
+              </form> -->
 
-              <div
+              <!-- <form> -->
+                <div id="recaptcha-container"></div>
+                <div class="mb-3">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    placeholder="Enter phone number"
+                    [(ngModel)]="phoneNumber"
+                    name="phoneNumber"
+                    required
+                  />
+                </div>
+              
+                <div class="mb-3" *ngIf="otpSent">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter OTP"
+                    [(ngModel)]="verificationCode"
+                    name="verificationCode"
+                    minlength="6"
+                    maxlength="6"
+                    required
+                  />
+                </div>
+              
+                <button class="btn btn-primary w-100 btn-lg" type="submit"(click)="sendLoginCode()" *ngIf="!otpSent">
+                  Send Otp
+                </button>
+                <button class="btn btn-primary w-100 btn-lg" type="submit"(click)="verifyLoginCode()" *ngIf="otpSent">
+                  Verify Otp
+                </button>
+              <!-- </form> -->
+
+
+              <!-- <div>
+                <h2>Phone Number Authentication</h2>
+                <div id="recaptcha-container"></div>
+                <input [(ngModel)]="phoneNumber" placeholder="Enter phone number" />
+                <button (click)="sendLoginCode()">Send Code</button>
+              
+                <br /><br />
+              
+                <input [(ngModel)]="verificationCode" placeholder="Enter verification code" />
+                <button (click)="verifyLoginCode()">Verify Code</button>
+              </div> -->
+              
+              
+
+              <!-- <div
                 *ngIf="loginForm.valid && formSubmitted"
                 class="alert alert-success mt-3"
               >
                 Form is valid!
-              </div>
+              </div> -->
 
               <div class="login-or">
                 <span class="or-line"></span>

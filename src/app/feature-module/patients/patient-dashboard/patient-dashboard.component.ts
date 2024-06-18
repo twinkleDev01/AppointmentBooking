@@ -15,6 +15,7 @@ import {
   ApexStroke,
 } from 'ng-apexcharts';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { PatientsService } from 'src/app/shared/Service/patients.service';
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -104,7 +105,7 @@ export class PatientDashboardComponent {
     },
   };
 
-  constructor(private router: Router, private renderer: Renderer2) {
+  constructor(private router: Router, private renderer: Renderer2,private patientsService:PatientsService) {
     if (this.page == 'patient-dashboard') {
       this.renderer.addClass(document.body, 'date-pickers');
     }
@@ -182,5 +183,13 @@ export class PatientDashboardComponent {
         colors: ['transparent'],
       },
     };
+  }
+
+  appointmentDetails:any
+  ngOnInit(){
+this.patientsService.getAppointment().subscribe((res:any)=>{
+  console.log(res,"190")
+  this.appointmentDetails = res
+})
   }
 }

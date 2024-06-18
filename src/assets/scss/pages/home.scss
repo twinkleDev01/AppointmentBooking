@@ -698,7 +698,7 @@
     }
     .header-icon {
         position: $__absolute;
-        right: -30px;
+        right: 30px;
         top: -15px;
         @include respond-below(custom1199) {
             display: $__none;
@@ -2131,9 +2131,9 @@
     }
 }
 .service-sec-one {
-    padding-bottom: 56px;
+    padding-bottom: 30px;
     @include respond-below(custom991) {
-        padding-bottom: 36px;
+        padding-bottom: 16px;
     }
 }
 .serv-wrap {

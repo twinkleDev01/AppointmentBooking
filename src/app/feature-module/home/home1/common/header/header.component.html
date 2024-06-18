@@ -9,9 +9,9 @@
             <span></span>
           </span>
         </a>
-        <a [routerLink] = "routes.home1" class="navbar-brand logo">
+        <!-- <a [routerLink]="routes.home1" class="navbar-brand logo">
           <img src="assets/img/logo-01.svg" class="img-fluid" alt="Logo" />
-        </a>
+        </a> -->
       </div>
       <div class="main-menu-wrapper">
         <div class="menu-header">
@@ -20,102 +20,38 @@
           </a>
           <a id="menu_close" (click)="hideSidebar()" class="menu-close" href="javascript:void(0);">
             <i class="fas fa-times"></i></a>
-          </div>
-          <ul class="main-nav">
-            @for (mainMenus of header; track mainMenus) {
-              @if (mainMenus.separateRoute === false) {
-              <li class="has-submenu" routerLinkActive="active" [ngClass]="{
-                  megamenu: mainMenus.tittle === 'Home'
-                }">
-                  <a href="javascript:void(0);" (click)="mainMenus.showAsTab = !mainMenus.showAsTab">{{ mainMenus.tittle
-                    }} <i class="fas fa-chevron-down"></i></a>
-                <ul class="submenu" [ngClass]="{
-                    'd-block': mainMenus.showAsTab === true,
-                    'mega-submenu': mainMenus.tittle === 'Home'
-                  }">
-                      @for (menu of mainMenus.menu; track menu) {
-                        @if (
-                          menu.hasSubRoute === false &&
-                          mainMenus.tittle !== 'Home'
-                          ) {
-                          <li routerLinkActive="active">
-                            @if (menu.openInNewTab === false) {
-                              <a [routerLink]="menu.route">{{ menu.menuValue }}</a>
-                            }
-                            @if (menu.openInNewTab === true) {
-                              <a [target]="'_blank'" [routerLink]="menu.route">{{ menu.menuValue }}</a>
-                            }
-                          </li>
-                        }
-                        @if (menu.hasSubRoute === true) {
-                          <li class="has-submenu">
-                            <a (click)="menu.showSubRoute = !menu.showSubRoute" [routerLink]="menu.route">{{ menu.menuValue
-                            }}</a>
-                        <ul class="submenu" [ngClass]="{
-                            'd-block': menu.showSubRoute === true
-                          }">
-                              @for (subMenu of menu.subMenus; track subMenu) {
-                                @if (mainMenus.tittle !== 'Home') {
-                                  <li>
-                                    <a [routerLink]="subMenu.route">{{
-                                      subMenu.menuValue
-                                    }}</a>
-                                  </li>
-                                }
-                              }
-                            </ul>
-                          </li>
-                        }
-                        @if (menu.menuValue === 'General Home') {
-                          <li>
-                            <div class="megamenu-wrapper">
-                              <div class="row">
-                                @for (menu of mainMenus.menu; track menu) {
-                                  <div class="col-lg-2">
-                                    <div class="single-demo" routerLinkActive="active">
-                                      <div class="demo-img">
-                                        <a [routerLink]="menu.route" class="inner-demo-img"><img [src]="menu.img"
-                                        class="img-fluid" alt="img" /></a>
-                                      </div>
-                                      <div class="demo-info">
-                                        <a class="inner-demo-img" [routerLink]="menu.route">{{
-                                          menu.menuValue
-                                        }}</a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                }
-                              </div>
-                            </div>
-                          </li>
-                        }
-                      }
-                    </ul>
-                  </li>
-                }
-              }
-              <li class="searchbar">
-                <a href="javascript:void(0);" (click)="toggleSearch()"><i class="feather icon-search"></i></a>
-                <div class="togglesearch" [ngClass]="searchField ? 'd-block' : 'd-none'">
-                  <form>
-                    <div class="input-group">
-                      <input type="text" class="form-control" />
-                      <button type="button" (click)="navigation()" (keydown)="navigation()" tabindex="1" class="btn">Search</button>
-                    </div>
-                  </form>
+        </div>
+        <ul class="main-nav">
+          <li class="menu-item"><a [routerLink]="routes.home1">Home</a></li>
+          <li class="menu-item"><a [routerLink]="routes.patientDashboard">Patients</a></li>
+          <li class="menu-item"><a [routerLink]="routes.contactUs">Contact Us</a></li>
+          <li class="menu-item"><a [routerLink]="routes.aboutUs">About Us</a></li>
+          <li class="menu-item"><a [routerLink]="routes.termsCondition">T&C</a></li>
+          <li class="menu-item"><a [routerLink]="routes.faq">FAQs</a></li>
+          <li class="searchbar">
+            <a href="javascript:void(0);" (click)="toggleSearch()"><i class="feather icon-search"></i></a>
+            <!-- <div class="togglesearch" [ngClass]="searchField ? 'd-block' : 'd-none'">
+              <form>
+                <div class="input-group">
+                  <input type="text" class="form-control" />
+                  <button type="button" (click)="navigation()" (keydown)="navigation()" tabindex="1"
+                    class="btn">Search</button>
                 </div>
-              </li>
-              <li class="login-link"><a [routerLink] = "routes.userLogin">Login / Signup</a></li>
-              <ul class="nav header-navbar-rht">
-              <li class="register-btn">
-                <a [routerLink] = "routes.register" class="btn reg-btn"><i class="feather icon-user"></i>Register</a>
-              </li>
-              <li class="register-btn">
-                <a [routerLink] = "routes.userLogin" class="btn btn-primary log-btn"><i class="feather icon-lock"></i>Login</a>
-              </li>
-            </ul>
-            </ul>
-          </div>
-        </nav>
+              </form>
+            </div> -->
+          </li>
+          <li class="login-link"><a [routerLink]="routes.userLogin">Login / Signup</a></li>
+          <ul class="nav header-navbar-rht">
+            <!-- <li class="register-btn">
+              <a [routerLink]="routes.register" class="btn reg-btn"><i class="feather icon-user"></i>Register</a>
+            </li> -->
+            <li class="register-btn">
+              <a [routerLink]="routes.userLogin" class="btn btn-primary log-btn"><i
+                  class="feather icon-lock"></i>Login</a>
+            </li>
+          </ul>
+        </ul>
       </div>
-    </header>
+    </nav>
+  </div>
+</header>

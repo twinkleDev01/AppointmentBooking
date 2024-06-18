@@ -13,102 +13,6 @@
         </div>
         <div class="row">
           <div class="col-xl-8 d-flex">
-            <!-- <div class="dashboard-card w-100">
-              <div class="dashboard-card-head">
-                <div class="header-title">
-                  <h5>Health Records</h5>
-                </div>
-                <div class="dropdown header-dropdown">
-                  <a class="dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);">
-                    <img src="assets/img/doctors-dashboard/profile-06.jpg" class="avatar dropdown-avatar" alt="Img">
-                    Hendrita
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-end">
-                    <a href="javascript:void(0);" class="dropdown-item">
-                      <img src="assets/img/doctors-dashboard/profile-06.jpg" class="avatar dropdown-avatar" alt="Img">
-                      Hendrita
-                    </a>
-                    <a href="javascript:void(0);" class="dropdown-item">
-                      <img src="assets/img/doctors-dashboard/profile-08.jpg" class="avatar dropdown-avatar" alt="Img">
-                      Laura
-                    </a>
-                    <a href="javascript:void(0);" class="dropdown-item">
-                      <img src="assets/img/doctors-dashboard/profile-07.jpg" class="avatar dropdown-avatar" alt="Img">
-                      Mathew
-                    </a>
-                  </div>
-                </div>
-
-              </div>
-              <div class="dashboard-card-body">
-                <div class="row">
-                  <div class="col-sm-7">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="health-records icon-orange">
-                          <span><i class="fa-solid fa-heart"></i>Heart Rate</span>
-                          <h3>140 Bpm <sup> 2%</sup></h3>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="health-records icon-amber">
-                          <span><i class="fa-solid fa-temperature-high"></i>Body Temprature</span>
-                          <h3>37.5 C</h3>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="health-records icon-dark-blue">
-                          <span><i class="fa-solid fa-notes-medical"></i>Glucose Level</span>
-                          <h3>70 - 90<sup> 6%</sup></h3>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="health-records icon-blue">
-                          <span><i class="fa-solid fa-highlighter"></i>SPo2</span>
-                          <h3>96%</h3>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="health-records icon-red">
-                          <span><i class="fa-solid fa-syringe"></i>Blood Pressure</span>
-                          <h3>100 mg/dl<sup> 2%</sup></h3>
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="health-records icon-purple">
-                          <span><i class="fa-solid fa-user-pen"></i>BMI </span>
-                          <h3>20.1 kg/m2</h3>
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="report-gen-date">
-                          <p>Report generated on last visit : 25 Mar 2024 <span><i class="fa-solid fa-copy"></i></span>
-                          </p>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-5">
-                    <div class="chart-over-all-report">
-                      <h5>Overall Report</h5>
-                      <div class="circle-progressbar">
-                        <div class="circle-progress-percent">Last visit 25</div>
-                        <div class="circle-progress-text"> Mar 2024</div>
-                      </div>
-                      <circle-progress class="circle-progress-bar" [percent]="65" [clockwise]="true"
-                        innerStrokeColor=#e7e8ea outerStrokeColor=#65A30D>
-                      </circle-progress>
-                      <span class="health-percentage">Your health is 95% Normal</span>
-                      <a [routerLink]="routes.medicaldetails" class="btn btn-dark w-100">View Details<i
-                          class="fa-solid fa-chevron-right ms-2"></i></a>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-            </div> -->
           </div>
           <div class="col-xl-4 d-flex">
             
@@ -178,29 +82,31 @@
                       </ng-template>
                     </owl-carousel-o>
                   </ul>
+                  @for (data of appointmentDetails?.data.appointments; track data){
                   <div class="appointment-dash-card">
-                    <div class="doctor-fav-list">
-                      <div class="doctor-info-profile">
-                        <a href="javascript:void(0);" class="table-avatar">
-                          <img src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
-                        </a>
-                        <div class="doctor-name-info">
-                          <h5><a href="javascript:void(0);">Dr.Edalin Hendry</a></h5>
-                          <span>Dentist</span>
+                      <div class="doctor-fav-list">
+                        <div class="doctor-info-profile">
+                          <a href="javascript:void(0);" class="table-avatar">
+                            <img src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
+                          </a>
+                          <div class="doctor-name-info">
+                            <h5><a href="javascript:void(0);">{{data.doctorName}}</a></h5>
+                            <span>Dentist</span>
+                          </div>
                         </div>
+                        <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-hospital"></i></a>
                       </div>
-                      <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-hospital"></i></a>
+                      <div class="date-time">
+                        <p><i class="fa-solid fa-clock"></i>{{data.appointmentDate | date: 'dd-MMM-yy'}} - {{data.appointmentTime}} </p>
+                      </div>
+                      <div class="card-btns">
+                        <a [routerLink]="routes.chat" class="btn btn-gray"><i class="fa-solid fa-comment-dots"></i>Chat Now</a>
+                        <a [routerLink]="routes.patientAppointment" class="btn btn-outline-primary"><i
+                            class="fa-solid fa-calendar-check"></i>Attend</a>
+                      </div>
                     </div>
-                    <div class="date-time">
-                      <p><i class="fa-solid fa-clock"></i>21 Mar 2024 - 10:30 PM </p>
-                    </div>
-                    <div class="card-btns">
-                      <a [routerLink]="routes.chat" class="btn btn-gray"><i class="fa-solid fa-comment-dots"></i>Chat Now</a>
-                      <a [routerLink]="routes.patientAppointment" class="btn btn-outline-primary"><i
-                          class="fa-solid fa-calendar-check"></i>Attend</a>
-                    </div>
-                  </div>
-                  <div class="appointment-dash-card">
+                  }
+                  <!-- <div class="appointment-dash-card">
                     <div class="doctor-fav-list">
                       <div class="doctor-info-profile">
                         <a href="javascript:void(0);" class="table-avatar">
@@ -221,7 +127,7 @@
                       <a [routerLink]="routes.patientAppointment" class="btn btn-outline-primary"><i
                           class="fa-solid fa-calendar-check"></i>Attend</a>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 
@@ -323,156 +229,13 @@
             </div>
           </div>
           <div class="col-xl-7">
-            <!-- <div class="dashboard-card w-100">
-              <div class="dashboard-card-head">
-                <div class="header-title">
-                  <h5>Analytics</h5>
-                </div>
-                <div class="dropdown-links d-flex align-items-center flex-wrap">
-                  <div class="dropdown header-dropdown">
-                    <a class="dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);">
-                      <img src="assets/img/doctors-dashboard/profile-06.jpg" class="avatar dropdown-avatar" alt="Img">
-                      Hendrita
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                      <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/doctors-dashboard/profile-06.jpg" class="avatar dropdown-avatar" alt="Img">
-                        Hendrita
-                      </a>
-                      <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/doctors-dashboard/profile-08.jpg" class="avatar dropdown-avatar" alt="Img">
-                        Laura
-                      </a>
-                      <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/doctors-dashboard/profile-07.jpg" class="avatar dropdown-avatar" alt="Img">
-                        Mathew
-                      </a>
-                    </div>
-                  </div>
-                  <div class="dropdown header-dropdown header-dropdown-two">
-                    <a class="dropdown-toggle border-0" data-bs-toggle="dropdown" href="javascript:void(0);">
-                      This Week
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end">
-                      <a href="javascript:void(0);" class="dropdown-item">
-                        This Week
-                      </a>
-                      <a href="javascript:void(0);" class="dropdown-item">
-                        This Month
-                      </a>
-                      <a href="javascript:void(0);" class="dropdown-item">
-                        This Year
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <div class="dashboard-card-body">
-                <div class="chart-tabs patient-dash-tab">
-                  <ul class="nav" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <a class="nav-link active" href="javascript:void(0);" data-bs-toggle="tab"
-                        data-bs-target="#heart-rate" aria-selected="false" role="tab" tabindex="-1">Heart Rate</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <a class="nav-link " href="javascript:void(0);" data-bs-toggle="tab"
-                        data-bs-target="#blood-pressure" aria-selected="true" role="tab">Blood Pressure</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="tab-content pt-0">
-
-                  <!-- Chart -->
-                  <!-- <div class="tab-pane fade active show" id="heart-rate" role="tabpanel">
-                    <div id="heart-rate-chart">
-                      <apx-chart [series]="chartOptions1.series" [chart]="chartOptions1.chart"
-                        [dataLabels]="chartOptions1.dataLabels" [plotOptions]="chartOptions1.plotOptions"
-                        [xaxis]="chartOptions1.xaxis" [stroke]="chartOptions1.stroke"
-                        [fill]="chartOptions1.fill"></apx-chart>
-                    </div>
-                  </div> -->
-                  <!-- /Chart -->
-
-                  <!-- Chart -->
-                  <!-- <div class="tab-pane fade" id="blood-pressure" role="tabpanel">
-                    <div id="blood-pressure-chart">
-                      <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart"
-                        [dataLabels]="chartOptions2.dataLabels" [plotOptions]="chartOptions2.plotOptions"
-                        [xaxis]="chartOptions2.xaxis" [stroke]="chartOptions2.stroke"
-                        [fill]="chartOptions2.fill"></apx-chart>
-                    </div>
-                  </div> -->
-                  <!-- /Chart -->
-                <!-- </div>
-              </div>
-            </div> -->
+           
              <div class="favourites-dashboard w-100">
               <div class="book-appointment-head">
                 <h3><span>Book a new</span>Appointment</h3>
                 <span class="add-icon"><a href="javascript:void(0);"><i class="fa-solid fa-circle-plus"></i></a></span>
               </div>
-              <!-- <div class="dashboard-card w-100">
-                <div class="dashboard-card-head">
-                  <div class="header-title">
-                    <h5>Favourites</h5>
-                  </div>
-                  <div class="card-view-link">
-                    <a [routerLink]="routes.favourites">View All</a>
-                  </div>
-                </div>
-                <div class="dashboard-card-body">
-                  <div class="doctor-fav-list">
-                    <div class="doctor-info-profile">
-                      <a href="javascript:void(0);" class="table-avatar">
-                        <img src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
-                      </a>
-                      <div class="doctor-name-info">
-                        <h5><a href="javascript:void(0);">Dr. Edalin</a></h5>
-                        <span>Endodontists</span>
-                      </div>
-                    </div>
-                    <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-calendar-plus"></i></a>
-                  </div>
-                  <div class="doctor-fav-list">
-                    <div class="doctor-info-profile">
-                      <a href="javascript:void(0);" class="table-avatar">
-                        <img src="assets/img/doctors/doctor-thumb-11.jpg" alt="Img">
-                      </a>
-                      <div class="doctor-name-info">
-                        <h5><a href="javascript:void(0);">Dr. Maloney</a></h5>
-                        <span>Cardiologist</span>
-                      </div>
-                    </div>
-                    <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-calendar-plus"></i></a>
-                  </div>
-                  <div class="doctor-fav-list">
-                    <div class="doctor-info-profile">
-                      <a href="javascript:void(0);" class="table-avatar">
-                        <img src="assets/img/doctors/doctor-14.jpg" alt="Img">
-                      </a>
-                      <div class="doctor-name-info">
-                        <h5><a href="javascript:void(0);">Dr. Wayne </a></h5>
-                        <span>Dental Specialist</span>
-                      </div>
-                    </div>
-                    <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-calendar-plus"></i></a>
-                  </div>
-                  <div class="doctor-fav-list">
-                    <div class="doctor-info-profile">
-                      <a href="javascript:void(0);" class="table-avatar">
-                        <img src="assets/img/doctors/doctor-15.jpg" alt="Img">
-                      </a>
-                      <div class="doctor-name-info">
-                        <h5><a href="javascript:void(0);">Dr. Marla</a></h5>
-                        <span>Endodontists</span>
-                      </div>
-                    </div>
-                    <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-calendar-plus"></i></a>
-                  </div>
-                </div>
-
-              </div> -->
+              
             </div> 
             <div class="dashboard-card w-100">
               <div class="dashboard-card-head">
@@ -555,53 +318,7 @@
 
               </div>
             </div>
-            <!-- <div class="dashboard-card w-100">
-              <div class="dashboard-card-head">
-                <div class="header-title">
-                  <h5>Dependant</h5>
-                </div>
-                <div class="card-view-link">
-                  <a href="javascript:void(0);" class="add-new" data-bs-toggle="modal"
-                    data-bs-target="#add_dependent"><i class="fa-solid fa-circle-plus me-2"></i>Add New</a>
-                  <a [routerLink]="routes.dependentList">View All</a>
-                </div>
-              </div>
-              <div class="dashboard-card-body">
-                <div class="doctor-fav-list">
-                  <div class="doctor-info-profile">
-                    <a href="javascript:void(0);" class="table-avatar">
-                      <img src="assets/img/patients/patient-20.jpg" alt="Img">
-                    </a>
-                    <div class="doctor-name-info">
-                      <h5><a href="javascript:void(0);">Laura</a></h5>
-                      <span>Mother - 58 years 20 days</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <a href="javascript:void(0);" class="cal-plus-icon me-2"><i
-                        class="fa-solid fa-calendar-plus"></i></a>
-                    <a [routerLink]="routes.dependentList" class="cal-plus-icon"><i class="fa-solid fa-eye"></i></a>
-                  </div>
-                </div>
-                <div class="doctor-fav-list">
-                  <div class="doctor-info-profile">
-                    <a href="javascript:void(0);" class="table-avatar">
-                      <img src="assets/img/patients/patient-21.jpg" alt="Img">
-                    </a>
-                    <div class="doctor-name-info">
-                      <h5><a href="javascript:void(0);">Mathew</a></h5>
-                      <span>Father - 59 years 15 days</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center">
-                    <a href="javascript:void(0);" class="cal-plus-icon me-2"><i
-                        class="fa-solid fa-calendar-plus"></i></a>
-                    <a [routerLink]="routes.dependentList" class="cal-plus-icon"><i class="fa-solid fa-eye"></i></a>
-                  </div>
-                </div>
-              </div>
-
-            </div> -->
+            
           </div>
           <div class="col-xl-12 d-flex">
             <div class="dashboard-card w-100">

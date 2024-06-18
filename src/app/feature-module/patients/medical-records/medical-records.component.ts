@@ -156,4 +156,10 @@ export class MedicalRecordsComponent {
     return this.baseUrlPdf + path;
   }
 
+  delete(prescriptionID:string){
+this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
+  console.log(res);
+})
+  }
+
 }
