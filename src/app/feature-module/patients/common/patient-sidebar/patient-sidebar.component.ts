@@ -27,7 +27,6 @@ export class PatientSidebarComponent {
     });
   }
   Logout(){
-    console.log("Logout");
     const UserId = JSON.parse(localStorage.getItem('UserDetail') || '{}')?.nameid;
     const data={
       LoginProvider:localStorage.getItem('token'),

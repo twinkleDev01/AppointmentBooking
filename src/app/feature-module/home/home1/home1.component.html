@@ -5,55 +5,28 @@
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-6">
-        <div
-          class="banner-content aos"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-        >
+        <div class="banner-content aos" data-aos="fade-up" data-aos-duration="2000">
           <h1>Consult <span>Best Doctors</span> Your Nearby Location.</h1>
-          <img
-            src="assets/img/icons/header-icon.svg"
-            class="header-icon"
-            alt="header-icon"
-          />
+          <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
           <p>Embark on your healing journey with Doccure</p>
           <a [routerLink]="routes.booking1" class="btn">Start a Consult</a>
           <div class="banner-arrow-img">
-            <img
-              src="assets/img/down-arrow-img.png"
-              class="img-fluid"
-              alt="down-arrow"
-            />
+            <img src="assets/img/down-arrow-img.png" class="img-fluid" alt="down-arrow" />
           </div>
         </div>
-        <div
-          class="search-box-one aos"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-        >
+        <!-- <div class="search-box-one aos" data-aos="fade-up" data-aos-duration="2000">
           <form>
             <div class="search-input search-line">
               <i class="feather icon-search bficon"></i>
               <div class="mb-0">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search doctors, clinics, hospitals, etc"
-                />
+                <input type="text" class="form-control" placeholder="Search doctors, clinics, hospitals, etc" />
               </div>
             </div>
             <div class="search-input search-map-line">
               <i class="feather icon-map-pin"></i>
               <div class="mb-0">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Location"
-                />
-                <a
-                  class="current-loc-icon current_location"
-                  href="javascript:void(0);"
-                >
+                <input type="text" class="form-control" placeholder="Location" />
+                <a class="current-loc-icon current_location" href="javascript:void(0);">
                   <i class="feather icon-crosshair"></i>
                 </a>
               </div>
@@ -61,13 +34,7 @@
             <div class="search-input search-calendar-line">
               <i class="feather icon-calendar"></i>
               <div class="mb-0">
-                <input
-                  type="text"
-                  class="form-control"
-                  #dp="bsDatepicker"
-                  bsDatepicker
-                  [(bsValue)]="myDateValue"
-                />
+                <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="myDateValue" />
               </div>
             </div>
             <div class="form-search-btn">
@@ -76,10 +43,10 @@
               </button>
             </div>
           </form>
-        </div>
+        </div> -->
       </div>
       <div class="col-lg-6">
-        <div class="banner-img aos" data-aos="fade-up" data-aos-duration="2000">
+        <!-- <div class="banner-img aos" data-aos="fade-up" data-aos-duration="2000">
           <img
             src="assets/img/banner-img.png"
             class="img-fluid"
@@ -94,6 +61,124 @@
           <div class="banner-img3">
             <img src="assets/img/banner/banner-img3.svg" class="img-fluid" alt="doctors-list">
           </div>
+        </div> -->
+        <div class="form">
+          <h4 class="text-center mb-2">Lorem ipsum dolor sit amet</h4>
+          <div class="row mt-4">
+            <!-- age and gender -->
+            <div class="col-lg-6 no_padding">
+              <input type="text" placeholder="Enter Age">
+            </div>
+            <div class="col-lg-6 no_padding">
+              <select name="gender" id="gender">
+                <option value="Gender">Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="col-lg12 mt-3">
+              <h5 class="text-center">Select your concern(s)</h5>
+            </div>
+            <!-- list of concerns/decease -->
+            <div class="row concerns">
+              <div *ngFor="let concern of concerns" class="col-lg-6 mt-3 d-flex align-items-center">
+                <input type="checkbox">
+                <label for="concern">{{concern.issueName}}</label>
+              </div>
+            </div>
+            <!-- Are you consulting for first time? -->
+            <div class="concerns mt-3">
+              <h4 class="text-center">Are you consulting for the first time?</h4>
+              <div class="yes_no_btn d-flex align-items-center justify-content-center">
+                <input type="radio" name="yes" id="yes">
+                <label for="yes">Yes</label>
+                <input type="radio" name="No" id="no">
+                <label for="No">No</label>
+              </div>
+            </div>
+            <!-- Upload Images -->
+            <div class="concerns mt-3">
+              <h4 class="text-center">Upload up to 5 Images</h4>
+              <div class="file-upload-container">
+                <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none;">
+                <label for="fileInput" class="custom-file-upload">Select Files</label>
+                <div *ngIf="files.length === 0" class="no-files-uploaded">No file uploaded</div>
+              </div>
+              <div class="preview-container">
+                <div *ngFor="let file of files">
+                  <img *ngIf="file.type.startsWith('image')" (click)="openImageModal(file.url)" [src]="file.url" alt="File Preview" class="preview_img clickable">
+                  <span *ngIf="!file.type.startsWith('image')">{{file.name}}</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Custom Modal -->
+            <div class="custom-modal" *ngIf="isImageModalOpen">
+              <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                  <h5 class="custom-modal-title">Image Preview</h5>
+                  <button type="button" class="close" (click)="closeImageModal()">
+                    <i class="fa-regular fa-circle-xmark text-black"></i>
+                  </button>
+                </div>
+                <div class="custom-modal-body">
+                  <img [src]="selectedImageUrl" alt="Selected Image">
+                </div>
+              </div>
+            </div>
+            <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div>
+          
+          
+          
+
+            <div class="d-flex justify-content-center align-items-center mt-5">
+              <button class="form_btn me-3" (click)="openModal()">Select Time</button>
+              <button class="form_btn">Book Appointment</button>
+            </div>
+
+            <!-- Custom Modal -->
+            <div class="custom-modal" *ngIf="isModalOpen">
+              <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                  <h5 class="custom-modal-title">Select Preferred Date and Available Time Slot</h5>
+                  <button type="button" class="close" (click)="closeModal()">
+                    <i class="fa-regular fa-circle-xmark text-black"></i>
+                  </button>
+                </div>
+                <div class="custom-modal-body">
+                  <div class="row mt-3">
+                    <div class="col-lg-6">
+                      <p-calendar [(ngModel)]="selectedDate" inline="true" dateFormat="yy-mm-dd"
+                        (onSelect)="onSelectDate($event)" (onInput)="onDateChange($event)"></p-calendar>
+                    </div>
+                    <div class="col-lg-6">
+                      <!-- Available Times -->
+                      <h6 class="text-center mt-5">Available Time Slots</h6>
+                      <div class="row mt-5">
+                        <div *ngFor="let slot of uniqueTimeSlots" class="col-lg-3" (click)="onSelectTimeSlot(slot)">
+                          <div
+                            [ngClass]="{'selected': selectedTimeSlot === slot, 'not-selected': selectedTimeSlot !== slot}">
+                            {{ slot.startTime }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="selectedTimeSlot" class="d-flex justify-content-between mt-3">
+                    <p>Selected Slot: <strong>{{ selectedTimeSlot.startTime }}, {{ selectedDate | date: 'yyyy-MM-dd'
+                      }}</strong></p>
+                    <button class="form_btn">Confirm Slot</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <!-- Modal Backdrop -->
+            <div class="custom-modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()"></div>
+
+          </div>
         </div>
       </div>
     </div>
@@ -105,9 +190,7 @@
 <section class="specialities-section-one">
   <div class="container">
     <div class="service-sec-one">
-      <div
-        class="row row-cols-7 row-cols-xxl-7 row-cols-xl-4 row-cols-lg-4 rows-cols-md-6 justify-content-center"
-      >
+      <div class="row row-cols-7 row-cols-xxl-7 row-cols-xl-4 row-cols-lg-4 rows-cols-md-6 justify-content-center">
         <div class="col-12 d-flex col-xxl col-lg-3 col-sm-6">
           <a href="javascript:void(0);" class="serv-wrap blue-bg flex-fill">
             <span>
@@ -176,11 +259,7 @@
         <div class="owl-nav slide-nav-1 text-end nav-control"></div>
       </div>
     </div>
-    <div
-      class="specialities-slider-one owl-theme aos"
-      data-aos="fade-up"
-      data-aos-duration="2000"
-    >
+    <div class="specialities-slider-one owl-theme aos" data-aos="fade-up" data-aos-duration="2000">
       <owl-carousel-o [options]="specialitiesSlider">
         @for (data of specialitiesSliderOne; track data) {
         <ng-template carouselSlide>
@@ -196,11 +275,7 @@
         }
       </owl-carousel-o>
     </div>
-    <div
-      class="specialities-btn aos"
-      data-aos="fade-up"
-      data-aos-duration="2000"
-    >
+    <div class="specialities-btn aos" data-aos="fade-up" data-aos-duration="2000">
       <a [routerLink]="routes.search1" class="btn"> See All Specialities </a>
     </div>
   </div>
@@ -217,11 +292,7 @@
         </div>
       </div>
     </div>
-    <div
-      class="doctor-slider-one owl-theme aos"
-      data-aos="fade-up"
-      data-aos-duration="2000"
-    >
+    <div class="doctor-slider-one owl-theme aos" data-aos="fade-up" data-aos-duration="2000">
       <!-- Doctor Item -->
       <owl-carousel-o [options]="doctorSlider">
         @for (data of doctorSliderOne; track data) {
@@ -246,9 +317,7 @@
                   </div>
                   <div class="reviews-ratings">
                     <p>
-                      <span
-                        ><i class="fas fa-star"></i> {{ data.rating1 }}</span
-                      >
+                      <span><i class="fas fa-star"></i> {{ data.rating1 }}</span>
                       {{ data.rating2 }}
                     </p>
                   </div>
@@ -257,9 +326,7 @@
                   <p>
                     <i class="feather icon-map-pin"></i> {{ data.location }}
                   </p>
-                  <span class="badge badge-success doc-badge"
-                    ><i class="fa-solid fa-circle"></i>Available</span
-                  >
+                  <span class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
                 </div>
               </div>
             </div>
@@ -277,11 +344,7 @@
 <section class="pricing-section">
   <div class="container">
     <div class="row">
-      <div
-        class="col-md-12 text-center aos"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
+      <div class="col-md-12 text-center aos" data-aos="fade-up" data-aos-duration="2000">
         <div class="section-header-one">
           <h2 class="section-title">Pricing Plan</h2>
         </div>
@@ -408,25 +471,13 @@
 <section class="work-section">
   <div class="container">
     <div class="row">
-      <div
-        class="col-lg-4 col-md-12 work-img-info aos"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
+      <div class="col-lg-4 col-md-12 work-img-info aos" data-aos="fade-up" data-aos-duration="2000">
         <div class="work-img">
-          <img
-            src="assets/img/work-img.png"
-            class="img-fluid"
-            alt="doctor-image"
-          />
+          <img src="assets/img/work-img.png" class="img-fluid" alt="doctor-image" />
         </div>
       </div>
       <div class="col-lg-8 col-md-12 work-details">
-        <div
-          class="section-header-one aos"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-        >
+        <div class="section-header-one aos" data-aos="fade-up" data-aos-duration="2000">
           <h5>How it Works</h5>
           <h2 class="section-title">4 easy steps to get your solution</h2>
         </div>
@@ -434,11 +485,7 @@
           <div class="col-lg-6 col-md-6 aos" data-aos="fade-up">
             <div class="work-info">
               <div class="work-icon">
-                <span
-                  ><img
-                    src="assets/img/icons/work-01.svg"
-                    alt="search-doctor-icon"
-                /></span>
+                <span><img src="assets/img/icons/work-01.svg" alt="search-doctor-icon" /></span>
               </div>
               <div class="work-content">
                 <h5>Search Doctor</h5>
@@ -452,11 +499,7 @@
           <div class="col-lg-6 col-md-6 aos" data-aos="fade-up">
             <div class="work-info">
               <div class="work-icon">
-                <span
-                  ><img
-                    src="assets/img/icons/work-02.svg"
-                    alt="doctor-profile-icon"
-                /></span>
+                <span><img src="assets/img/icons/work-02.svg" alt="doctor-profile-icon" /></span>
               </div>
               <div class="work-content">
                 <h5>Check Doctor Profile</h5>
@@ -470,9 +513,7 @@
           <div class="col-lg-6 col-md-6 aos" data-aos="fade-up">
             <div class="work-info">
               <div class="work-icon">
-                <span
-                  ><img src="assets/img/icons/work-03.svg" alt="calendar-icon"
-                /></span>
+                <span><img src="assets/img/icons/work-03.svg" alt="calendar-icon" /></span>
               </div>
               <div class="work-content">
                 <h5>Schedule Appointment</h5>
@@ -486,9 +527,7 @@
           <div class="col-lg-6 col-md-6 aos" data-aos="fade-up">
             <div class="work-info">
               <div class="work-icon">
-                <span
-                  ><img src="assets/img/icons/work-04.svg" alt="solution-icon"
-                /></span>
+                <span><img src="assets/img/icons/work-04.svg" alt="solution-icon" /></span>
               </div>
               <div class="work-content">
                 <h5>Get Your Solution</h5>
@@ -523,11 +562,7 @@
             <div class="articles-left">
               <a [routerLink]="routes.blogDetails">
                 <div class="articles-img">
-                  <img
-                    src="assets/img/blog/blog-11.jpg"
-                    class="img-fluid"
-                    alt="John Doe"
-                  />
+                  <img src="assets/img/blog/blog-11.jpg" class="img-fluid" alt="John Doe" />
                 </div>
               </a>
             </div>
@@ -538,10 +573,8 @@
                   <li><i class="feather icon-calendar"></i> 13 Aug, 2023</li>
                 </ul>
                 <h4>
-                  <a [routerLink]="routes.blogDetails"
-                    >Navigating Telehealth: A Guide to Virtual Healthcare
-                    Visits</a
-                  >
+                  <a [routerLink]="routes.blogDetails">Navigating Telehealth: A Guide to Virtual Healthcare
+                    Visits</a>
                 </h4>
                 <p>
                   Explore the benefits & challenges of virtual healthcare
@@ -559,11 +592,7 @@
             <div class="articles-left">
               <a [routerLink]="routes.blogDetails">
                 <div class="articles-img">
-                  <img
-                    src="assets/img/blog/blog-24.jpg"
-                    class="img-fluid"
-                    alt="Darren Elder"
-                  />
+                  <img src="assets/img/blog/blog-24.jpg" class="img-fluid" alt="Darren Elder" />
                 </div>
               </a>
             </div>
@@ -574,10 +603,8 @@
                   <li><i class="feather icon-calendar"></i> 10 Sep, 2023</li>
                 </ul>
                 <h4>
-                  <a [routerLink]="routes.blogDetails"
-                    >Work-Life Harmony: Balancing Career and Personal
-                    Wellness</a
-                  >
+                  <a [routerLink]="routes.blogDetails">Work-Life Harmony: Balancing Career and Personal
+                    Wellness</a>
                 </h4>
                 <p>
                   Uncover strategies to achieve a harmonious balance between
@@ -595,11 +622,7 @@
             <div class="articles-left">
               <a [routerLink]="routes.blogDetails">
                 <div class="articles-img">
-                  <img
-                    src="assets/img/blog/blog-25.jpg"
-                    class="img-fluid"
-                    alt="Ruby Perrin"
-                  />
+                  <img src="assets/img/blog/blog-25.jpg" class="img-fluid" alt="Ruby Perrin" />
                 </div>
               </a>
             </div>
@@ -610,10 +633,8 @@
                   <li><i class="feather icon-calendar"></i> 30 Oct, 2023</li>
                 </ul>
                 <h4>
-                  <a [routerLink]="routes.blogDetails"
-                    >Sleep Solutions: Unveiling the Secrets to a Restful
-                    Night</a
-                  >
+                  <a [routerLink]="routes.blogDetails">Sleep Solutions: Unveiling the Secrets to a Restful
+                    Night</a>
                 </h4>
                 <p>
                   Explore importance of quality sleep & learn tips to improve
@@ -632,11 +653,7 @@
             <div class="articles-left">
               <a [routerLink]="routes.blogDetails">
                 <div class="articles-img">
-                  <img
-                    src="assets/img/blog/blog-12.jpg"
-                    class="img-fluid"
-                    alt="Sofia Brient"
-                  />
+                  <img src="assets/img/blog/blog-12.jpg" class="img-fluid" alt="Sofia Brient" />
                 </div>
               </a>
             </div>
@@ -647,10 +664,8 @@
                   <li><i class="feather icon-calendar"></i> 08 Nov, 2023</li>
                 </ul>
                 <h4>
-                  <a [routerLink]="routes.blogDetails"
-                    >Mental Wellness in a Digital Age: Strategies for a Healthy
-                    Mind Online</a
-                  >
+                  <a [routerLink]="routes.blogDetails">Mental Wellness in a Digital Age: Strategies for a Healthy
+                    Mind Online</a>
                 </h4>
                 <p>
                   Delve into the impact of digital life on mental health &
@@ -674,41 +689,21 @@
       <div class="row align-items-center">
         <div class="col-lg-6 col-md-12">
           <div class="app-content">
-            <div
-              class="app-header aos"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-            >
+            <div class="app-header aos" data-aos="fade-up" data-aos-duration="2000">
               <h5>Working for Your Better Health.</h5>
               <h2>Download the Doccure App today!</h2>
             </div>
-            <div
-              class="app-scan aos"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-            >
+            <div class="app-scan aos" data-aos="fade-up" data-aos-duration="2000">
               <p>Scan the QR code to get the app now</p>
               <img src="assets/img/scan-img.png" alt="scan-image" />
             </div>
-            <div
-              class="google-imgs aos"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-            >
-              <a href="javascript:void(0);"
-                ><img src="assets/img/google-play.png" alt="img"
-              /></a>
-              <a href="javascript:void(0);"
-                ><img src="assets/img/app-store.png" alt="img"
-              /></a>
+            <div class="google-imgs aos" data-aos="fade-up" data-aos-duration="2000">
+              <a href="javascript:void(0);"><img src="assets/img/google-play.png" alt="img" /></a>
+              <a href="javascript:void(0);"><img src="assets/img/app-store.png" alt="img" /></a>
             </div>
           </div>
         </div>
-        <div
-          class="col-lg-6 col-md-12 aos"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-        >
+        <div class="col-lg-6 col-md-12 aos" data-aos="fade-up" data-aos-duration="2000">
           <div class="mobile-img">
             <img src="assets/img/mobile-img.png" class="img-fluid" alt="img" />
           </div>
@@ -724,22 +719,14 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div
-          class="section-header-one aos"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-        >
+        <div class="section-header-one aos" data-aos="fade-up" data-aos-duration="2000">
           <h5>Get Your Answer</h5>
           <h2 class="section-title">Frequently Asked Questions</h2>
         </div>
       </div>
     </div>
     <div class="row align-items-center">
-      <div
-        class="col-lg-6 col-md-12 aos"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
+      <div class="col-lg-6 col-md-12 aos" data-aos="fade-up" data-aos-duration="2000">
         <div class="faq-img">
           <img src="assets/img/faq-img.png" class="img-fluid" alt="img" />
           <div class="faq-patients-count">
@@ -748,12 +735,7 @@
             </div>
             <div class="faq-patients-content">
               <h4>
-                <span
-                  class="count-digit"
-                  [countUp]="95"
-                  [options]="{ enableScrollSpy: true }"
-                  >95</span
-                >k+
+                <span class="count-digit" [countUp]="95" [options]="{ enableScrollSpy: true }">95</span>k+
               </h4>
               <p>Happy Patients</p>
             </div>
@@ -766,23 +748,13 @@
             <!-- FAQ Item -->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
-                <a
-                  href="javascript:void(0);"
-                  class="accordion-button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne"
-                  aria-expanded="true"
-                  aria-controls="collapseOne"
-                >
+                <a href="javascript:void(0);" class="accordion-button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   How do I book an appointment with a doctor?
                 </a>
               </h2>
-              <div
-                id="collapseOne"
-                class="accordion-collapse collapse show"
-                aria-labelledby="headingOne"
-                data-bs-parent="#faq-details"
-              >
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-bs-parent="#faq-details">
                 <div class="accordion-body">
                   <div class="accordion-content">
                     <p>
@@ -799,23 +771,13 @@
             <!-- FAQ Item -->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingTwo">
-                <a
-                  href="javascript:void(0);"
-                  class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                >
+                <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                   Can I request a specific doctor when booking my appointment?
                 </a>
               </h2>
-              <div
-                id="collapseTwo"
-                class="accordion-collapse collapse"
-                aria-labelledby="headingTwo"
-                data-bs-parent="#faq-details"
-              >
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#faq-details">
                 <div class="accordion-body">
                   <div class="accordion-content">
                     <p>
@@ -832,24 +794,14 @@
             <!-- FAQ Item -->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingThree">
-                <a
-                  href="javascript:void(0);"
-                  class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseThree"
-                  aria-expanded="false"
-                  aria-controls="collapseThree"
-                >
+                <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                   What should I do if I need to cancel or reschedule my
                   appointment?
                 </a>
               </h2>
-              <div
-                id="collapseThree"
-                class="accordion-collapse collapse"
-                aria-labelledby="headingThree"
-                data-bs-parent="#faq-details"
-              >
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                data-bs-parent="#faq-details">
                 <div class="accordion-body">
                   <div class="accordion-content">
                     <p>
@@ -866,23 +818,13 @@
             <!-- FAQ Item -->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingFour">
-                <a
-                  href="javascript:void(0);"
-                  class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseFour"
-                  aria-expanded="false"
-                  aria-controls="collapseFour"
-                >
+                <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                   What if I'm running late for my appointment?
                 </a>
               </h2>
-              <div
-                id="collapseFour"
-                class="accordion-collapse collapse"
-                aria-labelledby="headingFour"
-                data-bs-parent="#faq-details"
-              >
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                data-bs-parent="#faq-details">
                 <div class="accordion-body">
                   <div class="accordion-content">
                     <p>
@@ -900,23 +842,13 @@
             <!-- FAQ Item -->
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingFive">
-                <a
-                  href="javascript:void(0);"
-                  class="accordion-button collapsed"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseFive"
-                  aria-expanded="false"
-                  aria-controls="collapseFive"
-                >
+                <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                   Can I book appointments for family members or dependents?
                 </a>
               </h2>
-              <div
-                id="collapseFive"
-                class="accordion-collapse collapse"
-                aria-labelledby="headingFive"
-                data-bs-parent="#faq-details"
-              >
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                data-bs-parent="#faq-details">
                 <div class="accordion-body">
                   <div class="accordion-content">
                     <p>
@@ -942,11 +874,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <ngx-slick-carousel
-          class="testimonial-slider"
-          #slickModal="slick-carousel"
-          [config]="slideConfig"
-        >
+        <ngx-slick-carousel class="testimonial-slider" #slickModal="slick-carousel" [config]="slideConfig">
           @for (data of aboutUs; track data) {
           <div class="testimonial-grid" ngxSlickItem>
             <div class="testimonial-info">
@@ -980,11 +908,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <div
-          class="section-header-one text-center aos"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-        >
+        <div class="section-header-one text-center aos" data-aos="fade-up" data-aos-duration="2000">
           <h2 class="section-title">Our Partners</h2>
         </div>
       </div>
