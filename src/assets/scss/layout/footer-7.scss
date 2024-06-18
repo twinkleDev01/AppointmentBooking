@@ -1,0 +1,198 @@
+
+.footer-one {
+    &.footer-fourteen {
+        &.footer-twelve {
+            background: $__home__12__section__even;
+            padding:  0;
+            .footer-bottom {
+                .copyright {
+                    .policy-menu {
+                        @include respond-below(custom991) {
+                            text-align: start;
+                            li {
+                                margin-right: 4px;
+                                font-weight: 400;
+                                &::after {
+                                    left: 5px;
+                                }
+                                a {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+  }
+
+  .footer-fourteen {
+    &.footer-twelve {
+        background: $__sky-700;
+        position: relative;
+        z-index: 1;
+        
+        .footer-top {
+            padding: 80px 0 60px;
+            position: relative;
+            z-index: 1;
+            @include respond-below(custom991) {
+                padding: 50px 0 30px;
+            }
+            @include respond-below(custom767) {
+                padding: 40px 0 20px;
+            }
+            .floating-bg {
+                img {
+                    position: absolute;
+                    z-index: -1;
+                    &:nth-child(1) {
+                        left: 50px;
+                        bottom: 100px;
+                    }
+                    &:nth-child(2) {
+                        right: 20%;
+                        bottom: 30px;
+                    }
+                    &:nth-child(3) {
+                        top: 0;
+                        left: 0;
+                    }
+                }
+            }
+        }
+        .footer-widget {
+            margin-bottom: 20px;
+            li {
+                a {
+                    color: $__athens_grey;
+                    padding-left: 0 !important;
+                    font-size: $__font__size__14;
+                    &::before {
+                        display: none;
+                    } 
+                    &:hover{
+                        letter-spacing: 1px;
+                        text-decoration: underline;
+                    }
+                }
+                span {
+                    color: $__athens_grey;
+                    font-size: $__font__size__14;
+                    display: inline-flex;
+                    align-items: center;
+                    i {
+                        margin-right: 5px;
+                    }
+                }
+                p {
+                    color: $__athens_grey;
+                    font-size: $__font__size__14;
+                    margin-bottom: 0;
+                }
+                & +li {
+                    margin-top: 15px;
+                }
+            }
+            .footer-widget-title {
+                h4 {
+                    font-size: $__font__size__20;
+                    position: relative;
+                    padding-bottom: 15px;
+                    margin-bottom: 15px;
+                    color: $__white;
+                    &::before {
+                        content: "";
+                        width: 30px;
+                        height: 2px;
+                        background: $__white;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                    }
+                }
+            }
+            &.footer-about {
+                background: #0474AA;
+                border-radius: 10px;
+                padding: 15px;
+                p {
+                    color: $__athens_grey;
+                    margin-bottom: 24px;
+                }
+                .subscribe-form {
+                    input {
+                        border-radius: 50px;
+                        background: #0BDBFC1A;
+                        color: $__athens_grey;
+                        border: 0;
+                        padding: 14px 10px;
+                        padding-right: 125px;
+                        &::placeholder {
+                            color: $__athens_grey;
+                        }
+                    }
+                    button {
+                        padding: 6px 14px;
+                        background: $__white;
+                        color: $__black;
+                        right: 10px;
+                        border-radius: 50px;
+                        border-color: $__white;
+                        &:hover{
+                            background: $__primary__light;  
+                            box-shadow: none;
+                            color: $__white;
+                            border-color: $__primary__light;
+                        }
+                    }
+                }
+            }
+        }
+        .footer-bottom {
+            border-top: 1px solid $__sky-600;
+            padding: 15px 0;
+            .copyright-text {
+                p {
+                    color: $__white;
+                    font-size: $__font__size__14;
+                }
+            }
+            .social-links {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                @include respond-below(custom767) {
+                    justify-content: start;
+                    margin-top: 20px;
+                }
+                li {
+                    margin-right: 10px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    a {
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: $__white;
+                        &:hover {
+                            background: $__sky-600;
+                            i {
+                                color: $__white;
+                            }
+                        }
+                        i {
+                            color: $__sky-600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,610 @@
+<app-doctor-breadcrumb></app-doctor-breadcrumb>
+<!-- Page Content -->
+<div class="content doctor-content">
+  <div class="container">
+    <div class="row">
+      <app-doctor-sidebar
+        class="col-md-5 col-lg-4 col-xl-3"
+      ></app-doctor-sidebar>
+      <div class="col-lg-8 col-xl-9">
+        <!-- Profile Settings -->
+        <div class="dashboard-header">
+          <h3>Profile Settings</h3>
+        </div>
+
+        <!-- Settings List -->
+        <div class="setting-tab">
+          <div class="appointment-tabs">
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="routes.doctorProfileSettings"
+                  >Basic Details</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    [routerLink]="routes.doctorExperienceSettings"
+                    >Experience</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      [routerLink]="routes.doctorEducationSettings"
+                      >Education</a
+                      >
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" [routerLink] = "routes.doctorAwardsSettings"
+                        >Awards</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          [routerLink]="routes.doctorInsuranceSettings"
+                          >Insurances</a
+                          >
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" [routerLink]="routes.doctorClinicSettings"
+                            >Clinics</a
+                            >
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" [routerLink]="routes.doctorBusinessSettings"
+                              >Business Hours</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <!-- /Settings List -->
+
+                      <div class="dashboard-header border-0 mb-0">
+                        <h3>Experience</h3>
+                        <ul>
+                          <li>
+                            <a
+                              (click)="addEducationFunc()"
+                              href="javascript:void(0);"
+                              class="btn btn-primary prime-btn add-experiences"
+                              >Add New Experience</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+
+                        <form>
+                          <div class="accordions experience-infos" id="list-accord">
+
+                            <!-- Experience1 Item -->
+                            <div class="user-accordion-item">
+                              <a
+                                href="javascript:void(0);"
+                                class="accordion-wrap"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#experience1"
+                                >Experience<span >Delete</span></a
+                                >
+                                <div
+                                  class="accordion-collapse collapse show"
+                                  id="experience1"
+                                  data-bs-parent="#list-accord"
+                                  >
+                                  <div class="content-collapse">
+                                    <div class="add-service-info">
+                                      <div class="add-info">
+                                        <div class="row align-items-center">
+                                          <div class="col-md-12">
+                                            <div class="form-wrap mb-2">
+                                              <div class="change-avatar img-upload">
+                                                <div class="profile-img">
+                                                  <i class="fa-solid fa-file-image"></i>
+                                                </div>
+                                                <div class="upload-img">
+                                                  <h5>Hospital Logo</h5>
+                                                  <div
+                                                    class="imgs-load d-flex align-items-center"
+                                                    >
+                                                    <div class="change-photo">
+                                                      Upload New
+                                                      <input type="file" class="upload" />
+                                                    </div>
+                                                    <a
+                                                      href="javascript:void(0);"
+                                                      class="upload-remove"
+                                                      >Remove</a
+                                                      >
+                                                    </div>
+                                                    <p class="form-text">
+                                                      Your Image should Below 4 MB, Accepted format
+                                                      Jpg,Png,Svg
+                                                    </p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                              <div class="form-wrap">
+                                                <label class="col-form-label" for="title"
+                                                  >Title</label
+                                                  >
+                                                  <input type="text" class="form-control" />
+                                                </div>
+                                              </div>
+                                              <div class="col-lg-4 col-md-6">
+                                                <div class="form-wrap">
+                                                  <label class="col-form-label" for="hospital"
+                                                    >Hospital
+                                                    <span class="text-danger">*</span></label
+                                                    >
+                                                    <input type="text" class="form-control" />
+                                                  </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                  <div class="form-wrap">
+                                                    <label class="col-form-label" for="experience"
+                                                      >Year of Experience
+                                                      <span class="text-danger">*</span></label
+                                                      >
+                                                      <input type="text" class="form-control" />
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                    <div class="form-wrap">
+                                                      <label class="col-form-label" for="location"
+                                                        >Location
+                                                        <span class="text-danger">*</span></label
+                                                        >
+                                                        <input type="text" class="form-control" />
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                      <div class="form-wrap">
+                                                        <label class="col-form-label" for="employement"
+                                                          >Employement
+                                                        </label>
+
+                                                        <mat-select
+                                                          class="custom-mat-select"
+                                                          placeholder="Full Time"
+                                                          >
+                                                          <mat-option value="available"
+                                                            >Full Time</mat-option
+                                                            >
+                                                            <mat-option value="not-available"
+                                                              >Part Time</mat-option
+                                                              >
+                                                            </mat-select>
+                                                          </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                          <div class="form-wrap">
+                                                            <label class="col-form-label" for="job"
+                                                              >Job Description
+                                                              <span class="text-danger">*</span></label
+                                                              >
+                                                              <textarea class="form-control" rows="3"></textarea>
+                                                            </div>
+                                                          </div>
+                                                          <div class="col-lg-4 col-md-6">
+                                                            <div class="form-wrap">
+                                                              <label class="col-form-label" for="start"
+                                                                >Start Date
+                                                                <span class="text-danger">*</span></label
+                                                                >
+                                                                <div class="form-icon">
+                                                                  <input
+                                                                    type="text"
+                                                                    class="form-control datetimepicker"
+                                                                    bsDatepicker
+                                                                    />
+                                                                    <span class="icon"
+                                                                      ><i class="fa-regular fa-calendar-days"></i
+                                                                    ></span>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="col-lg-4 col-md-6">
+                                                                <div class="form-wrap">
+                                                                  <label class="col-form-label" for="enddate"
+                                                                    >End Date
+                                                                    <span class="text-danger">*</span></label
+                                                                    >
+                                                                    <div class="form-icon">
+                                                                      <input
+                                                                        type="text"
+                                                                        class="form-control datetimepicker"
+                                                                        bsDatepicker
+                                                                        />
+                                                                        <span class="icon"
+                                                                          ><i class="fa-regular fa-calendar-days"></i
+                                                                        ></span>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="col-lg-4 col-md-6">
+                                                                    <div class="form-wrap">
+                                                                      <label class="col-form-label" for="check"
+                                                                        >&nbsp;</label
+                                                                        >
+                                                                        <div class="form-check">
+                                                                          <label class="form-check-label">
+                                                                            <input
+                                                                              class="form-check-input"
+                                                                              type="checkbox"
+                                                                              />
+                                                                              I Currently Working Here
+                                                                            </label>
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="text-end">
+                                                                    <a href="javascript:void(0);" class="reset more-item"
+                                                                      >Reset</a
+                                                                      >
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <!-- /Experience1 Item -->
+
+                                                            <!-- Experience1 Item -->
+                                                            <div class="user-accordion-item">
+                                                              <a
+                                                                href="javascript:void(0);"
+                                                                class="collapsed accordion-wrap"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#experience2"
+                                                                >Hill Medical Hospital, Newcastle (15 Mar 2021 - 24 Jan 2023
+                                                                )<span>Delete</span></a
+                                                                >
+                                                                <div
+                                                                  class="accordion-collapse collapse"
+                                                                  id="experience2"
+                                                                  data-bs-parent="#list-accord"
+                                                                  >
+                                                                  <div class="content-collapse">
+                                                                    <div class="add-service-info">
+                                                                      <div class="add-info">
+                                                                        <div class="row align-items-center">
+                                                                          <div class="col-md-12">
+                                                                            <div class="form-wrap mb-2">
+                                                                              <div class="change-avatar img-upload">
+                                                                                <div class="profile-img">
+                                                                                  <i class="fa-solid fa-file-image"></i>
+                                                                                </div>
+                                                                                <div class="upload-img">
+                                                                                  <h5>Hospital Logo</h5>
+                                                                                  <div
+                                                                                    class="imgs-load d-flex align-items-center"
+                                                                                    >
+                                                                                    <div class="change-photo">
+                                                                                      Upload New
+                                                                                      <input type="file" class="upload" />
+                                                                                    </div>
+                                                                                    <a href="javascript:void(0);" class="upload-remove">Remove</a>
+                                                                                  </div>
+                                                                                  <p class="form-text">
+                                                                                    Your Image should Below 4 MB, Accepted format
+                                                                                    Jpg,Png,Svg
+                                                                                  </p>
+                                                                                </div>
+                                                                              </div>
+                                                                            </div>
+                                                                          </div>
+                                                                          <div class="col-lg-4 col-md-6">
+                                                                            <div class="form-wrap">
+                                                                              <label class="col-form-label" for="title">Title</label>
+                                                                              <input type="text" class="form-control" />
+                                                                            </div>
+                                                                          </div>
+                                                                          <div class="col-lg-4 col-md-6">
+                                                                            <div class="form-wrap">
+                                                                              <label class="col-form-label" for="Hospital"
+                                                                                >Hospital
+                                                                                <span class="text-danger">*</span></label
+                                                                                >
+                                                                                <input type="text" class="form-control" />
+                                                                              </div>
+                                                                            </div>
+                                                                            <div class="col-lg-4 col-md-6">
+                                                                              <div class="form-wrap">
+                                                                                <label class="col-form-label" for="experience"
+                                                                                  >Year of Experience
+                                                                                  <span class="text-danger">*</span></label
+                                                                                  >
+                                                                                  <input type="text" class="form-control" />
+                                                                                </div>
+                                                                              </div>
+                                                                              <div class="col-md-6">
+                                                                                <div class="form-wrap">
+                                                                                  <label class="col-form-label" for="location"
+                                                                                    >Location
+                                                                                    <span class="text-danger">*</span></label
+                                                                                    >
+                                                                                    <input type="text" class="form-control" />
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                  <div class="form-wrap">
+                                                                                    <label class="col-form-label" for="employement">Employement </label>
+                                                                                    <mat-select
+                                                                                      class="custom-mat-select"
+                                                                                      placeholder="Full Time"
+                                                                                      >
+                                                                                      <mat-option value="available"
+                                                                                        >Full Time</mat-option
+                                                                                        >
+                                                                                        <mat-option value="not-available"
+                                                                                          >Part Time</mat-option
+                                                                                          >
+                                                                                        </mat-select>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <div class="col-lg-12">
+                                                                                      <div class="form-wrap">
+                                                                                        <label class="col-form-label" for="description"
+                                                                                          >Job Description
+                                                                                          <span class="text-danger">*</span></label
+                                                                                          >
+                                                                                          <textarea class="form-control" rows="3"></textarea>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                      <div class="col-lg-4 col-md-6">
+                                                                                        <div class="form-wrap">
+                                                                                          <label class="col-form-label" for="start"
+                                                                                            >Start Date
+                                                                                            <span class="text-danger">*</span></label
+                                                                                            >
+                                                                                            <div class="form-icon">
+                                                                                              <input
+                                                                                                type="text"
+                                                                                                class="form-control datetimepicker"
+                                                                                                />
+                                                                                                <span class="icon"
+                                                                                                  ><i class="fa-regular fa-calendar-days"></i
+                                                                                                ></span>
+                                                                                              </div>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                          <div class="col-lg-4 col-md-6">
+                                                                                            <div class="form-wrap">
+                                                                                              <label class="col-form-label" for="end"
+                                                                                                >End Date
+                                                                                                <span class="text-danger">*</span></label
+                                                                                                >
+                                                                                                <div class="form-icon">
+                                                                                                  <input
+                                                                                                    type="text"
+                                                                                                    class="form-control datetimepicker"
+                                                                                                    />
+                                                                                                    <span class="icon"
+                                                                                                      ><i class="fa-regular fa-calendar-days"></i
+                                                                                                    ></span>
+                                                                                                  </div>
+                                                                                                </div>
+                                                                                              </div>
+                                                                                              <div class="col-lg-4 col-md-6">
+                                                                                                <div class="form-wrap">
+                                                                                                  <label class="col-form-label" for="calendar">&nbsp;</label>
+                                                                                                  <div class="form-check">
+                                                                                                    <label class="form-check-label">
+                                                                                                      <input
+                                                                                                        class="form-check-input"
+                                                                                                        type="checkbox"
+                                                                                                        />
+                                                                                                        I Currently Working Here
+                                                                                                      </label>
+                                                                                                    </div>
+                                                                                                  </div>
+                                                                                                </div>
+                                                                                              </div>
+                                                                                            </div>
+                                                                                            <div class="text-end">
+                                                                                              <a href="javascript:void(0);" class="reset more-item">Reset</a>
+                                                                                            </div>
+                                                                                          </div>
+                                                                                        </div>
+                                                                                      </div>
+                                                                                    </div>
+                                                                                    <!-- /Experience1 Item -->
+
+
+                                                                                    <!-- New Awards Item -->
+                                                                                    @for (item of education; track item) {
+                                                                                      <div class="awrad-content">
+                                                                                        <div class="user-accordion-item">
+                                                                                          <a
+                                                                                            href="javascript:void(0);"
+                                                                                            class="accordion-wrap"
+                                                                                            data-bs-toggle="collapse"
+                                                                                            data-bs-target="#experience"
+                                                                                            >Experience<span (click)="deleteEducationFunc(0)" (keydown.enter)="deleteEducationFunc(0)" tabindex="0">Delete</span></a
+                                                                                            >
+                                                                                            <div
+                                                                                              class="accordion-collapse collapse show"
+                                                                                              id="experience"
+                                                                                              data-bs-parent="#list-accord"
+                                                                                              >
+                                                                                              <div class="content-collapse">
+                                                                                                <div class="add-service-info">
+                                                                                                  <div class="add-info">
+                                                                                                    <div class="row align-items-center">
+                                                                                                      <div class="col-md-12">
+                                                                                                        <div class="form-wrap mb-2">
+                                                                                                          <div class="change-avatar img-upload">
+                                                                                                            <div class="profile-img">
+                                                                                                              <i class="fa-solid fa-file-image"></i>
+                                                                                                            </div>
+                                                                                                            <div class="upload-img">
+                                                                                                              <h5>Hospital Logo</h5>
+                                                                                                              <div
+                                                                                                                class="imgs-load d-flex align-items-center"
+                                                                                                                >
+                                                                                                                <div class="change-photo">
+                                                                                                                  Upload New
+                                                                                                                  <input type="file" class="upload" />
+                                                                                                                </div>
+                                                                                                                <a
+                                                                                                                  href="javascript:void(0);"
+                                                                                                                  class="upload-remove"
+                                                                                                                  >Remove</a
+                                                                                                                  >
+                                                                                                                </div>
+                                                                                                                <p class="form-text">
+                                                                                                                  Your Image should Below 4 MB, Accepted format
+                                                                                                                  Jpg,Png,Svg
+                                                                                                                </p>
+                                                                                                              </div>
+                                                                                                            </div>
+                                                                                                          </div>
+                                                                                                        </div>
+                                                                                                        <div class="col-lg-4 col-md-6">
+                                                                                                          <div class="form-wrap">
+                                                                                                            <label class="col-form-label" for="title"
+                                                                                                              >Title</label
+                                                                                                              >
+                                                                                                              <input type="text" class="form-control" />
+                                                                                                            </div>
+                                                                                                          </div>
+                                                                                                          <div class="col-lg-4 col-md-6">
+                                                                                                            <div class="form-wrap">
+                                                                                                              <label class="col-form-label" for="hospital"
+                                                                                                                >Hospital
+                                                                                                                <span class="text-danger">*</span></label
+                                                                                                                >
+                                                                                                                <input type="text" class="form-control" />
+                                                                                                              </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-lg-4 col-md-6">
+                                                                                                              <div class="form-wrap">
+                                                                                                                <label class="col-form-label" for="experience"
+                                                                                                                  >Year of Experience
+                                                                                                                  <span class="text-danger">*</span></label
+                                                                                                                  >
+                                                                                                                  <input type="text" class="form-control" />
+                                                                                                                </div>
+                                                                                                              </div>
+                                                                                                              <div class="col-md-6">
+                                                                                                                <div class="form-wrap">
+                                                                                                                  <label class="col-form-label" for="location"
+                                                                                                                    >Location
+                                                                                                                    <span class="text-danger">*</span></label
+                                                                                                                    >
+                                                                                                                    <input type="text" class="form-control" />
+                                                                                                                  </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-md-6">
+                                                                                                                  <div class="form-wrap">
+                                                                                                                    <label class="col-form-label" for="employement"
+                                                                                                                      >Employement
+                                                                                                                    </label>
+                                                                                                                    <mat-select
+                                                                                                                      class="custom-mat-select"
+                                                                                                                      placeholder="Full Time"
+                                                                                                                      >
+                                                                                                                      <mat-option value="available"
+                                                                                                                        >Full Time</mat-option
+                                                                                                                        >
+                                                                                                                        <mat-option value="not-available"
+                                                                                                                          >Part Time</mat-option
+                                                                                                                          >
+                                                                                                                        </mat-select>
+                                                                                                                      </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-lg-12">
+                                                                                                                      <div class="form-wrap">
+                                                                                                                        <label class="col-form-label" for="job"
+                                                                                                                          >Job Description
+                                                                                                                          <span class="text-danger">*</span></label
+                                                                                                                          >
+                                                                                                                          <textarea class="form-control" rows="3"></textarea>
+                                                                                                                        </div>
+                                                                                                                      </div>
+                                                                                                                      <div class="col-lg-4 col-md-6">
+                                                                                                                        <div class="form-wrap">
+                                                                                                                          <label class="col-form-label" for="start"
+                                                                                                                            >Start Date
+                                                                                                                            <span class="text-danger">*</span></label
+                                                                                                                            >
+                                                                                                                            <div class="form-icon">
+                                                                                                                              <input
+                                                                                                                                type="text"
+                                                                                                                                class="form-control datetimepicker"
+                                                                                                                                bsDatepicker
+                                                                                                                                />
+                                                                                                                                <span class="icon"
+                                                                                                                                  ><i class="fa-regular fa-calendar-days"></i
+                                                                                                                                ></span>
+                                                                                                                              </div>
+                                                                                                                            </div>
+                                                                                                                          </div>
+                                                                                                                          <div class="col-lg-4 col-md-6">
+                                                                                                                            <div class="form-wrap">
+                                                                                                                              <label class="col-form-label" for="enddate"
+                                                                                                                                >End Date
+                                                                                                                                <span class="text-danger">*</span></label
+                                                                                                                                >
+                                                                                                                                <div class="form-icon">
+                                                                                                                                  <input
+                                                                                                                                    type="text"
+                                                                                                                                    class="form-control datetimepicker"
+                                                                                                                                    bsDatepicker
+                                                                                                                                    />
+                                                                                                                                    <span class="icon"
+                                                                                                                                      ><i class="fa-regular fa-calendar-days"></i
+                                                                                                                                    ></span>
+                                                                                                                                  </div>
+                                                                                                                                </div>
+                                                                                                                              </div>
+                                                                                                                              <div class="col-lg-4 col-md-6">
+                                                                                                                                <div class="form-wrap">
+                                                                                                                                  <label class="col-form-label" for="check"
+                                                                                                                                    >&nbsp;</label
+                                                                                                                                    >
+                                                                                                                                    <div class="form-check">
+                                                                                                                                      <label class="form-check-label">
+                                                                                                                                        <input
+                                                                                                                                          class="form-check-input"
+                                                                                                                                          type="checkbox"
+                                                                                                                                          />
+                                                                                                                                          I Currently Working Here
+                                                                                                                                        </label>
+                                                                                                                                      </div>
+                                                                                                                                    </div>
+                                                                                                                                  </div>
+                                                                                                                                </div>
+                                                                                                                              </div>
+                                                                                                                              <div class="text-end">
+                                                                                                                                <a href="javascript:void(0);" class="reset more-item"
+                                                                                                                                  >Reset</a
+                                                                                                                                  >
+                                                                                                                                </div>
+                                                                                                                              </div>
+                                                                                                                            </div>
+                                                                                                                          </div>
+                                                                                                                        </div>
+                                                                                                                      </div>
+                                                                                                                    }
+
+                                                                                                                  </div>
+
+                                                                                                                  <div class="modal-btn text-end">
+                                                                                                                    <a href="javascript:void(0);" class="btn btn-gray">Cancel</a>
+                                                                                                                    <button type="submit" class="btn btn-primary prime-btn">
+                                                                                                                      Save Changes
+                                                                                                                    </button>
+                                                                                                                  </div>
+                                                                                                                </form>
+                                                                                                                <!-- /Profile Settings -->
+                                                                                                              </div>
+                                                                                                            </div>
+                                                                                                          </div>
+                                                                                                        </div>
+                                                                                                        <!-- /Page Content -->

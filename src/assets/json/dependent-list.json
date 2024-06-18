@@ -1,0 +1,45 @@
+{
+    "data": [
+        {
+            "dependent": "Christopher",
+            "relationship": "Son",
+            "gender": "Male",
+            "number": "303-297-6170",
+            "bloodGroup": "AB+",
+            "action1": "Edit",
+            "action2": "Deactive",
+            "img": "assets/img/patients/patient16.jpg"
+        },
+        {
+            "dependent": "Tressie",
+            "relationship": "Daughter",
+            "gender": "Female",
+            "number": "360-822-9097",
+            "bloodGroup": "B+",
+            "action1": "Edit",
+            "action2": "Deactive",
+            "img": "assets/img/patients/patient17.jpg"
+        },
+        {
+            "dependent": "Champagne",
+            "relationship": "Father",
+            "gender": "Male",
+            "number": "720-841-8299",
+            "bloodGroup": "B+",
+            "action1": "Edit",
+            "action2": "Deactive",
+            "img": "assets/img/patients/patient18.jpg"
+        },
+        {
+            "dependent": "Vena",
+            "relationship": "Mother",
+            "gender": "Male",
+            "number": "949-583-4370",
+            "bloodGroup": "A+",
+            "action1": "Edit",
+            "action2": "Deactive",
+            "img": "assets/img/patients/patient19.jpg"
+        }
+    ],
+    "totalData": 4
+}

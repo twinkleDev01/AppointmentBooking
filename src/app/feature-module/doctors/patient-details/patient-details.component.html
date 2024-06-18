@@ -1,0 +1,186 @@
+<!-- Page Content -->
+<div class="doctor-content">
+  <div class="container">
+
+    <!-- Patient -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="back-link">
+          <a [routerLink] = "routes.booking1"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-md-12">
+        <div class="paitent-header">
+          <h4 class="paitent-title">Patient Details</h4>
+        </div>
+        <div class="paitent-appointment">
+          <form >
+            <div class="forms-block">
+              <label class="form-group-title" for="appointment">Appointment for</label>
+              <label class="custom_radio me-4">
+                <input type="radio" name="appointment" checked>
+                <span class="checkmark"></span> My Self
+              </label>
+              <label class="custom_radio">
+                <input type="radio" name="appointment">
+                <span class="checkmark"></span> Dependent
+              </label>
+            </div>
+            <div class="forms-block">
+              <div class="form-group-flex">
+                <label class="form-group-title" for="dependent">Choose Dependent</label>
+                <a href="javascript:void(0);" class="btn">
+                  <i class="feather icon-plus"></i> Add
+                </a>
+              </div>
+              <div class="patient-dependent-select">
+                <mat-select [(ngModel)]="selectedValue1" [ngModelOptions]="{standalone: true}" panelClass="patientDependentSelect" class="select"  placeholder="Select">
+                  @for (data of selectedList1; track data) {
+                    <mat-option [value]="data.value">
+                      {{data.value}}
+                    </mat-option>
+                  }
+                </mat-select>
+              </div>
+            </div>
+            <div class="forms-block">
+              <label class="form-group-title" for="insurance">Do you have insurance?</label>
+              <label class="custom_radio me-4">
+                <input type="radio" name="insurance">
+                <span class="checkmark"></span> Yes
+              </label>
+              <label class="custom_radio">
+                <input type="radio" name="insurance" checked>
+                <span class="checkmark"></span> No
+              </label>
+            </div>
+            <div class="forms-block">
+              <label class="form-group-title" for="reason">Reason</label>
+              <textarea class="form-control" placeholder="Enter Your Reason"></textarea>
+              <p class="characters-text">400 Characters</p>
+            </div>
+            <div class="forms-block">
+              <label class="form-group-title d-flex align-items-center" for="attachment">
+                <i class="fa fa-paperclip me-2"></i> Attachment
+              </label>
+              <div class="attachment-box">
+                <div class="attachment-img">
+                  <div class="attachment-icon">
+                    <i class="feather icon-image"></i>
+                  </div>
+                  <div class="attachment-content">
+                    <p>Skin Allergy Image</p>
+                    <span>12.30 mb</span>
+                  </div>
+                </div>
+                <div class="attachment-close">
+                  <a href="javascript:void(0);"><i class="feather-x"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="forms-block">
+              <label class="form-group-title" for="symptoms">Symptoms <span>(Optional)</span></label>
+              <input type="text" class="form-control" placeholder="Skin Allergy">
+            </div>
+            <div class="forms-block mb-0">
+              <div class="booking-btn">
+                <button type="submit" (click)="navigation()" (keydown)="navigation()" tabindex="1" class="btn btn-primary prime-btn justify-content-center align-items-center">
+                  Next <i class="feather icon-arrow-right-circle"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12">
+        <div class="booking-header">
+          <h4 class="booking-title">Booking Summary</h4>
+        </div>
+        <div class="card booking-card">
+          <div class="card-body booking-card-body">
+            <div class="booking-doctor-details">
+              <div class="booking-doctor-left">
+                <div class="booking-doctor-img">
+                  <a [routerLink] = "routes.doctorProfile2">
+                    <img src="assets/img/doctors/doctor-02.jpg" alt="John Doe">
+                  </a>
+                </div>
+                <div class="booking-doctor-info">
+                  <h4><a [routerLink] = "routes.doctorProfile2">Dr. John Doe</a></h4>
+                  <p>MBBS, Dentist</p>
+                </div>
+              </div>
+              <div class="booking-doctor-right">
+                <p>
+                  <i class="fas fa-circle-check"></i>
+                  <a [routerLink] = "routes.doctorProfileSettings">Edit</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card booking-card">
+          <div class="card-body booking-card-body booking-list-body">
+            <div class="booking-list">
+              <div class="booking-date-list">
+                <ul>
+                  <li>Booking Date: <span>Sun, 30 Aug 2023</span></li>
+                  <li>Booking Time: <span>10.00AM to 11:00AM</span></li>
+                </ul>
+              </div>
+              <div class="booking-doctor-right">
+                <p>
+                  <a [routerLink] = "routes.booking1">Edit</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card booking-card">
+          <div class="card-body booking-card-body">
+            <div class="booking-doctor-details">
+              <div class="booking-device">
+                <div class="booking-device-img">
+                  <img src="assets/img/icons/device-message.svg" alt="device-message-image">
+                </div>
+                <div class="booking-doctor-info">
+                  <h3>We can help you</h3>
+                  <p class="device-text">Call us +1 888-888-8888 (or) chat with our customer support team.</p>
+                  <a [routerLink] = "routes.chat" class="btn">Chat With Us</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card booking-card mb-0">
+          <div class="card-body booking-card-body">
+            <div class="booking-doctor-details">
+              <div class="booking-device">
+                <div class="booking-device-img">
+                  <img src="assets/img/icons/smart-phone.svg" alt="smart-phone">
+                </div>
+                <div class="booking-doctor-info">
+                  <h3>Get the App</h3>
+                  <p class="device-text">Download our app for better experience and for more feature</p>
+                  <div class="app-images">
+                    <a href="javascript:void(0);">
+                      <img src="assets/img/google-img.svg" alt="google-image">
+                    </a>
+                    <a href="javascript:void(0);">
+                      <img src="assets/img/app-img.svg" alt="app-image">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Patient -->
+
+  </div>
+</div>
+<!-- /Page Content -->

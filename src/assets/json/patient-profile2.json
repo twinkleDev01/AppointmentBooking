@@ -1,0 +1,96 @@
+{
+    "data": [
+	 {  
+        "date":"14 Nov 2023",
+		"name": "Prescription 1 ",
+        "createdBy":"Dr. Ruby Perrin",
+        "specification":"Dental",
+        "doctorimg":"assets/img/doctors/doctor-thumb-01.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+	{
+		"date":"13 Nov 2023",
+		"name": "Prescription 2 ",
+        "createdBy":"Dr. Darren Elder",
+        "specification":"Dental",
+        "doctorimg":"assets/img/doctors/doctor-thumb-02.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+	{
+		"date":"12 Nov 2023",
+		"name": "Prescription 3 ",
+        "createdBy":"Dr. Deborah Angel",
+        "specification":"Cardiology",
+        "doctorimg":"assets/img/doctors/doctor-thumb-01.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+	{
+		"date":"11 Nov 2023",
+		"name": "Prescription 4",
+        "createdBy":"Dr. Sofia Brient",
+        "specification":"Urology",
+        "doctorimg":"assets/img/doctors/doctor-thumb-04.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+    {
+		"date":"10 Nov 2023",
+		"name": "Prescription 5",
+        "createdBy":"Dr. Marvin Campbell",
+        "specification":"Dental",
+        "doctorimg":"assets/img/doctors/doctor-thumb-05.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+    {
+		"date":"9 Nov 2023",
+		"name": "Prescription 6",
+        "createdBy":"Dr. Katharine Berthold ",
+        "specification":"Orthopaedics",
+        "doctorimg":"assets/img/doctors/doctor-thumb-06.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+    {
+		"date":"8 Nov 2023",
+		"name": "Prescription 7",
+        "createdBy":"Dr. Linda Tobin",
+        "specification":"Neurology",
+        "doctorimg":"assets/img/doctors/doctor-thumb-07.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+    {
+		"date":">7 Nov 2023",
+		"name": "Prescription 8",
+        "createdBy":"Dr. Paul Richard",
+        "specification":"Dermatology",
+        "doctorimg":"assets/img/doctors/doctor-thumb-08.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+    {
+		"date":"6 Nov 2023",
+		"name": "Prescription 9",
+        "createdBy":"Dr. John Gibbs",
+        "specification":"Dental",
+        "doctorimg":"assets/img/doctors/doctor-thumb-09.jpg",
+        "action1":"Print",
+        "action2":"View"
+	},
+    {
+		"date":"5 Nov 2023",
+		"name": "Prescription 10",
+        "createdBy":"Dr. Olga Barlows",
+        "specification":"Dental",
+        "doctorimg":"assets/img/doctors/doctor-thumb-10.jpg",
+        "action1":"Print",
+        "action2":"View"
+	}
+  
+],
+"totalData": 10
+}

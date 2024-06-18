@@ -1,0 +1,133 @@
+<!-- Page Wrapper -->
+<div class="page-wrapper">
+  <div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3 class="page-title">Invoice Report</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink] = "routes.adminDashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active">Invoice Report</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- /Page Header -->
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <app-pagination-header></app-pagination-header>
+              <table matSort (matSortChange)="sortData($event)" class="datatable table table-hover table-center mb-0">
+                <thead>
+                  <tr>
+                    <th mat-sort-header="invoiceNumber">Invoice Number</th>
+                    <th mat-sort-header="patientId">Patient ID</th>
+                    <th mat-sort-header="patientName">Patient Name</th>
+                    <th mat-sort-header="totalAmount">Total Amount</th>
+                    <th mat-sort-header="createdDate">Created Date</th>
+                    <th mat-sort-header="status">Status</th>
+                    <th mat-sort-header="actions">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (data of tableData; track data) {
+                    <tr>
+                      <td><a [routerLink] = "routes.adminInvoice">{{data.invoiceNumber}}</a></td>
+                      <td>{{data.patientId}}</td>
+                      <td>
+                        <h2 class="table-avatar">
+                          <a [routerLink] = "routes.adminProfile" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle" [src]="data.img" alt="User Image"></a>
+                          <a [routerLink] = "routes.adminProfile">{{data.patientName}} </a>
+                        </h2>
+                      </td>
+                      <td>{{data.totalAmount}}</td>
+                      <td>{{data.createdDate}}</td>
+                      <td>
+                        <span class="badge rounded-pill bg-success inv-badge">{{data.status}}</span>
+                      </td>
+                      <td>
+                        <div class="actions">
+                          <a data-bs-toggle="modal" href="#edit_invoice_report" class="btn btn-sm bg-success-light me-2">
+                            <i class="fe fe-pencil"></i> {{data.action1}}
+                          </a>
+                          <a class="btn btn-sm bg-danger-light" data-bs-toggle="modal" href="#delete_modal">
+                            <i class="fe fe-trash"></i> {{data.action2}}
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            <app-custom-pagination></app-custom-pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /Page Wrapper -->
+
+<!-- Edit Details Modal -->
+<div class="modal fade" id="edit_invoice_report" aria-hidden="true" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Invoice Report</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="mb-3">
+                <label for="invoice-number" for="invoice" class="mb-2">Invoice Number</label>
+                <input type="text" class="form-control" value="#INV-0001">
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="mb-3">
+                <label class="mb-2" for="id">Patient ID</label>
+                <input type="text" class="form-control" value="	#PT002">
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="mb-3">
+                <label class="mb-2" for="name">Patient Name</label>
+                <input type="text" class="form-control" value="R Amer">
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="mb-3">
+                <label class="mb-2" for="img">Patient Image</label>
+                <input type="file"  class="form-control">
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="mb-3">
+                <label for="total-amount" class="mb-2">Total Amount</label>
+                <input type="text"  class="form-control" value="$200.00">
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="mb-3">
+                <label for="created-date" class="mb-2">Created Date</label>
+                <input type="text"  class="form-control" value="29th Oct 2023">
+              </div>
+            </div>
+
+          </div>
+          <button  class="btn btn-primary w-100">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Edit Details Modal -->

@@ -1,0 +1,6 @@
+@import '../../assets/scss/main.scss';
+.modal-open {
+	.main-wrapper {
+	    @include filter(blur(1px));
+	}
+}

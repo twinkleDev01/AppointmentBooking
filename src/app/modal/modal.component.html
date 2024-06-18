@@ -1,0 +1,2656 @@
+<!-- Add Modal -->
+<div class="modal fade" id="Add_Specialities_details" aria-hidden="true" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="category" class="mb-2">Category</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Add Modal -->
+
+<!-- Edit Details Modal -->
+<div class="modal fade" id="edit_specialities_details" aria-hidden="true" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="category" class="mb-2">Category</label>
+                <input type="text" class="form-control" value="Cardiology">
+              </div>
+            </div>
+
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Edit Details Modal -->
+
+<!-- Delete Modal -->
+<div class="modal fade" id="delete_modal" aria-hidden="true" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-content p-2">
+          <h4 class="modal-title">Delete</h4>
+          <p class="mb-4">Are you sure want to delete?</p>
+          <button type="button" class="btn btn-primary me-1">Yes </button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Delete Modal -->
+
+<!-- Payment Request Moodal -->
+<div class="modal fade custom-modal" id="payment_request_modal" role="dialog" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Payment Request</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="payment_request_form" method="post">
+          <input type="hidden" name="payment_type" id="payment_type" value="1">
+          <div class="mb-3">
+            <label for="request-amount" class="mb-2">Request Amount</label>
+            <input type="text" name="request_amount" id="request_amount" class="form-control" maxlength="6"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+            <span class="help-block"></span>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="mb-2">Description (Optional)</label>
+            <textarea class="form-control" name="description" id="description"></textarea>
+            <span class="help-block"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="submit" id="request_btn" class="btn btn-primary">Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Payment Request Moodal -->
+
+<!-- Account Details Modal-->
+<div class="modal fade custom-modal" id="account_modal" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Account Details</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="accounts_form" method="post">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="bank-name" name="bank-name" class="control-label mb-2">Bank Name</label>
+                <input type="text" name="bank_name" class="form-control bank_name" value="Wells Fargo & Co">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="branch-name" class="control-label mb-2">Branch Name</label>
+                <input type="text" name="branch_name" class="form-control branch_name" value="Lenexa">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="account-number" class="control-label mb-2" for="account">Account Number</label>
+                <input type="text" name="account_no" class="form-control account_no" value="5396 5250 1908 3838">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="account-name" class="control-label mb-2" for="accountnumber">Account Name</label>
+                <input type="text" name="account_name" class="form-control acc_name" value="Dr. Darren Elder">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="submit" id="acc_btn" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Account Details Modal-->
+
+<!-- Appointment Details Modal -->
+<div class="modal fade custom-modal" id="appt_details">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Appointment Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="info-details">
+          <li>
+            <div class="details-header">
+              <div class="row">
+                <div class="col-md-6">
+                  <span class="title">#APT0001</span>
+                  <span class="text">21 Oct 2023 10:00 AM</span>
+                </div>
+                <div class="col-md-6">
+                  <div class="text-end">
+                    <button type="button" class="btn bg-success-light btn-sm" id="topup_status">Completed</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="title">Status:</span>
+            <span class="text">Completed</span>
+          </li>
+          <li>
+            <span class="title">Confirm Date:</span>
+            <span class="text">29 Jun 2023</span>
+          </li>
+          <li>
+            <span class="title">Paid Amount</span>
+            <span class="text">$450</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Appointment Details Modal -->
+
+<!-- Voice Call Modal -->
+<div class="modal fade call-modal" id="voice_call">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <!-- Outgoing Call -->
+        <div class="call-box incoming-box">
+          <div class="call-wrapper">
+            <div class="call-inner">
+              <div class="call-user">
+                <img alt="User Image" src="assets/img/doctors/doctor-thumb-02.jpg" class="call-avatar">
+                <h4>Darren Elder</h4>
+                <span>Connecting...</span>
+              </div>
+              <div class="call-items">
+                <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                  aria-label="Close"><i class="material-icons">call_end</i></a>
+                <a [routerLink]="routes.voiceCall" class="btn call-item call-start"><i
+                    class="material-icons">call</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Outgoing Call -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Voice Call Modal -->
+
+<!-- Video Call Modal -->
+<div class="modal fade call-modal" id="video_call">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <!-- Incoming Call -->
+        <div class="call-box incoming-box">
+          <div class="call-wrapper">
+            <div class="call-inner">
+              <div class="call-user">
+                <img class="call-avatar" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                <h4>Darren Elder</h4>
+                <span>Calling ...</span>
+              </div>
+              <div class="call-items">
+                <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                  aria-label="Close"><i class="material-icons">call_end</i></a>
+                <a [routerLink]="routes.videoCall" class="btn call-item call-start"><i
+                    class="material-icons">videocam</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Incoming Call -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Video Call Modal -->
+
+<!-- Add Dependent Modal-->
+<div id="modal_form" class="modal fade custom-modal" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="#" enctype="multipart/form-data" autocomplete="off" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title">Add new member</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="name" class="control-label mb-10"> Name <span class="text-danger">*</span></label>
+            <input type="text" name="name" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="relationship" class="control-label mb-10">Relationship </label>
+            <input type="text" name="relationship" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="control-label mb-10">Gender </label>
+            <mat-select class="custom-mat-select">
+              <mat-option value="select">Select</mat-option>
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+            </mat-select>
+          </div>
+          <div class="mb-3">
+            <label for="dob" class="control-label mb-10">DOB </label>
+            <input type="text" name="dob" id="dob" value="" readonly="" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="photo" class="control-label mb-10">Photo </label>
+            <input type="file" name="profile_image" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="submit" class="btn btn-primary submit-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Dependent Modal-->
+
+<!-- Edit Dependent Modal-->
+<div id="edit_form" class="modal fade custom-modal" tabindex="-1" role="dialog" aria-modal="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="#" enctype="multipart/form-data" autocomplete="off" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title">Edit member</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="name" class="control-label mb-10"> Name <span class="text-danger">*</span></label>
+            <input type="text" name="name" class="form-control" value="Christopher">
+          </div>
+          <div class="mb-3">
+            <label for="relationship" class="control-label mb-10">Relationship </label>
+            <input type="text" name="relationship" class="form-control" value="son">
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="control-label mb-10">Gender </label>
+            <mat-select class="custom-mat-select">
+              <mat-option value="">Select</mat-option>
+              <mat-option value="Male">Male</mat-option>
+              <mat-option value="Female">Female</mat-option>
+            </mat-select>
+          </div>
+          <div class="mb-3">
+            <label for="dob" class="control-label mb-10">DOB </label>
+            <input type="text" name="dob" id="editdob" value="01/12/2023" readonly="" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="photo" class="control-label mb-10">Photo </label>
+            <input type="file" name="profile_image" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="submit" class="btn btn-primary submit-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Edit Dependent Modal-->
+
+<!-- Add Medical Detail -->
+<div id="modal_medical_form" class="modal fade custom-modal" tabindex="-1" role="dialog" style="display: none;"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="#" enctype="multipart/form-data" autocomplete="off" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title">Add new data</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" value="" name="id">
+          <input type="hidden" value="insert" name="method">
+          <div class="mb-3">
+            <label for="bmi" class="control-label mb-10"> BMI <span class="text-danger">*</span></label>
+            <input type="text" name="bmi" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="heart-rate" class="control-label mb-10">Heart rate </label>
+            <input type="text" name="hr" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="weight" class="control-label mb-10">Weight</label>
+            <input type="text" name="Weight" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="fbc" class="control-label mb-10">Fbc</label>
+            <input type="text" id="Fbc" name="Fbc" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="created-date" class="control-label mb-10">Created Date </label>
+            <input type="text" name="dob" id="dob" value="" readonly="" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="submit" class="btn btn-outline btn-success ">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Medical Detail -->
+
+<!-- Edit Medical Detail -->
+<div id="edit_medical_form" class="modal fade custom-modal" tabindex="-1" role="dialog" style="display: none;"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <form action="#" enctype="multipart/form-data" autocomplete="off" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title">Add new data</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" value="" name="id">
+          <input type="hidden" value="insert" name="method">
+          <div class="mb-3">
+            <label for="bmi" class="control-label mb-10"> BMI <span class="text-danger">*</span></label>
+            <input type="text" name="bmi" class="form-control" value="23.7">
+          </div>
+          <div class="mb-3">
+            <label for="heart-rate" class="control-label mb-10">Heart rate </label>
+            <input type="text" name="hr" class="form-control" value="89">
+          </div>
+          <div class="mb-3">
+            <label for="weight" class="control-label mb-10">Weight</label>
+            <input type="text" name="Weight" class="form-control" value="74">
+          </div>
+          <div class="mb-3">
+            <label for="fbc" class="control-label mb-10">Fbc</label>
+            <input type="text" name="Fbc" class="form-control" value="140">
+          </div>
+          <div class="mb-3">
+            <label for="created-date" class="control-label mb-10">Created Date </label>
+            <input type="text" name="dob" id="editdob" value="11/11/2023" readonly="" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="submit" class="btn btn-outline btn-success ">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Edit Medical Detail -->
+
+<!-- Medical Records Modal -->
+<div class="modal fade custom-modal custom-medicalrecord-modal" id="add_medical_records_modal" style="display: none;"
+  data-select2-id="add_medical_records_modal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Medical Records</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <form id="medical_records_form" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="mb-3">
+                <label class="mb-2" for="title-name">Title Name</label>
+                <input type="text" name="description" class="form-control" placeholder="Enter Title Name">
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="mb-3">
+                <label for="patient" class="mb-2">Patient</label>
+                <input type="text" name="description" class="form-control" placeholder="Enter Patient Name">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="hospital-name" class="mb-2">Hospital Name</label>
+                <input type="text" name="hospital" class="form-control" placeholder="Enter name here..">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label for="upload" class="mb-2">Upload</label>
+                <div class="upload-medical-records">
+                  <input class="form-control" type="file" name="user_file" id="user_files_mr">
+                  <div class="upload-content dropzone">
+                    <div>
+                      <div class="upload-icon mb-2"><img src="assets/img/upload-icon.png" alt="upload-icon"></div>
+                      <h5>Drag &amp; Drop</h5>
+                      <h6>or <span class="text-danger">Browse</span></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="mb-3">
+                <label class="mb-2" for="symptoms">Symptoms</label>
+                <input type="text" data-role="tagsinput" class="input-tags form-control" value="Fever, Fatigue"
+                  name="services" id="services">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="mb-3">
+                <label for="date" class="mb-2">Date</label>
+                <div class="mb-3" class="modal-date-picker">
+                  <div class="cal-icon">
+                    <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="myDateValue">
+                  </div>
+                  <input type="date" class="form-control" name="tratment_date" id="tratment_date">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-4">
+            <div class="submit-section text-center">
+              <button type="submit" id="medical_btn" class="btn btn-primary submit-btn">Submit</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Medical Records Modal -->
+
+<!-- Add Medical Records Modal -->
+<div class="modal fade custom-modal" id="add_medical_records">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Medical Records</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="date" class="mb-2">Date</label>
+            <!-- <ngx-datepicker [ngModelOptions]="{standalone: true}" class="form-control" type="date"
+                  [(ngModel)]="date"></ngx-datepicker> -->
+          </div>
+          <div class="mb-3">
+            <label for="description" class="mb-2">Description ( Optional )</label>
+            <textarea class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="upload-file" class="upload-file" class="mb-2">Upload File</label>
+            <input type="file" class="form-control">
+          </div>
+          <div class="submit-section text-center">
+            <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+            <button type="button" class="btn btn-secondary submit-btn" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Medical Records Modal -->
+
+<!-- Graph One-->
+<div class="modal fade custom-modal" id="graph1">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">BMI Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="bmi-status">
+              <apx-chart class="singleline-chart-apex" [series]="chartOptionsOne.series" [chart]="chartOptionsOne.chart"
+                [xaxis]="chartOptionsOne.xaxis" [dataLabels]="chartOptionsOne.dataLabels" [grid]="chartOptionsOne.grid"
+                [stroke]="chartOptionsOne.stroke" [title]="chartOptionsOne.title">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Graph One-->
+
+<!-- Graph Two-->
+<div class="modal fade custom-modal" id="graph2">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Heart Rate Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="heartrate-status">
+          <apx-chart class="singleline-chart-apex" [series]="chartOptionsTwo.series" [chart]="chartOptionsTwo.chart"
+            [xaxis]="chartOptionsTwo.xaxis" [dataLabels]="chartOptionsTwo.dataLabels" [grid]="chartOptionsTwo.grid"
+            [stroke]="chartOptionsTwo.stroke" [title]="chartOptionsTwo.title">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Graph Two-->
+
+<!-- Graph Two-->
+<div class="modal fade custom-modal" id="graph3">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">FBC Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="fbc-status">
+          <apx-chart class="singleline-chart-apex" [series]="chartOptionsThree.series" [chart]="chartOptionsThree.chart"
+            [xaxis]="chartOptionsThree.xaxis" [dataLabels]="chartOptionsThree.dataLabels"
+            [grid]="chartOptionsThree.grid" [stroke]="chartOptionsThree.stroke" [title]="chartOptionsThree.title">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Graph Two-->
+
+<!-- Graph Two-->
+<div class="modal fade custom-modal" id="graph4">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Weight Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="weight-status">
+          <apx-chart class="singleline-chart-apex" [series]="chartOptionsFour.series" [chart]="chartOptionsFour.chart"
+            [xaxis]="chartOptionsFour.xaxis" [dataLabels]="chartOptionsFour.dataLabels" [grid]="chartOptionsFour.grid"
+            [stroke]="chartOptionsFour.stroke" [title]="chartOptionsFour.title">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Graph Two-->
+
+<!-- Account Details Modal -->
+<div class="modal fade custom-modal" id="account_modal" role="dialog" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Account Details</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="accounts_form" method="post">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="bank-name" name="bank-name" class="control-label mb-2">Bank Name</label>
+                <input type="text" name="bank_name" class="form-control bank_name" value="Goldman Sachs">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="branch-name" class="control-label mb-2">Branch Name</label>
+                <input type="text" name="branch_name" class="form-control branch_name" value="Alpharetta">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="account-number" class="control-label mb-2">Account Number</label>
+                <input type="text" name="account_no" class="form-control account_no" value="4916 0606 4635 5064">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="account-name" class="control-label mb-2">Account Name</label>
+                <input type="text" name="account_name" class="form-control acc_name" value="Richard Wilson">
+                <span class="help-block"></span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="submit" id="acc_btn" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Account Details Modal -->
+
+<!-- Payment Request Modal-->
+<div class="modal fade custom-modal" id="payment_request_modal" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Payment Request</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="payment_request_form" method="post">
+          <input type="hidden" name="payment_type" id="payment_type">
+          <div class="mb-3">
+            <label for="request-amount" class="mb-2">Request Amount</label>
+            <input type="text" onkeyup="amount()" onblur="amount()" name="request_amount" id="request_amount"
+              class="form-control" maxlength="6"
+              oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+            <span class="help-block"></span>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="mb-2">Description (Optional)</label>
+            <textarea class="form-control" name="description" id="description"></textarea>
+            <span class="help-block"></span>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer text-center">
+        <button type="submit" id="request_btn" class="btn btn-primary">Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Payment Request Modal -->
+
+<!-- Add Time Slot Modal -->
+<div class="modal fade custom-modal" id="add_time_slot">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Time Slots</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="hours-info">
+            @for (data of hours; track data; let i = $index) {
+            <div class="row hours-cont">
+              <div class="col-12 col-md-10">
+                <div class="row">
+                  <div class="col-12 col-md-6">
+                    <div class="mb-3">
+                      <label for="start-time">Start Time</label>
+                      <mat-select class="custom-mat-select" placeholder="-">
+                        <mat-option value="-">-</mat-option>
+                        <mat-option value="12.00 am">12.00 am</mat-option>
+                        <mat-option value="12.30 am">12.30 am</mat-option>
+                        <mat-option value="1.00 am">1.00 am</mat-option>
+                        <mat-option value="1.30 am">1.30 am</mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="mb-3">
+                      <label for="end-time">End Time</label>
+                      <mat-select class="custom-mat-select" placeholder="-">
+                        <mat-option value="-">-</mat-option>
+                        <mat-option value="12.00 am">12.00 am</mat-option>
+                        <mat-option value="12.30 am">12.30 am</mat-option>
+                        <mat-option value="1.00 am">1.00 am</mat-option>
+                        <mat-option value="1.30 am">1.30 am</mat-option>
+                      </mat-select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              @if (i) {
+              <div class="col-12 col-md-2">
+                <label for="" class="d-md-block d-sm-none d-none">&nbsp;</label><a href="javascript:void(0)"
+                  class="btn btn-danger trash" (click)="dltHours(i)"><i class="far fa-trash-alt"></i></a>
+              </div>
+              }
+            </div>
+            }
+          </div>
+
+          <div class="add-more mb-3">
+            <a href="javascript:void(0);" (click)="addHours()" class="add-hours"><i class="fa fa-plus-circle"></i> Add
+              More</a>
+          </div>
+          <div class="submit-section text-center">
+            <button type="submit" class="btn btn-primary submit-btn">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Add Time Slot Modal -->
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModal"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="acc_msg"></p>
+      </div>
+      <div class="modal-footer">
+        <a href="javascript:void(0)" class="btn btn-success si_accept_confirm">Yes</a>
+        <button type="button" class="btn btn-danger si_accept_cancel" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteNotConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteNotConfirmModal"
+  style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="acc_title">Inactive Service?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="acc_msg1">Service is Booked and Inprogress..</p>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-danger si_accept_cancel" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Modal -->
+
+<!-- Payment Request Moodal -->
+<div class="modal fade custom-modal custom-modal-two modal-lg" id="payment_request">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Payment Request <span class="text-danger request-id">Request ID : #RQ-1323</span></h5>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close">
+          <span><i class="fa-solid fa-x"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="input-block input-block-new">
+            <label class="form-label" for="request">Request Amount</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="input-block input-block-new">
+            <label class="form-label" for="description">Description</label>
+            <textarea rows="3" class="form-control"></textarea>
+          </div>
+          <div class="form-set-button">
+            <button class="btn btn-light" type="button">Cancel</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Payment Request Moodal -->
+
+<!-- Account Details Modal-->
+<div class="modal fade custom-modal custom-modal-two modal-lg" id="account_details">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Account Details</h5>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close">
+          <span><i class="fa-solid fa-x"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="input-block input-block-new">
+            <label class="form-label" for="bank">Bank Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="input-block input-block-new">
+            <label class="form-label" for="branch">Branch Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="input-block input-block-new">
+            <label class="form-label" for="account">Account Number</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="input-block input-block-new">
+            <label class="form-label" for="number">Account Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="form-set-button">
+            <button class="btn btn-light" type="button">Cancel</button>
+            <button class="btn btn-primary" type="submit">Save Changes</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Account Details Modal-->
+
+<!-- Other Accounts Modal-->
+<div class="modal fade custom-modal custom-modal-two modal-lg" id="other_accounts">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Other Accounts</h5>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close">
+          <span><i class="fa-solid fa-x"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="other-accounts-info">
+          <ul>
+            <li>
+              <ul class="other-bank-info">
+                <li>
+                  <h6>Name</h6>
+                  <span>Citi Bank Inc</span>
+                </li>
+                <li>
+                  <h6>Account No</h6>
+                  <span>5396 5250 1908 XXXX</span>
+                </li>
+                <li>
+                  <h6>Branch</h6>
+                  <span>London</span>
+                </li>
+                <li>
+                  <h6>Name on Bank Account</h6>
+                  <span>Edalin Hendry</span>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">Current</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="other-bank-info">
+                <li>
+                  <h6>Name</h6>
+                  <span>HDFC Bank Inc</span>
+                </li>
+                <li>
+                  <h6>Account No</h6>
+                  <span>7382 4924 4924 XXXX</span>
+                </li>
+                <li>
+                  <h6>Branch</h6>
+                  <span>New York</span>
+                </li>
+                <li>
+                  <h6>Name on Bank Account</h6>
+                  <span>Edalin Hendry</span>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">Change to default</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="other-bank-info">
+                <li>
+                  <h6>Name</h6>
+                  <span>Union Bank Inc</span>
+                </li>
+                <li>
+                  <h6>Account No</h6>
+                  <span>8934 4902 9024 XXXX</span>
+                </li>
+                <li>
+                  <h6>Branch</h6>
+                  <span>Chicago</span>
+                </li>
+                <li>
+                  <h6>Name on Bank Account</h6>
+                  <span>Edalin Hendry</span>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">Change to default</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <ul class="other-bank-info">
+                <li>
+                  <h6>Name</h6>
+                  <span>KVB Bank Inc</span>
+                </li>
+                <li>
+                  <h6>Account No</h6>
+                  <span>5892 4920 4829 XXXX</span>
+                </li>
+                <li>
+                  <h6>Branch</h6>
+                  <span>Austin</span>
+                </li>
+                <li>
+                  <h6>Name on Bank Account</h6>
+                  <span>Edalin Hendry</span>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">Change to default</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <a href="javascript:void(0);" class="btn btn-primary prime-btn w-100 mt-2" data-bs-dismiss="modal">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Other Accounts Modal-->
+
+<!-- Request Completed Modal-->
+<div class="modal fade custom-modal custom-modal-two" id="request_details_modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Request Details <span class="badge badge-success-bg">Completed</span></h5>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close">
+          <span><i class="fa-solid fa-x"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="completed-request">
+          <ul>
+            <li>
+              <h6>ID</h6>
+              <span>#AC-1234</span>
+            </li>
+            <li>
+              <h6>Requested on</h6>
+              <span>24 Mar 2024</span>
+            </li>
+            <li>
+              <h6>Credited Date</h6>
+              <span>24 Mar 2024</span>
+            </li>
+            <li>
+              <h6>Amount</h6>
+              <span class="text-blue">$300</span>
+            </li>
+          </ul>
+          <div class="bank-detail">
+            <h4>Bank Details</h4>
+            <div class="accont-information">
+              <h6>Name</h6>
+              <span>Citi Bank Inc</span>
+            </div>
+            <div class="accont-information">
+              <h6>Account No</h6>
+              <span>5396 5250 1908 XXXX</span>
+            </div>
+            <div class="accont-information">
+              <h6>Branch</h6>
+              <span>London</span>
+            </div>
+          </div>
+          <div class="request-des">
+            <h4>Reqeust Description</h4>
+            <p>I recently completed a series of dental treatments with Dr.Edalin Hendry,
+              and I couldn't be more pleased with the results. From my very first appointment.
+            </p>
+          </div>
+          <a href="javascript:void(0);" class="btn btn-primary prime-btn w-100" data-bs-dismiss="modal">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Request Completed Modal-->
+
+<!-- Request Cancel Modal-->
+<div class="modal fade custom-modal custom-modal-two" id="request_cancel_modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Request Details <span class="badge badge-danger-bg">Cancelled</span></h5>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close">
+          <span><i class="fa-solid fa-x"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="cancelled-request">
+          <div class="canceled-user-info d-flex align-items-center">
+            <div class="patinet-information">
+              <a [routerLink] = "routes.doctorUpcomingAppointment">
+                <img src="assets/img/doctors-dashboard/profile-01.jpg" alt="User Image">
+              </a>
+              <div class="patient-info">
+                <p>#Apt0001</p>
+                <h6><a [routerLink] = "routes.doctorUpcomingAppointment">Adrian</a></h6>
+              </div>
+            </div>
+            <div class="email-info">
+              <ul>
+                <li><i class="fa-solid fa-envelope"></i>adran&#64;example.com</li>
+                <li><i class="fa-solid fa-phone"></i>+1 504 368 6874</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cancellation-fees">
+            <h6>Consultation Fees : $200</h6>
+            <div class="cancellation-info">
+              <div class="appointment-type">
+                <p class="md-text">Type of Appointment</p>
+                <p><i class="fa-solid fa-building text-green"></i>Direct Visit</p>
+              </div>
+              <div class="appointment-type">
+                <p class="md-text">Clinic Location</p>
+                <p>Adrian’s Dentistry</p>
+              </div>
+            </div>
+          </div>
+          <div class="cancel-reason">
+            <h5>Reason</h5>
+            <p>I have an urgent surgery, while our Appointment so i am rejecting appointment </p>
+            <span class="text-danger">Cancelled By You on 23 Mar 2024</span>
+          </div>
+          <span class="text-blue refund">Status : Refund Accepted</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Request Cancel Modal-->
+<!-- Voice Call Modal -->
+<div class="modal fade call-modal" id="voice_call">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <!-- Outgoing Call -->
+        <div class="call-box incoming-box">
+          <div class="call-wrapper">
+            <div class="call-inner">
+              <div class="call-user">
+                <img alt="User Image" src="assets/img/patients/patient.jpg" class="call-avatar">
+                <h4>Richard Wilson</h4>
+                <span>Connecting...</span>
+              </div>
+              <div class="call-items">
+                <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                  aria-label="Close"><i class="material-icons">call_end</i></a>
+                <a [routerLink] = "routes.voiceCall" class="btn call-item call-start"><i class="material-icons">call</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Outgoing Call -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Voice Call Modal -->
+
+<!-- Video Call Modal -->
+<div class="modal fade call-modal" id="video_call">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <!-- Incoming Call -->
+        <div class="call-box incoming-box">
+          <div class="call-wrapper">
+            <div class="call-inner">
+              <div class="call-user">
+                <img class="call-avatar" src="assets/img/patients/patient.jpg" alt="User Image">
+                <h4>Richard Wilson</h4>
+                <span>Calling ...</span>
+              </div>
+              <div class="call-items">
+                <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
+                  aria-label="Close"><i class="material-icons">call_end</i></a>
+                <a [routerLink] = "routes.videoCall" class="btn call-item call-start"><i class="material-icons">videocam</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Incoming Call -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Video Call Modal -->
+<!-- Appointment Details Modal -->
+<div class="modal fade custom-modal" id="appt_details">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Appointment Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="info-details">
+          <li>
+            <div class="details-header">
+              <div class="row">
+                <div class="col-md-6">
+                  <span class="title">#APT0001</span>
+                  <span class="text">21 Oct 2023 10:00 AM</span>
+                </div>
+                <div class="col-md-6">
+                  <div class="text-end">
+                    <button type="button" class="btn bg-success-light btn-sm" id="topup_status">Completed</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="title">Status:</span>
+            <span class="text">Completed</span>
+          </li>
+          <li>
+            <span class="title">Confirm Date:</span>
+            <span class="text">29 Jun 2023</span>
+          </li>
+          <li>
+            <span class="title">Paid Amount</span>
+            <span class="text">$450</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Appointment Details Modal -->
+<!-- Add Slots -->
+<div class="modal fade custom-modals" id="add_slot">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Appointment Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="timing-modal">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="start">Start Time</label>
+                  <input type="text" class="form-control timepicker1" value="04:00 PM">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="end">End Time</label>
+                  <input type="text" class="form-control timepicker1">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="appoinment">Appointment Intervals</label>
+                  <mat-select class="custom-mat-select" placeholder="10 Minutes">
+                    <mat-option value="10">10 Minutes</mat-option>
+                    <mat-option value="20">20 Minutes</mat-option>
+                    <mat-option value="30">30 Minutes</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="Durations">Appointment Durations</label>
+                  <mat-select class="custom-mat-select" placeholder="30 Minutes">
+                    <mat-option value="30">30 Minutes</mat-option>
+                    <mat-option value="60">1 Hour</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-wrap mb-0">
+                  <label class="col-form-label d-block" for="Assign">Assign Appointment Spaces</label>
+                  <div class="custom-control form-check custom-control-inline">
+                    <input type="radio" id="space1" name="rating_option" class="form-check-input" value="price_free"
+                      checked="">
+                    <label class="form-check-label" for="space1">Space 1</label>
+                  </div>
+                  <div class="custom-control form-check custom-control-inline">
+                    <input type="radio" id="space2" name="rating_option" class="form-check-input" value="price_free"
+                      checked="">
+                    <label class="form-check-label" for="space2">Space 2</label>
+                  </div>
+                  <div class="custom-control form-check custom-control-inline">
+                    <input type="radio" id="space3" name="rating_option" class="form-check-input" value="price_free"
+                      checked="">
+                    <label class="form-check-label" for="space3">Space 3</label>
+                  </div>
+                  <div class="custom-control form-check custom-control-inline">
+                    <input type="radio" id="space4" name="rating_option" class="form-check-input" value="price_free"
+                      checked="">
+                    <label class="form-check-label" for="space4">Space 4</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Slots -->
+
+<!-- Remove Slots -->
+<div class="modal fade info-modal" id="delete_slot">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="success-wrap">
+          <div class="success-info">
+            <div class="text-center">
+              <span class="icon-success bg-red"><i class="fa-solid fa-xmark"></i></span>
+              <h3>Remove Slots</h3>
+              <p>Are you sure you want to remove this slots?</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-btn text-center">
+          <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Yes,
+            Remove</a>
+          <button class="btn btn-primary prime-btn">No, i Changed my mind</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Remove Slots -->
+<!-- Appointment Details Modal -->
+<div class="modal fade custom-modal" id="appt_details">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Appointment Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <ul class="info-details">
+          <li>
+            <div class="details-header">
+              <div class="row">
+                <div class="col-md-6">
+                  <span class="title">#APT0001</span>
+                  <span class="text">21 Oct 2023 10:00 AM</span>
+                </div>
+                <div class="col-md-6">
+                  <div class="text-end">
+                    <button type="button" class="btn bg-success-light btn-sm" id="topup_status">Completed</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <span class="title">Status:</span>
+            <span class="text">Completed</span>
+          </li>
+          <li>
+            <span class="title">Confirm Date:</span>
+            <span class="text">29 Jun 2023</span>
+          </li>
+          <li>
+            <span class="title">Paid Amount</span>
+            <span class="text">$450</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Appointment Details Modal -->
+<!-- Appointment Cancel Reason Modal -->
+<div class="modal fade custom-modal custom-modal-two" id="reject_reason">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Reject Reason</h5>
+        <button type="button" data-bs-dismiss="modal" aria-label="Close">
+          <span><i class="fa-solid fa-x"></i></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="reason-of-rejection">
+          <p>I have an urgent surgery, while our Appointment so i am rejecting appointment, you can book an reschedule
+            by next week.</p>
+          <span class="text-danger">Cancelled By You on 23 March 2023</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Appointment Cancel Reason Modal -->
+
+<!--View Prescription -->
+<div class="modal fade custom-modals" id="view_prescription">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">View Prescription</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body pb-0">
+        <div class="prescribe-download">
+          <h5>21 Mar 2024</h5>
+          <ul>
+            <li><a href="javascript:void(0);" class="print-link"><i class="fa-solid fa-print"></i></a></li>
+            <li><a href="javascript:void(0);" class="btn btn-primary prime-btn">Download</a></li>
+          </ul>
+        </div>
+        <div class="view-prescribe invoice-content">
+          <div class="invoice-item">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="invoice-logo">
+                  <img src="assets/img/logo.png" alt="logo">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p class="invoice-details">
+                  <strong>Prescription ID :</strong> #PR-123 <br>
+                  <strong>Issued:</strong> 21 Mar 2024
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Invoice Item -->
+          <div class="invoice-item">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="invoice-info">
+                  <h6 class="customer-text">Doctor Details</h6>
+                  <p class="invoice-details invoice-details-two">
+                    Edalin Hendry <br>
+                    806 Twin Willow Lane, <br>
+                    Newyork, USA <br>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="invoice-info invoice-info2">
+                  <h6 class="customer-text">Patient Details</h6>
+                  <p class="invoice-details">
+                    Adrian Marshall <br>
+                    299 Star Trek Drive,<br>
+                    Florida, 32405, USA <br>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Invoice Item -->
+
+          <!-- Invoice Item -->
+          <div class="invoice-item invoice-table-wrap">
+            <div class="row">
+              <div class="col-md-12">
+                <h6>Prescription Details</h6>
+                <div class="table-responsive">
+                  <table class="invoice-table table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Medicine Name</th>
+                        <th>Dosage</th>
+                        <th>Frequency</th>
+                        <th>Duration</th>
+                        <th>Timings</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Ecosprin 75MG [Asprin 75 MG Oral Tab]</td>
+                        <td>75 mg <span>Oral Tab</span></td>
+                        <td>1-0-0-1</td>
+                        <td>1 month</td>
+                        <td>Before Meal</td>
+                      </tr>
+                      <tr>
+                        <td>Alexer 90MG Tab</td>
+                        <td>90 mg <span>Oral Tab</span></td>
+                        <td>1-0-0-1</td>
+                        <td>1 month</td>
+                        <td>Before Meal</td>
+                      </tr>
+                      <tr>
+                        <td>Ramistar XL2.5</td>
+                        <td>60 mg <span>Oral Tab</span></td>
+                        <td>1-0-0-0</td>
+                        <td>1 month</td>
+                        <td>After Meal</td>
+                      </tr>
+                      <tr>
+                        <td>Metscore</td>
+                        <td>90 mg <span>Oral Tab</span></td>
+                        <td>1-0-0-1</td>
+                        <td>1 month</td>
+                        <td>After Meal</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Invoice Item -->
+
+          <!-- Invoice Information -->
+          <div class="other-info">
+            <h4>Other information</h4>
+            <p class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum
+              ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed
+              vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum.
+              Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.</p>
+          </div>
+          <div class="other-info">
+            <h4>Follow Up</h4>
+            <p class="text-muted mb-0">Follow u p after 3 months, Have to come on empty stomach</p>
+          </div>
+          <div class="prescriber-info">
+            <h6>Dr. Edalin Hendry</h6>
+            <p>Dept of Cardiology</p>
+          </div>
+          <!-- /Invoice Information -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /View Prescription -->
+
+<!--View Prescription -->
+<div class="modal fade custom-modals" id="view_prescription2">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">View Prescription</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body pb-0">
+        <div class="prescribe-download">
+          <h5>21 Mar 2024</h5>
+          <ul>
+            <li><a href="javascript:void(0);" class="print-link"><i class="fa-solid fa-print"></i></a></li>
+            <li><a href="javascript:void(0);" class="btn btn-primary prime-btn">Download</a></li>
+          </ul>
+        </div>
+        <div class="view-prescribe-details">
+          <div class="hospital-addr">
+            <div class="invoice-logo">
+              <img src="assets/img/logo.png" alt="logo">
+            </div>
+            <h5>16, Wardlow, Buxton, Derbyshire, SK17 8RW. Phone : 01298 872268 </h5>
+            <p>Monday to Sunday - 09:30am to 12:00pm</p>
+          </div>
+
+          <!-- Invoice Item -->
+          <div class="invoice-item">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="invoice-info">
+                  <h6 class="customer-text">Dr Edalin Hendry</h6>
+                  <p>BDS, MDS - Oral & Maxillofacial Surgery</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="invoice-info2">
+                  <p><span>Date : </span>25 Jan 2024, 07:00</p>
+                  <p><span>Appointment Type : </span>Video</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="patient-id">
+                  <h6>Patient Details</h6>
+                  <div class="patient-det">
+                    <h6>Kelly Joseph</h6>
+                    <ul>
+                      <li>28Y / Male</li>
+                      <li>Blood : O+ve</li>
+                      <li>Patient / Consult ID : OP1245654 / C243546566 </li>
+                      <li>Type : Outpatient</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Invoice Item -->
+
+          <div class="appointment-notes">
+            <h3>Appointment Note</h3>
+          </div>
+          <div class="appoint-wrap">
+            <h5>Advice</h5>
+            <p>An account of the present illness, which includes the circumstances surrounding the onset of recent
+              health changes and the chronology of subsequent events that have led the patient to seek medicine</p>
+          </div>
+          <div class="appoint-wrap">
+            <h5>Lab Tests</h5>
+            <p class="mb-0">1. Liver Function Tests (LFTs)</p>
+            <p>2. Hemoglobin A1c (HbA1c)</p>
+          </div>
+          <div class="appoint-wrap">
+            <h5>Follow Up</h5>
+            <p class="mb-0">After 3 Months in empty Stomach</p>
+            <p>Lab test for Glucose Level</p>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <div class="scan-wrap">
+                <h6>Scan to download report</h6>
+                <img src="assets/img/scan.png" alt="scan">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="prescriber-info">
+                <h6>Dr. Edalin Hendry</h6>
+                <p>Dept of Cardiology</p>
+              </div>
+            </div>
+          </div>
+
+          <ul class="nav inv-paginate justify-content-center">
+            <li>Page <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription"
+                data-bs-dismiss="modal">02</a> of 02</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /View Prescription -->
+<!-- Appointment Accepted Modal -->
+<div class="modal fade info-modal" id="accept_appointment">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="success-wrap text-center">
+          <span class="icon-success"><i class="fa-solid fa-calendar-check"></i></span>
+          <h3>Appointment Accepted</h3>
+          <p>Your Appointment has been scheduled on 23 Mar 2023</p>
+          <a [routerLink] = "routes.appointmentsListUser" class="btn btn-primary prime-btn">Go to Appointments</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Appointment Accepted Modal -->
+
+<!-- Appointment Cancel Modal -->
+<div class="modal fade info-modal" id="cancel_appointment">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="success-wrap">
+          <div class="success-info">
+            <div class="text-center">
+              <span class="icon-success bg-red"><i class="fa-solid fa-xmark"></i></span>
+              <h3>Are you Sure</h3>
+              <p>Do you want to Cancel Appointment</p>
+            </div>
+            <div class="form-wrap">
+              <label class="col-form-label" for="Reason">Cancel Reason <span class="text-danger">*</span></label>
+              <textarea class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-wrap">
+              <div class="custom-control form-check custom-control-inline">
+                <input type="radio" id="reshedule" name="rating_option" class="form-check-input" value="price_free"
+                  checked="">
+                <label class="form-check-label" for="reshedule">Cancel with Reschedule</label>
+              </div>
+            </div>
+            <div class="form-wrap">
+              <div class="custom-control form-check custom-control-inline">
+                <input type="radio" id="refund" name="rating_option" class="form-check-input" value="price_free"
+                  checked="">
+                <label class="form-check-label" for="refund">Cancel with Request Refund Description text</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-button">
+            <div class="row gx-3">
+              <div class="col-sm-6">
+                <a href="javascript:void(0);" class="btn btn-gray w-100" data-bs-toggle="modal" data-bs-dismiss="modal">No, I change my
+                  mind</a>
+              </div>
+              <div class="col-sm-6">
+                <a [routerLink] = "routes.appointmentsListUser" class="btn btn-primary prime-btn w-100">Go to Appointments</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Appointment Cancel Modal -->
+
+
+<!-- Add Medical Records Modal -->
+<div class="modal fade custom-modals" id="add_medical_records">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Medical Record</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-wrap">
+                <label class="col-form-label" for="title">Title</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-wrap">
+                <label class="col-form-label" for="patient">Select Patient</label>
+                <mat-select class="custom-mat-select" placeholder="Select Patient">
+                  <mat-option value="Adrian Marshall">Adrian Marshall</mat-option>
+                  <mat-option value="Kelly Stevens">Kelly Stevens</mat-option>
+                  <mat-option value="Catherine Gracey">Catherine Gracey</mat-option>
+                </mat-select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-wrap">
+                <label class="col-form-label" for="date">Start Date <span class="text-danger">*</span></label>
+                <input type="text" class="form-control datetimepicker" bsDatepicker
+                  [bsConfig]="{ adaptivePosition: true }">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-wrap">
+                <label class="col-form-label" for="hospital">Hospital Name</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-wrap">
+                <label class="col-form-label" for="syptoms">Symptoms <span class="text-danger">*</span></label>
+                <input type="text" data-role="tagsinput" class="input-tags form-control" placeholder="Type"
+                  name="services" value="Fever, Headache">
+              </div>
+              <div class="form-wrap mb-0">
+                <label class="col-form-label" for="report">Report</label>
+                <div class="upload-file">
+                  <input type="file">
+                  <p>Drop files or Click to upload</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Medical Records Modal -->
+
+
+
+<!-- Add Billing -->
+<div class="modal fade custom-modals" id="add_billing">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Billing</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form action="#">
+        <div class="modal-body">
+          <div class="patient-wrap">
+            <div class="patient-info">
+              <img src="assets/img/doctors-dashboard/profile-01.jpg" alt="img">
+              <div class="user-patient">
+                <h6>#P0016</h6>
+                <h5>Adrian Marshall</h5>
+                <ul>
+                  <li>Age : 42</li>
+                  <li>Male</li>
+                  <li>AB+ve</li>
+                </ul>
+              </div>
+            </div>
+            <div class="patient-book patien-inv">
+              <h6>#INV0001</h6>
+              <p>1 November 2023</p>
+            </div>
+          </div>
+          <div class="add-billing-info">
+            @for (item of bill; track item; let i = $index) {
+            <div class="row bill-cont">
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="title">Title <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                  <div class="form-wrap w-100">
+                    <label class="col-form-label" for="amount">Amount</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="form-wrap ms-2">
+                    <label class="col-form-label d-block" for="form">&nbsp;</label>
+                    <a href="javascript:void(0);" class="trash" (click)="dltBill(i)">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+          <div class="text-end">
+            <a href="javascript:void(0);" class="add-bill" (click)="addBill()">Add More</a>
+          </div>
+          <div class="wrap-sign">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="sign-wrapper">
+                  <div class="upload-sign">
+                    <p>Click here to sign</p>
+                  </div>
+                  <div class="info-name">
+                    <h6>( Dr. Darren Elder )</h6>
+                    <p>Signature</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Billing -->
+<!-- Appointment End Modal -->
+<div class="modal fade info-modal" id="end_session">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="success-wrap">
+          <div class="success-info">
+            <div class="text-center">
+              <span class="icon-success bg-blue"><i class="fa-solid fa-calendar-check"></i></span>
+              <h3>Session Ended</h3>
+              <p>Your Appointment has been Ended</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-btn text-center">
+          <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Go to Appointments</a>
+          <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription" class="btn btn-primary prime-btn">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Refund Request Modal-->
+<!--View Invoice -->
+<div class="modal fade custom-modals" id="invoice_view">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">View Invoice</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body pb-0">
+        <div class="prescribe-download">
+          <h5>21 Mar 2024</h5>
+          <ul>
+            <li><a href="javascript:void(0);" class="print-link"><i class="fa-solid fa-print"></i></a></li>
+            <li><a href="javascript:void(0);" class="btn btn-primary prime-btn">Download</a></li>
+          </ul>
+        </div>
+        <div class="view-prescribe invoice-content">
+          <div class="invoice-item">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="invoice-logo">
+                  <img src="assets/img/logo.png" alt="logo">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p class="invoice-details">
+                  <strong>Invoice No : </strong> #INV005<br>
+                  <strong>Issued:</strong> 21 Mar 2024
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Invoice Item -->
+          <div class="invoice-item">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="invoice-info">
+                  <h6 class="customer-text">Billing From</h6>
+                  <p class="invoice-details invoice-details-two">
+                    Edalin Hendry <br>
+                    806 Twin Willow Lane, <br>
+                    Newyork, USA <br>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="invoice-info">
+                  <h6 class="customer-text">Billing To</h6>
+                  <p class="invoice-details invoice-details-two">
+                    Richard Wilson <br>
+                    299 Star Trek Drive<br>
+                    Florida, 32405, USA<br>
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="invoice-info invoice-info2">
+                  <h6 class="customer-text">Payment Method</h6>
+                  <p class="invoice-details">
+                    Debit Card <br>
+                    XXXXXXXXXXXX-2541<br>
+                    HDFC Bank<br>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Invoice Item -->
+
+          <!-- Invoice Item -->
+          <div class="invoice-item invoice-table-wrap">
+            <div class="row">
+              <div class="col-md-12">
+                <h6>Invoice Details</h6>
+                <div class="table-responsive">
+                  <table class="invoice-table table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Description</th>
+                        <th>Quatity</th>
+                        <th>VAT</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>General Consultation</td>
+                        <td>1</td>
+                        <td>$0</td>
+                        <td>$150</td>
+                      </tr>
+                      <tr>
+                        <td>Video Call</td>
+                        <td>1</td>
+                        <td>$0</td>
+                        <td>$100</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-md-6 col-xl-4 ms-auto">
+                <div class="table-responsive">
+                  <table class="invoice-table-two table">
+                    <tbody>
+                      <tr>
+                        <th>Subtotal:</th>
+                        <td><span>$350</span></td>
+                      </tr>
+                      <tr>
+                        <th>Discount:</th>
+                        <td><span>-10%</span></td>
+                      </tr>
+                      <tr>
+                        <th>Total Amount:</th>
+                        <td><span>$315</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Invoice Item -->
+
+          <!-- Invoice Information -->
+          <div class="other-info mb-0">
+            <h4>Other information</h4>
+            <p class="text-muted mb-0">An account of the present illness, which includes the circumstances surrounding
+              the onset of recent health changes and the chronology of subsequent events that have led the patient to
+              seek medicine</p>
+          </div>
+          <!-- /Invoice Information -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /View Invoice -->
+
+
+
+<!--View Prescription -->
+<div class="modal fade custom-modals" id="view_prescription2">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">View Prescription</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="modal-body pb-0">
+        <div class="prescribe-download">
+          <h5>21 Mar 2024</h5>
+          <ul>
+            <li><a href="javascript:void(0);" class="print-link"><i class="fa-solid fa-print"></i></a></li>
+            <li><a href="javascript:void(0);" class="btn btn-primary prime-btn">Download</a></li>
+          </ul>
+        </div>
+        <div class="view-prescribe-details">
+          <div class="hospital-addr">
+            <div class="invoice-logo">
+              <img src="assets/img/logo.png" alt="logo">
+            </div>
+            <h5>16, Wardlow, Buxton, Derbyshire, SK17 8RW. Phone : 01298 872268 </h5>
+            <p>Monday to Sunday - 09:30am to 12:00pm</p>
+          </div>
+
+          <!-- Invoice Item -->
+          <div class="invoice-item">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="invoice-info">
+                  <h6 class="customer-text">Dr Edalin Hendry</h6>
+                  <p>BDS, MDS - Oral & Maxillofacial Surgery</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="invoice-info2">
+                  <p><span>Date : </span>25 Jan 2024, 07:00</p>
+                  <p><span>Appointment Type : </span>Video</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="patient-id">
+                  <h6>Patient Details</h6>
+                  <div class="patient-det">
+                    <h6>Kelly Joseph</h6>
+                    <ul>
+                      <li>28Y / Male</li>
+                      <li>Blood : O+ve</li>
+                      <li>Patient / Consult ID : OP1245654 / C243546566 </li>
+                      <li>Type : Outpatient</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Invoice Item -->
+
+          <div class="appointment-notes">
+            <h3>Appointment Note</h3>
+          </div>
+          <div class="appoint-wrap">
+            <h5>Advice</h5>
+            <p>An account of the present illness, which includes the circumstances surrounding the onset of recent
+              health changes and the chronology of subsequent events that have led the patient to seek medicine</p>
+          </div>
+          <div class="appoint-wrap">
+            <h5>Lab Tests</h5>
+            <p class="mb-0">1. Liver Function Tests (LFTs)</p>
+            <p>2. Hemoglobin A1c (HbA1c)</p>
+          </div>
+          <div class="appoint-wrap">
+            <h5>Follow Up</h5>
+            <p class="mb-0">After 3 Months in empty Stomach</p>
+            <p>Lab test for Glucose Level</p>
+          </div>
+
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <div class="scan-wrap">
+                <h6>Scan to download report</h6>
+                <img src="assets/img/scan.png" alt="scan">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="prescriber-info">
+                <h6>Dr. Edalin Hendry</h6>
+                <p>Dept of Cardiology</p>
+              </div>
+            </div>
+          </div>
+
+          <ul class="nav inv-paginate justify-content-center">
+            <li>Page <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription"
+                data-bs-dismiss="modal">02</a> of 02</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /View Prescription -->
+
+<!-- Add Prescription -->
+<div class="modal fade custom-modals" id="add_prescription">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Prescription</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="patient-wrap">
+            <div class="patient-info">
+              <img src="assets/img/doctors-dashboard/profile-01.jpg" alt="img">
+              <div class="user-patient">
+                <h6>#P0016</h6>
+                <h5>Adrian Marshall</h5>
+                <ul>
+                  <li>Age : 42</li>
+                  <li>Male</li>
+                  <li>AB+ve</li>
+                </ul>
+              </div>
+            </div>
+            <div class="patient-book patien-inv">
+              <h6>#INV0001</h6>
+              <p>1 November 2023</p>
+            </div>
+          </div>
+          <div class="add-prescripe-info">
+            @for (item of prescription; track item; let i = $index) {
+            <div class="row prescripe-cont">
+              <div class="col-xl-2 xol-lg-3 col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="name">Name</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-xl-2 xol-lg-3 col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="type">Type</label>
+                  <mat-select class="custom-mat-select" placeholder="Select">
+                    <mat-option value="Visit">Visit</mat-option>
+                    <mat-option value="Online">Online</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+              <div class="col-xl-2 xol-lg-3 col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="dosage">Dosage</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-xl-2 xol-lg-3 col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="Frequency">Frequency</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-xl-2 xol-lg-3 col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="duaration ">Duration</label>
+                  <mat-select class="custom-mat-select" placeholder="Select">
+                    <mat-option value="1 Month">1 Month</mat-option>
+                    <mat-option value="1 Day">1 Day</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+              <div class="col-xl-2 xol-lg-3 col-md-6">
+                <div class="d-flex align-items-center">
+                  <div class="form-wrap w-100">
+                    <label class="col-form-label" for="instruction">Instruction</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="form-wrap ms-2">
+                    <label class="col-form-label d-block" for="form">&nbsp;</label>
+                    <a href="javascript:void(0);" class="trash" (click)="dltPrescription(i)"><i
+                        class="fa-solid fa-trash-can"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+          <div class="text-end">
+            <a href="javascript:void(0);" class="add-prescribe" (click)="addPrescription()">Add More</a>
+          </div>
+          <div class="wrap-sign">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="sign-wrapper">
+                  <div class="upload-sign">
+                    <p>Click here to sign</p>
+                  </div>
+                  <div class="info-name">
+                    <h6>( Dr. Darren Elder )</h6>
+                    <p>Signature</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Prescription -->
+<!-- Add Dependent Modal-->
+<div class="modal fade custom-modals" id="add_dependent">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Dependant</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form action="#">
+        <div class="add-dependent">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-wrap pb-0">
+                  <div class="change-avatar img-upload">
+                    <div class="profile-img">
+                      <i class="fa-solid fa-file-image"></i>
+                    </div>
+                    <div class="upload-img">
+                      <h5>Profile Image</h5>
+                      <div class="imgs-load d-flex align-items-center">
+                        <div class="change-photo">
+                          Upload New
+                          <input type="file" class="upload">
+                        </div>
+                        <a href="javascript:void(0);" class="upload-remove">Remove</a>
+                      </div>
+                      <p>Your Image should Below 4 MB, Accepted format Jpg,Png,Svg</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="name">Name</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="relationship">Relationship</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="dob">DOB <span class="text-danger">*</span></label>
+                  <div class="form-icon">
+                    <input type="text" class="form-control datetimepicker" bsDatepicker
+                      [bsConfig]="{ adaptivePosition: true }">
+                    <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="gender" >Select Gender</label>
+                  <mat-select class="custom-mat-select" placeholder="Select">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Dependent Modal-->
+
+<!-- Edit Dependent Modal-->
+<div class="modal fade custom-modals" id="edit_dependent">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Dependant</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form action="#">
+        <div class="add-dependent">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-wrap pb-0">
+                  <div class="change-avatar img-upload">
+                    <div class="profile-img">
+                      <i class="fa-solid fa-file-image"></i>
+                    </div>
+                    <div class="upload-img">
+                      <h5>Profile Image</h5>
+                      <div class="imgs-load d-flex align-items-center">
+                        <div class="change-photo">
+                          Upload New
+                          <input type="file" class="upload">
+                        </div>
+                        <a href="javascript:void(0);" class="upload-remove">Remove</a>
+                      </div>
+                      <p>Your Image should Below 4 MB, Accepted format jpg,png,svg</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="name">Name</label>
+                  <input type="text" class="form-control" value="Laura">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="relationship">Relationship</label>
+                  <input type="text" class="form-control" value="Mother">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="dob">DOB <span class="text-danger">*</span></label>
+                  <div class="form-icon">
+                    <input type="text" class="form-control datetimepicker" value="08/01/1960" bsDatepicker
+                      [bsConfig]="{ adaptivePosition: true }">
+                    <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-wrap">
+                  <label class="col-form-label" for="malegender">Select Gender</label>
+                  <mat-select class="custom-mat-select" placeholder="Select">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female" selected>Female</mat-option>
+                  </mat-select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Edit Dependent Modal-->
+<!-- Add Medical Detail -->
+<div class="modal fade custom-modals" id="add-med-record">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Medical Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="timing-modal">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-block input-block-new">
+                  <label class="form-label" for="bmi">BMI</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-block input-block-new">
+                  <label class="form-label" for="heartrate">Heart Rate</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-block input-block-new">
+                  <label class="form-label" for="weight">Weight</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-block input-block-new">
+                  <label class="form-label" for="fbc">FBC</label>
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-block input-block-new">
+                  <label class="col-form-label" for="enddate">End Date <span class="text-danger">*</span></label>
+                  <div class="form-icon position-relative">
+                    <input type="text" class="form-control datetimepicker" bsDatepicker [bsConfig]="{ adaptivePosition: true }">
+                    <span class="icon cal-form-icon"><i class="fa-regular fa-calendar-days"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add Medical Detail -->
+
+<!-- Edit Medical Detail -->
+<div class="modal fade custom-modals" id="edit-med-record">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Medical Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="timing-modal">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-block input-block-new">
+                  <label class="form-label" for="bmi">BMI</label>
+                  <input type="text" class="form-control" value="20.1 kg/m2">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-block input-block-new">
+                  <label class="form-label" for="heartrate">Heart Rate</label>
+                  <input type="text" class="form-control" value="140 Bpm">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-block input-block-new">
+                  <label class="form-label" for="weight">Weight</label>
+                  <input type="text" class="form-control" value="300">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-block input-block-new">
+                  <label class="form-label" for="fbc">FBC</label>
+                  <input type="text" class="form-control" value="70 - 90">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-block input-block-new">
+                  <label class="col-form-label" for="enddate">End Date <span class="text-danger">*</span></label>
+                  <div class="form-icon position-relative">
+                    <input type="text" class="form-control datetimepicker" bsDatepicker [bsConfig]="{ adaptivePosition: true }">
+                    <span class="icon cal-form-icon"><i class="fa-regular fa-calendar-days"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Edit Medical Detail -->
+
+<!-- Medical Detail -->
+<div class="modal fade custom-modals" id="med-detail">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Medical Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="med-detail-patient">
+            <div class="med-patient">
+              <span><img src="assets/img/doctors-dashboard/profile-06.jpg" alt="Img"></span>
+              <div class="name-detail">
+                <h5>Hendrita Kearns</h5>
+                <ul>
+                  <li>Age : 42 </li>
+                  <li>Female</li>
+                  <li>AB+ve</li>
+                </ul>
+              </div>
+            </div>
+            <div class="date-cal">
+              <p><span><i class="fa-solid fa-calendar-days me-2"></i>Last Updated</span>24 Mar 2024</p>
+            </div>
+          </div>
+          <div class="med-detail-item">
+            <div class="d-flex flex-wrap">
+              <div class="health-records icon-red">
+                <span><i class="fa-solid fa-syringe"></i>Blood Pressure</span>
+                <h3>100 mg/dl</h3>
+              </div>
+              <div class="health-records icon-orange">
+                <span><i class="fa-solid fa-heart"></i>Heart Rate</span>
+                <h3>140 Bpm</h3>
+              </div>
+              <div class="health-records icon-dark-blue">
+                <span><i class="fa-solid fa-notes-medical"></i>Glucose Level</span>
+                <h3>70 - 90</h3>
+              </div>
+              <div class="health-records icon-amber">
+                <span><i class="fa-solid fa-temperature-high"></i>Body Temprature</span>
+                <h3>37.5 C</h3>
+              </div>
+              <div class="health-records icon-purple">
+                <span><i class="fa-solid fa-user-pen"></i>BMI </span>
+                <h3>20.1 kg/m2</h3>
+              </div>
+              <div class="health-records icon-blue">
+                <span><i class="fa-solid fa-highlighter"></i>SPo2</span>
+                <h3>96%</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0);" class="btn btn-gray" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Medical Detail -->
+<!-- Refund Request Modal-->
+<div class="modal fade info-modal" id="refund-request">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="success-wrap text-center">
+          <span class="icon-success"><i class="fa-solid fa-calendar-check"></i></span>
+          <h3>Refund initiated Successfully</h3>
+          <p>Your Payment will be credited in your bank account in 3 working days</p>
+          <a href="javascript:void(0);" class="btn btn-primary prime-btn" data-bs-dismiss="modal">Okay</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Refund Request Modal-->

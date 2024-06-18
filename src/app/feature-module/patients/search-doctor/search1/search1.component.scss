@@ -1,0 +1,21 @@
+ .calendar-container[_ngcontent-uif-c2] {
+  position: absolute;
+  width: 233px !important;
+  border-radius: 4px;
+  top: 35px;
+  left: 0;
+  z-index: 10;
+}
+.lb-container {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  .lb-image {
+    max-height: 90vh;
+    max-width: 90vw;
+  }
+  
+  .lb-caption {
+    color: #ffffff;
+    padding: 10px;
+  }

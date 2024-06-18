@@ -1,0 +1,32 @@
+<div class="main-wrapper" [ngClass]="{
+    'login-body':
+      page === 'admin-login' ||
+      page === 'admin-register' ||
+      page === 'admin-lock-screen' ||
+      page === 'admin-forgot-password' ||
+      page === 'pharmacy-login' ||
+      page === 'pharmacy-register' ||
+      page === 'pharmacy-lock-screen' ||
+      page === 'pharmacy-forgot-password',
+    'expand-menu': expandMenu === true && miniSidebar === true,
+    'mini-sidebar': miniSidebar === true,
+    'slide-nav': mobileSidebar === true,
+    'home-one':base === 'home1',
+    'home-ten': base === 'home5',
+    'home-three':base === 'home3',
+    'home-twelve': base === 'home7' || base === 'home8',
+    'home-fourteen': base === 'home9',
+    'home-thirteen': base === 'home8',
+    'home-sixteen' : base === 'home11',
+    'home-fifteen' : base === 'home10',
+    'home-dentist' : base === 'home14',
+    'menu-opened': showMiniSidebar === true,
+    'profile-setting-class': page === 'profile-settings' || page === 'doctor-search-grid'  || page === 'doctor-profile-settings' || last === 'search2',
+    'login-content': page === 'admin-login' || page === 'admin-register' || page === 'lock-screen' || page === 'admin-forgot-password' || page === 'pharmacy-login'|| page === 'pharmacy-forgot-password'|| page === 'pharmacy-forgot-password' || page === 'pharmacy-register' ,
+    'pharmacy-body':page ==='pharmacy-index',
+    'main-chat-blk': page === 'chat-doctor' || page === 'chat'
+    
+  }">
+  <router-outlet></router-outlet>
+</div>
+<app-modal></app-modal>

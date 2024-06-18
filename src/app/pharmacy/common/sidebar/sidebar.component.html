@@ -1,0 +1,77 @@
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar" (mouseover)="miniSideBarMouseHover('over')" (mouseout)="miniSideBarMouseHover('out')"
+  (focus)="miniSideBarFocus('over')" (blur)="miniSideBarBlur('out')">
+  <div class="sidebar-inner slimscroll">
+    <ng-scrollbar>
+      <div id="sidebar-menu" class="sidebar-menu">
+        <ul>
+          @for (mainTittle of pharmacySidebar; track mainTittle) {
+            <li class="menu-title">
+              <span>{{ mainTittle.tittle | titlecase }}</span>
+            </li>
+            @for (menu of mainTittle.menu; track menu) {
+              @if (menu.hasSubRoute === false) {
+                <li routerLinkActive="active">
+                  <a [routerLink]="menu.route" [ngClass]="{ active: page === menu.base }">
+                    <i class="fe" [class]="menu.icon"></i>
+                    <span>{{ menu.menuValue | titlecase }}</span></a>
+                  </li>
+                }
+                @if (menu.hasSubRoute === true) {
+                  <li class="submenu">
+                    <a routerLinkActive="active" (click)="expandSubMenus(menu)" href="javascript:void(0)"
+                      [ngClass]="{ subdrop: menu.showSubRoute === true }"><i class="fe" [class]="menu.icon"></i>
+                      <span> {{ menu.menuValue | titlecase }}</span>
+                      <span class="menu-arrow"></span></a>
+                      <ul>
+                        @for (subMenus of menu.subMenus; track subMenus) {
+                  <li [ngClass]="
+                        menu.showSubRoute === true ? 'd-block' : 'd-none'
+                      ">
+                            <a [routerLink]="subMenus.route" routerLinkActive="active">
+                              {{ subMenus.menuValue | titlecase }}
+                            </a>
+                          </li>
+                        }
+                      </ul>
+                    </li>
+                  }
+                }
+              }
+              <li class="submenu">
+                <a [ngClass]="{ subdrop: multilevel[0] }" (click)="multilevel[0] = !multilevel[0]"
+                  href="javascript:void(0);"><i class="fe fe-code"></i> <span>Multi Level</span>
+                  <span class="menu-arrow"></span></a>
+                  <ul [ngClass]="multilevel[0] === true ? 'd-block' : 'd-none'">
+                    <li class="submenu">
+                      <a [ngClass]="{ subdrop: multilevel[1] }" (click)="multilevel[1] = !multilevel[1]"
+                        href="javascript:void(0);"><span>Level 1</span> <span class="menu-arrow"></span></a>
+                        <ul [ngClass]="multilevel[1] === true ? 'd-block' : 'd-none'">
+                          <li>
+                            <a href="javascript:void(0);"><span>Level 2</span></a>
+                          </li>
+                          <li class="submenu">
+                            <a [ngClass]="{ subdrop: multilevel[2] }" (click)="multilevel[2] = !multilevel[2]"
+                              href="javascript:void(0);">
+                              <span> Level 2</span> <span class="menu-arrow"></span></a>
+                              <ul [ngClass]="multilevel[2] === true ? 'd-block' : 'd-none'">
+                                <li><a href="javascript:void(0);">Level 3</a></li>
+                                <li><a href="javascript:void(0);">Level 3</a></li>
+                              </ul>
+                            </li>
+                            <li>
+                              <a href="javascript:void(0);"><span>Level 2</span></a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <a href="javascript:void(0);"><span>Level 1</span></a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </ng-scrollbar>
+            </div>
+          </div>
+          <!-- /Sidebar -->

@@ -1,0 +1,146 @@
+<header class="header header-fixed header-fourteen  header-fifteen ent-header" [ngClass]="{
+  'pharmacy-header': white_bg === true
+}">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg header-nav">
+      <div class="navbar-header">
+        <a (click)="toggleSidebar()" id="mobile_btn" href="javascript:void(0);">
+          <span class="bar-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </a>
+        <a [routerLink] = "routes.home1" class="navbar-brand logo">
+          <img src="assets/img/logo-15.png" class="img-fluid" alt="Logo">
+        </a>
+      </div>
+      <div class="main-menu-wrapper">
+        <div class="menu-header">
+          <a [routerLink] = "routes.home1" class="menu-logo">
+            <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
+          </a>
+          <a id="menu_close"
+            (click)="hideSidebar()" class="menu-close" href="javascript:void(0);">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
+        <ul class="main-nav">
+          @for (mainMenus of header; track mainMenus) {
+            @if (mainMenus.separateRoute === false) {
+              <li class="has-submenu" routerLinkActive="active" [ngClass]="{
+                  megamenu: mainMenus.tittle === 'Home'
+                }">
+                <a href="javascript:void(0);" (click)="mainMenus.showAsTab = !mainMenus.showAsTab">{{ mainMenus.tittle
+                  }} <i class="fas fa-chevron-down"></i></a>
+                <ul class="submenu" [ngClass]="{
+                    'd-block': mainMenus.showAsTab === true,
+                    'mega-submenu': mainMenus.tittle === 'Home'
+                  }">
+                    @for (menu of mainMenus.menu; track menu) {
+                      @if (
+                        menu.hasSubRoute === false &&
+                        mainMenus.tittle !== 'Home'
+                        ) {
+                        <li routerLinkActive="active">
+                          @if (menu.openInNewTab === false) {
+                            <a [routerLink]="menu.route">{{ menu.menuValue }}</a>
+                          }
+                          @if (menu.openInNewTab === true) {
+                            <a [target]="'_blank'" [routerLink]="menu.route">{{ menu.menuValue }}</a>
+                          }
+                        </li>
+                      }
+                      @if (menu.hasSubRoute === true) {
+                        <li class="has-submenu">
+                          <a (click)="menu.showSubRoute = !menu.showSubRoute" [routerLink]="menu.route">{{ menu.menuValue
+                          }}</a>
+                        <ul class="submenu" [ngClass]="{
+                            'd-block': menu.showSubRoute === true
+                          }">
+                            @for (subMenu of menu.subMenus; track subMenu) {
+                              @if (mainMenus.tittle !== 'Home') {
+                                <li>
+                                  <a [routerLink]="subMenu.route">{{
+                                    subMenu.menuValue
+                                  }}</a>
+                                </li>
+                              }
+                            }
+                          </ul>
+                        </li>
+                      }
+                      @if (menu.menuValue === 'General Home') {
+                        <li>
+                          <div class="megamenu-wrapper">
+                            <div class="row">
+                              @for (menu of mainMenus.menu; track menu) {
+                                <div class="col-lg-2">
+                                  <div class="single-demo" routerLinkActive="active">
+                                    <div class="demo-img">
+                                      <a [routerLink]="menu.route" class="inner-demo-img"><img [src]="menu.img"
+                                      class="img-fluid" alt="img" /></a>
+                                    </div>
+                                    <div class="demo-info">
+                                      <a class="inner-demo-img" [routerLink]="menu.route">{{
+                                        menu.menuValue
+                                      }}</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              }
+                            </div>
+                          </div>
+                        </li>
+                      }
+                    }
+                  </ul>
+                </li>
+                
+              }
+            }
+            <li>
+              <div class="dropdown header-dropdown country-flag">
+                <a class="dropdown-toggle nav-tog" data-bs-toggle="dropdown" href="javascript:void(0);">
+                  <img src="assets/img/flags/us.png" alt="Img">English
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a href="javascript:void(0);" class="dropdown-item">
+                    <img src="assets/img/flags/fr.png" alt="Img">French
+                  </a>
+                  <a href="javascript:void(0);" class="dropdown-item">
+                    <img src="assets/img/flags/es.png" alt="Img">Spanish
+                  </a>
+                  <a href="javascript:void(0);" class="dropdown-item">
+                    <img src="assets/img/flags/de.png" alt="Img">German
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+        </div>
+        <ul class="nav header-navbar-rht">
+          <li class="searchbar">
+            <a href="javascript:void(0);" (click)="toggleSearch()"><i class="feather icon-search"></i></a>
+            <div class="togglesearch" [ngClass]="searchField ? 'd-block' : 'd-none'">
+              <form >
+                <div class="input-group">
+                  <input type="text" class="form-control">
+                  <button type="submit" class="btn" (click)="navigation()" (keydown)="navigation()" tabindex="1">Search</button>
+                </div>
+              </form>
+            </div>
+          </li>
+          <li class="login-in-fourteen">
+            <a [routerLink]="routes.userLogin" class="btn reg-btn"><i class="fa-solid fa-lock me-2"></i>Login</a>
+          </li>
+          <li class="login-in-fourteen">
+            <a [routerLink]="routes.register" class="btn btn-primary reg-btn reg-btn-fourteen">
+              <i class="fa-solid fa-user me-2"></i>Sign Up
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>

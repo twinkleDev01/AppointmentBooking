@@ -1,0 +1,336 @@
+<app-doctor-breadcrumb></app-doctor-breadcrumb>
+<!-- Page Content -->
+<div class="content doctor-content">
+  <div class="container">
+    <div class="row">
+      <app-doctor-sidebar class="col-md-5 col-lg-4 col-xl-3"></app-doctor-sidebar>
+      <div class="col-lg-8 col-xl-9">
+        <!-- Profile Settings -->
+        <div class="dashboard-header">
+          <h3>Profile Settings</h3>
+        </div>
+
+        <!-- Settings List -->
+        <div class="setting-tab">
+          <div class="appointment-tabs">
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link " [routerLink]="routes.doctorProfileSettings">Basic Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " [routerLink]="routes.doctorExperienceSettings">Experience</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="routes.doctorEducationSettings">Education</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="routes.doctorAwardsSettings">Awards</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " [routerLink]="routes.doctorInsuranceSettings">Insurances</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="routes.doctorClinicSettings">Clinics</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" [routerLink]="routes.doctorBusinessSettings">Business Hours</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /Settings List -->
+
+        <div class="dashboard-header border-0 mb-0">
+          <h3>Business Hours</h3>
+        </div>
+
+        <form>
+          <div class="business-wrap">
+            <h4>Select Business days</h4>
+            <ul class="business-nav">
+              @for (day of days; track day) {
+              <li>
+                <a class="tab-link" [class.active]="isSelected(day)" (click)="selectDay(day)"  (keydown.enter)="selectDay(day)"  tabindex="0">{{ day }}</a>
+              </li>
+              }
+            </ul>
+          </div>
+
+          <div class="accordions business-info" id="list-accord">
+            <!-- Business Hours -->
+            <div class="user-accordion-item tab-items active" id="day-monday">
+              <a href="javascript:void(0)" class="accordion-wrap" data-bs-toggle="collapse"
+                data-bs-target="#monday">Monday<span class="edit">Edit</span></a>
+              <div class="accordion-collapse collapse show" id="monday" data-bs-parent="#list-accord">
+                <div class="content-collapse pb-0">
+                  <div class="row align-items-center">
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="from">From <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" placeholder="Time"
+                            (click)="toggleTimePicker('startTime1')" [value]="formatTime(startTime1)" />
+                          <timepicker [class.d-block]="
+                              showTimePicker[0] === 'startTime1'
+                            " class="custom-timepicker" [ngModelOptions]="{ standalone: true }"
+                            [(ngModel)]="startTime1"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="to">To <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('endTime1')"
+                            [value]="formatTime(endTime1)" />
+                          <timepicker [class.d-block]="
+                              showTimePicker[0] === 'endTime1'
+                            " class="custom-timepicker" [ngModelOptions]="{ standalone: true }" [(ngModel)]="endTime1">
+                          </timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Business Hours -->
+
+            <!-- Business Hours -->
+            <div class="user-accordion-item tab-items active" id="day-tuesday">
+              <a href="javascript:void(0)" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                data-bs-target="#tuesday">Tuesday<span class="edit">Edit</span></a>
+              <div class="accordion-collapse collapse" id="tuesday" data-bs-parent="#list-accord">
+                <div class="content-collapse pb-0">
+                  <div class="row align-items-center">
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="form">From <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('startTime2')"
+                            [value]="formatTime(startTime2)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'startTime2'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="startTime2"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="to">To <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('endTime2')"
+                            [value]="formatTime(endTime2)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'endTime2'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="endTime2"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Business Hours -->
+
+            <!-- Business Hours -->
+            <div class="user-accordion-item tab-items active" id="day-wednesday">
+              <a href="javascript:void(0)" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                data-bs-target="#wednesday">Wednesday<span class="edit">Edit</span></a>
+              <div class="accordion-collapse collapse" id="wednesday" data-bs-parent="#list-accord">
+                <div class="content-collapse pb-0">
+                  <div class="row align-items-center">
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="show">From <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('startTime3')"
+                            (keyup)="toggleTimePicker('startTime3')" tabindex="0" [value]="formatTime(startTime3)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'startTime3'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="startTime3"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="icon">To <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('endTime3')"
+                            [value]="formatTime(endTime3)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'endTime3'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="endTime3"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Business Hours -->
+
+            <!-- Business Hours -->
+            <div class="user-accordion-item tab-items active" id="day-thursday">
+              <a href="javascript:void(0)" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                data-bs-target="#thursday">Thursday<span class="edit">Edit</span></a>
+              <div class="accordion-collapse collapse" id="thursday" data-bs-parent="#list-accord">
+                <div class="content-collapse pb-0">
+                  <div class="row align-items-center">
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="danger">From <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('startTime4')"
+                            [value]="formatTime(startTime4)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'startTime4'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="startTime4"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="timer">To <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('endTime4')"
+                            [value]="formatTime(endTime4)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'endTime4'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="endTime4"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Business Hours -->
+
+            <!-- Business Hours -->
+            <div class="user-accordion-item tab-items active" id="day-friday">
+              <a href="javascript:void(0)" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                data-bs-target="#friday">Friday<span class="edit">Edit</span></a>
+              <div class="accordion-collapse collapse" id="friday" data-bs-parent="#list-accord">
+                <div class="content-collapse pb-0">
+                  <div class="row align-items-center">
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="text">From <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('startTime5')"
+                            [value]="formatTime(startTime5)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'startTime5'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="startTime5"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="picker">To <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('endTime5')"
+                            [value]="formatTime(endTime5)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'endTime5'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="endTime5"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Business Hours -->
+
+            <!-- Business Hours -->
+            <div class="user-accordion-item tab-items" id="day-saturday">
+              <a href="javascript:void(0)" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                data-bs-target="#saturday">Saturday<span class="edit">Edit</span></a>
+              <div class="accordion-collapse collapse" id="saturday" data-bs-parent="#list-accord">
+                <div class="content-collapse pb-0">
+                  <div class="row align-items-center">
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="timepicker">From <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('startTime6')"
+                            [value]="formatTime(startTime6)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'startTime6'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="startTime6"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="text">To <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('endTime6')"
+                            [value]="formatTime(endTime6)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'endTime6'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="endTime6"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Business Hours -->
+
+            <!-- Business Hours -->
+            <div class="user-accordion-item tab-items" id="day-sunday">
+              <a href="javascript:void(0)" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                data-bs-target="#sunday">Sunday<span class="edit">Edit</span></a>
+              <div class="accordion-collapse collapse" id="sunday" data-bs-parent="#list-accord">
+                <div class="content-collapse pb-0">
+                  <div class="row align-items-center">
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="label">From <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('startTime7')"
+                            [value]="formatTime(startTime7)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'startTime7'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="startTime7"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-wrap">
+                        <label class="col-form-label" for="end">To <span class="text-danger">*</span></label>
+                        <div class="form-icon">
+                          <input type="text" class="form-control timepicker1" (click)="toggleTimePicker('endTime7')"
+                            [value]="formatTime(endTime7)" />
+                          <timepicker [class.d-block]="showTimePicker[0] === 'endTime7'" class="custom-timepicker"
+                            [ngModelOptions]="{ standalone: true }" [(ngModel)]="endTime7"></timepicker>
+                          <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Business Hours -->
+          </div>
+
+          <div class="modal-btn text-end">
+            <a href="javascript:void(0)" class="btn btn-gray">Cancel</a>
+            <button type="submit" class="btn btn-primary prime-btn">
+              Save Changes
+            </button>
+          </div>
+        </form>
+        <!-- /Profile Settings -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Page Content -->

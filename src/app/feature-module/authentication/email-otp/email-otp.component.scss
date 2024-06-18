@@ -1,0 +1,14 @@
+.digit {
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    width: 25px;
+    max-width: 25px;
+    font-size: 30px;
+    margin: 0 10px;
+  }
+  .digit::-webkit-outer-spin-button,
+  .digit::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }

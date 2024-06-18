@@ -1,0 +1,77 @@
+{
+    "data": [
+            {
+                "purchaseDate": "13-5-2020",
+                "medicineName": "Abilify",
+                "medicineCategory": "Aripiprazole",
+                "purchasePrice": "$220",
+                "quantity": "60",
+                "supplier": "Bradley",
+                "expireDate": "13-06-20",
+                "action1": "Edit",
+                "action2": "Delete",
+                "img": "assets/pharmacy/img/product/product.jpg"
+            },
+            {
+                "purchaseDate": "12-5-2020",
+                "medicineName": "Adderall",
+                "medicineCategory": "Phytopathology",
+                "purchasePrice": "$30",
+                "quantity": "20",
+                "supplier": "Douglas",
+                "expireDate": "13-06-20",
+                "action1": "Edit",
+                "action2": "Delete",
+                "img": "assets/pharmacy/img/product/product2.jpg"
+            },
+            {
+                "purchaseDate": "11-5-2020",
+                "medicineName": "Actamin",
+                "medicineCategory": "Phytopathology",
+                "purchasePrice": "$58",
+                "quantity": "33",
+                "supplier": "Douglas",
+                "expireDate": "20-06-20",
+                "action1": "Edit",
+                "action2": "Delete",
+                "img": "assets/pharmacy/img/product/product1.jpg"
+            },
+            {
+                "purchaseDate": "10-5-2020",
+                "medicineName": "Abilify",
+                "medicineCategory": "Aripiprazole",
+                "purchasePrice": "$336",
+                "quantity": "50",
+                "supplier": "Bradley",
+                "expireDate": "13-06-20",
+                "action1": "Edit",
+                "action2": "Delete",
+                "img": "assets/pharmacy/img/product/product.jpg"
+            },
+            {
+                "purchaseDate": "9-5-2020",
+                "medicineName": "Adderall",
+                "medicineCategory": "Phytopathology",
+                "purchasePrice": "$10",
+                "quantity": "605",
+                "supplier": "Douglas",
+                "expireDate": "13-06-20",
+                "action1": "Edit",
+                "action2": "Delete",
+                "img": "assets/pharmacy/img/product/product2.jpg"
+            },
+            {
+                "purchaseDate": "8-5-2020",
+                "medicineName": "Actamin",
+                "medicineCategory": "Phytopathology",
+                "purchasePrice": "$15",
+                "quantity": "160",
+                "supplier": "Douglas",
+                "expireDate": "20-06-20",
+                "action1": "Edit",
+                "action2": "Delete",
+                "img": "assets/pharmacy/img/product/product1.jpg"
+            }
+        ],
+        "totalData": 6
+}

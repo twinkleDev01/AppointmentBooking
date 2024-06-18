@@ -1,0 +1,135 @@
+<header class="header header-fixed header-fourteen header-twelve veterinary-header" [ngClass]="{
+  'pharmacy-header': white_bg === true
+}">
+  <div class="container">
+    <div class="veterinary-top-head">
+      <ul>
+        <li><i class="fa-solid fa-envelope me-2"></i>Doccure&#64;example.com</li>
+        <li><i class="fa-solid fa-location-dot me-2"></i>231 madison Street, NewYork,USA</li>
+      </ul>
+      <ul>
+        <li>Mon-Fri : 10:00 AM - 09:00PM</li>
+        <li>
+          <a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a>
+          <a href="javascript:void(0);"><i class="fa-brands fa-twitter"></i></a>
+          <a href="javascript:void(0);"><i class="fa-brands fa-facebook"></i></a>
+          <a href="javascript:void(0);"><i class="fa-brands fa-linkedin"></i></a>
+        </li>
+      </ul>
+    </div>
+    <nav class="navbar navbar-expand-lg header-nav">
+      <div class="navbar-header">
+        <a (click)="toggleSidebar()" id="mobile_btn" href="javascript:void(0);">
+          <span class="bar-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </a>
+        <a [routerLink] = "routes.home1" class="navbar-brand logo">
+          <img src="assets/img/veterinary-home-logo.svg" class="img-fluid" alt="Logo">
+        </a>
+      </div>
+      <div class="main-menu-wrapper">
+        <div class="menu-header">
+          <a [routerLink] = "routes.home1" class="menu-logo">
+            <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
+          </a>
+          <a id="menu_close"
+            (click)="hideSidebar()" class="menu-close" href="javascript:void(0);">
+            <i class="fas fa-times"></i>
+          </a>
+        </div>
+        <ul class="main-nav">
+          @for (mainMenus of header; track mainMenus) {
+            @if (mainMenus.separateRoute === false) {
+              <li class="has-submenu" routerLinkActive="active" [ngClass]="{
+                  megamenu: mainMenus.tittle === 'Home'
+                }">
+                <a href="javascript:void(0);" (click)="mainMenus.showAsTab = !mainMenus.showAsTab">{{ mainMenus.tittle
+                  }} <i class="fas fa-chevron-down"></i></a>
+                <ul class="submenu" [ngClass]="{
+                    'd-block': mainMenus.showAsTab === true,
+                    'mega-submenu': mainMenus.tittle === 'Home'
+                  }">
+                    @for (menu of mainMenus.menu; track menu) {
+                      @if (
+                        menu.hasSubRoute === false &&
+                        mainMenus.tittle !== 'Home'
+                        ) {
+                        <li routerLinkActive="active">
+                          @if (menu.openInNewTab === false) {
+                            <a [routerLink]="menu.route">{{ menu.menuValue }}</a>
+                          }
+                          @if (menu.openInNewTab === true) {
+                            <a [target]="'_blank'" [routerLink]="menu.route">{{ menu.menuValue }}</a>
+                          }
+                        </li>
+                      }
+                      @if (menu.hasSubRoute === true) {
+                        <li class="has-submenu">
+                          <a (click)="menu.showSubRoute = !menu.showSubRoute" [routerLink]="menu.route">{{ menu.menuValue
+                          }}</a>
+                        <ul class="submenu" [ngClass]="{
+                            'd-block': menu.showSubRoute === true
+                          }">
+                            @for (subMenu of menu.subMenus; track subMenu) {
+                              @if (mainMenus.tittle !== 'Home') {
+                                <li>
+                                  <a [routerLink]="subMenu.route">{{
+                                    subMenu.menuValue
+                                  }}</a>
+                                </li>
+                              }
+                            }
+                          </ul>
+                        </li>
+                      }
+                      @if (menu.menuValue === 'General Home') {
+                        <li>
+                          <div class="megamenu-wrapper">
+                            <div class="row">
+                              @for (menu of mainMenus.menu; track menu) {
+                                <div class="col-lg-2">
+                                  <div class="single-demo" routerLinkActive="active">
+                                    <div class="demo-img">
+                                      <a [routerLink]="menu.route" class="inner-demo-img"><img [src]="menu.img"
+                                      class="img-fluid" alt="img" /></a>
+                                    </div>
+                                    <div class="demo-info">
+                                      <a class="inner-demo-img" [routerLink]="menu.route">{{
+                                        menu.menuValue
+                                      }}</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              }
+                            </div>
+                          </div>
+                        </li>
+                      }
+                    }
+                  </ul>
+                </li>
+              }
+            }
+          </ul>
+
+        </div>
+        <ul class="nav header-navbar-rht">
+          <li class="login-in-fourteen log-in-vet-head"><a [routerLink]="routes.register"><i class="fa-regular fa-user me-2"></i>Sign Up / </a> <a [routerLink]="routes.userLogin"> Sign In</a></li>
+          <li class="searchbar searchbar-fourteen">
+            <a href="javascript:void(0);" (click)="toggleSearch()"><i class="feather icon-search"></i></a>
+            <div class="togglesearch" [ngClass]="searchField ? 'd-block' : 'd-none'">
+              <form>
+                <div class="input-group">
+                  <input type="text" class="form-control">
+                  <button (click)="navigation()" (keydown)="navigation()" tabindex="1" type="button" class="btn btn-primary">Search</button>
+                </div>
+              </form>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>

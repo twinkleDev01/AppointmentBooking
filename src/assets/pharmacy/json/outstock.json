@@ -1,0 +1,31 @@
+{
+  "data":  [
+    {
+		"id": "1",
+		"brandName": "Abilify",
+		"geneticName": "Aripiprazole",
+		"category": "Phytopathology‎",
+		"price": "$22",
+		"quantity": "THERE ONLY 2",
+		"discount": "0%",
+		"expire": "THE PRODUCT IS EXPIRED",
+		"action1": "Edit",
+        "action2": "Delete",
+        "img": "assets/pharmacy/img/product/product.jpg"
+	},
+	{
+		"id": "2",
+		"brandName": "Actamin",
+		"geneticName": "Amphetamine",
+		"category": "Phytopathology‎",
+		"price": "$22",
+		"quantity": "THERE ONLY 5",
+		"discount": "0%",
+		"expire": "THE PRODUCT IS EXPIRED",
+		"action1": "Edit",
+        "action2": "Delete",
+        "img": "assets/pharmacy/img/product/product1.jpg"
+	}
+],
+"totalData": 2
+}

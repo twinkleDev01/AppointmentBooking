@@ -1,0 +1,303 @@
+<app-doctor-breadcrumb></app-doctor-breadcrumb>
+
+<div class="content doctor-content">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-4 col-xl-3 theiaStickySidebar">
+
+        <!-- Profile Sidebar -->
+        <app-doctor-sidebar class="col-md-5 col-lg-4 col-xl-3"></app-doctor-sidebar>
+        <!-- /Profile Sidebar -->
+
+      </div>
+
+      <div class="col-lg-8 col-xl-9">
+
+        <div class="dashboard-header">
+          <h3>Speciality & Services</h3>
+          <ul>
+            <li>
+              <a href="javascript:void(0);" class="btn btn-primary prime-btn add-speciality"
+                (click)="addSpeciality()">Add New
+              Speciality</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="accordions" id="list-accord">
+
+          <!-- Spaciality Item -->
+          <div class="user-accordion-item">
+            <a href="javascript:void(0);" class="accordion-wrap" data-bs-toggle="collapse"
+              data-bs-target="#cardiology">Cardiology<span>Delete</span></a>
+              <div class="accordion-collapse collapse show" id="cardiology" data-bs-parent="#list-accord">
+                <div class="content-collapse">
+                  <div class="add-service-info">
+                    <div class="add-info">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="form-wrap">
+                            <label class="col-form-label" for="special">Speciality <span
+                            class="text-danger">*</span></label>
+                            <mat-select class="custom-mat-select" placeholder="Cardiology">
+                              <mat-option value="Cardiology">Cardiology</mat-option>
+                              <mat-option value="Neurology">Neurology</mat-option>
+                              <mat-option value="Urology">Urology</mat-option>
+                            </mat-select>
+                          </div>
+                        </div>
+                      </div>
+                      @for (item of cardiology; track item; let i = $index) {
+                        <div class="row service-cont">
+                          <div class="col-md-3">
+                            <div class="form-wrap">
+                              <label class="col-form-label" for="service">Service <span
+                              class="text-danger">*</span></label>
+                              <mat-select class="custom-mat-select" placeholder="Select Service">
+                                <mat-option value="Surgery">Surgery</mat-option>
+                                <mat-option value="General Checkup">General Checkup</mat-option>
+                              </mat-select>
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-wrap">
+                              <label class="col-form-label" for="price">Price ($) <span
+                              class="text-danger">*</span></label>
+                              <input type="text" class="form-control" placeholder="454">
+                            </div>
+                          </div>
+                          <div class="col-md-7">
+                            <div class="d-flex align-items-center">
+                              <div class="form-wrap w-100">
+                                <label class="col-form-label" for="about">About Service</label>
+                                <input type="text" class="form-control">
+                              </div>
+                              <div class="form-wrap ms-2">
+                                <label class="col-form-label d-block" for="service">&nbsp;</label>
+                                <a href="javascript:void(0);" class="trash-icon trash"
+                                (click)="dltCardiology(i)">Delete</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    </div>
+                    <div class="text-end">
+                      <a href="javascript:void(0);" class="add-serv more-item mb-0"
+                      (click)="addCardiology()">Add New Service</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Spaciality Item -->
+
+            <!-- Spaciality Item -->
+            <div class="user-accordion-item">
+              <a href="javascript:void(0);" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                data-bs-target="#neurology">Neurology<span>Delete</span></a>
+                <div class="accordion-collapse" id="neurology" data-bs-parent="#list-accord">
+                  <div class="content-collapse">
+                    <div class="add-service-info">
+                      <div class="add-info">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-wrap">
+                              <label class="col-form-label" for="special">Speciality <span
+                              class="text-danger">*</span></label>
+                              <mat-select class="custom-mat-select" placeholder="Cardiology">
+                                <mat-option value="Cardiology">Cardiology</mat-option>
+                                <mat-option value="Neurology">Neurology</mat-option>
+                                <mat-option value="Urology">Urology</mat-option>
+                              </mat-select>
+                            </div>
+                          </div>
+                        </div>
+                        @for (item of neurology; track item; let i = $index) {
+                          <div class="row service-cont">
+                            <div class="col-md-3">
+                              <div class="form-wrap">
+                                <label class="col-form-label" for="service">Service <span
+                                class="text-danger">*</span></label>
+                                <mat-select class="custom-mat-select" placeholder="Select Service">
+                                  <mat-option value="Surgery">Surgery</mat-option>
+                                  <mat-option value="General Checkup">General Checkup</mat-option>
+                                </mat-select>
+                              </div>
+                            </div>
+                            <div class="col-md-2">
+                              <div class="form-wrap">
+                                <label class="col-form-label" for="price">Price ($) <span
+                                class="text-danger">*</span></label>
+                                <input type="text" class="form-control" placeholder="454">
+                              </div>
+                            </div>
+                            <div class="col-md-7">
+                              <div class="d-flex align-items-center">
+                                <div class="form-wrap w-100">
+                                  <label class="col-form-label" for="service">About Service</label>
+                                  <input type="text" class="form-control">
+                                </div>
+                                <div class="form-wrap ms-2">
+                                  <label class="col-form-label d-block" for="service2">&nbsp;</label>
+                                  <a href="javascript:void(0);" class="trash-icon trash"
+                                  (click)="dltNeurology(i)">Delete</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        }
+                      </div>
+                      <div class="text-end">
+                        <a href="javascript:void(0);" class="add-serv more-item mb-0"
+                        (click)="addNeurology()">Add New Service</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /Spaciality Item -->
+
+              <!-- Spaciality Item -->
+              <div class="user-accordion-item">
+                <a href="javascript:void(0);" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#urology">Urology<span>Delete</span></a>
+                  <div class="accordion-collapse" id="urology" data-bs-parent="#list-accord">
+                    <div class="content-collapse">
+                      <div class="add-service-info">
+                        <div class="add-info">
+                          <div class="row">
+                            <div class="col-md-4">
+                              <div class="form-wrap">
+                                <label class="col-form-label" for="Speciality">Speciality <span
+                                class="text-danger">*</span></label>
+                                <mat-select class="custom-mat-select" placeholder="Cardiology">
+                                  <mat-option value="Cardiology">Cardiology</mat-option>
+                                  <mat-option value="Neurology">Neurology</mat-option>
+                                  <mat-option value="Urology">Urology</mat-option>
+                                </mat-select>
+                              </div>
+                            </div>
+                          </div>
+                          @for (item of urology; track item; let i = $index) {
+                            <div class="row service-cont">
+                              <div class="col-md-3">
+                                <div class="form-wrap">
+                                  <label class="col-form-label" for="Services">Service <span
+                                  class="text-danger">*</span></label>
+                                  <mat-select class="custom-mat-select" placeholder="Select Service">
+                                    <mat-option value="Surgery">Surgery</mat-option>
+                                    <mat-option value="General Checkup">General Checkup</mat-option>
+                                  </mat-select>
+                                </div>
+                              </div>
+                              <div class="col-md-2">
+                                <div class="form-wrap">
+                                  <label class="col-form-label" for="price3">Price ($) <span
+                                  class="text-danger">*</span></label>
+                                  <input type="text" class="form-control" placeholder="454">
+                                </div>
+                              </div>
+                              <div class="col-md-7">
+                                <div class="d-flex align-items-center">
+                                  <div class="form-wrap w-100">
+                                    <label class="col-form-label" for="aboutservice">About Service</label>
+                                    <input type="text" class="form-control">
+                                  </div>
+                                  <div class="form-wrap ms-2">
+                                    <label class="col-form-label d-block" for="service3">&nbsp;</label>
+                                    <a href="javascript:void(0);" class="trash-icon trash"
+                                    (click)="dltUrology(i)">Delete</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          }
+                        </div>
+                        <div class="text-end">
+                          <a href="javascript:void(0);" class="add-serv more-item mb-0"
+                          (click)="addUrology()">Add New Service</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Spaciality Item -->
+
+                <!-- New Spaciality Item -->
+                @for (item of speciality; track item) {
+                  <div class="user-accordion-item">
+                    <a href="javascript:void(0)" class="accordion-wrap collapsed" data-bs-toggle="collapse"
+                      data-bs-target="#special">Speciality<span>Delete</span></a>
+                      <div class="accordion-collapse" id="special" data-bs-parent="#list-accord">
+                        <div class="content-collapse">
+                          <div class="add-service-info">
+                            <div class="add-info">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-wrap">
+                                    <label class="col-form-label" for="speciality">Speciality <span
+                                    class="text-danger">*</span></label>
+                                    <mat-select class="custom-mat-select" placeholder="Select">
+                                      <mat-option value="Neurology">Neurology</mat-option>
+                                      <mat-option value="Urology">Urology</mat-option>
+                                    </mat-select>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row service-cont">
+                                <div class="col-md-3">
+                                  <div class="form-wrap">
+                                    <label class="col-form-label" for="service4">Service <span
+                                    class="text-danger">*</span></label>
+                                    <mat-select class="custom-mat-select" placeholder="Select Service">
+                                      <mat-option value="Surgery">Surgery</mat-option>
+                                      <mat-option value="General Checkup">General Checkup</mat-option>
+                                    </mat-select>
+                                  </div>
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="form-wrap">
+                                    <label class="col-form-label" for="price">Price ($) <span
+                                    class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" placeholder="454">
+                                  </div>
+                                </div>
+                                <div class="col-md-7">
+                                  <div class="d-flex align-items-center">
+                                    <div class="form-wrap w-100">
+                                      <label class="col-form-label" for="service4">About Service</label>
+                                      <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-wrap ms-2">
+                                      <label class="col-form-label d-block" for="delete">&nbsp;</label>
+                                      <a href="javascript:void(0)" class="trash-icon trash">Delete</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="text-end">
+                              <a href="javascript:void(0)" class="add-serv more-item mb-0">Add New Service</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    }'
+                    <!-- New Spaciality Item -->
+
+                  </div>
+
+                  <div class="modal-btn text-end">
+                    <a href="javascript:void(0);" class="btn btn-gray">Cancel</a>
+                    <button class="btn btn-primary prime-btn">Save Changes</button>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>

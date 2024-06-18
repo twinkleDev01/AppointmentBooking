@@ -1,0 +1,918 @@
+.home-dentist {
+	font-size: $__font__size__16;
+	.section-header {
+		margin-bottom: 40px;
+		h2 {
+			font-weight: $__semibold;
+			color: $__black;
+			span {
+				color: $__indigo-600;
+			}
+		}
+		p {
+			color: $__black__01;
+			font-size: $__font__size__16;
+			margin-bottom: 0;
+			@include respond-below(custom991) {
+				font-size: $__font__size__14;
+			}
+		}
+		@include respond-below(custom767) {
+			margin-bottom: 30px;
+		}
+	}
+	.btn-gray {
+		font-size: $__font__size__15;
+		font-weight: $__semibold;
+		padding: 7px 12px;
+	}
+	.slide-nav button.owl-next,
+	.slide-nav button.owl-prev {
+	    width: 44px;
+	    height: 44px;
+	    font-size: $__font__size__16;
+	    color: $__white;
+	    background: $__black;
+	    border: 1px solid $__black;
+	    text-shadow: $__none;
+	    top: 0;
+	    cursor: $__pointer;
+	    margin-top: 0;
+	    margin-bottom: 0;
+	    margin-left: 10px;
+	    border-radius: 50px;
+	    @extend %inlineflex-align-center;
+	    @include respond-below(custom767) {
+	         width: 36px;
+	        height: 36px;
+	    }
+		&:hover{
+			border-color: transparent;
+		}
+	}
+	.slide-nav button.owl-next:hover,
+	.slide-nav button.owl-prev:hover {
+	    color: $__white;
+	    background: $__indigo-600;
+	}
+	.faq-imgs {
+		@include respond-below(custom991) {
+			display: none;
+		}
+	}
+	.faq-info {
+            .accordion-item {
+                box-shadow: 0px 4px 64px 0px #B1B1B140;
+                background: $__white;
+                border-radius: 10px;
+                .accordion-button {
+                    font-weight: $__semibold;
+                    color: $__black__ash;
+                    padding-right: 0;
+                    &::after {
+                        color: $__indigo-600;
+                        @include rounded(50%);
+                        @include respond-below(custom991) {
+                            width: 22px;
+                            height: 22px;
+                        }
+                    }
+                    &:not(.collapsed)::after {
+                        color: $__white;
+                        background: $__indigo-600;
+                    }
+                }
+                .accordion-content {
+                    p {
+                        font-size: $__font__size__16;
+                        color: $__black__01;
+                         @include respond-below(custom991) {
+                         	font-size: $__font__size__14;
+                         }
+                    }
+                }
+            }
+        }
+}
+.why-us-section {
+	@include margin-padding(null, 80px 0 56px);
+	@include respond-below(custom991) {
+		@include margin-padding(null, 60px 0 36px);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(null, 50px 0 26px);
+	}
+	.section-header {
+		max-width: 650px;
+		margin-left: auto;
+		margin-right: auto;
+		@include respond-below(custom991) {
+			max-width: 100%;
+		}
+	}
+	.clinic-partner-sec {
+		@include margin-padding(null null 40px, 0 0 40px);
+		border-bottom: 1px solid #E5E7EB;
+		@include respond-below(custom991) {
+			@include margin-padding(null null 25px, 0 0 25px);
+		}
+		@include respond-below(custom767) {
+			@include margin-padding(null null 20px, 0 0 20px);
+		}
+		.section-header {
+			h5 {
+				font-size: $__font__size__20;
+				font-weight: $__semibold;
+				color: $__black;
+			}
+		}
+	}
+}
+.partners-sliders li a {
+    background: #ffffff;
+    border: 2px solid $__honeydew_color;
+    padding: 14px 20px;
+    text-align: center;
+    height: 79px;
+    border-radius: 10px;
+    display: flex;
+	display: -webkit-flex;
+}
+.expert-wrap {
+	background: $__white;
+	border-radius: 10px;
+	box-shadow: 0px 7.5px 17.5px 0px rgba(0, 0, 0, 0.05);
+	@include margin-padding(0 0 24px, null);
+	&:hover{
+		background: #f5f5f5;
+	}
+	.expert-img {
+		img {
+			border-radius: 10px;
+		}
+        @include respond-below(custom767) {
+        	text-align: center;
+        }
+	}
+	.expert-content {
+		@include margin-padding(null, 24px);
+		text-align: center;
+		h4 {
+			font-size: $__font__size__20;
+			margin-bottom: 10px;
+			color: $__black;
+		}	
+		p {
+			color: $__black__01;
+			margin-bottom: 0;
+		}
+	}
+}
+.impression-section {
+	background: url('../../img/bg/dentist-bg.png'), #EEF2FF;
+	@include margin-padding(null, 80px 0);
+	@include respond-below(custom991) {
+		@include margin-padding(null, 60px 0);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(null, 50px 0);
+	}
+}
+.impression-img {
+	display: flex;
+	display: -webkit-flex;
+	align-items: center;
+	-webkit-align-items:center;
+	@include respond-below(custom991) {
+		display:none !important;
+	}
+	.impress-img {
+		margin-right: 24px;
+		img {
+			border-radius: 0px 0px 0px 110px;
+		}
+	}
+	.impress-img2 {
+		img {
+			border-radius: 70px 0 0 0;
+		}
+	}
+}
+.impression-content {
+	.section-header {
+		margin-bottom: 24px;
+		h2 {
+			margin-bottom: 24px;
+		}
+		p {
+			margin: 0;
+		}
+	}
+	.impress-list {
+		display: flex;
+  		display: -webkit-flex;
+  		align-items:center;
+  		-webkit-align-items:center;
+  		flex-wrap: wrap;
+		.impress-wrap {
+			background: $__white;
+			border-left: 3px solid $__indigo-600;
+			@include margin-padding(15px 15px 0 0, 24px);
+			max-width: 195px;
+			h6 {
+				font-size: $__font__size__18;
+				margin-bottom: 0;
+				color: $__black__ash;
+			}
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+}
+.treatment-sec {
+	@include margin-padding(null, 80px 0 0);
+	@include respond-below(custom991) {
+		@include margin-padding(null, 60px 0 0);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(null, 50px 0 0);
+	}	
+	.owl-nav {
+		@include respond-below(custom767) {
+			margin-bottom: 20px;
+		}
+	}
+}
+.treatment-item {
+	border-radius: 20px;
+	display: flex;
+ 	display: -webkit-flex;
+  	align-items:center;
+  	-webkit-align-items:center;
+	background: $__white;
+	border-radius: 10px;
+	@include respond-below(custom575) {
+		display: block;
+	}
+	.treatment-img {
+		position: relative;
+	    overflow: hidden;
+	    border-radius: 10px 0 0 10px;
+	    width: 314px;
+	    height: 293px;
+		img {
+			border-radius: 10px 0 0 10px;
+			@include respond-below(custom575) {
+				border-radius: 10px;
+			}
+		}
+		@include respond-below(custom1399) {
+			width: 260px;
+    		height: 240px;
+		}
+		@include respond-below(custom575) {
+			padding: 24px 24px 0;
+			margin: 0 auto;
+		}
+	}
+	.treatment-content {
+		flex: 1;
+		background: $__white;
+		@include margin-padding(null, 24px);
+		h4 {
+			font-size: $__font__size__20;
+			font-weight: $__semibold;
+			color: $__black;
+			margin-bottom: 13px;
+			a {
+				color: $__black;
+				&:hover {
+					color: $__indigo-600;
+				}
+			}
+		}
+		p {
+			color: $__black__01;
+			margin-bottom: 24px;
+			overflow: hidden;
+		    text-overflow: ellipsis;
+		    display: -webkit-box;
+		    -webkit-line-clamp: 3;
+		    -webkit-box-orient: vertical;
+		}
+		@include respond-below(custom575) {
+			text-align: center;
+		}
+	}
+}
+.view-button {
+	margin-top: 16px;
+	@include respond-below(custom767) {
+		margin-top: 6px;
+	}
+}
+.experts-section {
+	@include margin-padding(null, 80px 0 0);
+	@include respond-below(custom991) {
+		@include margin-padding(null, 60px 0 36px);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(null, 50px 0 26px);
+	}
+	.view-all {
+		color: $__black__01;
+	}
+	.owl-nav {
+		@include respond-below(custom767) {
+			margin-bottom: 20px;
+		}
+	}
+}
+.view-button {
+	.view-all {
+        color: $__black;
+        font-weight: $__medium;
+        font-size: $__font__size__16;
+        &:hover {
+            color: $__blue__14;
+        }
+    }
+}
+.expert-profile {
+    border-radius: 10px;
+    margin:  0 0 24px;
+    background: $__white;
+    .expert-img {
+        border-radius: 10px 10px 0 0;
+        position: $__relative;
+        overflow: $__hidden;
+        transition: 0.5s all;
+        img {
+            border-radius: 10px 10px 0 0;
+            transition: 0.5s all;
+        }
+        &:hover {
+            img {
+                @include transform(scale(1.15));
+            }
+            &::before {
+                -webkit-animation: circle 1s;
+                animation: circle 1s;
+            }
+        }
+        &::before {
+            @include position($__absolute, 50%, null, null, 50%);
+            z-index: 2;
+            display: $__block;
+            content: '';
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,.2);
+            border-radius: 100%;
+            @include transform(translate(-50%, -50%));
+            opacity: 0;
+        }
+    }
+    .expert-info {
+    	transition: 0.5s all;
+        @include margin-padding(0,24px);
+        border-radius: 0 0 10px 10px;
+        background: $__white;
+        box-shadow: 0px 7.5px 17.5px 0px #0000000D;
+        .nurse-content {
+            margin-bottom: 15px;
+        }
+        h5 {
+            font-size: $__font__size__20;
+            margin-bottom: 4px;
+            font-weight: $__semibold;
+            a {
+                color: $__black;
+                &:hover {
+                	color: #0E82FD;
+            	}
+            }
+            @include respond-below(custom991) {
+            	font-size: $__font__size__18;
+       		}
+        }
+        p {
+        	font-size: $__font__size__16;
+            font-weight: $__normal;
+            color: $__black__01;
+            margin-bottom: 0;
+       }
+    }
+    &:hover {
+    	.expert-info {
+    		transition: 0.5s all;
+    		background: $__indigo-600;
+    		h5, h5 a, p {
+    			color: $__white;
+    		}
+    	}
+    }
+}
+.counter-sec {
+	background: $__blue__17;
+	@include margin-padding(80px 0 0, 80px 0 );
+	@include respond-below(custom991) {
+		@include margin-padding(60px 0 0, 60px 0 0);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(50px 0 0, 50px 0 0);
+	}	
+	.count-wrap {
+		text-align: center;
+		margin-bottom: 24px;
+		h2 {
+			position: relative;
+			color: $__white;
+			font-size: 72px;
+			font-weight: $__bold;
+			margin-bottom: 0;
+			display: inline-block;
+			.count-icon {
+				font-size: $__font__size__30;
+				@include position(absolute, 0, -15px, null, null);
+			}
+			@include respond-below(custom991) {
+				font-size: $__font__size__50;
+			}
+			@include respond-below(custom767) {
+				font-size: $__font__size__40;
+			}
+		}
+		p {
+			color: $__white;
+			font-size: $__font__size__24;
+			font-weight: $__medium;
+			margin-bottom: 0;
+			@include respond-below(custom991) {
+				font-size: $__font__size__20;
+			}
+			@include respond-below(custom767) {
+				font-size: $__font__size__18;
+			}
+		}
+	}
+}
+.dentist-blog {
+	border-top: 1px solid $__white_tone;
+	@include margin-padding(80px 0 0, 80px 0);
+	@include respond-below(custom991) {
+		@include margin-padding(60px 0 0, 60px 0);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(50px 0 0, 50px 0);
+	}
+}
+.question-section {
+	@include margin-padding(null, 80px 0);
+	@include respond-below(custom991) {
+		@include margin-padding(null, 60px 0);
+	}
+	@include respond-below(custom767) {
+		@include margin-padding(null, 50px 0);
+	}
+	.section-header {
+		max-width: 850px;
+		margin-left: auto;
+		margin-right: auto;
+		@include respond-below(custom991) {
+			max-width: 100%;
+		}
+	}
+	.blog {
+		&.grid-blog {
+			box-shadow: 0px 7.5px 17.5px 0px #0000000D;
+			border-radius: 10px;
+			@include margin-padding(0 0 24px, 24px);
+			.blog-image {
+				margin-bottom: 15px;
+				border-radius: 15px 15px 0 0;
+				img {
+					border-radius: 15px 15px 0 0;
+				}
+				.day-badge {
+					background: $__indigo-600;
+					color: $__white;
+					border-radius: 10px 0 0 0;
+					font-size: $__font__size__16;
+					font-weight: $__medium;
+					display: inline-block;
+					@include position(absolute, null, 0, 0, null);
+					padding: 10px 18px;
+					i {
+						margin-right: 5px;
+					}
+				}
+			}
+			.entry-meta {
+				border-bottom: 1px solid $__white_tone;
+				@include margin-padding(0 0 15px, 0 0 15px);
+				font-size: $__font__size__16;
+				font-weight: $__medium;
+				color: $__black__01;
+				li {
+					margin-bottom: 0;
+				}
+				.post-author {
+					img {
+						width: 35px;
+						margin-right: 10px;
+					}
+				}
+			}
+			.blog-title {
+				font-size: $__font__size__24;
+				font-weight: $__semibold;
+				margin: 15px 0 10px;
+				overflow: hidden;
+			    text-overflow: ellipsis;
+			    display: -webkit-box;
+			    -webkit-line-clamp: 2;
+			    -webkit-box-orient: vertical;
+				a {
+					color: $__black;
+					&:hover {
+						color: $__indigo-600;
+					}
+				}
+				@include respond-below(custom991) {
+					font-size: $__font__size__20;
+				}
+			}
+			p {
+				color: $__black__01;
+				margin-bottom: 15px;
+				overflow: hidden;
+			    text-overflow: ellipsis;
+			    display: -webkit-box;
+			    -webkit-line-clamp: 2;
+			    -webkit-box-orient: vertical;
+			}
+			.view-link {
+				font-size: $__font__size__15;
+				font-weight: $__semibold;
+				color: $__indigo-600;
+				i {
+					margin-left: 8px;
+				}
+				&:hover {
+					color: $__black;
+				}
+			}
+		}
+	}
+}
+.visit-wrap {
+	background: $__indigo-600;
+	border-radius: 40px;
+	padding: 0;
+	background-image: url(../../img/bg/dentist-visit-bg.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+	overflow: hidden;
+	.visit-content {
+		max-width: 525px;
+		width: 100%;
+		padding-left: 50px;
+		@include respond-below(custom991) {
+			max-width: 100%;
+			padding: 50px;
+		}
+		@include respond-below(custom767) {
+			padding: 24px;
+		}
+		h2 {
+			color: $__white;
+			margin-bottom: 24px;
+			font-size:48px;
+			font-weight: $__bold;
+			@include respond-below(custom1199) {
+				font-size: $__font__size__34;
+			}
+			@include respond-below(custom991) {
+				font-size: $__font__size__28;
+			}
+			@include respond-below(custom767) {
+				font-size: $__font__size__26;
+			}
+		}
+		p {
+			color: $__athens_grey;
+			margin-bottom: 24px;
+		}
+		.btn {
+			background: $__white;
+			border: 1px solid $__white;
+			&:hover {
+				border: 1px solid $__white;
+				background: transparent;
+				box-shadow: inset 0 0 0 50px transparent;
+				color: $__white;
+			}
+		}
+	}
+	.first-visit{
+		img{
+			transform: rotate(-5deg);
+		}
+	}
+}
+
+.banner-section {
+	&.dentist-banner-sec {
+		background-image: url(../../img/banner/dentist-banner-bg-01.jpg);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: auto 100%;
+		z-index: 1;
+		position: relative;
+		padding: 100px 0;
+		@include respond-below(custom991) {
+			padding: 60px 0;
+		}
+		@include respond-below(custom767) {
+			padding: 40px 0;
+		}
+		&::after {
+			position: absolute;
+			content: "";
+			width: 60%;
+			height: 100%;
+			left: 0;
+			background: linear-gradient(116.85deg, rgba(255, 255, 255, 0.5) 33.2%, rgba(255, 255, 255, 0.5) 96.11%);
+			z-index: -1;
+		}
+		&::before {
+			display: none;
+		}
+		.section-bg {
+			.img-round {
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: -1;
+			}
+			.img-plus {
+				position: absolute;
+				left: 50px;
+				bottom: 50px;
+				z-index: -1;
+			}
+			.img-round-vector {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				z-index: -1;
+			}
+		}
+		.banner-content {
+			.banner-head {
+				h1 {
+					font-size: $__font__size__60;
+					color: $__black;
+					max-width: 550px;
+					@include respond-below(custom1399) {
+						font-size: $__font__size__54;
+					}
+					@include respond-below(custom991) {
+						font-size: $__font__size__42;
+						margin: 0 auto 15px;
+						text-align: center;
+					}
+					@include respond-below(custom767) {
+						font-size: $__font__size__34;
+					}
+					span {
+						color: $__blue__17;
+					}
+				}
+				p {
+					color: #374151;
+					@include respond-below(custom991) {
+						text-align: center;
+					}
+				}
+			}
+		}
+		.search-box-fourteen {
+            background:  $__white;
+            box-shadow: -8px 6px 100px 0px #243A651A;
+            border-radius: 10px;
+            @include margin-padding(0 0 40px, 24px 24px 20px 24px);
+            gap: 10px;
+            .form-block {
+                justify-content: space-between;
+                -webkit-justify-content: space-between;
+                -ms-flex-pack: space-between;
+                align-items: $__center;
+                @include respond-below(custom767) {
+                    flex-direction: column;
+					row-gap: 10px
+                }
+                .search-input {
+                    @include margin-padding(0 15px 0 0, null);
+                    @include respond-below(custom767) {
+                        width: 100%;
+                    }
+                    input {
+                        min-height: 40px;
+                        @include margin-padding(null, 0);
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        font-weight: $__medium;
+						min-height: 25px;
+                        height: 25px;
+                        &::placeholder {
+                            color: $__black__ash;
+                            font-weight: $__semibold;
+                        }
+                    }
+                    .forms-block {
+                        margin-bottom: 0;
+                    }
+                    label {
+                        color: #374151;
+						font-weight: $__medium;
+                    }
+                }
+            }
+            .search-btn {
+                width: auto;
+                @include margin-padding(0, null);
+                @include respond-below(custom767) {
+                    width: 100%;
+                    @include margin-padding(0 0 0 0, null);
+                }
+                .btn-primary {
+                    background: #1D7ED8;
+                    border: 1px solid #1D7ED8;
+                    -webkit-transition: 0.5s;
+                    -ms-transition: 0.5s;
+                    transition: 0.5s;
+                    padding: 14px 15px;
+                    font-size: $__font__size__15; 
+                    font-weight: $__semibold;
+					min-width: auto;
+                    @include respond-below(custom767) {
+                        width: 100%;
+                    }
+                    &:hover {
+                        background: $__purple__dark;
+                        box-shadow: inset 0 0 0 50px  $__purple__dark;
+                        -webkit-transition: 0.5s;
+                        -ms-transition: 0.5s;
+                        transition: 0.5s;
+                        border: 1px solid  $__purple__dark;
+						color: $__white;
+                    }
+                }
+            }
+        }
+	}
+}
+.dentist-home-testi {
+	background: linear-gradient(180deg, #E0E7FF 0%, #E1EFF8 100%);
+	padding: 80px 0;
+	position: relative;
+	z-index: 1;
+	.section-bg {
+		.testi-bg-left {
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: -1;
+		}
+		.testi-bg-right {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			z-index: -1;
+		}
+	}
+	.customer-wrap {
+		text-align: center;
+		box-shadow: 0px 7.5px 17.5px 0px #0000000D;
+		background: $__white;
+		border-radius: 10px;
+		padding: 30px;
+		margin-bottom: 24px;
+		@include respond-below(custom991) {
+			padding: 24px;
+		}
+		.customer-infos {
+			img {
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				margin: 0 auto 15px;
+			}
+			h6 {
+				color: $__black;
+				font-size: $__font__size__20;
+				font-weight: $__semibold;
+				margin-bottom: 3px;
+			}
+			p {
+				color: $__black__01;
+				margin-bottom: 24px;
+			}
+		}
+		p {
+			color: $__black__01;
+			margin-bottom: 24px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+		}
+	}
+}
+.searchinputs {
+	&.dropdown-toggle {
+		&::after {
+			display: none;
+		}
+	}
+}
+.dropdown-menu {
+	&.location-dropdown {
+		border-radius: 10px;
+		width: 420px;
+		padding: 24px;
+		max-height: 150px;
+		overflow-y: auto;
+		left: -50px !important;
+		border-color: $__white;
+		.location-auto-complete {
+			li {
+				& +li {
+					margin-top: 15px;
+					padding-top: 15px;
+					border-top: 1px solid #E5E7EB
+				}
+				a {
+					display: flex;
+					align-items: center;
+					color: $__midnight_black;
+					font-size: $__font__size__14;
+					span {
+						color: $__midnight_black;
+						margin-right: 15px;
+						min-width: 16px;
+						i {
+							color: $__midnight_black;
+							position: unset;
+							transform: none;
+							font-size: $__font__size__14;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.banner-sec-fourteen .banner-content{
+	.dentist-banner-btn{
+		position: relative;
+		ul{
+			display: flex;
+			align-items: center;
+			flex-wrap: wrap;
+			margin-bottom: 15px;
+			li {
+				position: relative;
+				+ li {
+					margin-left: 15px;
+				}
+			}
+			.btn{
+				min-width: auto;
+				font-size: 14px;
+				padding: 10px 12px;
+				position: relative;
+				&.btn-check{
+					background: #F9FAFB;
+					color: #6B7280;
+					border-color: #F9FAFB;
+					&:hover {
+						color: #F9FAFB;
+						border-color: #6B7280;
+						box-shadow: inset 0 0 0 50px #6B7280;
+					}
+				}
+			}
+		}
+	}
+}

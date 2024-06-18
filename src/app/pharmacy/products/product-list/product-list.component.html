@@ -1,0 +1,86 @@
+<div class="page-wrapper">
+  <div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="row">
+        <div class="col-sm-7 col-auto">
+          <h3 class="page-title">Products</h3>
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink] = "routes.pharmacyDashboard">Dashboard</a></li>
+            <li class="breadcrumb-item active">Products</li>
+          </ul>
+        </div>
+        <div class="col-sm-5 col">
+          <a [routerLink] = "routes.addProducts" class="btn btn-primary float-end mt-2">Add New</a>
+        </div>
+      </div>
+    </div>
+    <!-- /Page Header -->
+    <div class="row">
+      <div class="col-md-12">
+
+        <!-- Recent Orders -->
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <app-pagination-header></app-pagination-header>
+              <table matSort (matSortChange)="sortData($event)" class="datatable table table-hover table-center mb-0">
+                <thead>
+                  <tr>
+                    <th mat-sort-header="id">#</th>
+                    <th mat-sort-header="productName">Product Name</th>
+                    <th mat-sort-header="category">Category</th>
+                    <th mat-sort-header="price">Price</th>
+                    <th mat-sort-header="quantity">Quantity</th>
+                    <th mat-sort-header="discount">Discount</th>
+                    <th mat-sort-header="expire">Expire</th>
+                    <th mat-sort-header="action">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (data of tableData; track data) {
+                    <tr>
+                      <td>{{data.id}}</td>
+                      <td>
+                        <h2 class="table-avatar">
+                          <span class="avatar avatar-sm me-2"><img class="avatar-img" [src]="data.img" alt="product image"></span>
+                          {{data.productName}}
+                        </h2>
+                      </td>
+                      <td>{{data.category}}</td>
+                      <td>{{data.price}}</td>
+                      <td>
+                        @if (data.quantityCheck === false) {
+                          <span>{{data.quantity}}</span>
+                        }
+                        @if (data.quantityCheck === true) {
+                          <span class="btn btn-sm bg-danger-light">{{data.quantity}}</span>
+                        }
+                      </td>
+                      <td>{{data.discount}}</td>
+                      <td><span class="btn btn-sm bg-danger-light">{{data.expire}}</span></td>
+                      <td>
+                        <div class="actions">
+                          <a class="btn btn-sm bg-success-light me-1" [routerLink] = "routes.editProducts">
+                            <i class="fe fe-pencil"></i> {{data.action1}}
+                          </a>
+                          <a href="javascript:void(0);" class="btn btn-sm bg-danger-light" data-bs-toggle="modal" href="#delete_modal">
+                            <i class="fe fe-trash"></i> {{data.action2}}
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            <app-custom-pagination></app-custom-pagination>
+          </div>
+        </div>
+        <!-- /Recent Orders -->
+
+      </div>
+    </div>
+  </div>
+</div>

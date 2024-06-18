@@ -1,0 +1,166 @@
+.dependent-wrap {
+	border: 1px solid $__honeydew_color;
+	box-shadow: 0px 7.5px 17.5px 0px #0000000D;
+	border-radius: 10px;
+	@include margin-padding(0 0 15px,24px 24px 9px);
+	display: flex;
+	display: -webkit-flex;
+	align-items:center;
+	-webkit-align-items:center;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	flex-wrap: wrap;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	.dependent-info {
+		display: flex;
+		display: -webkit-flex;
+		align-items:center;
+		-webkit-align-items:center;
+		margin-bottom: 5px;
+		flex-wrap: wrap;
+	}
+	.patinet-information {
+		min-width: 350px;
+		margin-bottom: 5px;	
+		@include respond-below(custom575) {
+			min-width: auto;
+		}
+		img {
+			width: 60px;
+			height: 60px;
+		}
+	}
+	.patient-info {
+		font-weight: $__semibold;
+		margin-bottom: 5px;
+		ul {
+			li {
+				font-size: $__font__size__14;
+				font-weight: $__normal;
+				color: $__black__ash;
+				@include margin-padding(0 6px 0 0, 0 14px 0 0);
+				position: relative;
+				display: inline-block;
+				&::before {
+					content: "\f111";
+					display: block;
+					font-family: "FontAwesome";
+					@include position(absolute, 50%, 0, null, null);
+					font-size: 7px;
+					@include transform(translateY(-50%));
+					color: $__blue__14;
+				}
+				&:last-child {
+					@include margin-padding(0, 0);
+					&::before {
+						content: none;
+					}
+				}
+			}
+			li + li {
+				margin-top: 0;
+			}
+		}
+	}
+	.blood-info {
+		margin-bottom: 10px;
+		p {			
+			font-size: $__font__size__14;
+			font-weight: $__normal;
+			color: $__black__ash;
+			margin-bottom: 5px;
+		}
+		h6 {
+			font-weight: $__semibold;
+			margin-bottom: 0;
+		}
+	}
+	.dependent-status {
+		display: flex;
+		display: -webkit-flex;
+		align-items:center;
+		-webkit-align-items:center;
+		.status-toggle {
+			margin-right: 23px;
+			margin-bottom: 10px;
+			display: flex;
+			display: -webkit-flex;
+			align-items:center;
+			-webkit-align-items:center;
+			.checktoggle {
+				width: 28px;
+				height: 15px;
+				margin: 0 5px;
+				&::after {
+					width: 12px;
+		    		height: 12px;
+		    	}
+			}
+			.check {
+		        &:checked {
+		    	    & + .checktoggle {
+		        	    & + .active {
+		        	    	color: $__black__shade;
+		            	}
+		         	}	
+		         }
+		    }
+			span {
+				font-weight: $__normal;
+				color: $__slate-500;
+				font-size: $__font__size__14;
+			}
+			&.checked {
+				.deactive {
+					color: $__black__shade;
+				}
+				
+			}
+			
+		}
+		.edit-icon {
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			border: 1px solid $__honeydew_color;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-bottom: 10px;
+			&:hover {
+				background: $__blue__14;
+				color: $__white;
+			}
+		}
+	}
+}
+.add-dependent {
+	.img-upload {
+		.profile-img {
+			width: 80px;
+			height: 80px;
+		}
+		.upload-img {
+			h5 {
+				margin-bottom: 10px;
+			}
+			.imgs-load {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+.dashboard-header {
+	.appointment-tabs {
+		ul {
+			li {
+				margin-bottom: 10px;
+			}
+		}
+	}
+	.btn {
+		font-weight: $__medium;
+	}
+}

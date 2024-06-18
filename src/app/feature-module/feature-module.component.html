@@ -1,0 +1,58 @@
+<app-header
+  [ngClass]="{
+    'd-none':
+      headerActive === false ||
+      last === 'doctor-register-step1' ||
+      last === 'doctor-register-step2' ||
+      last === 'doctor-register-step3' ||
+      last === 'patient-register-step1' ||
+      last === 'patient-register-step2' ||
+      last === 'patient-register-step3' ||
+      last === 'patient-register-step4' ||
+      last === 'patient-register-step5' ||
+      last === 'pharmacy-register-step1' ||
+      last === 'pharmacy-register-step2' ||
+      last === 'pharmacy-register-step3' ||
+      last === 'pharmacy-register-step3' 
+  }"
+></app-header>
+<router-outlet></router-outlet>
+<app-footer
+  [ngClass]="{
+    'd-none':
+      footerActive === false ||
+      page === 'chat' ||
+      page === 'chat-doctor' ||
+      page === 'consultation' ||
+      last === 'doctor-register-step1' ||
+      last === 'doctor-register-step2' ||
+      last === 'doctor-register-step3' ||
+      page === 'doctor-signup' ||
+      page === 'forgot-password2' ||
+      page === 'email-otp' ||
+      last === 'patient-register-step1' ||
+      last === 'patient-register-step2' ||
+      last === 'patient-register-step3' ||
+      last === 'patient-register-step4' ||
+      last === 'patient-register-step5' ||
+      page === 'patient-signup' ||
+      last === 'pharmacy-register-step1' ||
+      last === 'pharmacy-register-step2' ||
+      last === 'pharmacy-register-step3' ||
+      page === 'signup' ||
+      page === 'reset-password' ||
+      page === 'login-email' ||
+      page === 'login-email-otp' ||
+      page === 'login-phone' ||
+      last === 'map-grid' ||
+      last === 'map-list' ||
+      page === 'payment' ||
+      page === 'signup-success' ||
+      page === 'call' ||
+      page === 'login-phone-otp'
+  }"
+></app-footer>
+<!-- Cursor -->
+  <div class="mouse-cursor cursor-outer" #cursorOuter></div>
+  <div class="mouse-cursor cursor-inner" #cursorInner></div>
+<!-- /Cursor -->
