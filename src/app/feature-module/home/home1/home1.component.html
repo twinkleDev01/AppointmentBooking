@@ -64,125 +64,120 @@
           </div>
         </div> -->
 
-        <div class="form">
-          <h4 class="text-center mb-2">Get an Appointment</h4>
-          <div class="row mt-4">
-            <!-- age and gender -->
-            <div class="col-lg-6 no_padding">
-              <input type="text" placeholder="Enter Age">
-            </div>
-            <div class="col-lg-6 no_padding">
-              <select name="gender" id="gender">
-                <option value="Gender">Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div class="col-lg12 mt-3">
-              <h5 class="text-center">Select your concern(s)</h5>
-            </div>
-            <!-- list of concerns/decease -->
-            <div class="row concerns">
-              <div *ngFor="let concern of concerns" class="col-lg-6 mt-3 d-flex align-items-center">
-                <input type="checkbox">
-                <label for="concern">{{concern.issueName}}</label>
+        <!-- app.component.html -->
+<div class="form" [formGroup]="appointmentForm">
+  <h4 class="text-center mb-2">Get an Appointment</h4>
+  <div class="row mt-4">
+    <!-- age and gender -->
+    <div class="col-lg-6 no_padding">
+      <input type="text" placeholder="Enter Age" formControlName="age">
+    </div>
+    <div class="col-lg-6 no_padding">
+      <select name="gender" id="gender" formControlName="gender">
+        <option value="">Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="col-lg-12 mt-3">
+      <h5 class="text-center">Select your concern(s)</h5>
+    </div>
+    <!-- list of concerns/decease -->
+    <div class="row concerns" >
+      <div *ngFor="let concern of concerns; let i = index" class="col-lg-6 mt-3 d-flex align-items-center">
+        <input type="checkbox" >
+        <label for="concern">{{concern.issueName}}</label>
+      </div>
+    </div>
+    <!-- Are you consulting for first time? -->
+    <div class="concerns mt-3">
+      <h4 class="text-center">Are you consulting for the first time?</h4>
+      <div class="yes_no_btn d-flex align-items-center justify-content-center">
+        <input type="radio" id="yes" value="yes" formControlName="firstTimeConsult">
+        <label for="yes">Yes</label>
+        <input type="radio" id="no" value="no" formControlName="firstTimeConsult">
+        <label for="no">No</label>
+      </div>
+    </div>
+    <!-- Upload Images -->
+    <div class="concerns mt-3">
+      <h4 class="text-center">Upload up to 5 Images</h4>
+      <div class="file-upload-container">
+        <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none;">
+        <label for="fileInput" class="custom-file-upload">Select Files</label>
+        <div *ngIf="files.length === 0" class="no-files-uploaded">No file uploaded</div>
+      </div>
+      <div class="preview-container">
+        <div *ngFor="let file of files">
+          <img *ngIf="file.type.startsWith('image')" (click)="openImageModal(file.url)" [src]="file.url"
+            alt="File Preview" class="preview_img clickable">
+          <span *ngIf="!file.type.startsWith('image')">{{file.name}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom Modal -->
+    <div class="custom-modal" *ngIf="isImageModalOpen">
+      <div class="custom-modal-content">
+        <div class="custom-modal-header">
+          <h5 class="custom-modal-title">Image Preview</h5>
+          <button type="button" class="close" (click)="closeImageModal()">
+            <i class="fa-regular fa-circle-xmark text-black"></i>
+          </button>
+        </div>
+        <div class="custom-modal-body">
+          <img [src]="selectedImageUrl" alt="Selected Image">
+        </div>
+      </div>
+    </div>
+    <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div>
+
+    <div class="d-flex justify-content-center align-items-center mt-5">
+      <button class="form_btn me-3" (click)="openModal()">Select Time</button>
+      <button class="form_btn" (click)="onSubmit()">Book Appointment</button>
+    </div>
+
+    
+  </div>
+</div>
+    <!-- Modal
+<!-- Custom Modal -->
+<div class="custom-modal" *ngIf="isModalOpen">
+  <div class="custom-modal-content">
+    <div class="custom-modal-header">
+      <h5 class="custom-modal-title">Select Preferred Date and Available Time Slot</h5>
+      <button type="button" class="close" (click)="closeModal()">
+        <i class="fa-regular fa-circle-xmark text-black"></i>
+      </button>
+    </div>
+    <div class="custom-modal-body">
+      <div class="row mt-3">
+        <div class="col-lg-6">
+          <p-calendar [(ngModel)]="selectedDate" inline="true" dateFormat="yy-mm-dd"
+            (onSelect)="onSelectDate($event)" (ngModelChange)="onDateChange($event)" (onInput)="onDateChange($event)"></p-calendar>
+        </div>
+        <div class="col-lg-6">
+          <!-- Available Times -->
+          <h6 class="text-center mt-5">Available Time Slots</h6>
+          <div class="row mt-5">
+            <div *ngFor="let slot of uniqueTimeSlots" class="col-lg-3"  (click)="onSelectTimeSlot(slot)">
+              <div
+                [ngClass]="{'selected': selectedTimeSlot === slot, 'not-selected': selectedTimeSlot !== slot}">
+                {{ slot.startTime }}
               </div>
             </div>
-            <!-- Are you consulting for first time? -->
-            <div class="concerns mt-3">
-              <h4 class="text-center">Are you consulting for the first time?</h4>
-              <div class="yes_no_btn d-flex align-items-center justify-content-center">
-                <input type="radio" name="yes" id="yes">
-                <label for="yes">Yes</label>
-                <input type="radio" name="No" id="no">
-                <label for="No">No</label>
-              </div>
-            </div>
-            <!-- Upload Images -->
-            <div class="concerns mt-3">
-              <h4 class="text-center">Upload up to 5 Images</h4>
-              <div class="file-upload-container">
-                <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none;">
-                <label for="fileInput" class="custom-file-upload">Select Files</label>
-                <div *ngIf="files.length === 0" class="no-files-uploaded">No file uploaded</div>
-              </div>
-              <div class="preview-container">
-                <div *ngFor="let file of files">
-                  <img *ngIf="file.type.startsWith('image')" (click)="openImageModal(file.url)" [src]="file.url"
-                    alt="File Preview" class="preview_img clickable">
-                  <span *ngIf="!file.type.startsWith('image')">{{file.name}}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Custom Modal -->
-            <div class="custom-modal" *ngIf="isImageModalOpen">
-              <div class="custom-modal-content">
-                <div class="custom-modal-header">
-                  <h5 class="custom-modal-title">Image Preview</h5>
-                  <button type="button" class="close" (click)="closeImageModal()">
-                    <i class="fa-regular fa-circle-xmark text-black"></i>
-                  </button>
-                </div>
-                <div class="custom-modal-body">
-                  <img [src]="selectedImageUrl" alt="Selected Image">
-                </div>
-              </div>
-            </div>
-            <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div>
-
-
-
-
-            <div class="d-flex justify-content-center align-items-center mt-5">
-              <button class="form_btn me-3" (click)="openModal()">Select Time</button>
-              <button class="form_btn">Book Appointment</button>
-            </div>
-
-            <!-- Custom Modal -->
-            <div class="custom-modal" *ngIf="isModalOpen">
-              <div class="custom-modal-content">
-                <div class="custom-modal-header">
-                  <h5 class="custom-modal-title">Select Preferred Date and Available Time Slot</h5>
-                  <button type="button" class="close" (click)="closeModal()">
-                    <i class="fa-regular fa-circle-xmark text-black"></i>
-                  </button>
-                </div>
-                <div class="custom-modal-body">
-                  <div class="row mt-3">
-                    <div class="col-lg-6">
-                      <p-calendar [(ngModel)]="selectedDate" inline="true" dateFormat="yy-mm-dd"
-                        (onSelect)="onSelectDate($event)" (onInput)="onDateChange($event)"></p-calendar>
-                    </div>
-                    <div class="col-lg-6">
-                      <!-- Available Times -->
-                      <h6 class="text-center mt-5">Available Time Slots</h6>
-                      <div class="row mt-5">
-                        <div *ngFor="let slot of uniqueTimeSlots" class="col-lg-3" (click)="onSelectTimeSlot(slot)">
-                          <div
-                            [ngClass]="{'selected': selectedTimeSlot === slot, 'not-selected': selectedTimeSlot !== slot}">
-                            {{ slot.startTime }}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div *ngIf="selectedTimeSlot" class="d-flex justify-content-between mt-3">
-                    <p>Selected Slot: <strong>{{ selectedTimeSlot.startTime }}, {{ selectedDate | date: 'yyyy-MM-dd'
-                        }}</strong></p>
-                    <button class="form_btn">Confirm Slot</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <!-- Modal Backdrop -->
-            <div class="custom-modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()"></div>
-
           </div>
         </div>
+      </div>
+      <div *ngIf="selectedTimeSlot" class="d-flex justify-content-between mt-3">
+        <p>Selected Slot: <strong>{{ selectedTimeSlot.startTime }}, {{ selectedDate | date: 'yyyy-MM-dd'
+            }}</strong></p>
+        <button class="form_btn" (click)="closeModal()">Confirm Slot</button>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </div>

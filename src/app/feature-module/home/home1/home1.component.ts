@@ -4,6 +4,8 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { routes } from 'src/app/shared/routes/routes';
 import { aboutUs, doctorSliderOne, partnersSlider, specialitiesSliderOne } from 'src/app/shared/models/models';
 import { Router } from '@angular/router';
+import { PatientsService } from 'src/app/shared/Service/patients.service';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 declare var $: any;
 @Component({
@@ -26,155 +28,13 @@ export class Home1Component implements OnInit {
   selectedTimeSlot: any;
   isImageModalOpen: boolean = false;
   selectedImageUrl!: string;
-  slots: any = [
-    {
-      "id": "9d5d2f30-66f1-4413-adba-1150f6dcaefb",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:00:00",
-      "endTime": "09:25:00",
-      "doctorId": "ef8860b2-fe2f-42ea-abfb-13ed9f50005a",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "3864f31c-3f86-4029-a193-1d51f8aedd3f",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:00:00",
-      "endTime": "09:25:00",
-      "doctorId": "fe579475-e27e-41a4-a681-40e308bbb090",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "0971da3e-5cca-45eb-b2a8-237abc4ea12c",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:30:00",
-      "endTime": "09:55:00",
-      "doctorId": "ef8860b2-fe2f-42ea-abfb-13ed9f50005a",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "c0476b06-8cb7-4dd7-9875-28d8e0b97081",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:00:00",
-      "endTime": "09:25:00",
-      "doctorId": "031f720f-ad66-4aba-b060-930c8b37f576",
-      "isBooked": true,
-      "bookedBy": "0"
-    },
-    {
-      "id": "ed303022-56d9-4761-a8cf-3b58f24dbc8a",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:00:00",
-      "endTime": "09:25:00",
-      "doctorId": "126ff295-e58e-4c50-b5dd-a6ef8f6a2212",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "4df98530-5a35-494a-a6e5-3f12e95989d5",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "10:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "126ff295-e58e-4c50-b5dd-a6ef8f6a2212",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "a9a508c9-8bdc-4e8a-a3e3-45c4cbc84775",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:30:00",
-      "endTime": "09:55:00",
-      "doctorId": "fe579475-e27e-41a4-a681-40e308bbb090",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "bcd64f5c-e04c-4041-b2a1-58d6fd2ded1d",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:30:00",
-      "endTime": "09:55:00",
-      "doctorId": "031f720f-ad66-4aba-b060-930c8b37f576",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "58665505-26e7-4972-90b1-6b32a27938b6",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "11:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "031f720f-ad66-4aba-b060-930c8b37f576",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "b1d6cb48-50fa-4549-9123-8043329df630",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "10:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "ef8860b2-fe2f-42ea-abfb-13ed9f50005a",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "a7eaf7f8-451e-494a-ba9f-883ad8b9b799",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "10:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "fe579475-e27e-41a4-a681-40e308bbb090",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "43677720-164c-46a6-bba9-a5ab9833e14b",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "10:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "031f720f-ad66-4aba-b060-930c8b37f576",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "2a0cdcbc-8daa-4450-a3b1-d82ee4404f70",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:30:00",
-      "endTime": "09:55:00",
-      "doctorId": "126ff295-e58e-4c50-b5dd-a6ef8f6a2212",
-      "isBooked": false,
-      "bookedBy": "0"
-    }
-  ];
+  slots: any 
   uniqueTimeSlots: any[] = [];
-
-
+  filteredAppointments: any;
+  appointmentForm: FormGroup;
   files: { name: string, url: string, type: string }[] = [];
-  concerns: { issueID: string, issueName: string }[] = [
-    {
-      "issueID": "0867d68f-2e18-41b7-a4e8-0f64564d5089",
-      "issueName": "Left Leg Fracture "
-    },
-    {
-      "issueID": "de8dfa59-56b3-4c4d-9854-28d69777618f",
-      "issueName": "Eyes Problem"
-    },
-    {
-      "issueID": "ed8a29d9-8ccc-49cd-9d5d-bcae4a19481a",
-      "issueName": "Back Pain 3"
-    },
-    {
-      "issueID": "a0c1c183-5b0a-418c-ba54-ce5f2207e6e7",
-      "issueName": "Chest Pain 2"
-    },
-    {
-      "issueID": "dc74b909-3896-4fcb-a0d5-efb6ecab98d5",
-      "issueName": "Right Arm Swellings"
-    },
-    {
-      "issueID": "7791c71b-bb92-4374-b9c5-fed8e0efcdc7",
-      "issueName": "Fever and Cough"
-    }
-  ]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  concerns:any
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -215,7 +75,7 @@ export class Home1Component implements OnInit {
       },
     ],
   };
-  constructor(private data: DataService, private router: Router) {
+  constructor(private data: DataService, private router: Router,private patientsService:PatientsService,private fb: FormBuilder) {
     this.specialitiesSliderOne = this.data.specialitiesSliderOne;
     this.doctorSliderOne = this.data.doctorSliderOne;
     this.aboutUs = this.data.aboutUs;
@@ -224,6 +84,17 @@ export class Home1Component implements OnInit {
     const endDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
     this.bsRangeValue = [today, endDate];  // Initialize the date range
     this.date = new Date();
+    this.appointmentForm = this.fb.group({
+      age: ['', Validators.required],
+      gender: ['', Validators.required],
+      firstTimeConsult: ['', Validators.required],
+      files: [null],
+      selectedSlot: [''],
+    });
+  }
+
+  get concernControls() {
+    return this.appointmentForm.get('concerns') as FormArray;
   }
   public specialitiesSlider: OwlOptions = {
     loop: true,
@@ -307,7 +178,9 @@ export class Home1Component implements OnInit {
     this.router.navigate([routes.search2]);
   }
   ngOnInit() {
-    this.generateUniqueTimeSlots();
+
+    this.getIssues();
+    this.getAvailableSlots()
   }
 
 onSelectDate(event: any) {
@@ -353,7 +226,7 @@ onSelectDate(event: any) {
       return `${twelveHour}:${minutes < 10 ? '0' : ''}${minutes}${ampm}`;
     };
   
-    this.uniqueTimeSlots = Array.from(timeSlotsMap.values()).map(slot => {
+    this.uniqueTimeSlots = Array.from(timeSlotsMap.values())?.map(slot => {
       return { ...slot, startTime: convertTo12HourFormat(slot.startTime) };
     });
     console.log("unique time slots", this.uniqueTimeSlots);
@@ -363,8 +236,18 @@ onSelectDate(event: any) {
     this.selectedTimeSlot = slot;
   }
 
-  onDateChange(newDate: Date) {
-    console.log(newDate);
+  
+  onDateChange(event: any) {
+    console.log("date change");
+    this.selectedDate = event;
+    console.log('Date changed:', this.selectedDate);
+    this.filterAppointments(this.selectedDate);
+  }
+
+
+  filterAppointments(date: any) {
+    this.filteredAppointments = this.uniqueTimeSlots.filter(appointment => appointment.date === date);
+    console.log('Filtered appointments:', this.filteredAppointments);
   }
 
   onFileChange(event: any) {
@@ -402,5 +285,29 @@ closeImageModal() {
     this.isModalOpen = false;
   }
 
+getIssues(){
+  this.patientsService.getIssues().subscribe(issues =>{
+    console.log(issues);
+    this.concerns=issues
+  })
+}
 
+getAvailableSlots(){
+  this.patientsService.getAvailableSlot().subscribe(availableSlots =>{
+    console.log(availableSlots);
+    this.slots=availableSlots;
+    this.generateUniqueTimeSlots();
+  })
+}
+
+onSubmit(){
+  this.appointmentForm.patchValue({
+    selectedSlot: this.selectedTimeSlot.startTime 
+  });
+  console.log(this.appointmentForm.value);
+  if (this.appointmentForm.valid) {
+    console.log(this.appointmentForm.value);
+    // Handle form submission
+  }
+}
 }
