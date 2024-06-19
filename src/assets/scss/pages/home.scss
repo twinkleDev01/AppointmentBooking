@@ -1161,7 +1161,7 @@
     @include margin-padding(0, 80px 0);
     position: $__relative;
     overflow: $__hidden;
-    z-index: 1;
+    // z-index: 1;
     &::after {
         content: '';
         background: url(../../img/bg/doctor-shape-img1.png);
@@ -1392,7 +1392,7 @@
     @include margin-padding(0, 80px 0 0);
     position: $__relative;
     overflow: $__hidden;
-    z-index: 1;
+    // z-index: 1;
     &::after {
         content: '';
         background: url(../../img/bg/doctor-shape-img1.png);
@@ -1401,7 +1401,7 @@
         width: 213px;
         height: 335px;
         opacity: 0.5;
-        z-index: -1;
+        // z-index: -1;
         @include respond-below(custom991) {
             display: $__none;
         }
@@ -1414,7 +1414,7 @@
         opacity: 0.5;
         width: 213px;
         height: 335px;
-        z-index: -1;
+        // z-index: -1;
         @include respond-below(custom991) {
             display: $__none;
         }
@@ -1502,7 +1502,7 @@
     @include margin-padding(0, 80px 0 0);
     position: $__relative;
     overflow: $__hidden;
-    z-index: 1;
+    // z-index: 1;
     &::after {
         content: '';
         background: url(../../img/bg/doctor-shape-img1.png);

@@ -5,7 +5,41 @@
     background: #fff;
     border-radius: 30px;
     box-shadow: 0px 10px 79px -5px rgb(0 0 0 / 23%);
+    animation: slideIn 1.5s ease-out;
+    position: relative;
 }
+@keyframes slideIn {
+    from {
+      transform: translateY(80px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+  input[type="text"]:hover {
+    border: 1px solid #0e82fd;
+  }
+  
+  input[type="checkbox"]:hover {
+    border: 1px solid #0e82fd;
+  }
+  
+  input[type="radio"]:hover {
+    border: 1px solid #0e82fd;
+  }
+
+  select:hover{
+    border: 1px solid #0e82fd;
+  }
+  
+.hover_concern:hover{
+    color: #0e82fd;
+}
+
 
 input[type="text"] {
     height: 40px;
@@ -99,13 +133,32 @@ select {
     align-items: center;
 }
 
+.concern_label:hover{
+    color: #0e82fd;
+}
+
+.concern_label{
+    font-size: 14px;
+    color: black;
+}
+
+.banner-content p{
+    width: 40%;
+}
+
+.form h3{
+    color: #0e82fd;
+    font-weight: 600;
+}
+
 .custom-file-upload {
-    border: 1px solid #ccc;
+    border: 1px solid #0e82fd;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
     background-color: #f9f9f9;
     margin-right: 10px;
+    border-radius: 5px;
 }
 
 .no-files-uploaded {
@@ -150,17 +203,17 @@ $__none: none;
     position: $__relative;
     text-align: right;
     .banner-img1 {
-        @include position($__absolute, 260px, null, null, -20px);
+        @include position($__absolute, 260px, null, null, -120px);
         -webkit-animation: float 2s ease-in-out infinite;
         animation: float 2s ease-in-out infinite;
     }
     .banner-img2 {
-        @include position($__absolute, 200px, -40px, null, null);
+        @include position($__absolute, 250px, -80px, null, null);
         -webkit-animation: mover 3s infinite alternate;
         animation: mover 3s infinite alternate;
     }
     .banner-img3 {
-        @include position($__absolute, 500px, -80px, null, null);
+        @include position($__absolute, 480px, 100px, null, null);
         -webkit-animation: mover 1s infinite alternate;
         animation: mover 1s infinite alternate;
     }
@@ -198,10 +251,10 @@ $__none: none;
 
 // Define the styles for .banner_img class
 .banner_img {
-    max-width: 400px;
+    max-width: 500px;
     position: absolute;
-    top: 90px;
-    right: 0px;
+    top: 70px;
+    right: 20px;
 }
 
 
@@ -236,6 +289,10 @@ $__none: none;
     padding: 20px;
     border-radius: 5px;
 }
+
+// ::ng-deep .p-calendar {
+//     width: 300px !important; /* Adjust width as needed */
+//   }
 
 .custom-modal-header {
     position: relative;
@@ -377,6 +434,13 @@ $__none: none;
 .mirror-image {
     transform: scaleX(-1);
 }
+
+.preview-button{
+    border: 1px solid #a7a7a700;
+    padding: 10px;
+}
+
+
 
 .calendar-p{
     .p-calendar{
