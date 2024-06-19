@@ -121,7 +121,7 @@
     <div class="custom-modal" *ngIf="isImageModalOpen">
       <div class="custom-modal-content">
         <div class="custom-modal-header">
-          <h5 class="custom-modal-title">Image Preview</h5>
+          <h3 class="custom-modal-title">Image Preview</h3>
           <button type="button" class="close" (click)="closeImageModal()">
             <i class="fa-regular fa-circle-xmark text-black"></i>
           </button>
@@ -152,7 +152,7 @@
     <div class="custom-modal-body">
       <div class="row mt-3">
         <div class="col-lg-6">
-          <p-calendar [(ngModel)]="selectedDate" inline="true" dateFormat="yy-mm-dd"
+          <p-calendar [(ngModel)]="selectedDate" class="calendar-p" inline="true" dateFormat="yy-mm-dd"
             (onSelect)="onSelectDate($event)" (ngModelChange)="onDateChange($event)" (onInput)="onDateChange($event)"></p-calendar>
         </div>
         <div class="col-lg-6">

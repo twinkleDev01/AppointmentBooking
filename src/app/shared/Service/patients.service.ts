@@ -12,6 +12,7 @@ export class PatientsService {
   deleteprescription:string ='/Prescription/DeletePrescription'
   getissues:string='/Issue'
   getavailableSlot:string ='/Slots/GetAvailableSlot'
+  bookappointment:string ='/Appointment/book_appointment'
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Detail:any;
   constructor(private http:HttpClient) { 
@@ -73,6 +74,11 @@ return this.http.get(url);
 getAvailableSlot(){
 const url=`${this.baseUrl}${this.getavailableSlot}`
 return this.http.get(url);
+}
+
+bookAppointment(data:any){
+const url=`${this.baseUrl}${this.bookappointment}`;
+return this.http.post(url, data);
 }
  }
 

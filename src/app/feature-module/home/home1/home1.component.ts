@@ -35,6 +35,7 @@ export class Home1Component implements OnInit {
   files: { name: string, url: string, type: string }[] = [];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   concerns:any
+  userDetails:any
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -88,7 +89,7 @@ export class Home1Component implements OnInit {
       age: ['', Validators.required],
       gender: ['', Validators.required],
       firstTimeConsult: ['', Validators.required],
-      selectedSlot: ['', Validators.required],
+      starTime: ['', Validators.required],
       selectedConcerns: this.fb.array([]),
       selectedDate:['', Validators.required],
       selectedFiles: this.fb.array([])
@@ -333,14 +334,46 @@ getAvailableSlots(){
 }
 
 onSubmit(){
-  this.appointmentForm.patchValue({
-    selectedSlot: this.selectedTimeSlot.startTime ,
-    selectedDate: this.selectedDate
-  });
+  // this.appointmentForm.patchValue({
+  //   starTime: this.selectedTimeSlot.startTime ,
+  //   appointmentDate: this.selectedDate
+  // });
+  const user = localStorage.getItem('UserDetail');
+  if (user) {
+    this.userDetails = JSON.parse(user); // Directly parse the user object
+    console
+  } else {
+    console.log('User details not found in local storage.');
+  }
+
+  const data=
+    {
+      "patientId": this.userDetails.nameid,
+      "doctorId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "issueId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "appointmentDate": this.selectedDate,
+      "symptoms": "string",
+      "starTime": {
+        // "ticks": this.selectedTimeSlot.startTime
+      },
+      "endTime": {
+        // "ticks": this.selectedTimeSlot.endTime
+      },
+      "isCancelled": false,
+      "isCompleted": false,
+    }
+  
+  console.log(data);
   console.log(this.appointmentForm.value);
+  this.bookAppointment(this.appointmentForm.value)
   if (this.appointmentForm.valid) {
     console.log(this.appointmentForm.value);
     // Handle form submission
   }
+}
+bookAppointment(value:any){
+  this.patientsService.bookAppointment(value).subscribe(response =>{
+    console.log(response);
+  })
 }
 }

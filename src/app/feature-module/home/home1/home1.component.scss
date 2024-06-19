@@ -377,3 +377,79 @@ $__none: none;
 .mirror-image {
     transform: scaleX(-1);
 }
+
+.calendar-p{
+    .p-calendar{
+        .p-component{
+            .p-datepicker-group-container{
+                .p-datepicker-group{
+                    width: 300px;
+                }
+            }
+        }
+    }
+}
+
+/* Target the p-calendar element with the class calendar-p */
+// .calendar-p {
+//     color: red;
+//     border: 1px solid red;
+// }
+
+/* Further nested styling inside the calendar-p component */
+
+/* Target the header of the datepicker */
+/* Angular-specific: Use ::ng-deep to penetrate the Shadow DOM */
+// ::ng-deep .calendar-p .p-datepicker .p-datepicker-header {
+//     background-color: #f0f0f0 !important; /* Example background color */
+//     border-bottom: 1px solid #ccc !important; /* Example border bottom */
+// }
+
+::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-month{
+    color: #0E82FD !important;
+}
+
+::ng-deep .calendar-p .p-datepicker .p-datepicker-header  .p-datepicker-year {
+    color: #0E82FD !important;
+}
+
+::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-next-icon  {
+    color: #0E82FD !important;
+}
+
+::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-prev-icon  {
+    color: #0E82FD !important;
+}
+::ng-deep .calendar-p .p-datepicker .p-highlight{
+    background-color:  #0E82FD !important;
+    color: #fff;
+}
+
+/* Target the title of the datepicker */
+.calendar-p .p-datepicker-title {
+    color: #333; /* Example text color */
+}
+
+/* Target the previous button in the datepicker header */
+.calendar-p .p-datepicker-prev {
+    color: #000; /* Example color for the previous button */
+}
+
+/* Style the days in the datepicker */
+.calendar-p .p-datepicker td span {
+    color: #666; /* Example text color for days */
+    padding: 10px; /* Example padding */
+    border-radius: 50%; /* Example border-radius for circular appearance */
+}
+
+/* Style for selected date */
+.calendar-p .p-datepicker td span.p-highlight {
+    background-color: #007ad9; /* Example background color for selected date */
+    color: #fff; /* Example text color for selected date */
+}
+
+/* Disabled dates */
+.calendar-p .p-datepicker td span.p-disabled {
+    color: #999; /* Example color for disabled dates */
+}
+
