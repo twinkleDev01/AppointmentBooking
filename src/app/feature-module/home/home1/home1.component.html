@@ -4,16 +4,27 @@
 <section class="banner-section">
   <div class="container">
     <div class="row mt-5">
-      <div class="col-lg-6">
+      <div class="col-lg-7">
         <div class="banner-content aos" data-aos="fade-up" data-aos-duration="2000">
           <h1 class="fs-2">Transform Your <span>Hair & Skin</span> with Our Online Dermatology Consult</h1>
           <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
           <p class="text-success w-50">Proven Results with 98.6% User Satisfaction </p>
           <a [routerLink]="routes.booking1" class="btn">Start a Consult</a>
-          <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
+          <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
             <img src="assets/img/banner-img.png" class="img_fluid" alt="patient-image" />
+          </div> -->
+          <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
+            <img src="assets/img/banner-img.png" class="img-fluid img_fluid" alt="patient-image" />
+            <div class="banner-img1">
+              <img src="assets/img/banner/banner-img1.svg" class="img-fluid" alt="checkup-image">
+            </div>
+            <div class="banner-img2">
+              <img src="assets/img/banner/banner-img2.svg" class="img-fluid" alt="doctor-slide">
+            </div>
+            <div class="banner-img3">
+              <img src="assets/img/banner/banner-img3.svg" class="img-fluid" alt="doctors-list">
+            </div>
           </div>
-
         </div>
         <!-- <div class="search-box-one aos" data-aos="fade-up" data-aos-duration="2000">
           <form>
@@ -46,24 +57,8 @@
           </form>
         </div> -->
       </div>
-      <div class="col-lg-6">
-        <!-- <div class="banner-img aos" data-aos="fade-up" data-aos-duration="2000">
-          <img
-            src="assets/img/banner-img.png"
-            class="img-fluid"
-            alt="patient-image"
-          />
-          <div class="banner-img1">
-            <img src="assets/img/banner/banner-img1.svg" class="img-fluid" alt="checkup-image">
-          </div>
-          <div class="banner-img2">
-            <img src="assets/img/banner/banner-img2.svg" class="img-fluid" alt="doctor-slide">
-          </div>
-          <div class="banner-img3">
-            <img src="assets/img/banner/banner-img3.svg" class="img-fluid" alt="doctors-list">
-          </div>
-        </div> -->
-
+      <!-- Form -->
+      <div class="col-lg-5">
         <div class="form">
           <h4 class="text-center mb-2">Get an Appointment</h4>
           <div class="row mt-4">
@@ -84,9 +79,9 @@
             </div>
             <!-- list of concerns/decease -->
             <div class="row concerns">
-              <div *ngFor="let concern of concerns" class="col-lg-6 mt-3 d-flex align-items-center">
-                <input type="checkbox">
-                <label for="concern">{{concern.issueName}}</label>
+              <div *ngFor="let concern of concerns; let i = index" class="col-lg-6 mt-3 d-flex align-items-center hover_concern">
+                <input type="checkbox" id="concern-{{i}}">
+                <label for="concern-{{i}}">{{concern.issueName}}</label>
               </div>
             </div>
             <!-- Are you consulting for first time? -->
@@ -125,7 +120,7 @@
                     <i class="fa-regular fa-circle-xmark text-black"></i>
                   </button>
                 </div>
-                <div class="custom-modal-body">
+                <div class="custom-modal-body d-flex justify-content-center align-content-center">
                   <img [src]="selectedImageUrl" alt="Selected Image">
                 </div>
               </div>
@@ -184,74 +179,15 @@
           </div>
         </div>
       </div>
+      <!-- Form -->
     </div>
   </div>
 </section>
 <!-- /Home Banner -->
 
 
-
-<!-- Doctors Section -->
-<!-- <section class="doctors-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 aos" data-aos="fade-up">
-        <div class="section-header-one section-header-slider text-center">
-          <h2 class="section-title">Best Doctors</h2>
-        </div>
-      </div>
-    </div>
-    <div class="doctor-slider-one owl-theme aos" data-aos="fade-up" data-aos-duration="2000">
-
-      <owl-carousel-o [options]="doctorSlider">
-        @for (data of doctorSliderOne; track data) {
-        <ng-template carouselSlide>
-          <div class="item">
-            <div class="doctor-profile-widget doc-item">
-              <div class="doc-pro-img">
-                <a [routerLink]="routes.doctorProfile2">
-                  <div class="doctor-profile-img">
-                    <img [src]="data.img" class="img-fluid" alt="Ruby Perrin" />
-                  </div>
-                </a>
-                <div class="doctor-amount">
-                  <span>{{ data.amount }}</span>
-                </div>
-              </div>
-              <div class="doc-content">
-                <div class="doc-pro-info">
-                  <div class="doc-pro-name">
-                    <a [routerLink]="routes.doctorProfile2">{{ data.name }}</a>
-                    <p>{{ data.content }}</p>
-                  </div>
-                  <div class="reviews-ratings">
-                    <p>
-                      <span><i class="fas fa-star"></i> {{ data.rating1 }}</span>
-                      {{ data.rating2 }}
-                    </p>
-                  </div>
-                </div>
-                <div class="doc-pro-location">
-                  <p>
-                    <i class="feather icon-map-pin"></i> {{ data.location }}
-                  </p>
-                  <span class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        }
-      </owl-carousel-o>
-
-    </div>
-  </div>
-</section> -->
-<!-- /Doctors Section -->
-
-
 <!-- Work Section -->
-<section class="work-section">
+<section class="work-section mt-5">
   <div class="container">
     <div class="row">
       <div class="col-lg-7 col-md-12 work-details">
@@ -313,9 +249,99 @@
 </section>
 <!-- /Work Section -->
 
-<!-- Articles Section -->
+<!-- Doctors Section -->
+<section class="doctors-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 aos" data-aos="fade-up">
+        <div class="section-header-one section-header-slider text-center">
+          <h2 class="section-title">Best Doctors</h2>
+        </div>
+      </div>
+    </div>
+    <div class="doctor-slider-one owl-theme aos" data-aos="fade-up" data-aos-duration="2000">
+
+      <owl-carousel-o [options]="doctorSlider">
+        @for (data of doctorSliderOne; track data) {
+        <ng-template carouselSlide>
+          <div class="item">
+            <div class="doctor-profile-widget doc-item">
+              <div class="doc-pro-img">
+                <a [routerLink]="routes.doctorProfile2">
+                  <div class="doctor-profile-img">
+                    <img [src]="data.img" class="img-fluid" alt="Ruby Perrin" />
+                  </div>
+                </a>
+                <div class="doctor-amount">
+                  <span>{{ data.amount }}</span>
+                </div>
+              </div>
+              <div class="doc-content">
+                <div class="doc-pro-info">
+                  <div class="doc-pro-name">
+                    <a [routerLink]="routes.doctorProfile2">{{ data.name }}</a>
+                    <p>{{ data.content }}</p>
+                  </div>
+                  <div class="reviews-ratings">
+                    <p>
+                      <span><i class="fas fa-star"></i> {{ data.rating1 }}</span>
+                      {{ data.rating2 }}
+                    </p>
+                  </div>
+                </div>
+                <div class="doc-pro-location">
+                  <p>
+                    <i class="feather icon-map-pin"></i> {{ data.location }}
+                  </p>
+                  <span class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        }
+      </owl-carousel-o>
+
+    </div>
+  </div>
+</section>
 
 
+<!-- Testimonial Section -->
+<section class="testimonial-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <ngx-slick-carousel class="testimonial-slider" #slickModal="slick-carousel" [config]="slideConfig">
+          @for (data of aboutUs; track data) {
+          <div class="testimonial-grid" ngxSlickItem>
+            <div class="testimonial-info">
+              <div class="testimonial-img">
+                <img [src]="data.img" class="img-fluid" alt="client-image" />
+              </div>
+              <div class="testimonial-content">
+                <div class="section-inner-header testimonial-header">
+                  <h6>{{ data.heading1 }}</h6>
+                  <h2>{{ data.heading2 }}</h2>
+                </div>
+                <div class="testimonial-details">
+                  <p>{{ data.content }}</p>
+                  <h6>
+                    <span>{{ data.name }}</span> {{ data.location }}
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          }
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Testimonial Section -->
+
+<!-- /FAQ Section -->
 <section class="faq-section mt-5">
   <div class="container">
     <div class="row">
@@ -334,12 +360,12 @@
             <div class="faq-smile-img">
               <img src="assets/img/icons/smiling-icon.svg" alt="icon" />
             </div>
-            <!-- <div class="faq-patients-content">
+            <div class="faq-patients-content">
               <h4>
                 <span class="count-digit" [countUp]="95" [options]="{ enableScrollSpy: true }">95</span>k+
               </h4>
               <p>Happy Patients</p>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
@@ -469,40 +495,6 @@
   </div>
 </section>
 <!-- /FAQ Section -->
-
-<!-- Testimonial Section -->
-<section class="testimonial-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <ngx-slick-carousel class="testimonial-slider" #slickModal="slick-carousel" [config]="slideConfig">
-          @for (data of aboutUs; track data) {
-          <div class="testimonial-grid" ngxSlickItem>
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img [src]="data.img" class="img-fluid" alt="client-image" />
-              </div>
-              <div class="testimonial-content">
-                <div class="section-inner-header testimonial-header">
-                  <h6>{{ data.heading1 }}</h6>
-                  <h2>{{ data.heading2 }}</h2>
-                </div>
-                <div class="testimonial-details">
-                  <p>{{ data.content }}</p>
-                  <h6>
-                    <span>{{ data.name }}</span> {{ data.location }}
-                  </h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          }
-        </ngx-slick-carousel>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /Testimonial Section -->
 
 <!-- Partners Section -->
 <!-- <section class="partners-section">
