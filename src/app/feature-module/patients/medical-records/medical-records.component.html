@@ -29,8 +29,8 @@
           <div class="tab-pane fade show active" id="prescription">
             <div class="search-header">
               <div class="search-field">
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
+                <button class="search-icon" (click)="searchPrescription()"><i class="fa-solid fa-magnifying-glass"></i></button>
               </div>
             </div>
 
@@ -47,7 +47,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <ng-container *ngFor="let Prescription of Prescriptions">
+                    <ng-container *ngFor="let Prescription of filteredPrescriptions">
                       <tr>
                         <td><a class="text-blue-600" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">{{Prescription.customPrescriptionID}}</a></td>
                         <td>
@@ -86,7 +86,7 @@
             </div>
 
             <!-- Pagination -->
-            <div class="pagination dashboard-pagination">
+            <!-- <div class="pagination dashboard-pagination">
               <ul>
                 <li>
                   <a href="javascript:void(0);" class="page-link"><i class="fa-solid fa-chevron-left"></i></a>
@@ -110,7 +110,7 @@
                   <a href="javascript:void(0);" class="page-link"><i class="fa-solid fa-chevron-right"></i></a>
                 </li>
               </ul>
-            </div>
+            </div> -->
             <!-- /Pagination -->
 
           </div>

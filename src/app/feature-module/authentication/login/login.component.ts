@@ -71,6 +71,7 @@ const sendData={
         this.authService.login(sendData).subscribe((res:any)=>{
                 console.log(res);
                 this.authService.setToken(res?.data.token);
+                this.router.navigate(['/patients/patient-dashboard']);
               })
       })
       .catch((error) => {

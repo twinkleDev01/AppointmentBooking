@@ -8,6 +8,7 @@ import { PaginationService, pageSelection, tablePageSize } from 'src/app/shared/
 import { DataService } from 'src/app/shared/data/data.service';
 import { apiResultFormat, medicalrecords } from 'src/app/shared/models/models';
 import { routes } from 'src/app/shared/routes/routes';
+import { Prescription } from './prescription.modal';
 
 @Component({
   selector: 'app-medical-records',
@@ -18,7 +19,7 @@ export class MedicalRecordsComponent {
   public routes = routes;
   public tableData: Array<medicalrecords> = [];
   public tableData2: Array<medicalrecords> = [];
-  
+  searchTerm: string = '';
   // pagination variables
   public pageSize = 10;
   public serialNumberArray: Array<number> = [];
@@ -28,19 +29,16 @@ export class MedicalRecordsComponent {
    baseUrlPdf: string = 'https://bookingapi.asptask.in/'
   public searchDataValue = '';
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Prescriptions:any
+  Prescriptions=[]
   // pagination variables end
-
+  filteredPrescriptions: Prescription[] = [];
   constructor(
     private data: DataService,
     private pagination: PaginationService,
     private router: Router,
     private patientsService:PatientsService
   ) {
-    this.patientsService.getPrescription().subscribe((res:any)=>{
-      this.Prescriptions=res?.data;
-      console.log(this.Prescriptions);
-    })
+    this.getPrescription();
     this.pagination.tablePageSize.subscribe((res: tablePageSize) => {
       if (this.router.url == this.routes.medicalrecords) {
         this.getTableData({ skip: res.skip, limit: res.limit });
@@ -54,6 +52,9 @@ export class MedicalRecordsComponent {
       }
     });
     
+  }
+  ngOnInit(){
+    this.filteredPrescriptions = [...this.Prescriptions];
   }
   private getTableData(pageOption: pageSelection): void {
     this.data.getMedicalRecords1().subscribe((apiRes: apiResultFormat) => {
@@ -156,10 +157,31 @@ export class MedicalRecordsComponent {
     return this.baseUrlPdf + path;
   }
 
+  getPrescription(){
+    this.patientsService.getPrescription().subscribe((res:any)=>{
+      this.Prescriptions=res?.data;
+      this.filteredPrescriptions = [...this.Prescriptions];
+    })
+  }
+
   delete(prescriptionID:string){
 this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
   console.log(res);
+  this.getPrescription();
 })
   }
+
+  searchPrescription(){
+    console.log(this.searchTerm,'175')
+    const term = this.searchTerm.toLowerCase();
+    this.filteredPrescriptions = this.Prescriptions.filter((Prescriptions:any) => 
+      Prescriptions.customPrescriptionID.toLowerCase().includes(term) ||
+      Prescriptions.doctorName.toLowerCase().includes(term) ||
+      Prescriptions.patientId.toLowerCase().includes(term) ||
+      Prescriptions.createdDate.toLowerCase().includes(term)
+    );
+  }
+
+  
 
 }

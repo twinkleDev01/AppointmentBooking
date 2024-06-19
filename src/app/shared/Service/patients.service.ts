@@ -60,7 +60,7 @@ export class PatientsService {
 
  deletePrescription(prescriptionID:string){
 const url=`${this.baseUrl}${this.deleteprescription}?PrescriptionId=${prescriptionID}`
-return this.http.delete(url);
+return this.http.post(url,'');
 }
  }
 
