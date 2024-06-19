@@ -133,13 +133,32 @@ select {
     align-items: center;
 }
 
+.concern_label:hover{
+    color: #0e82fd;
+}
+
+.concern_label{
+    font-size: 14px;
+    color: black;
+}
+
+.banner-content p{
+    width: 40%;
+}
+
+.form h3{
+    color: #0e82fd;
+    font-weight: 600;
+}
+
 .custom-file-upload {
-    border: 1px solid #ccc;
+    border: 1px solid #0e82fd;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
     background-color: #f9f9f9;
     margin-right: 10px;
+    border-radius: 5px;
 }
 
 .no-files-uploaded {
@@ -415,3 +434,9 @@ $__none: none;
 .mirror-image {
     transform: scaleX(-1);
 }
+
+.preview-button{
+    border: 1px solid #a7a7a700;
+    padding: 10px;
+}
+

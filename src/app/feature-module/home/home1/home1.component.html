@@ -8,7 +8,7 @@
         <div class="banner-content aos" data-aos="fade-up" data-aos-duration="2000">
           <h1 class="fs-2">Transform Your <span>Hair & Skin</span> with Our Online Dermatology Consult</h1>
           <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
-          <p class="text-success w-50">Proven Results with 98.6% User Satisfaction </p>
+          <p class="text-success">Proven Results with 98.6% User Satisfaction </p>
           <a [routerLink]="routes.booking1" class="btn">Start a Consult</a>
           <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
             <img src="assets/img/banner-img.png" class="img_fluid" alt="patient-image" />
@@ -57,45 +57,47 @@
           </form>
         </div> -->
       </div>
-      <!-- Form -->
       <div class="col-lg-5">
-        <div class="form">
-          <h4 class="text-center mb-2">Get an Appointment</h4>
+
+        <!-- app.component.html -->
+        <div class="form" [formGroup]="appointmentForm">
+          <h3 class="text-center mb-2">Get an Appointment</h3>
           <div class="row mt-4">
             <!-- age and gender -->
             <div class="col-lg-6 no_padding">
-              <input type="text" placeholder="Enter Age">
+              <input type="text" placeholder="Enter Age" formControlName="age">
             </div>
             <div class="col-lg-6 no_padding">
-              <select name="gender" id="gender">
-                <option value="Gender">Gender</option>
+              <select name="gender" id="gender" formControlName="gender">
+                <option value="">Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
               </select>
             </div>
-            <div class="col-lg12 mt-3">
+            <div class="col-lg-12 mt-3">
               <h5 class="text-center">Select your concern(s)</h5>
             </div>
             <!-- list of concerns/decease -->
             <div class="row concerns">
-              <div *ngFor="let concern of concerns; let i = index" class="col-lg-6 mt-3 d-flex align-items-center hover_concern">
-                <input type="checkbox" id="concern-{{i}}">
-                <label for="concern-{{i}}">{{concern.issueName}}</label>
+              <div *ngFor="let concern of concerns; let i = index" class="col-lg-6 mt-3 d-flex align-items-center">
+                <input type="checkbox" id="concern{{i}}" [checked]="isConcernSelected(concern)"
+                  (change)="onCheckboxChange($event, concern)">
+                <label class="concern_label" for="concern{{i}}">{{concern.issueName}}</label>
               </div>
             </div>
             <!-- Are you consulting for first time? -->
             <div class="concerns mt-3">
               <h4 class="text-center">Are you consulting for the first time?</h4>
               <div class="yes_no_btn d-flex align-items-center justify-content-center">
-                <input type="radio" name="yes" id="yes">
+                <input type="radio" id="yes" value="yes" formControlName="firstTimeConsult" checked>
                 <label for="yes">Yes</label>
-                <input type="radio" name="No" id="no">
-                <label for="No">No</label>
+                <input type="radio" id="no" value="no" formControlName="firstTimeConsult">
+                <label for="no">No</label>
               </div>
             </div>
             <!-- Upload Images -->
-            <div class="concerns mt-3">
+            <!-- <div class="concerns mt-3">
               <h4 class="text-center">Upload up to 5 Images</h4>
               <div class="file-upload-container">
                 <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none;">
@@ -109,7 +111,41 @@
                   <span *ngIf="!file.type.startsWith('image')">{{file.name}}</span>
                 </div>
               </div>
+            </div> -->
+
+            <!-- Custom Modal -->
+            <!-- <div class="custom-modal" *ngIf="isImageModalOpen">
+              <div class="custom-modal-content">
+                <div class="custom-modal-header">
+                  <h5 class="custom-modal-title">Image Preview</h5>
+                  <button type="button" class="close" (click)="closeImageModal()">
+                    <i class="fa-regular fa-circle-xmark text-black"></i>
+                  </button>
+                </div>
+                <div class="custom-modal-body">
+                  <img [src]="selectedImageUrl" alt="Selected Image">
+                </div>
+              </div>
             </div>
+            <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div> -->
+
+            <div class="concerns mt-3">
+              <h4 class="text-center">Upload up to 5 Images</h4>
+
+              <!-- Display count of selected files -->
+
+              <div class="file-upload-container d-flex justify-content-evenly">
+                <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none;">
+                <label for="fileInput" class="custom-file-upload">Select Files</label>
+                <div *ngIf="files.length === 0" class="no-files-uploaded">No file uploaded</div>
+                <span *ngIf="files.length>0">{{ files.length }} {{ files.length === 1 ? 'file' : 'files' }}
+                  selected</span>
+                <button *ngIf="files.length>0" class="preview-button" (click)="openImagePreviewModal()"
+                  [disabled]="files.length === 0">Preview</button>
+              </div>
+            </div>
+
+            <!-- Button to open image preview modal -->
 
             <!-- Custom Modal -->
             <div class="custom-modal" *ngIf="isImageModalOpen">
@@ -120,66 +156,83 @@
                     <i class="fa-regular fa-circle-xmark text-black"></i>
                   </button>
                 </div>
-                <div class="custom-modal-body d-flex justify-content-center align-content-center">
-                  <img [src]="selectedImageUrl" alt="Selected Image">
+                <div class="custom-modal-body">
+                  <div id="fileCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                      <div *ngFor="let file of files; let i = index" class="carousel-item" [ngClass]="{'active': i === activeIndex}">
+                        <ng-container *ngIf="file.type.startsWith('image')">
+                          <img [src]="file.url" alt="File Preview" class="d-block w-100">
+                        </ng-container>
+                        <ng-container *ngIf="!file.type.startsWith('image')">
+                          <span>{{ file.name }}</span>
+                        </ng-container>
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" role="button" data-slide="prev" (click)="prev()">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" role="button" data-slide="next" (click)="next()">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
                 </div>
+                
+                
               </div>
             </div>
+
             <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div>
-
-
 
 
             <div class="d-flex justify-content-center align-items-center mt-5">
               <button class="form_btn me-3" (click)="openModal()">Select Time</button>
-              <button class="form_btn">Book Appointment</button>
+              <button class="form_btn" (click)="onSubmit()">Book Appointment</button>
             </div>
+          </div>
+        </div>
 
-            <!-- Custom Modal -->
-            <div class="custom-modal" *ngIf="isModalOpen">
-              <div class="custom-modal-content">
-                <div class="custom-modal-header">
-                  <h5 class="custom-modal-title">Select Preferred Date and Available Time Slot</h5>
-                  <button type="button" class="close" (click)="closeModal()">
-                    <i class="fa-regular fa-circle-xmark text-black"></i>
-                  </button>
+        <!-- Custom Modal -->
+        <div class="custom-modal" *ngIf="isModalOpen">
+          <div class="custom-modal-content">
+            <div class="custom-modal-header">
+              <h5 class="custom-modal-title">Select Preferred Date and Available Time Slot</h5>
+              <button type="button" class="close" (click)="closeModal()">
+                <i class="fa-regular fa-circle-xmark text-black"></i>
+              </button>
+            </div>
+            <div class="custom-modal-body">
+              <div class="row mt-3">
+                <div class="col-lg-6">
+                  <p-calendar [(ngModel)]="selectedDate" inline="true" dateFormat="yy-mm-dd"
+                    (onSelect)="onSelectDate($event)" (ngModelChange)="onDateChange($event)"
+                    (onInput)="onDateChange($event)"></p-calendar>
                 </div>
-                <div class="custom-modal-body">
-                  <div class="row mt-3">
-                    <div class="col-lg-6">
-                      <p-calendar [(ngModel)]="selectedDate" inline="true" dateFormat="yy-mm-dd"
-                        (onSelect)="onSelectDate($event)" (onInput)="onDateChange($event)"></p-calendar>
-                    </div>
-                    <div class="col-lg-6">
-                      <!-- Available Times -->
-                      <h6 class="text-center mt-5">Available Time Slots</h6>
-                      <div class="row mt-5">
-                        <div *ngFor="let slot of uniqueTimeSlots" class="col-lg-3" (click)="onSelectTimeSlot(slot)">
-                          <div
-                            [ngClass]="{'selected': selectedTimeSlot === slot, 'not-selected': selectedTimeSlot !== slot}">
-                            {{ slot.startTime }}
-                          </div>
-                        </div>
+                <div class="col-lg-6">
+                  <!-- Available Times -->
+                  <h6 class="text-center mt-5">Available Time Slots</h6>
+                  <div class="row mt-5">
+                    <div *ngFor="let slot of filteredAppointments" class="col-lg-3" (click)="onSelectTimeSlot(slot)">
+                      <div
+                        [ngClass]="{'selected': selectedTimeSlot === slot, 'not-selected': selectedTimeSlot !== slot}">
+                        {{ slot.startTime }}
                       </div>
                     </div>
                   </div>
-                  <div *ngIf="selectedTimeSlot" class="d-flex justify-content-between mt-3">
-                    <p>Selected Slot: <strong>{{ selectedTimeSlot.startTime }}, {{ selectedDate | date: 'yyyy-MM-dd'
-                        }}</strong></p>
-                    <button class="form_btn">Confirm Slot</button>
-                  </div>
                 </div>
               </div>
+              <div *ngIf="selectedTimeSlot" class="d-flex justify-content-between mt-3">
+                <p>Selected Slot: <strong>{{ selectedTimeSlot.startTime }}, {{ selectedDate | date: 'yyyy-MM-dd'
+                    }}</strong></p>
+                <button class="form_btn" (click)="closeModal()">Confirm Slot</button>
+              </div>
             </div>
-
-
-            <!-- Modal Backdrop -->
-            <div class="custom-modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()"></div>
-
           </div>
         </div>
       </div>
       <!-- Form -->
+      <div class="custom-modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()"></div>
     </div>
   </div>
 </section>

@@ -4,8 +4,11 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { routes } from 'src/app/shared/routes/routes';
 import { aboutUs, doctorSliderOne, partnersSlider, specialitiesSliderOne } from 'src/app/shared/models/models';
 import { Router } from '@angular/router';
+import { PatientsService } from 'src/app/shared/Service/patients.service';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 declare var $: any;
+
 @Component({
   selector: 'app-home1',
   templateUrl: './home1.component.html',
@@ -26,155 +29,14 @@ export class Home1Component implements OnInit {
   selectedTimeSlot: any;
   isImageModalOpen: boolean = false;
   selectedImageUrl!: string;
-  slots: any = [
-    {
-      "id": "9d5d2f30-66f1-4413-adba-1150f6dcaefb",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:00:00",
-      "endTime": "09:25:00",
-      "doctorId": "ef8860b2-fe2f-42ea-abfb-13ed9f50005a",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "3864f31c-3f86-4029-a193-1d51f8aedd3f",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:00:00",
-      "endTime": "09:25:00",
-      "doctorId": "fe579475-e27e-41a4-a681-40e308bbb090",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "0971da3e-5cca-45eb-b2a8-237abc4ea12c",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:30:00",
-      "endTime": "09:55:00",
-      "doctorId": "ef8860b2-fe2f-42ea-abfb-13ed9f50005a",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "c0476b06-8cb7-4dd7-9875-28d8e0b97081",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:00:00",
-      "endTime": "09:25:00",
-      "doctorId": "031f720f-ad66-4aba-b060-930c8b37f576",
-      "isBooked": true,
-      "bookedBy": "0"
-    },
-    {
-      "id": "ed303022-56d9-4761-a8cf-3b58f24dbc8a",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:00:00",
-      "endTime": "09:25:00",
-      "doctorId": "126ff295-e58e-4c50-b5dd-a6ef8f6a2212",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "4df98530-5a35-494a-a6e5-3f12e95989d5",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "10:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "126ff295-e58e-4c50-b5dd-a6ef8f6a2212",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "a9a508c9-8bdc-4e8a-a3e3-45c4cbc84775",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:30:00",
-      "endTime": "09:55:00",
-      "doctorId": "fe579475-e27e-41a4-a681-40e308bbb090",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "bcd64f5c-e04c-4041-b2a1-58d6fd2ded1d",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:30:00",
-      "endTime": "09:55:00",
-      "doctorId": "031f720f-ad66-4aba-b060-930c8b37f576",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "58665505-26e7-4972-90b1-6b32a27938b6",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "11:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "031f720f-ad66-4aba-b060-930c8b37f576",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "b1d6cb48-50fa-4549-9123-8043329df630",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "10:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "ef8860b2-fe2f-42ea-abfb-13ed9f50005a",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "a7eaf7f8-451e-494a-ba9f-883ad8b9b799",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "10:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "fe579475-e27e-41a4-a681-40e308bbb090",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "43677720-164c-46a6-bba9-a5ab9833e14b",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "10:00:00",
-      "endTime": "10:25:00",
-      "doctorId": "031f720f-ad66-4aba-b060-930c8b37f576",
-      "isBooked": false,
-      "bookedBy": "0"
-    },
-    {
-      "id": "2a0cdcbc-8daa-4450-a3b1-d82ee4404f70",
-      "date": "2024-06-18T00:00:00",
-      "startTime": "09:30:00",
-      "endTime": "09:55:00",
-      "doctorId": "126ff295-e58e-4c50-b5dd-a6ef8f6a2212",
-      "isBooked": false,
-      "bookedBy": "0"
-    }
-  ];
+  slots: any;
   uniqueTimeSlots: any[] = [];
-
-
+  filteredAppointments: any;
+  appointmentForm: FormGroup;
+  activeIndex = 0;
   files: { name: string, url: string, type: string }[] = [];
-  concerns: { issueID: string, issueName: string }[] = [
-    {
-      "issueID": "0867d68f-2e18-41b7-a4e8-0f64564d5089",
-      "issueName": "Left Leg Fracture "
-    },
-    {
-      "issueID": "de8dfa59-56b3-4c4d-9854-28d69777618f",
-      "issueName": "Eyes Problem"
-    },
-    {
-      "issueID": "ed8a29d9-8ccc-49cd-9d5d-bcae4a19481a",
-      "issueName": "Back Pain 3"
-    },
-    {
-      "issueID": "a0c1c183-5b0a-418c-ba54-ce5f2207e6e7",
-      "issueName": "Chest Pain 2"
-    },
-    {
-      "issueID": "dc74b909-3896-4fcb-a0d5-efb6ecab98d5",
-      "issueName": "Right Arm Swellings"
-    },
-    {
-      "issueID": "7791c71b-bb92-4374-b9c5-fed8e0efcdc7",
-      "issueName": "Fever and Cough"
-    }
-  ]
+  concerns: any;
+
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -215,16 +77,43 @@ export class Home1Component implements OnInit {
       },
     ],
   };
-  constructor(private data: DataService, private router: Router) {
+
+  constructor(
+    private data: DataService,
+    private router: Router,
+    private patientsService: PatientsService,
+    private fb: FormBuilder
+  ) {
     this.specialitiesSliderOne = this.data.specialitiesSliderOne;
     this.doctorSliderOne = this.data.doctorSliderOne;
     this.aboutUs = this.data.aboutUs;
     this.partnersSlider = this.data.partnersSlider;
     const today = new Date();
     const endDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7);
-    this.bsRangeValue = [today, endDate];  // Initialize the date range
+    this.bsRangeValue = [today, endDate]; // Initialize the date range
     this.date = new Date();
+    this.appointmentForm = this.fb.group({
+      age: ['', Validators.required],
+      gender: ['', Validators.required],
+      firstTimeConsult: ['', Validators.required],
+      selectedSlot: ['', Validators.required],
+      selectedConcerns: this.fb.array([]),
+      selectedDate: ['', Validators.required],
+      selectedFiles: this.fb.array([]),
+    });
   }
+
+  ngOnInit() {
+    this.getIssues();
+    this.getAvailableSlots();
+  }
+
+  get concernControls() {
+    return this.appointmentForm.get('selectedConcerns') as FormArray;
+  }
+
+  
+
   public specialitiesSlider: OwlOptions = {
     loop: true,
     margin: 24,
@@ -237,22 +126,23 @@ export class Home1Component implements OnInit {
     ],
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
       500: {
-        items: 1
+        items: 1,
       },
       768: {
-        items: 2
+        items: 2,
       },
       1000: {
-        items: 6
+        items: 6,
       },
       1200: {
-        items: 6
+        items: 6,
       },
     },
   };
+
   public doctorSlider: OwlOptions = {
     loop: true,
     margin: 24,
@@ -281,6 +171,7 @@ export class Home1Component implements OnInit {
       },
     },
   };
+
   public partnersSliderOption: OwlOptions = {
     margin: 24,
     nav: true,
@@ -289,47 +180,37 @@ export class Home1Component implements OnInit {
     autoplaySpeed: 2000,
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
-
       550: {
-        items: 1
+        items: 1,
       },
       700: {
-        items: 4
+        items: 4,
       },
       1000: {
-        items: 6
-      }
-    }
+        items: 6,
+      },
+    },
   };
-  public navigation() {
-    this.router.navigate([routes.search2]);
-  }
-  ngOnInit() {
-    this.generateUniqueTimeSlots();
-  }
 
-onSelectDate(event: any) {
-  const date = event?.target?.value;
-  if (date) {
-    console.log("Selected date:", date);
-    this.selectedDate = date;
-    // Log the current date
-    console.log("Current date:", this.selectedDate);
-    // Log the dates of all slots
-    console.log("Slot dates:");
-    for (const slot of this.slots) {
-      console.log(slot.date);
+  onSelectDate(event: any) {
+    const date = event?.target?.value;
+    if (date) {
+      console.log('Selected date:', date);
+      this.selectedDate = date;
+      console.log('Current date:', this.selectedDate);
+      console.log('Slot dates:');
+      for (const slot of this.slots) {
+        console.log(slot.date);
+      }
+      this.selectedSlots = this.slots.filter(
+        (slot: { startTime: string; date: string }) =>
+          this.isSameDay(slot.date, this.selectedDate)
+      );
+      console.log('Selected slots:', this.selectedSlots);
     }
-    // Filter time slots based on the selected date
-    this.selectedSlots = this.slots.filter((slot: { startTime: string, date: string }) =>
-      this.isSameDay(slot.date, this.selectedDate)
-    );
-    console.log("Selected slots:", this.selectedSlots);
   }
-}
-
 
   isSameDay(slotDate: string, selectedDate: Date): boolean {
     const slotDateTime = new Date(slotDate).toDateString(); // Extract date part only
@@ -339,60 +220,107 @@ onSelectDate(event: any) {
 
   generateUniqueTimeSlots() {
     const timeSlotsMap = new Map();
-    this.slots.forEach((slot: { startTime: any; }) => {
+    this.slots.forEach((slot: { startTime: any }) => {
       if (!timeSlotsMap.has(slot.startTime)) {
         timeSlotsMap.set(slot.startTime, slot);
       }
     });
-  
-    // Convert time to 12-hour format
+
     const convertTo12HourFormat = (timeString: string) => {
       const [hours, minutes] = timeString.split(':').map(Number);
       const ampm = hours >= 12 ? 'PM' : 'AM';
       const twelveHour = hours % 12 || 12;
       return `${twelveHour}:${minutes < 10 ? '0' : ''}${minutes}${ampm}`;
     };
-  
-    this.uniqueTimeSlots = Array.from(timeSlotsMap.values()).map(slot => {
+
+    this.uniqueTimeSlots = Array.from(timeSlotsMap.values())?.map((slot) => {
       return { ...slot, startTime: convertTo12HourFormat(slot.startTime) };
     });
-    console.log("unique time slots", this.uniqueTimeSlots);
+    console.log('unique time slots', this.uniqueTimeSlots);
   }
 
   onSelectTimeSlot(slot: any) {
     this.selectedTimeSlot = slot;
   }
 
-  onDateChange(newDate: Date) {
-    console.log(newDate);
+  onDateChange(event: any) {
+    console.log('date change');
+    this.selectedDate = event;
+    console.log('Date changed:', this.selectedDate);
+    this.filterAppointments(this.formatDate(this.selectedDate));
   }
 
-  onFileChange(event: any) {
-    this.files = [];
-    for (let i = 0; i < event.target.files.length; i++) {
-        const file = event.target.files[i];
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-            this.files.push({
-                name: file.name,
-                type: file.type,
-                url: e.target.result
-            });
-        };
-        reader.readAsDataURL(file);
+  formatDate(date: Date): string {
+    return `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
+      date.getDate()
+    )}T00:00:00`;
+  }
+
+  padZero(num: number): string {
+    return num < 10 ? `0${num}` : `${num}`;
+  }
+
+  filterAppointments(date: any) {
+    this.filteredAppointments = this.uniqueTimeSlots.filter(
+      (appointment) => appointment.date === date
+    );
+    console.log('Filtered appointments:', this.filteredAppointments);
+  }
+
+  onFileChange(event: any): void {
+    const fileInput = event.target.files;
+    const filesArray = this.appointmentForm.get('selectedFiles') as FormArray;
+
+    // Calculate remaining slots available
+    const remainingSlots = 5 - this.files.length;
+
+    // Restrict to maximum 5 files in total
+    const filesToAdd = Math.min(fileInput.length, remainingSlots);
+
+    for (let i = 0; i < filesToAdd; i++) {
+      const file = fileInput[i];
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const fileUrl = e.target.result;
+        this.files.push({ name: file.name, url: fileUrl, type: file.type });
+        filesArray.push(
+          new FormControl({ name: file.name, url: fileUrl, type: file.type })
+        );
+      };
+      reader.readAsDataURL(file);
     }
-}
+  }
 
+  onCheckboxChange(event: any, concernId: number) {
+    const selectedConcerns = this.appointmentForm.get(
+      'selectedConcerns'
+    ) as FormArray;
 
-openImageModal(imageUrl: string) {
-  this.selectedImageUrl = imageUrl;
-  this.isImageModalOpen = true;
-}
+    if (event.target.checked) {
+      selectedConcerns.push(new FormControl(concernId));
+    } else {
+      const index = selectedConcerns.controls.findIndex(
+        (x) => x.value === concernId
+      );
+      selectedConcerns.removeAt(index);
+    }
+  }
 
-closeImageModal() {
-  this.isImageModalOpen = false;
-}
+  isConcernSelected(concernId: number): boolean {
+    const selectedConcerns = this.appointmentForm.get(
+      'selectedConcerns'
+    ) as FormArray;
+    return selectedConcerns.controls.some((x) => x.value === concernId);
+  }
 
+  openImageModal(imageUrl: string) {
+    this.selectedImageUrl = imageUrl;
+    this.isImageModalOpen = true;
+  }
+
+  closeImageModal() {
+    this.isImageModalOpen = false;
+  }
 
   openModal(): void {
     this.isModalOpen = true;
@@ -402,5 +330,46 @@ closeImageModal() {
     this.isModalOpen = false;
   }
 
+  getIssues() {
+    this.patientsService.getIssues().subscribe((issues) => {
+      console.log(issues);
+      this.concerns = issues;
+    });
+  }
 
+  getAvailableSlots() {
+    this.patientsService.getAvailableSlot().subscribe((availableSlots) => {
+      console.log(availableSlots);
+      this.slots = availableSlots;
+      this.generateUniqueTimeSlots();
+    });
+  }
+
+  onSubmit() {
+    this.appointmentForm.patchValue({
+      selectedSlot: this.selectedTimeSlot.startTime,
+      selectedDate: this.selectedDate,
+    });
+    console.log(this.appointmentForm.value);
+    if (this.appointmentForm.valid) {
+      console.log(this.appointmentForm.value);
+      // Handle form submission
+    }
+  }
+
+  openImagePreviewModal() {
+    if (this.files.length > 0) {
+      this.isImageModalOpen = true;
+    }
+  }
+
+  
+
+  prev(): void {
+    this.activeIndex = (this.activeIndex === 0) ? (this.files.length - 1) : (this.activeIndex - 1);
+  }
+
+  next(): void {
+    this.activeIndex = (this.activeIndex === this.files.length - 1) ? 0 : (this.activeIndex + 1);
+  }
 }
