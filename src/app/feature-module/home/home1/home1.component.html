@@ -86,8 +86,8 @@
     <!-- list of concerns/decease -->
     <div class="row concerns" >
       <div *ngFor="let concern of concerns; let i = index" class="col-lg-6 mt-3 d-flex align-items-center">
-        <input type="checkbox" >
-        <label for="concern">{{concern.issueName}}</label>
+        <input type="checkbox" id="concern{{i}}" [checked]="isConcernSelected(concern)" (change)="onCheckboxChange($event, concern)">
+        <label for="concern{{i}}">{{concern.issueName}}</label>
       </div>
     </div>
     <!-- Are you consulting for first time? -->
@@ -137,8 +137,6 @@
       <button class="form_btn me-3" (click)="openModal()">Select Time</button>
       <button class="form_btn" (click)="onSubmit()">Book Appointment</button>
     </div>
-
-    
   </div>
 </div>
     <!-- Modal
@@ -161,7 +159,7 @@
           <!-- Available Times -->
           <h6 class="text-center mt-5">Available Time Slots</h6>
           <div class="row mt-5">
-            <div *ngFor="let slot of uniqueTimeSlots" class="col-lg-3"  (click)="onSelectTimeSlot(slot)">
+            <div *ngFor="let slot of filteredAppointments" class="col-lg-3"  (click)="onSelectTimeSlot(slot)">
               <div
                 [ngClass]="{'selected': selectedTimeSlot === slot, 'not-selected': selectedTimeSlot !== slot}">
                 {{ slot.startTime }}

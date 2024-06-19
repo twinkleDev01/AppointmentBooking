@@ -5,7 +5,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import { aboutUs, doctorSliderOne, partnersSlider, specialitiesSliderOne } from 'src/app/shared/models/models';
 import { Router } from '@angular/router';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 declare var $: any;
 @Component({
@@ -88,8 +88,10 @@ export class Home1Component implements OnInit {
       age: ['', Validators.required],
       gender: ['', Validators.required],
       firstTimeConsult: ['', Validators.required],
-      files: [null],
-      selectedSlot: [''],
+      selectedSlot: ['', Validators.required],
+      selectedConcerns: this.fb.array([]),
+      selectedDate:['', Validators.required],
+      selectedFiles: this.fb.array([])
     });
   }
 
@@ -241,29 +243,59 @@ onSelectDate(event: any) {
     console.log("date change");
     this.selectedDate = event;
     console.log('Date changed:', this.selectedDate);
-    this.filterAppointments(this.selectedDate);
+    this.filterAppointments(this.formatDate(this.selectedDate));
+  }
+
+  
+
+  formatDate(date: Date): string {
+    return `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(date.getDate())}T00:00:00`;
+  }
+
+  padZero(num: number): string {
+    return num < 10 ? `0${num}` : `${num}`;
   }
 
 
   filterAppointments(date: any) {
     this.filteredAppointments = this.uniqueTimeSlots.filter(appointment => appointment.date === date);
     console.log('Filtered appointments:', this.filteredAppointments);
+  
   }
 
-  onFileChange(event: any) {
+  onFileChange(event: any): void {
+    const fileInput = event.target.files;
+    const filesArray = this.appointmentForm.get('selectedFiles') as FormArray;
+    
+    // Clear previous files
+    filesArray.clear();
     this.files = [];
-    for (let i = 0; i < event.target.files.length; i++) {
-        const file = event.target.files[i];
-        const reader = new FileReader();
-        reader.onload = (e: any) => {
-            this.files.push({
-                name: file.name,
-                type: file.type,
-                url: e.target.result
-            });
-        };
-        reader.readAsDataURL(file);
-    }
+
+    Array.from(fileInput).forEach((file: any) => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const fileUrl = e.target.result;
+        this.files.push({ name: file.name, url: fileUrl, type: file.type });
+        filesArray.push(new FormControl({ name: file.name, url: fileUrl, type: file.type }));
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+onCheckboxChange(event: any, concernId: number) {
+  const selectedConcerns = this.appointmentForm.get('selectedConcerns') as FormArray;
+
+  if (event.target.checked) {
+    selectedConcerns.push(new FormControl(concernId));
+  } else {
+    const index = selectedConcerns.controls.findIndex(x => x.value === concernId);
+    selectedConcerns.removeAt(index);
+  }
+}
+
+isConcernSelected(concernId: number): boolean {
+  const selectedConcerns = this.appointmentForm.get('selectedConcerns') as FormArray;
+  return selectedConcerns.controls.some(x => x.value === concernId);
 }
 
 
@@ -302,7 +334,8 @@ getAvailableSlots(){
 
 onSubmit(){
   this.appointmentForm.patchValue({
-    selectedSlot: this.selectedTimeSlot.startTime 
+    selectedSlot: this.selectedTimeSlot.startTime ,
+    selectedDate: this.selectedDate
   });
   console.log(this.appointmentForm.value);
   if (this.appointmentForm.valid) {
