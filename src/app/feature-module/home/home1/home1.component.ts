@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DataService } from 'src/app/shared/data/data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { routes } from 'src/app/shared/routes/routes';
@@ -39,7 +39,7 @@ export class Home1Component implements OnInit {
   concerns: any;
 bookAppointmentbtn: boolean = false;
   userDetails:any
-  InfoForm: FormGroup;
+  InfoForm: FormGroup;  isMobile!: boolean;
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -114,15 +114,26 @@ bookAppointmentbtn: boolean = false;
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required]
     });
+    this.isMobile = window.innerWidth <= 576;
   }
 
   ngOnInit() {
     this.getIssues();
     this.getAvailableSlots();
+    this.checkScreenSize();
   }
 
   get concernControls() {
     return this.appointmentForm.get('selectedConcerns') as FormArray;
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth <= 576;
   }
 
   
@@ -370,10 +381,10 @@ onSubmit(){
   } else {
     console.log('User details not found in local storage.');
   }
-
+  this.bookAppointmentbtn = true
   if (this.appointmentForm.valid) {
     console.log(this.appointmentForm.value);
-    this.bookAppointmentbtn = true
+    
     // Handle form submission
   }
 }

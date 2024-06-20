@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 import { CommonService } from 'src/app/shared/common/common.service';
 import { DataService } from 'src/app/shared/data/data.service';
 import { header } from 'src/app/shared/models/sidebar-model';
@@ -18,6 +20,7 @@ export class HeaderComponent {
   base = '';
   page = '';
   last = '';
+  isPatient:boolean=false
   
   
   constructor(
@@ -25,7 +28,15 @@ export class HeaderComponent {
     private data: DataService,
     private sidebar: SidebarService,
     private router: Router,
+    private auth: AuthService
   ) {
+    console.log("Hiii ")
+    this.auth.token.subscribe((res:any)=>{
+      if(res){
+        this.isPatient = true
+      }
+
+    })
     this.common.base.subscribe((res: string) => {
       this.base = res;
     });

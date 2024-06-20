@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 import { CommonService } from 'src/app/shared/common/common.service';
 import { DataService } from 'src/app/shared/data/data.service';
 import { header } from 'src/app/shared/models/sidebar-model';
@@ -24,8 +26,16 @@ export class HeaderComponent {
     private common: CommonService,
     private data: DataService,
     private sidebar: SidebarService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
+    console.log("hii")
+    this.auth.token.subscribe((res:any)=>{
+      console.log(res)
+      if(res){
+        this.isPatient = true
+      }
+      })
     this.common.base.subscribe((res: string) => {
       this.base = res;
     });
@@ -50,4 +60,8 @@ export class HeaderComponent {
   public navigation() {
     this.router.navigate([routes.search1]);
   }
+  isPatient:boolean =false
+ngOnInit(){
+  console.log("58")
+}
 }

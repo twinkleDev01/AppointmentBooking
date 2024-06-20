@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,15 @@ export class AuthService {
  baseUrl: string = environment.baseurl
   loginUrl:string='/Auth/mobile_login';
   LogOutUrl:string='/Auth/logout';
+
+  private _token = new BehaviorSubject('')
+  token = this._token.asObservable()
   constructor(private http:HttpClient) {
    }
 
   setToken(token: string): void {
     localStorage.setItem('token', token);
+    this._token.next(token);
     this.getUserDetails(token);
   }
 

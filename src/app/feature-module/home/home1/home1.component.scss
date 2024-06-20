@@ -8,35 +8,37 @@
     animation: slideIn 1.5s ease-out;
     position: relative;
 }
+
 @keyframes slideIn {
     from {
-      transform: translateY(80px);
-      opacity: 0;
+        transform: translateY(80px);
+        opacity: 0;
     }
+
     to {
-      transform: translateY(0);
-      opacity: 1;
+        transform: translateY(0);
+        opacity: 1;
     }
-  }
+}
 
 
-  input[type="text"]:hover {
+input[type="text"]:hover {
     border: 1px solid #0e82fd;
-  }
-  
-  input[type="checkbox"]:hover {
-    border: 1px solid #0e82fd;
-  }
-  
-  input[type="radio"]:hover {
-    border: 1px solid #0e82fd;
-  }
+}
 
-  select:hover{
+input[type="checkbox"]:hover {
     border: 1px solid #0e82fd;
-  }
-  
-.hover_concern:hover{
+}
+
+input[type="radio"]:hover {
+    border: 1px solid #0e82fd;
+}
+
+select:hover {
+    border: 1px solid #0e82fd;
+}
+
+.hover_concern:hover {
     color: #0e82fd;
 }
 
@@ -96,6 +98,10 @@ select {
     display: none;
 }
 
+.strong_color{
+    color: #0e82fd;
+}
+
 .yes_no_btn input[type="radio"]+label {
     background: #fbf7ff;
     border-color: #0e82fd;
@@ -133,20 +139,20 @@ select {
     align-items: center;
 }
 
-.concern_label:hover{
+.concern_label:hover {
     color: #0e82fd;
 }
 
-.concern_label{
+.concern_label {
     font-size: 14px;
     color: black;
 }
 
-.banner-content p{
+.banner-content p {
     width: 40%;
 }
 
-.form h3{
+.form h3 {
     color: #0e82fd;
     font-weight: 600;
 }
@@ -172,16 +178,20 @@ $__none: none;
 
 @mixin position($pos, $top: null, $right: null, $bottom: null, $left: null) {
     position: $pos;
-    @if $top != null {
+
+    @if $top !=null {
         top: $top;
     }
-    @if $right != null {
+
+    @if $right !=null {
         right: $right;
     }
-    @if $bottom != null {
+
+    @if $bottom !=null {
         bottom: $bottom;
     }
-    @if $left != null {
+
+    @if $left !=null {
         left: $left;
     }
 }
@@ -202,50 +212,78 @@ $__none: none;
 .banner-img {
     position: $__relative;
     text-align: right;
+
     .banner-img1 {
         @include position($__absolute, 260px, null, null, -120px);
         -webkit-animation: float 2s ease-in-out infinite;
         animation: float 2s ease-in-out infinite;
     }
+
     .banner-img2 {
         @include position($__absolute, 250px, -80px, null, null);
         -webkit-animation: mover 3s infinite alternate;
         animation: mover 3s infinite alternate;
     }
+
     .banner-img3 {
         @include position($__absolute, 480px, 100px, null, null);
         -webkit-animation: mover 1s infinite alternate;
         animation: mover 1s infinite alternate;
     }
+
     @keyframes float {
         0% {
             @include transform(translateY(0px));
         }
+
         50% {
             @include transform(translateY(-15px));
         }
+
         100% {
             @include transform(translateY(0px));
         }
     }
+
     @-webkit-keyframes mover {
-        0% { 
+        0% {
             @include transform(translateY(0px));
         }
-        100% { 
-            @include transform(translateY(-15px));
-        }
-    }
-    @keyframes mover {
-        0% { 
-            @include transform(translateY(0px));
-        }
+
         100% {
             @include transform(translateY(-15px));
         }
     }
+
+    @keyframes mover {
+        0% {
+            @include transform(translateY(0px));
+        }
+
+        100% {
+            @include transform(translateY(-15px));
+        }
+    }
+
     @include respond-below(991px) {
         display: $__none;
+    }
+
+    @media (max-width: 1200px) {
+        .banner-img1 {
+            @include position($__absolute, 200px, null, null, -130px);
+            /* Adjusted position */
+        }
+
+        .banner-img2 {
+            @include position($__absolute, 220px, -80px, null, null);
+            /* Adjusted position */
+        }
+
+        .banner-img3 {
+            @include position($__absolute, 320px, 125px, null, null);
+            /* Adjusted position */
+        }
     }
 }
 
@@ -267,10 +305,19 @@ $__none: none;
     background-color: #0e82fd;
     border: none;
     border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.form_btn {
-    padding: 10px 20px;
+.modal_btn {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    background-color: #0e82fd;
+    border: none;
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
 }
@@ -287,8 +334,11 @@ $__none: none;
     width: 1000px;
     max-width: 100%;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 25px;
+    max-height: 80vh; /* Added max-height for responsiveness */
+    overflow-y: auto;
 }
+
 
 // ::ng-deep .p-calendar {
 //     width: 300px !important; /* Adjust width as needed */
@@ -427,7 +477,7 @@ $__none: none;
     border-radius: 5px;
 }
 
-.img_fluid{
+.img_fluid {
     max-width: 100%;
 }
 
@@ -435,7 +485,7 @@ $__none: none;
     transform: scaleX(-1);
 }
 
-.preview-button{
+.preview-button {
     border: 1px solid #a7a7a700;
     padding: 10px;
 }
@@ -529,4 +579,192 @@ $__none: none;
   }
   .pay-btn{
     background: #0e82fd;
-  }
+  }@media (max-width: 1200px) {
+    .container {
+        max-width: 90%;
+    }
+    
+    h4 {
+        font-size: 14px;
+    }
+    
+    .banner-content p {
+        width: 70%;
+    }
+    
+    .form_btn {
+        font-size: 10px;
+    }
+    
+    h3 {
+        font-size: 16px;
+    }
+    
+    .concern_label {
+        font-size: 12px;
+    }
+    
+    .banner_img {
+        max-width: 375px;
+        top: 110px;
+    }
+    
+    .custom-file-upload {
+        font-size: 12px;
+    }
+    
+    .yes_no_btn label {
+        font-size: 12px;
+    }
+    
+    input[type="text"] {
+        height: 30px;
+        padding-left: 5px;
+        align-items: center;
+        border: 1px solid #0000001c;
+        width: 90%;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+    select {
+        appearance: none;
+        padding: 5px;
+        padding-right: 20px;  
+        border-radius: 8px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .img-fluid{
+        width: 100%;
+    }
+    
+    .banner-content .btn {
+        border-radius: 4px;
+        padding: 10px;
+        min-width: 140px;
+        font-size: 12px;
+    }
+    h2{
+        font-size: 28px;
+    }
+    .work-img-info{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .work-img-info img{
+        width: 100%;
+    }
+    .concerns{
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 10px;
+    }
+}
+
+
+@media (max-width: 1050px) {
+    h4 {
+        font-size: 14px;
+    }
+    
+    .banner-content p {
+        width: 70%;
+    }
+    .form_btn{
+        font-size: 10px;
+    }
+    
+    h3 {
+        font-size: 16px;
+    }
+    
+    .concern_label {
+        font-size: 12px;
+    }
+    
+    .banner_img {
+        max-width: 350px;
+        top: 85px;
+    }
+    .concerns{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    }
+    
+}
+
+
+@media (max-width: 768px) {
+    .banner-content p {
+        width: 100%;
+        text-align: center;
+    }
+    .work-img-info img{
+        display: none;
+    }
+    .work-img-info{
+        display: none;
+    }
+    .custom-modal{
+        position: fixed;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 99999;
+        max-width: 90%;
+        padding: 20px;
+        border-radius: 25px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    input[type="text"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .mobile-fixed-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1030;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-size: 20px;
+        border-radius: 5px;
+        /* Ensure it's above other content */
+    }
+
+    select {
+        margin-top: 20px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    .banner-content p {
+        width: 100%;
+    }
+    .custom-modal{
+        position: fixed;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 99999;
+        max-width: 90%;
+        padding: 20px;
+        border-radius: 10px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+}

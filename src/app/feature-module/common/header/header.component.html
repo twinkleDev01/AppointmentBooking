@@ -21,13 +21,13 @@
           <a id="menu_close" (click)="hideSidebar()" class="menu-close" href="javascript:void(0);">
             <i class="fas fa-times"></i></a>
         </div>
-        <ul class="main-nav">
+        <ul class="main-nav gap-4">
           <li class="menu-item"><a [routerLink]="routes.home1">Home</a></li>
-          <li class="menu-item"><a [routerLink]="routes.patientDashboard">Patients</a></li>
-          <li class="menu-item"><a [routerLink]="routes.contactUs">Contact Us</a></li>
+          <li class="menu-item"><a [routerLink]="routes.patientDashboard" *ngIf="isPatient">Patients</a></li>
           <li class="menu-item"><a [routerLink]="routes.aboutUs">About Us</a></li>
-          <li class="menu-item"><a [routerLink]="routes.contactUs">T&C</a></li>
-          <li class="menu-item"><a [routerLink]="routes.contactUs">FAQs</a></li>
+          <li class="menu-item"><a [routerLink]="routes.contactUs">Contact Us</a></li>
+          <li class="menu-item"><a [routerLink]="routes.termsCondition">T&C</a></li>
+          <li class="menu-item"><a [routerLink]="routes.faq">FAQs</a></li>
           <li class="searchbar">
             <a href="javascript:void(0);" (click)="toggleSearch()"><i class="feather icon-search"></i></a>
             <!-- <div class="togglesearch" [ngClass]="searchField ? 'd-block' : 'd-none'">
