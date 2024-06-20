@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { DataService } from 'src/app/shared/data/data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { routes } from 'src/app/shared/routes/routes';
@@ -37,7 +37,7 @@ export class Home1Component implements OnInit {
   activeIndex = 0;
   files: { name: string, url: string, type: string }[] = [];
   concerns: any;
-
+  isMobile!: boolean;
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -102,16 +102,27 @@ export class Home1Component implements OnInit {
       selectedDate: ['', Validators.required],
       selectedFiles: this.fb.array([]),
     });
+    this.isMobile = window.innerWidth <= 576;
   }
 
   ngOnInit() {
     this.getIssues();
     this.getAvailableSlots();
     console.log(this.bookAppointment,"appointment");
+    this.checkScreenSize();
   }
 
   get concernControls() {
     return this.appointmentForm.get('selectedConcerns') as FormArray;
+  }
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize() {
+    this.isMobile = window.innerWidth <= 576;
   }
 
   
