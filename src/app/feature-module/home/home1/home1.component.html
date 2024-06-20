@@ -81,7 +81,8 @@
               </div>
               <!-- list of concerns/decease -->
               <div class="row concerns">
-                <div *ngFor="let concern of concerns; let i = index" class="col-lg-6 col-md-6 mt-3 d-flex align-items-center">
+                <div *ngFor="let concern of concerns; let i = index"
+                  class="col-lg-6 col-md-6 mt-3 d-flex align-items-center">
                   <input type="checkbox" id="concern{{i}}" [checked]="isConcernSelected(concern)"
                     (change)="onCheckboxChange($event, concern)">
                   <label class="concern_label" for="concern{{i}}">{{concern.issueName}}</label>
@@ -215,7 +216,8 @@
                     <!-- Available Times -->
                     <h6 class="text-center mt-5">Available Time Slots</h6>
                     <div class="row mt-5">
-                      <div *ngFor="let slot of filteredAppointments" class="col-lg-3" (click)="onSelectTimeSlot(slot)">
+                      <div *ngFor="let slot of filteredAppointments" class="col-lg-3 col-md-4 col-sm-4 col-6 mt-2"
+                        (click)="onSelectTimeSlot(slot)">
                         <div
                           [ngClass]="{'selected': selectedTimeSlot === slot, 'not-selected': selectedTimeSlot !== slot}">
                           {{ slot.startTime }}
@@ -224,10 +226,16 @@
                     </div>
                   </div>
                 </div>
-                <div *ngIf="selectedTimeSlot" class="d-flex justify-content-between mt-3">
-                  <p>Selected Slot: <strong>{{ selectedTimeSlot.startTime }}, {{ selectedDate | date: 'yyyy-MM-dd'
-                      }}</strong></p>
-                  <button class="form_btn" (click)="closeModal()">Confirm Slot</button>
+                <div *ngIf="selectedTimeSlot"
+                  class=" row mt-5 ps-5 pe-5">
+                  <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center mt-3">
+                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startTime }}, {{
+                        selectedDate | date: 'yyyy-MM-dd'
+                        }}</strong></p>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center mt-3">
+                    <button class="modal_btn" (click)="closeModal()">Confirm Slot</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -295,7 +303,7 @@
           </div>
         </div>
         <div class="col-lg-5 work-img-info aos" data-aos="fade-up" data-aos-duration="2000">
-            <img src="assets/img/work-img.png" class="img-fluid mirror-image" alt="doctor-image" />
+          <img src="assets/img/work-img.png" class="img-fluid mirror-image" alt="doctor-image" />
         </div>
       </div>
     </div>
