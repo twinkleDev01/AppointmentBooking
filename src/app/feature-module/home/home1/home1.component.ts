@@ -36,7 +36,7 @@ export class Home1Component implements OnInit {
   activeIndex = 0;
   files: { name: string, url: string, type: string }[] = [];
   concerns: any;
-
+bookAppointmentbtn: boolean = false;
   userDetails:any
   public slideConfig = {
     dots: false,
@@ -384,6 +384,7 @@ onSubmit(){
     // Handle form submission
   }
 }
+
 bookAppointment(value:any){
   this.patientsService.bookAppointment(value).subscribe(response =>{
     console.log(response);
@@ -400,5 +401,9 @@ openImagePreviewModal() {
   if (this.files.length > 0) {
     this.isImageModalOpen = true;
   }
+}
+
+navigation(){
+
 }
 }

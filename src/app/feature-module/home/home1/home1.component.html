@@ -1,32 +1,66 @@
 <app-header></app-header>
 
-<!-- Home Banner -->
-<section class="banner-section">
-  <div class="container">
-    <div class="row mt-5">
-      <div class="col-lg-7">
-        <div class="banner-content aos" data-aos="fade-up" data-aos-duration="2000">
-          <h1 class="fs-2">Transform Your <span>Hair & Skin</span> with Our Online Dermatology Consult</h1>
-          <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
-          <p class="text-success">Proven Results with 98.6% User Satisfaction </p>
-          <a [routerLink]="routes.booking1" class="btn">Start a Consult</a>
-          <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
+<ng-container *ngIf="bookAppointmentbtn === false">
+  <!-- Home Banner -->
+  <section class="banner-section">
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-lg-7">
+          <div
+            class="banner-content aos"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+          >
+            <h1 class="fs-2">
+              Transform Your <span>Hair & Skin</span> with Our Online
+              Dermatology Consult
+            </h1>
+            <img
+              src="assets/img/icons/header-icon.svg"
+              class="header-icon"
+              alt="header-icon"
+            />
+            <p class="text-success">
+              Proven Results with 98.6% User Satisfaction 
+            </p>
+            <a [routerLink]="routes.booking1" class="btn">Start a Consult</a>
+            <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
             <img src="assets/img/banner-img.png" class="img_fluid" alt="patient-image" />
           </div> -->
-          <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
-            <img src="assets/img/banner-img.png" class="img-fluid img_fluid" alt="patient-image" />
-            <div class="banner-img1">
-              <img src="assets/img/banner/banner-img1.svg" class="img-fluid" alt="checkup-image">
-            </div>
-            <div class="banner-img2">
-              <img src="assets/img/banner/banner-img2.svg" class="img-fluid" alt="doctor-slide">
-            </div>
-            <div class="banner-img3">
-              <img src="assets/img/banner/banner-img3.svg" class="img-fluid" alt="doctors-list">
+            <div
+              class="banner-img banner_img aos"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+            >
+              <img
+                src="assets/img/banner-img.png"
+                class="img-fluid img_fluid"
+                alt="patient-image"
+              />
+              <div class="banner-img1">
+                <img
+                  src="assets/img/banner/banner-img1.svg"
+                  class="img-fluid"
+                  alt="checkup-image"
+                />
+              </div>
+              <div class="banner-img2">
+                <img
+                  src="assets/img/banner/banner-img2.svg"
+                  class="img-fluid"
+                  alt="doctor-slide"
+                />
+              </div>
+              <div class="banner-img3">
+                <img
+                  src="assets/img/banner/banner-img3.svg"
+                  class="img-fluid"
+                  alt="doctors-list"
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <!-- <div class="search-box-one aos" data-aos="fade-up" data-aos-duration="2000">
+          <!-- <div class="search-box-one aos" data-aos="fade-up" data-aos-duration="2000">
           <form>
             <div class="search-input search-line">
               <i class="feather icon-search bficon"></i>
@@ -56,48 +90,75 @@
             </div>
           </form>
         </div> -->
-      </div>
-      <div class="col-lg-5">
-
-        <!-- app.component.html -->
-        <div class="form" [formGroup]="appointmentForm">
-          <h3 class="text-center mb-2">Get an Appointment</h3>
-          <div class="row mt-4">
-            <!-- age and gender -->
-            <div class="col-lg-6 no_padding">
-              <input type="text" placeholder="Enter Age" formControlName="age">
-            </div>
-            <div class="col-lg-6 no_padding">
-              <select name="gender" id="gender" formControlName="gender">
-                <option value="">Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div class="col-lg-12 mt-3">
-              <h5 class="text-center">Select your concern(s)</h5>
-            </div>
-            <!-- list of concerns/decease -->
-            <div class="row concerns">
-              <div *ngFor="let concern of concerns; let i = index" class="col-lg-6 mt-3 d-flex align-items-center">
-                <input type="checkbox" id="concern{{i}}" [checked]="isConcernSelected(concern)"
-                  (change)="onCheckboxChange($event, concern)">
-                <label class="concern_label" for="concern{{i}}">{{concern.issueName}}</label>
+        </div>
+        <div class="col-lg-5">
+          <!-- app.component.html -->
+          <div class="form" [formGroup]="appointmentForm">
+            <h3 class="text-center mb-2">Get an Appointment</h3>
+            <div class="row mt-4">
+              <!-- age and gender -->
+              <div class="col-lg-6 no_padding">
+                <input
+                  type="text"
+                  placeholder="Enter Age"
+                  formControlName="age"
+                />
               </div>
-            </div>
-            <!-- Are you consulting for first time? -->
-            <div class="concerns mt-3">
-              <h4 class="text-center">Are you consulting for the first time?</h4>
-              <div class="yes_no_btn d-flex align-items-center justify-content-center">
-                <input type="radio" id="yes" value="yes" formControlName="firstTimeConsult" checked>
-                <label for="yes">Yes</label>
-                <input type="radio" id="no" value="no" formControlName="firstTimeConsult">
-                <label for="no">No</label>
+              <div class="col-lg-6 no_padding">
+                <select name="gender" id="gender" formControlName="gender">
+                  <option value="">Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
-            </div>
-            <!-- Upload Images -->
-            <!-- <div class="concerns mt-3">
+              <div class="col-lg-12 mt-3">
+                <h5 class="text-center">Select your concern(s)</h5>
+              </div>
+              <!-- list of concerns/decease -->
+              <div class="row concerns">
+                <div
+                  *ngFor="let concern of concerns; let i = index"
+                  class="col-lg-6 mt-3 d-flex align-items-center"
+                >
+                  <input
+                    type="checkbox"
+                    id="concern{{ i }}"
+                    [checked]="isConcernSelected(concern)"
+                    (change)="onCheckboxChange($event, concern)"
+                  />
+                  <label class="concern_label" for="concern{{ i }}">{{
+                    concern.issueName
+                  }}</label>
+                </div>
+              </div>
+              <!-- Are you consulting for first time? -->
+              <div class="concerns mt-3">
+                <h4 class="text-center">
+                  Are you consulting for the first time?
+                </h4>
+                <div
+                  class="yes_no_btn d-flex align-items-center justify-content-center"
+                >
+                  <input
+                    type="radio"
+                    id="yes"
+                    value="yes"
+                    formControlName="firstTimeConsult"
+                    checked
+                  />
+                  <label for="yes">Yes</label>
+                  <input
+                    type="radio"
+                    id="no"
+                    value="no"
+                    formControlName="firstTimeConsult"
+                  />
+                  <label for="no">No</label>
+                </div>
+              </div>
+              <!-- Upload Images -->
+              <!-- <div class="concerns mt-3">
               <h4 class="text-center">Upload up to 5 Images</h4>
               <div class="file-upload-container">
                 <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none;">
@@ -113,8 +174,8 @@
               </div>
             </div> -->
 
-            <!-- Custom Modal -->
-            <!-- <div class="custom-modal" *ngIf="isImageModalOpen">
+              <!-- Custom Modal -->
+              <!-- <div class="custom-modal" *ngIf="isImageModalOpen">
               <div class="custom-modal-content">
                 <div class="custom-modal-header">
                   <h5 class="custom-modal-title">Image Preview</h5>
@@ -129,428 +190,623 @@
             </div>
             <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div> -->
 
-            <div class="concerns mt-3">
-              <h4 class="text-center">Upload up to 5 Images</h4>
+              <div class="concerns mt-3">
+                <h4 class="text-center">Upload up to 5 Images</h4>
 
-              <!-- Display count of selected files -->
+                <!-- Display count of selected files -->
 
-              <div class="file-upload-container d-flex justify-content-evenly">
-                <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none;">
-                <label for="fileInput" class="custom-file-upload">Select Files</label>
-                <div *ngIf="files.length === 0" class="no-files-uploaded">No file uploaded</div>
-                <span *ngIf="files.length>0">{{ files.length }} {{ files.length === 1 ? 'file' : 'files' }}
-                  selected</span>
-                <button *ngIf="files.length>0" class="preview-button" (click)="openImagePreviewModal()"
-                  [disabled]="files.length === 0">Preview</button>
-              </div>
-            </div>
-
-            <!-- Button to open image preview modal -->
-
-            <!-- Custom Modal -->
-            <div class="custom-modal" *ngIf="isImageModalOpen">
-              <div class="custom-modal-content">
-                <div class="custom-modal-header">
-                  <h5 class="custom-modal-title">Image Preview</h5>
-                  <button type="button" class="close" (click)="closeImageModal()">
-                    <i class="fa-regular fa-circle-xmark text-black"></i>
+                <div
+                  class="file-upload-container d-flex justify-content-evenly"
+                >
+                  <input
+                    type="file"
+                    (change)="onFileChange($event)"
+                    multiple
+                    id="fileInput"
+                    style="display: none"
+                  />
+                  <label for="fileInput" class="custom-file-upload"
+                    >Select Files</label
+                  >
+                  <div *ngIf="files.length === 0" class="no-files-uploaded">
+                    No file uploaded
+                  </div>
+                  <span *ngIf="files.length > 0"
+                    >{{ files.length }}
+                    {{ files.length === 1 ? "file" : "files" }} selected</span
+                  >
+                  <button
+                    *ngIf="files.length > 0"
+                    class="preview-button"
+                    (click)="openImagePreviewModal()"
+                    [disabled]="files.length === 0"
+                  >
+                    Preview
                   </button>
                 </div>
-                <div class="custom-modal-body">
-                  <div id="fileCarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                      <div *ngFor="let file of files; let i = index" class="carousel-item" [ngClass]="{'active': i === activeIndex}">
-                        <ng-container *ngIf="file.type.startsWith('image')">
-                          <img [src]="file.url" alt="File Preview" class="d-block w-100">
-                        </ng-container>
-                        <ng-container *ngIf="!file.type.startsWith('image')">
-                          <span>{{ file.name }}</span>
-                        </ng-container>
+              </div>
+
+              <!-- Button to open image preview modal -->
+
+              <!-- Custom Modal -->
+              <div class="custom-modal" *ngIf="isImageModalOpen">
+                <div class="custom-modal-content">
+                  <div class="custom-modal-header">
+                    <h5 class="custom-modal-title">Image Preview</h5>
+                    <button
+                      type="button"
+                      class="close"
+                      (click)="closeImageModal()"
+                    >
+                      <i class="fa-regular fa-circle-xmark text-black"></i>
+                    </button>
+                  </div>
+                  <div class="custom-modal-body">
+                    <div
+                      id="fileCarousel"
+                      class="carousel slide"
+                      data-ride="carousel"
+                    >
+                      <div class="carousel-inner">
+                        <div
+                          *ngFor="let file of files; let i = index"
+                          class="carousel-item"
+                          [ngClass]="{ active: i === activeIndex }"
+                        >
+                          <ng-container *ngIf="file.type.startsWith('image')">
+                            <img
+                              [src]="file.url"
+                              alt="File Preview"
+                              class="d-block w-100"
+                            />
+                          </ng-container>
+                          <ng-container *ngIf="!file.type.startsWith('image')">
+                            <span>{{ file.name }}</span>
+                          </ng-container>
+                        </div>
                       </div>
+                      <a
+                        class="carousel-control-prev"
+                        role="button"
+                        data-slide="prev"
+                        (click)="prev()"
+                      >
+                        <span
+                          class="carousel-control-prev-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a
+                        class="carousel-control-next"
+                        role="button"
+                        data-slide="next"
+                        (click)="next()"
+                      >
+                        <span
+                          class="carousel-control-next-icon"
+                          aria-hidden="true"
+                        ></span>
+                        <span class="sr-only">Next</span>
+                      </a>
                     </div>
-                    <a class="carousel-control-prev" role="button" data-slide="prev" (click)="prev()">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" role="button" data-slide="next" (click)="next()">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
                   </div>
                 </div>
-                
-                
+              </div>
+
+              <div
+                class="custom-modal-backdrop"
+                *ngIf="isImageModalOpen"
+                (click)="closeImageModal()"
+              ></div>
+
+              <div
+                class="d-flex justify-content-center align-items-center mt-5"
+              >
+                <button class="form_btn me-3" (click)="openModal()">
+                  Select Time
+                </button>
+                <button
+                  class="form_btn"
+                  (click)="onSubmit(); bookAppointmentbtn = true"
+                >
+                  Book Appointment
+                </button>
               </div>
             </div>
-
-            <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div>
-
-
-            <div class="d-flex justify-content-center align-items-center mt-5">
-              <button class="form_btn me-3" (click)="openModal()">Select Time</button>
-              <button class="form_btn" (click)="onSubmit()">Book Appointment</button>
-            </div>
           </div>
-        </div>
 
-        <!-- Custom Modal -->
-        <div class="custom-modal" *ngIf="isModalOpen">
-          <div class="custom-modal-content">
-            <div class="custom-modal-header">
-              <h5 class="custom-modal-title">Select Preferred Date and Available Time Slot</h5>
-              <button type="button" class="close" (click)="closeModal()">
-                <i class="fa-regular fa-circle-xmark text-black"></i>
-              </button>
-            </div>
-            <div class="custom-modal-body">
-              <div class="row mt-3">
-                <div class="col-lg-6">
-                  <p-calendar [(ngModel)]="selectedDate" inline="true" class="calendar-p" dateFormat="yy-mm-dd"
-                    (onSelect)="onSelectDate($event)" (ngModelChange)="onDateChange($event)"
-                    (onInput)="onDateChange($event)"></p-calendar>
-                </div>
-                <div class="col-lg-6">
-                  <!-- Available Times -->
-                  <h6 class="text-center mt-5">Available Time Slots</h6>
-                  <div class="row mt-5">
-                    <div *ngFor="let slot of filteredAppointments" class="col-lg-3" (click)="onSelectTimeSlot(slot)">
+          <!-- Custom Modal -->
+          <div class="custom-modal" *ngIf="isModalOpen">
+            <div class="custom-modal-content">
+              <div class="custom-modal-header">
+                <h5 class="custom-modal-title">
+                  Select Preferred Date and Available Time Slot
+                </h5>
+                <button type="button" class="close" (click)="closeModal()">
+                  <i class="fa-regular fa-circle-xmark text-black"></i>
+                </button>
+              </div>
+              <div class="custom-modal-body">
+                <div class="row mt-3">
+                  <div class="col-lg-6">
+                    <p-calendar
+                      [(ngModel)]="selectedDate"
+                      inline="true"
+                      class="calendar-p"
+                      dateFormat="yy-mm-dd"
+                      (onSelect)="onSelectDate($event)"
+                      (ngModelChange)="onDateChange($event)"
+                      (onInput)="onDateChange($event)"
+                    ></p-calendar>
+                  </div>
+                  <div class="col-lg-6">
+                    <!-- Available Times -->
+                    <h6 class="text-center mt-5">Available Time Slots</h6>
+                    <div class="row mt-5">
                       <div
-                        [ngClass]="{'selected': selectedTimeSlot === slot, 'not-selected': selectedTimeSlot !== slot}">
-                        {{ slot.startTime }}
+                        *ngFor="let slot of filteredAppointments"
+                        class="col-lg-3"
+                        (click)="onSelectTimeSlot(slot)"
+                      >
+                        <div
+                          [ngClass]="{
+                            selected: selectedTimeSlot === slot,
+                            'not-selected': selectedTimeSlot !== slot
+                          }"
+                        >
+                          {{ slot.startTime }}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div *ngIf="selectedTimeSlot" class="d-flex justify-content-between mt-3">
-                <p>Selected Slot: <strong>{{ selectedTimeSlot.startTime }}, {{ selectedDate | date: 'yyyy-MM-dd'
-                    }}</strong></p>
-                <button class="form_btn" (click)="closeModal()">Confirm Slot</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Form -->
-      <div class="custom-modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()"></div>
-    </div>
-  </div>
-</section>
-<!-- /Home Banner -->
-
-
-<!-- Work Section -->
-<section class="work-section mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-7 col-md-12 work-details">
-        <div class="section-header-one aos" data-aos="fade-up" data-aos-duration="2000">
-          <h5>How it Works</h5>
-          <h2 class="section-title">3 easy steps to get your solution</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-12 aos" data-aos="fade-up">
-            <div class="work-info">
-              <div class="work-icon">
-                <span><img src="assets/img/icons/work-03.svg" alt="calendar-icon" /></span>
-              </div>
-              <div class="work-content">
-                <h5>Schedule Appointment</h5>
-                <p>
-                  After you choose your preferred doctor, select a convenient time
-                  slot, & confirm your appointment.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 aos" data-aos="fade-up">
-            <div class="work-info">
-              <div class="work-icon">
-                <span><img src="assets/img/icons/work-01.svg" alt="search-doctor-icon" /></span>
-              </div>
-              <div class="work-content">
-                <h5>Meet your dermatologist online</h5>
-                <p>
-                  At your chosen date & time slot, meet your dermatologist online via a Google Meet call, to discuss
-                  your skin & hair goals and concerns.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-12 aos" data-aos="fade-up">
-            <div class="work-info">
-              <div class="work-icon">
-                <span><img src="assets/img/icons/work-04.svg" alt="solution-icon" /></span>
-              </div>
-              <div class="work-content">
-                <h5>Get Your Solution</h5>
-                <p>
-                  Discuss your health concerns with the doctor and receive personalized advice & solution.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-5 col-md-12 work-img-info aos" data-aos="fade-up" data-aos-duration="2000">
-        <div class="work-img">
-          <img src="assets/img/work-img.png" class="img-fluid mirror-image" alt="doctor-image" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /Work Section -->
-
-<!-- Doctors Section -->
-<section class="doctors-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 aos" data-aos="fade-up">
-        <div class="section-header-one section-header-slider text-center">
-          <h2 class="section-title">Best Doctors</h2>
-        </div>
-      </div>
-    </div>
-    <div class="doctor-slider-one owl-theme aos" data-aos="fade-up" data-aos-duration="2000">
-
-      <owl-carousel-o [options]="doctorSlider">
-        @for (data of doctorSliderOne; track data) {
-        <ng-template carouselSlide>
-          <div class="item">
-            <div class="doctor-profile-widget doc-item">
-              <div class="doc-pro-img">
-                <a [routerLink]="routes.doctorProfile2">
-                  <div class="doctor-profile-img">
-                    <img [src]="data.img" class="img-fluid" alt="Ruby Perrin" />
-                  </div>
-                </a>
-                <div class="doctor-amount">
-                  <span>{{ data.amount }}</span>
-                </div>
-              </div>
-              <div class="doc-content">
-                <div class="doc-pro-info">
-                  <div class="doc-pro-name">
-                    <a [routerLink]="routes.doctorProfile2">{{ data.name }}</a>
-                    <p>{{ data.content }}</p>
-                  </div>
-                  <div class="reviews-ratings">
-                    <p>
-                      <span><i class="fas fa-star"></i> {{ data.rating1 }}</span>
-                      {{ data.rating2 }}
-                    </p>
-                  </div>
-                </div>
-                <div class="doc-pro-location">
+                <div
+                  *ngIf="selectedTimeSlot"
+                  class="d-flex justify-content-between mt-3"
+                >
                   <p>
-                    <i class="feather icon-map-pin"></i> {{ data.location }}
+                    Selected Slot:
+                    <strong
+                      >{{ selectedTimeSlot.startTime }},
+                      {{ selectedDate | date : "yyyy-MM-dd" }}</strong
+                    >
                   </p>
-                  <span class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
+                  <button class="form_btn" (click)="closeModal()">
+                    Confirm Slot
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        </ng-template>
-        }
-      </owl-carousel-o>
-
+        </div>
+        <!-- Form -->
+        <div
+          class="custom-modal-backdrop"
+          *ngIf="isModalOpen"
+          (click)="closeModal()"
+        ></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+  <!-- /Home Banner -->
 
-
-<!-- Testimonial Section -->
-<section class="testimonial-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <ngx-slick-carousel class="testimonial-slider" #slickModal="slick-carousel" [config]="slideConfig">
-          @for (data of aboutUs; track data) {
-          <div class="testimonial-grid" ngxSlickItem>
-            <div class="testimonial-info">
-              <div class="testimonial-img">
-                <img [src]="data.img" class="img-fluid" alt="client-image" />
-              </div>
-              <div class="testimonial-content">
-                <div class="section-inner-header testimonial-header">
-                  <h6>{{ data.heading1 }}</h6>
-                  <h2>{{ data.heading2 }}</h2>
+  <!-- Work Section -->
+  <section class="work-section mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-12 work-details">
+          <div
+            class="section-header-one aos"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+          >
+            <h5>How it Works</h5>
+            <h2 class="section-title">3 easy steps to get your solution</h2>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 aos" data-aos="fade-up">
+              <div class="work-info">
+                <div class="work-icon">
+                  <span
+                    ><img
+                      src="assets/img/icons/work-03.svg"
+                      alt="calendar-icon"
+                  /></span>
                 </div>
-                <div class="testimonial-details">
-                  <p>{{ data.content }}</p>
-                  <h6>
-                    <span>{{ data.name }}</span> {{ data.location }}
-                  </h6>
+                <div class="work-content">
+                  <h5>Schedule Appointment</h5>
+                  <p>
+                    After you choose your preferred doctor, select a convenient
+                    time slot, & confirm your appointment.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 aos" data-aos="fade-up">
+              <div class="work-info">
+                <div class="work-icon">
+                  <span
+                    ><img
+                      src="assets/img/icons/work-01.svg"
+                      alt="search-doctor-icon"
+                  /></span>
+                </div>
+                <div class="work-content">
+                  <h5>Meet your dermatologist online</h5>
+                  <p>
+                    At your chosen date & time slot, meet your dermatologist
+                    online via a Google Meet call, to discuss your skin & hair
+                    goals and concerns.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 aos" data-aos="fade-up">
+              <div class="work-info">
+                <div class="work-icon">
+                  <span
+                    ><img
+                      src="assets/img/icons/work-04.svg"
+                      alt="solution-icon"
+                  /></span>
+                </div>
+                <div class="work-content">
+                  <h5>Get Your Solution</h5>
+                  <p>
+                    Discuss your health concerns with the doctor and receive
+                    personalized advice & solution.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <div
+          class="col-lg-5 col-md-12 work-img-info aos"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
+          <div class="work-img">
+            <img
+              src="assets/img/work-img.png"
+              class="img-fluid mirror-image"
+              alt="doctor-image"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /Work Section -->
+
+  <!-- Doctors Section -->
+  <section class="doctors-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 aos" data-aos="fade-up">
+          <div class="section-header-one section-header-slider text-center">
+            <h2 class="section-title">Best Doctors</h2>
+          </div>
+        </div>
+      </div>
+      <div
+        class="doctor-slider-one owl-theme aos"
+        data-aos="fade-up"
+        data-aos-duration="2000"
+      >
+        <owl-carousel-o [options]="doctorSlider">
+          @for (data of doctorSliderOne; track data) {
+          <ng-template carouselSlide>
+            <div class="item">
+              <div class="doctor-profile-widget doc-item">
+                <div class="doc-pro-img">
+                  <a [routerLink]="routes.doctorProfile2">
+                    <div class="doctor-profile-img">
+                      <img
+                        [src]="data.img"
+                        class="img-fluid"
+                        alt="Ruby Perrin"
+                      />
+                    </div>
+                  </a>
+                  <div class="doctor-amount">
+                    <span>{{ data.amount }}</span>
+                  </div>
+                </div>
+                <div class="doc-content">
+                  <div class="doc-pro-info">
+                    <div class="doc-pro-name">
+                      <a [routerLink]="routes.doctorProfile2">{{
+                        data.name
+                      }}</a>
+                      <p>{{ data.content }}</p>
+                    </div>
+                    <div class="reviews-ratings">
+                      <p>
+                        <span
+                          ><i class="fas fa-star"></i> {{ data.rating1 }}</span
+                        >
+                        {{ data.rating2 }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="doc-pro-location">
+                    <p>
+                      <i class="feather icon-map-pin"></i> {{ data.location }}
+                    </p>
+                    <span class="badge badge-success doc-badge"
+                      ><i class="fa-solid fa-circle"></i>Available</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
           }
-        </ngx-slick-carousel>
+        </owl-carousel-o>
       </div>
     </div>
-  </div>
-</section>
-<!-- /Testimonial Section -->
+  </section>
 
-<!-- /FAQ Section -->
-<section class="faq-section mt-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="section-header-one aos" data-aos="fade-up" data-aos-duration="2000">
-          <h5>Get Your Answer</h5>
-          <h2 class="section-title">Frequently Asked Questions</h2>
+  <!-- Testimonial Section -->
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ngx-slick-carousel
+            class="testimonial-slider"
+            #slickModal="slick-carousel"
+            [config]="slideConfig"
+          >
+            @for (data of aboutUs; track data) {
+            <div class="testimonial-grid" ngxSlickItem>
+              <div class="testimonial-info">
+                <div class="testimonial-img">
+                  <img [src]="data.img" class="img-fluid" alt="client-image" />
+                </div>
+                <div class="testimonial-content">
+                  <div class="section-inner-header testimonial-header">
+                    <h6>{{ data.heading1 }}</h6>
+                    <h2>{{ data.heading2 }}</h2>
+                  </div>
+                  <div class="testimonial-details">
+                    <p>{{ data.content }}</p>
+                    <h6>
+                      <span>{{ data.name }}</span> {{ data.location }}
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            }
+          </ngx-slick-carousel>
         </div>
       </div>
     </div>
-    <div class="row align-items-center">
-      <div class="col-lg-6 col-md-12 aos" data-aos="fade-up" data-aos-duration="2000">
-        <div class="faq-img">
-          <img src="assets/img/faq-img.png" class="img-fluid" alt="img" />
-          <div class="faq-patients-count">
-            <div class="faq-smile-img">
-              <img src="assets/img/icons/smiling-icon.svg" alt="icon" />
+  </section>
+  <!-- /Testimonial Section -->
+
+  <!-- /FAQ Section -->
+  <section class="faq-section mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="section-header-one aos"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+          >
+            <h5>Get Your Answer</h5>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div
+          class="col-lg-6 col-md-12 aos"
+          data-aos="fade-up"
+          data-aos-duration="2000"
+        >
+          <div class="faq-img">
+            <img src="assets/img/faq-img.png" class="img-fluid" alt="img" />
+            <div class="faq-patients-count">
+              <div class="faq-smile-img">
+                <img src="assets/img/icons/smiling-icon.svg" alt="icon" />
+              </div>
+              <div class="faq-patients-content">
+                <h4>
+                  <span
+                    class="count-digit"
+                    [countUp]="95"
+                    [options]="{ enableScrollSpy: true }"
+                    >95</span
+                  >k+
+                </h4>
+                <p>Happy Patients</p>
+              </div>
             </div>
-            <div class="faq-patients-content">
-              <h4>
-                <span class="count-digit" [countUp]="95" [options]="{ enableScrollSpy: true }">95</span>k+
-              </h4>
-              <p>Happy Patients</p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="faq-info aos" data-aos="fade-up" data-aos-duration="2000">
+            <div class="accordion" id="faq-details">
+              <!-- FAQ Item -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <a
+                    href="javascript:void(0);"
+                    class="accordion-button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    How do I book an appointment with a doctor?
+                  </a>
+                </h2>
+                <div
+                  id="collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#faq-details"
+                >
+                  <div class="accordion-body">
+                    <div class="accordion-content">
+                      <p>
+                        Yes, simply visit our website and log in or create an
+                        account. Search for a doctor based on specialization,
+                        location, or availability & confirm your booking.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /FAQ Item -->
+
+              <!-- FAQ Item -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <a
+                    href="javascript:void(0);"
+                    class="accordion-button collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo"
+                  >
+                    Can I request a specific doctor when booking my appointment?
+                  </a>
+                </h2>
+                <div
+                  id="collapseTwo"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingTwo"
+                  data-bs-parent="#faq-details"
+                >
+                  <div class="accordion-body">
+                    <div class="accordion-content">
+                      <p>
+                        Yes, you can usually request a specific doctor when
+                        booking your appointment, though availability may vary
+                        based on their schedule.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /FAQ Item -->
+
+              <!-- FAQ Item -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                  <a
+                    href="javascript:void(0);"
+                    class="accordion-button collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    What should I do if I need to cancel or reschedule my
+                    appointment?
+                  </a>
+                </h2>
+                <div
+                  id="collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#faq-details"
+                >
+                  <div class="accordion-body">
+                    <div class="accordion-content">
+                      <p>
+                        If you need to cancel or reschedule your appointment,
+                        contact the doctor as soon as possible to inform them
+                        and to reschedule for another available time slot.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /FAQ Item -->
+
+              <!-- FAQ Item -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <a
+                    href="javascript:void(0);"
+                    class="accordion-button collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour"
+                    aria-expanded="false"
+                    aria-controls="collapseFour"
+                  >
+                    What if I'm running late for my appointment?
+                  </a>
+                </h2>
+                <div
+                  id="collapseFour"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFour"
+                  data-bs-parent="#faq-details"
+                >
+                  <div class="accordion-body">
+                    <div class="accordion-content">
+                      <p>
+                        If you know you will be late, it's courteous to call the
+                        doctor's office and inform them. Depending on their
+                        policy and schedule, they may be able to accommodate you
+                        or reschedule your appointment.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /FAQ Item -->
+
+              <!-- FAQ Item -->
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                  <a
+                    href="javascript:void(0);"
+                    class="accordion-button collapsed"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive"
+                    aria-expanded="false"
+                    aria-controls="collapseFive"
+                  >
+                    Can I book appointments for family members or dependents?
+                  </a>
+                </h2>
+                <div
+                  id="collapseFive"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFive"
+                  data-bs-parent="#faq-details"
+                >
+                  <div class="accordion-body">
+                    <div class="accordion-content">
+                      <p>
+                        Yes, in many cases, you can book appointments for family
+                        members or dependents. However, you may need to provide
+                        their personal information and consent to do so.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /FAQ Item -->
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-6 col-md-12">
-        <div class="faq-info aos" data-aos="fade-up" data-aos-duration="2000">
-          <div class="accordion" id="faq-details">
-            <!-- FAQ Item -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <a href="javascript:void(0);" class="accordion-button" data-bs-toggle="collapse"
-                  data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  How do I book an appointment with a doctor?
-                </a>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                data-bs-parent="#faq-details">
-                <div class="accordion-body">
-                  <div class="accordion-content">
-                    <p>
-                      Yes, simply visit our website and log in or create an
-                      account. Search for a doctor based on specialization,
-                      location, or availability & confirm your booking.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /FAQ Item -->
-
-            <!-- FAQ Item -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Can I request a specific doctor when booking my appointment?
-                </a>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#faq-details">
-                <div class="accordion-body">
-                  <div class="accordion-content">
-                    <p>
-                      Yes, you can usually request a specific doctor when
-                      booking your appointment, though availability may vary
-                      based on their schedule.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /FAQ Item -->
-
-            <!-- FAQ Item -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
-                  data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  What should I do if I need to cancel or reschedule my
-                  appointment?
-                </a>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                data-bs-parent="#faq-details">
-                <div class="accordion-body">
-                  <div class="accordion-content">
-                    <p>
-                      If you need to cancel or reschedule your appointment,
-                      contact the doctor as soon as possible to inform them and
-                      to reschedule for another available time slot.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /FAQ Item -->
-
-            <!-- FAQ Item -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingFour">
-                <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
-                  data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  What if I'm running late for my appointment?
-                </a>
-              </h2>
-              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                data-bs-parent="#faq-details">
-                <div class="accordion-body">
-                  <div class="accordion-content">
-                    <p>
-                      If you know you will be late, it's courteous to call the
-                      doctor's office and inform them. Depending on their policy
-                      and schedule, they may be able to accommodate you or
-                      reschedule your appointment.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /FAQ Item -->
-
-            <!-- FAQ Item -->
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingFive">
-                <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
-                  data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                  Can I book appointments for family members or dependents?
-                </a>
-              </h2>
-              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                data-bs-parent="#faq-details">
-                <div class="accordion-body">
-                  <div class="accordion-content">
-                    <p>
-                      Yes, in many cases, you can book appointments for family
-                      members or dependents. However, you may need to provide
-                      their personal information and consent to do so.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /FAQ Item -->
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
-<!-- /FAQ Section -->
+  </section>
+  <!-- /FAQ Section -->
 
-<!-- Partners Section -->
-<!-- <section class="partners-section">
+  <!-- Partners Section -->
+  <!-- <section class="partners-section">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -576,6 +832,220 @@
     </div>
   </div>
 </section> -->
-<!-- /Partners Section -->
+  <!-- /Partners Section -->
+</ng-container>
 
+<ng-container *ngIf="bookAppointmentbtn === true" >
+  <div class="content ">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-7 col-lg-8">
+          <div class="card">
+            <div class="card-body">
+              <!-- Checkout Form -->
+              <form>
+                <!-- Personal Information -->
+                <div class="info-widget">
+                  <h4 class="card-title">Personal Information</h4>
+                  <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                      <div class="mb-3 card-label">
+                        <label for="first-name" class="mb-2">First Name</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <div class="mb-3 card-label">
+                        <label for="last-name" class="mb-2">Last Name</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <div class="mb-3 card-label">
+                        <label for="email" class="mb-2">Email</label>
+                        <input class="form-control" type="email" />
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                      <div class="mb-3 card-label">
+                        <label for="phone" class="mb-2">Phone</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="exist-customer">
+                    Existing Customer?
+                    <a [routerLink]="routes.userLogin">Click here to login</a>
+                  </div>
+                </div>
+                <!-- /Personal Information -->
+
+                <div class="payment-widget">
+                  <h4 class="card-title">Payment Method</h4>
+
+                  <div class="payment-list">
+                    <label class="payment-radio credit-card-option">
+                      <input type="radio" name="radio" checked />
+                      <span class="checkmark"></span>
+                      Credit card
+                    </label>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3 card-label">
+                          <label for="card_name">Name on Card</label>
+                          <input
+                            class="form-control"
+                            id="card_name"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-3 card-label">
+                          <label for="card_number">Card Number</label>
+                          <input
+                            class="form-control"
+                            id="card_number"
+                            placeholder="1234 5678 9876 5432"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="mb-3 card-label">
+                          <label for="expiry_month">Expiry Month</label>
+                          <input
+                            class="form-control"
+                            id="expiry_month"
+                            placeholder="MM"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="mb-3 card-label">
+                          <label for="expiry_year">Expiry Year</label>
+                          <input
+                            class="form-control"
+                            id="expiry_year"
+                            placeholder="YY"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="mb-3 card-label">
+                          <label for="cvv">CVV</label>
+                          <input class="form-control" id="cvv" type="text" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="payment-list">
+                    <label class="payment-radio paypal-option">
+                      <input type="radio" name="radio" />
+                      <span class="checkmark"></span>
+                      Paypal
+                    </label>
+                  </div>
+
+                  <!-- Terms Accept -->
+                  <div class="terms-accept">
+                    <div class="custom-checkbox">
+                      <input type="checkbox" id="terms_accept" class="me-1" />
+                      <label for="terms_accept"
+                        >I have read and accept
+                        <a [routerLink]="routes.termsCondition"
+                          >Terms &amp; Conditions</a
+                        ></label
+                      >
+                    </div>
+                  </div>
+                  <!-- /Terms Accept -->
+
+                  <!-- Submit Section -->
+                  <div class="submit-section mt-4">
+                    <!-- <button (click)="navigation()" (keydown)="navigation()" tabindex="1" type="button" class="btn btn-primary submit-btn">Confirm and Pay</button> -->
+                  </div>
+                  <!-- /Submit Section -->
+                </div>
+              </form>
+              <!-- /Checkout Form -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5 col-lg-4">
+          <div class="stickybar">
+            <!-- Booking Summary -->
+            <div class="card booking-card">
+              <div class="card-header">
+                <h4 class="card-title">Booking Summary</h4>
+              </div>
+              <div class="card-body">
+                <!-- Booking Doctor Info -->
+                <div class="booking-doc-info">
+                  <a
+                    [routerLink]="routes.doctorProfile2"
+                    class="booking-doc-img"
+                  >
+                    <img
+                      src="assets/img/doctors/doctor-thumb-02.jpg"
+                      alt="User Image"
+                    />
+                  </a>
+                  <div class="booking-info">
+                    <h4>
+                      <a [routerLink]="routes.doctorProfile2"
+                        >Dr. Darren Elder</a
+                      >
+                    </h4>
+                    <div class="rating">
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star filled"></i>
+                      <i class="fas fa-star"></i>
+                      <span class="d-inline-block average-rating">35</span>
+                    </div>
+                    <div class="clinic-details">
+                      <p class="doc-location">
+                        <i class="fas fa-map-marker-alt"></i> Newyork, USA
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Booking Doctor Info -->
+
+                <div class="booking-summary">
+                  <div class="booking-item-wrap">
+                    <ul class="booking-date">
+                      <li>Date :<span> 16 Nov 2023</span></li>
+                      <li>Time :<span> 10:00 AM</span></li>
+                    </ul>
+                    <ul class="booking-fee">
+                      <li>Consulting Fee <span>$100</span></li>
+                      <li>Booking Fee <span>$10</span></li>
+                      <li>Video Call <span>$50</span></li>
+                    </ul>
+                    <div class="booking-total">
+                      <ul class="booking-total-list">
+                        <li>
+                          <span>Total</span>
+                          <span class="total-cost">$160</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Booking Summary -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
 <app-footer></app-footer>
