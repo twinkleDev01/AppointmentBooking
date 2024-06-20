@@ -1,4 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -6,10 +9,12 @@ import { Injectable } from '@angular/core';
 export class PaymentService {
 
   private razorpayKey = 'rzp_test_gFC2jjp7SLGBxp';
+  baseUrl: string = environment.baseurl;
+  bookappointment:string='/Appointment/book_appointment'
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  initiatePayment(amount: number, name: string, email: string, contact: string) {
+  initiatePayment(amount: number, name: string, email: string, contact: string, formData: any) {
     const options = {
       key: this.razorpayKey,
       amount: amount * 100,
@@ -28,7 +33,8 @@ export class PaymentService {
       theme: {
         color: "#F37254"
       },
-      handler: this.paymentHandler.bind(this)
+      // handler: this.paymentHandler.bind(response, formData)
+      handler: (response: any) => this.paymentHandler(response, formData)
     };
   
     console.log('Initiating payment with options:', options);
@@ -38,9 +44,24 @@ export class PaymentService {
   }
   
 
-  paymentHandler(response: any) {
-    console.log(response);
+  paymentHandler(response: any, formData: FormData) {
+    console.log(response, formData);
+    // Append the payment ID to the form data
+  formData.append('PaymentId', response.razorpay_payment_id);
+  formData.append('PaymentStatus', 'Success');  // Optionally add payment status
+   // Ensure formData is updated correctly
     // Handle the response after successful payment
     alert('Payment successful');
+    this.bookAppointment(formData).subscribe((response: any) => {
+      console.log('Appointment booked successfully:', response);
+    }, (error: any) => {
+      console.error('Error booking appointment:', error);
+    });
+  }
+
+  bookAppointment(formData:any){
+    console.log(formData,"49")
+    const url = `${this.baseUrl}${this.bookappointment}`
+return this.http.post(url, formData);
   }
 }

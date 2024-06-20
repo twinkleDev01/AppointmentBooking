@@ -297,7 +297,7 @@ bookAppointmentbtn: boolean = false;
         const fileUrl = e.target.result;
         this.files.push({ name: file.name, url: fileUrl, type: file.type });
         filesArray.push(
-          new FormControl({ name: file.name, url: fileUrl, type: file.type })
+          new FormControl(file)
         );
       };
       reader.readAsDataURL(file);
@@ -359,10 +359,10 @@ bookAppointmentbtn: boolean = false;
   }
 
 onSubmit(){
-  // this.appointmentForm.patchValue({
-  //   starTime: this.selectedTimeSlot.startTime ,
-  //   appointmentDate: this.selectedDate
-  // });
+  this.appointmentForm.patchValue({
+    starTime: this.selectedTimeSlot?.startTime,
+    appointmentDate: this.selectedDate
+  });
   const user = localStorage.getItem('UserDetail');
   if (user) {
     this.userDetails = JSON.parse(user); // Directly parse the user object
@@ -371,28 +371,9 @@ onSubmit(){
     console.log('User details not found in local storage.');
   }
 
-  const data=
-    {
-      "patientId": this.userDetails.nameid,
-      "doctorId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "issueId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-      "appointmentDate": this.selectedDate,
-      "symptoms": "string",
-      "starTime": {
-        // "ticks": this.selectedTimeSlot.startTime
-      },
-      "endTime": {
-        // "ticks": this.selectedTimeSlot.endTime
-      },
-      "isCancelled": false,
-      "isCompleted": false,
-    }
-  
-  console.log(data);
-  console.log(this.appointmentForm.value);
-  this.bookAppointment(this.appointmentForm.value)
   if (this.appointmentForm.valid) {
     console.log(this.appointmentForm.value);
+    this.bookAppointmentbtn = true
     // Handle form submission
   }
 }
@@ -422,7 +403,49 @@ initiatePayment() {
   const name = this.InfoForm.value.firstName +' '+ this.InfoForm.value.lastName;
   const email = this.InfoForm.value.email;
   const contact = this.InfoForm.value.phone;
-  this.paymentService.initiatePayment(amount, name, email, contact);
+  const data = {
+    IssueIds: this.appointmentForm.value.selectedConcerns.map((issue: { issueID: any; }) => issue.issueID),
+    AppointmentDate: this.formatDatetoSend(this.selectedDate),
+    slotTime: this.removePm(this.appointmentForm.value.starTime),
+    IsCancelled: false,
+    IsCompleted: false ,
+    Images: this.appointmentForm.value.selectedFiles,
+    IsFirstTimeConsult: this.appointmentForm.value.firstTimeConsult,
+    'user.FirstName': this.InfoForm.value.firstName,
+    'user.LastName': this.InfoForm.value.lastName,
+    'user.City': this.InfoForm.value.city,
+    'user.Pincode': this.InfoForm.value.pinCode,
+    'user.State': this.InfoForm.value.state,
+    'user.Gender': this.appointmentForm.value.gender,
+    'user.Age': this.appointmentForm.value.age,
+    'user.Phone': this.InfoForm.value.phone,
+    'user.Role': 1,
+    'user.Email': this.InfoForm.value.email,
+  }
+
+  const formData = new FormData();
+
+  // Populate formData with data fields
+  // Populate formData with data fields
+  Object.entries(data).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      value.forEach((item) => {
+        formData.append(key, item);
+      });
+    } else {
+      formData.append(key, value);
+    }
+  });
+
+// formData.forEach((value, key) => {
+//   console.log(key, value);
+// });
+
+// Log formData and data for debugging purposes
+    console.log('Form Data:', formData);
+    console.log('Data Object:', data);
+
+  this.paymentService.initiatePayment(amount, name, email, contact, formData);
 }else {
   this.markAllAsTouched();
     console.log('Form is invalid');
@@ -433,5 +456,18 @@ private markAllAsTouched() {
   Object.values(this.InfoForm.controls).forEach(control => {
     control.markAsTouched();
   });
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+formatDatetoSend(dateString:any) {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+  const day = String(date.getDate()).padStart(2, '0');
+  
+  return `${year}-${month}-${day}`;
+}
+removePm(time: string): string {
+  return time.replace('PM', '').trim();
 }
 }
