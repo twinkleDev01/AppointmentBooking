@@ -517,3 +517,16 @@ $__none: none;
     color: #999; /* Example color for disabled dates */
 }
 
+.info-widget {
+    border-bottom:none !important;
+}
+.card-label {
+    margin-bottom: 1rem;
+  }
+  .card-label div {
+    color: red;
+    font-size: 0.875rem;
+  }
+  .pay-btn{
+    background: #0e82fd;
+  }

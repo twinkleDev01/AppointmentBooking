@@ -6,6 +6,7 @@ import { aboutUs, doctorSliderOne, partnersSlider, specialitiesSliderOne } from 
 import { Router } from '@angular/router';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PaymentService } from 'src/app/shared/payment/payment.service';
 
 declare var $: any;
 
@@ -38,6 +39,7 @@ export class Home1Component implements OnInit {
   concerns: any;
 bookAppointmentbtn: boolean = false;
   userDetails:any
+  InfoForm: FormGroup;
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -83,7 +85,8 @@ bookAppointmentbtn: boolean = false;
     private data: DataService,
     private router: Router,
     private patientsService: PatientsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private paymentService: PaymentService
   ) {
     this.specialitiesSliderOne = this.data.specialitiesSliderOne;
     this.doctorSliderOne = this.data.doctorSliderOne;
@@ -101,6 +104,15 @@ bookAppointmentbtn: boolean = false;
       selectedConcerns: this.fb.array([]),
       selectedDate: ['', Validators.required],
       selectedFiles: this.fb.array([]),
+    });
+    this.InfoForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      pinCode: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required]
     });
   }
 
@@ -403,7 +415,23 @@ openImagePreviewModal() {
   }
 }
 
-navigation(){
+initiatePayment() {
+  if (this.InfoForm.valid) {
+  // Example parameters, replace with actual data
+  const amount = 100; // Amount in INR
+  const name = this.InfoForm.value.firstName +' '+ this.InfoForm.value.lastName;
+  const email = this.InfoForm.value.email;
+  const contact = this.InfoForm.value.phone;
+  this.paymentService.initiatePayment(amount, name, email, contact);
+}else {
+  this.markAllAsTouched();
+    console.log('Form is invalid');
+}
+}
 
+private markAllAsTouched() {
+  Object.values(this.InfoForm.controls).forEach(control => {
+    control.markAsTouched();
+  });
 }
 }
