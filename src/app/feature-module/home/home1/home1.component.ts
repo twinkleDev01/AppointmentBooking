@@ -22,6 +22,7 @@ export class Home1Component implements OnInit {
   public aboutUs: aboutUs[];
   myDateValue!: Date;
   isModalOpen = false;
+  bookAppointment: boolean = false;
   date!: Date;
   bsRangeValue!: Date[];
   selectedDate: Date = new Date();
@@ -106,6 +107,7 @@ export class Home1Component implements OnInit {
   ngOnInit() {
     this.getIssues();
     this.getAvailableSlots();
+    console.log(this.bookAppointment,"appointment");
   }
 
   get concernControls() {
@@ -346,15 +348,17 @@ export class Home1Component implements OnInit {
   }
 
   onSubmit() {
-    this.appointmentForm.patchValue({
-      selectedSlot: this.selectedTimeSlot.startTime,
-      selectedDate: this.selectedDate,
-    });
-    console.log(this.appointmentForm.value);
-    if (this.appointmentForm.valid) {
-      console.log(this.appointmentForm.value);
-      // Handle form submission
-    }
+    // this.appointmentForm.patchValue({
+    //   selectedSlot: this.selectedTimeSlot.startTime,
+    //   selectedDate: this.selectedDate,
+    // });
+    // console.log(this.appointmentForm.value);
+    // if (this.appointmentForm.valid) {
+    //   console.log(this.appointmentForm.value);
+    //   // Handle form submission
+    // }
+    console.log(this.bookAppointment, "book appointment");
+    this.bookAppointment = true;
   }
 
   openImagePreviewModal() {
@@ -372,4 +376,9 @@ export class Home1Component implements OnInit {
   next(): void {
     this.activeIndex = (this.activeIndex === this.files.length - 1) ? 0 : (this.activeIndex + 1);
   }
+
+  navigation(){
+
+  }
+
 }
