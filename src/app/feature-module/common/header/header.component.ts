@@ -30,12 +30,10 @@ export class HeaderComponent {
     private router: Router,
     private auth: AuthService
   ) {
-    console.log("Hiii ")
     this.auth.token.subscribe((res:any)=>{
       if(res){
         this.isPatient = true
       }
-
     })
     this.common.base.subscribe((res: string) => {
       this.base = res;
@@ -78,5 +76,10 @@ export class HeaderComponent {
     } else if (headerTen) {
       headerTen.classList.remove('header-space');
     }
+  }
+  logout(){
+    console.log("81")
+    localStorage.removeItem('token')
+    this.isPatient=false
   }
 }

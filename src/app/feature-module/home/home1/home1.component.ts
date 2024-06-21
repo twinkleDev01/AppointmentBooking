@@ -30,11 +30,13 @@ export class Home1Component implements OnInit {
   selectedTimeSlot: any;
   isImageModalOpen: boolean = false;
   selectedImageUrl!: string;
+  submitted:boolean = false;
   slots: any;
   uniqueTimeSlots: any[] = [];
   filteredAppointments: any;
   appointmentForm: FormGroup;
   activeIndex = 0;
+  slotConfirmed: boolean=false;
   files: { name: string, url: string, type: string }[] = [];
   concerns: any;
 bookAppointmentbtn: boolean = false;
@@ -100,9 +102,7 @@ bookAppointmentbtn: boolean = false;
       age: ['', Validators.required],
       gender: ['', Validators.required],
       firstTimeConsult: ['', Validators.required],
-      starTime: ['', Validators.required],
       selectedConcerns: this.fb.array([]),
-      selectedDate: ['', Validators.required],
       selectedFiles: this.fb.array([]),
     });
     this.InfoForm = this.fb.group({
@@ -258,13 +258,14 @@ bookAppointmentbtn: boolean = false;
     };
 
     this.uniqueTimeSlots = Array.from(timeSlotsMap.values())?.map((slot) => {
-      return { ...slot, startTime: convertTo12HourFormat(slot.startTime) };
+      return { ...slot, startVisibleTime: convertTo12HourFormat(slot.startTime) };
     });
     console.log('unique time slots', this.uniqueTimeSlots);
   }
 
   onSelectTimeSlot(slot: any) {
     this.selectedTimeSlot = slot;
+    console.log(slot)
   }
 
   onDateChange(event: any) {
@@ -369,25 +370,23 @@ bookAppointmentbtn: boolean = false;
     });
   }
 
-onSubmit(){
-  this.appointmentForm.patchValue({
-    starTime: this.selectedTimeSlot?.startTime,
-    appointmentDate: this.selectedDate
-  });
-  const user = localStorage.getItem('UserDetail');
-  if (user) {
-    this.userDetails = JSON.parse(user); // Directly parse the user object
-    console
-  } else {
-    console.log('User details not found in local storage.');
+  onSubmit(){
+    this.submitted=true
+    const user = localStorage.getItem('UserDetail');
+    if (user) {
+      this.userDetails = JSON.parse(user); // Directly parse the user object
+    } else {
+      console.log('User details not found in local storage.');
+    }
+    console.log(this.slotConfirmed);
+    if (this.appointmentForm.valid) {
+      if(this.slotConfirmed===true){
+        console.log(this.appointmentForm.value);
+      this.bookAppointmentbtn = true
+      }
+      
+    }
   }
-  this.bookAppointmentbtn = true
-  if (this.appointmentForm.valid) {
-    console.log(this.appointmentForm.value);
-    
-    // Handle form submission
-  }
-}
 
 bookAppointment(value:any){
   this.patientsService.bookAppointment(value).subscribe(response =>{
@@ -416,8 +415,8 @@ initiatePayment() {
   const contact = this.InfoForm.value.phone;
   const data = {
     IssueIds: this.appointmentForm.value.selectedConcerns.map((issue: { issueID: any; }) => issue.issueID),
-    AppointmentDate: this.formatDatetoSend(this.selectedDate),
-    slotTime: this.removePm(this.appointmentForm.value.starTime),
+    AppointmentDate: this.formatDatetoSend( this.selectedDate),
+    slotTime: this.selectedTimeSlot?.startTime,
     IsCancelled: false,
     IsCompleted: false ,
     Images: this.appointmentForm.value.selectedFiles,
@@ -432,6 +431,7 @@ initiatePayment() {
     'user.Phone': this.InfoForm.value.phone,
     'user.Role': 1,
     'user.Email': this.InfoForm.value.email,
+    'user.LoginProvider': 'JWT'
   }
 
   const formData = new FormData();
@@ -481,4 +481,5 @@ formatDatetoSend(dateString:any) {
 removePm(time: string): string {
   return time.replace('PM', '').trim();
 }
+
 }

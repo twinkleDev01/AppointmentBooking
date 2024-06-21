@@ -39,7 +39,7 @@ export class PatientsService {
   }
 
   getAppointment(startDate?: string, endDate?: string, IsCanCelled?: boolean, IsCanCompleted?: boolean, IsUpcomming?: boolean) {
-    let url = `${this.baseUrl}${this.getappointment}?userId=${this.Detail.nameid}`;
+    let url = `${this.baseUrl}${this.getappointment}?userId=${this.Detail?.nameid}`;
   
     if (startDate) {
       url += `&startDate=${startDate}`;

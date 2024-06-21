@@ -2,6 +2,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class PaymentService {
   baseUrl: string = environment.baseurl;
   bookappointment:string='/Appointment/book_appointment'
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private auth:AuthService, private route:Router) { }
 
   initiatePayment(amount: number, name: string, email: string, contact: string, formData: any) {
     const options = {
@@ -54,13 +56,16 @@ export class PaymentService {
     alert('Payment successful');
     this.bookAppointment(formData).subscribe((response: any) => {
       console.log('Appointment booked successfully:', response);
+     if(response){
+      this.auth.setToken(response.data.token)
+      this.route.navigate(['/patients/patient-dashboard']);
+     }
     }, (error: any) => {
       console.error('Error booking appointment:', error);
     });
   }
 
   bookAppointment(formData:any){
-    console.log(formData,"49")
     const url = `${this.baseUrl}${this.bookappointment}`
 return this.http.post(url, formData);
   }

@@ -36,6 +36,9 @@ export class HeaderComponent {
         this.isPatient = true
       }
       })
+      if(!localStorage.getItem('token')){
+        this.isPatient = false
+      }
     this.common.base.subscribe((res: string) => {
       this.base = res;
     });
@@ -63,5 +66,10 @@ export class HeaderComponent {
   isPatient:boolean =false
 ngOnInit(){
   console.log("58")
+}
+logout(){
+  console.log("81")
+  localStorage.removeItem('token')
+  this.isPatient=false
 }
 }
