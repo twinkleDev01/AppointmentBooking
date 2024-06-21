@@ -39,9 +39,9 @@ export class Home1Component implements OnInit {
   slotConfirmed: boolean=false;
   files: { name: string, url: string, type: string }[] = [];
   concerns: any;
-bookAppointmentbtn: boolean = false;
-  userDetails:any
-  InfoForm: FormGroup;  isMobile!: boolean;
+  bookAppointmentbtn: boolean = false;
+  userDetails: any
+  InfoForm: FormGroup; isMobile!: boolean;
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -126,7 +126,7 @@ bookAppointmentbtn: boolean = false;
   get concernControls() {
     return this.appointmentForm.get('selectedConcerns') as FormArray;
   }
-  
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.checkScreenSize();
@@ -136,7 +136,7 @@ bookAppointmentbtn: boolean = false;
     this.isMobile = window.innerWidth <= 576;
   }
 
-  
+
 
   public specialitiesSlider: OwlOptions = {
     loop: true,
@@ -388,23 +388,23 @@ bookAppointmentbtn: boolean = false;
     }
   }
 
-bookAppointment(value:any){
-  this.patientsService.bookAppointment(value).subscribe(response =>{
-    console.log(response);
-  })
-}
-next(): void {
-  this.activeIndex = (this.activeIndex === this.files.length - 1) ? 0 : (this.activeIndex + 1);
-}
-prev(): void {
-  this.activeIndex = (this.activeIndex === 0) ? (this.files.length - 1) : (this.activeIndex - 1);
-}
-
-openImagePreviewModal() {
-  if (this.files.length > 0) {
-    this.isImageModalOpen = true;
+  bookAppointment(value: any) {
+    this.patientsService.bookAppointment(value).subscribe(response => {
+      console.log(response);
+    })
   }
-}
+  next(): void {
+    this.activeIndex = (this.activeIndex === this.files.length - 1) ? 0 : (this.activeIndex + 1);
+  }
+  prev(): void {
+    this.activeIndex = (this.activeIndex === 0) ? (this.files.length - 1) : (this.activeIndex - 1);
+  }
+
+  openImagePreviewModal() {
+    if (this.files.length > 0) {
+      this.isImageModalOpen = true;
+    }
+  }
 
 initiatePayment() {
   if (this.InfoForm.valid) {
@@ -434,52 +434,55 @@ initiatePayment() {
     'user.LoginProvider': 'JWT'
   }
 
-  const formData = new FormData();
+      const formData = new FormData();
 
-  // Populate formData with data fields
-  // Populate formData with data fields
-  Object.entries(data).forEach(([key, value]) => {
-    if (Array.isArray(value)) {
-      value.forEach((item) => {
-        formData.append(key, item);
+      // Populate formData with data fields
+      // Populate formData with data fields
+      Object.entries(data).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach((item) => {
+            formData.append(key, item);
+          });
+        } else {
+          formData.append(key, value);
+        }
       });
+
+      // formData.forEach((value, key) => {
+      //   console.log(key, value);
+      // });
+
+      // Log formData and data for debugging purposes
+      console.log('Form Data:', formData);
+      console.log('Data Object:', data);
+
+      this.paymentService.initiatePayment(amount, name, email, contact, formData);
     } else {
-      formData.append(key, value);
+      this.markAllAsTouched();
+      console.log('Form is invalid');
     }
-  });
+  }
 
-// formData.forEach((value, key) => {
-//   console.log(key, value);
-// });
+  private markAllAsTouched() {
+    Object.values(this.InfoForm.controls).forEach(control => {
+      control.markAsTouched();
+    });
+  }
 
-// Log formData and data for debugging purposes
-    console.log('Form Data:', formData);
-    console.log('Data Object:', data);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  formatDatetoSend(dateString: any) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
 
-  this.paymentService.initiatePayment(amount, name, email, contact, formData);
-}else {
-  this.markAllAsTouched();
-    console.log('Form is invalid');
-}
-}
+    return `${year}-${month}-${day}`;
+  }
+  removePm(time: string): string {
+    return time.replace('PM', '').trim();
+  }
 
-private markAllAsTouched() {
-  Object.values(this.InfoForm.controls).forEach(control => {
-    control.markAsTouched();
-  });
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-formatDatetoSend(dateString:any) {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-  const day = String(date.getDate()).padStart(2, '0');
-  
-  return `${year}-${month}-${day}`;
-}
-removePm(time: string): string {
-  return time.replace('PM', '').trim();
-}
-
+  backButton(){
+    this.bookAppointmentbtn = false;
+  }
 }

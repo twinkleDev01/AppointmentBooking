@@ -6,20 +6,12 @@
     <div class="container">
       <div class="row mt-5">
         <div class="col-lg-7">
-          <div
-            class="banner-content aos"
-            data-aos="fade-up"
-            data-aos-duration="2000"
-          >
+          <div class="banner-content aos" data-aos="fade-up" data-aos-duration="2000">
             <h1 class="fs-2">
               Transform Your <span>Hair & Skin</span> with Our Online
               Dermatology Consult
             </h1>
-            <img
-              src="assets/img/icons/header-icon.svg"
-              class="header-icon"
-              alt="header-icon"
-            />
+            <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
             <p class="text-success">
               Proven Results with 98.6% User Satisfaction 
             </p>
@@ -27,36 +19,16 @@
             <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
             <img src="assets/img/banner-img.png" class="img_fluid" alt="patient-image" />
           </div> -->
-            <div
-              class="banner-img banner_img aos"
-              data-aos="fade-up"
-              data-aos-duration="2000"
-            >
-              <img
-                src="assets/img/banner-img.png"
-                class="img-fluid img_fluid"
-                alt="patient-image"
-              />
+            <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
+              <img src="assets/img/banner-img.png" class="img-fluid img_fluid" alt="patient-image" />
               <div class="banner-img1">
-                <img
-                  src="assets/img/banner/banner-img1.svg"
-                  class="img-fluid"
-                  alt="checkup-image"
-                />
+                <img src="assets/img/banner/banner-img1.svg" class="img-fluid" alt="checkup-image" />
               </div>
               <div class="banner-img2">
-                <img
-                  src="assets/img/banner/banner-img2.svg"
-                  class="img-fluid"
-                  alt="doctor-slide"
-                />
+                <img src="assets/img/banner/banner-img2.svg" class="img-fluid" alt="doctor-slide" />
               </div>
               <div class="banner-img3">
-                <img
-                  src="assets/img/banner/banner-img3.svg"
-                  class="img-fluid"
-                  alt="doctors-list"
-                />
+                <img src="assets/img/banner/banner-img3.svg" class="img-fluid" alt="doctors-list" />
               </div>
             </div>
           </div>
@@ -94,7 +66,7 @@
         <div class="col-lg-5">
           <!-- app.component.html -->
           <div class="form" [formGroup]="appointmentForm">
-            <h3 class="text-center mb-2">Get an Appointment</h3>
+            <h4 class="text-center mb-2 form_title">Get an Appointment</h4>
             <div class="row mt-4">
               <!-- age and gender -->
               <div class="col-lg-6 col-md-6 no_padding">
@@ -115,7 +87,7 @@
                 </div>
               </div>
               <div class="col-lg-12 mt-3">
-                <h4 class="text-center">Select your concern(s)</h4>
+                <h5 class="text-center">Select your concern(s)</h5>
               </div>
               <!-- list of concerns/decease -->
               <div class="row concerns">
@@ -128,26 +100,13 @@
               </div>
               <!-- Are you consulting for first time? -->
               <div class="concerns mt-3">
-                <h4 class="text-center">
+                <h5 class="text-center">
                   Are you consulting for the first time?
-                </h4>
-                <div
-                  class="yes_no_btn d-flex align-items-center justify-content-center"
-                >
-                  <input
-                    type="radio"
-                    id="yes"
-                    value="true"
-                    formControlName="firstTimeConsult"
-                    checked
-                  />
+                </h5>
+                <div class="yes_no_btn d-flex align-items-center justify-content-center">
+                  <input type="radio" id="yes" value="true" formControlName="firstTimeConsult" checked />
                   <label for="yes">Yes</label>
-                  <input
-                    type="radio"
-                    id="no"
-                    value="false"
-                    formControlName="firstTimeConsult"
-                  />
+                  <input type="radio" id="no" value="false" formControlName="firstTimeConsult" />
                   <label for="no">No</label>
                 </div>
               </div>
@@ -185,36 +144,20 @@
             <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div> -->
 
               <div class="concerns mt-3">
-                <h4 class="text-center">Upload up to 5 Images</h4>
+                <h5 class="text-center">Upload up to 5 Images</h5>
 
                 <!-- Display count of selected files -->
 
-                <div
-                  class="file-upload-container d-flex justify-content-evenly"
-                >
-                  <input
-                    type="file"
-                    (change)="onFileChange($event)"
-                    multiple
-                    id="fileInput"
-                    style="display: none"
-                  />
-                  <label for="fileInput" class="custom-file-upload"
-                    >Select Files</label
-                  >
+                <div class="file-upload-container d-flex justify-content-evenly">
+                  <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none" />
+                  <label for="fileInput" class="custom-file-upload">Select Files</label>
                   <div *ngIf="files.length === 0" class="no-files-uploaded">
                     No file uploaded
                   </div>
-                  <span *ngIf="files.length > 0"
-                    >{{ files.length }}
-                    {{ files.length === 1 ? "file" : "files" }} selected</span
-                  >
-                  <button
-                    *ngIf="files.length > 0"
-                    class="preview-button"
-                    (click)="openImagePreviewModal()"
-                    [disabled]="files.length === 0"
-                  >
+                  <span *ngIf="files.length > 0">{{ files.length }}
+                    {{ files.length === 1 ? "file" : "files" }} selected</span>
+                  <button *ngIf="files.length > 0" class="preview-button" (click)="openImagePreviewModal()"
+                    [disabled]="files.length === 0">
                     Preview
                   </button>
                 </div>
@@ -227,60 +170,29 @@
                 <div class="custom-modal-content">
                   <div class="custom-modal-header">
                     <h5 class="custom-modal-title">Image Preview</h5>
-                    <button
-                      type="button"
-                      class="close"
-                      (click)="closeImageModal()"
-                    >
+                    <button type="button" class="close" (click)="closeImageModal()">
                       <i class="fa-regular fa-circle-xmark text-black"></i>
                     </button>
                   </div>
                   <div class="custom-modal-body">
-                    <div
-                      id="fileCarousel"
-                      class="carousel slide"
-                      data-ride="carousel"
-                    >
+                    <div id="fileCarousel" class="carousel slide" data-ride="carousel">
                       <div class="carousel-inner">
-                        <div
-                          *ngFor="let file of files; let i = index"
-                          class="carousel-item"
-                          [ngClass]="{ active: i === activeIndex }"
-                        >
+                        <div *ngFor="let file of files; let i = index" class="carousel-item"
+                          [ngClass]="{ active: i === activeIndex }">
                           <ng-container *ngIf="file.type.startsWith('image')">
-                            <img
-                              [src]="file.url"
-                              alt="File Preview"
-                              class="d-block w-100"
-                            />
+                            <img [src]="file.url" alt="File Preview" class="d-block w-100" />
                           </ng-container>
                           <ng-container *ngIf="!file.type.startsWith('image')">
                             <span>{{ file.name }}</span>
                           </ng-container>
                         </div>
                       </div>
-                      <a
-                        class="carousel-control-prev"
-                        role="button"
-                        data-slide="prev"
-                        (click)="prev()"
-                      >
-                        <span
-                          class="carousel-control-prev-icon"
-                          aria-hidden="true"
-                        ></span>
+                      <a class="carousel-control-prev" role="button" data-slide="prev" (click)="prev()">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                       </a>
-                      <a
-                        class="carousel-control-next"
-                        role="button"
-                        data-slide="next"
-                        (click)="next()"
-                      >
-                        <span
-                          class="carousel-control-next-icon"
-                          aria-hidden="true"
-                        ></span>
+                      <a class="carousel-control-next" role="button" data-slide="next" (click)="next()">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                       </a>
                     </div>
@@ -305,7 +217,7 @@
               </div>
             </div>
           </div>
-
+        
           <!-- Custom Modal -->
           <div class="custom-modal" *ngIf="isModalOpen">
             <div class="custom-modal-content">
@@ -328,8 +240,7 @@
                     <div class="row mt-5">
                       <div *ngFor="let slot of filteredAppointments" class="col-lg-3 col-md-4 col-sm-4 col-6 mt-2"
                         (click)="onSelectTimeSlot(slot)">
-                        <div
-                          [ngClass]="{
+                        <div [ngClass]="{
                             selected: selectedTimeSlot === slot,
                             'not-selected': selectedTimeSlot !== slot
                           }"
@@ -340,8 +251,7 @@
                     </div>
                   </div>
                 </div>
-                <div *ngIf="selectedTimeSlot"
-                  class=" row mt-5 ps-5 pe-5">
+                <div *ngIf="selectedTimeSlot" class=" row mt-5 ps-5 pe-5">
                   <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center mt-3">
                     <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startVisibleTime }}, {{
                         selectedDate | date: 'yyyy-MM-dd'
@@ -356,11 +266,7 @@
           </div>
         </div>
         <!-- Form -->
-        <div
-          class="custom-modal-backdrop"
-          *ngIf="isModalOpen"
-          (click)="closeModal()"
-        ></div>
+        <div class="custom-modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()"></div>
       </div>
     </div>
   </section>
@@ -379,11 +285,7 @@
             <div class="col-lg-12 aos" data-aos="fade-up">
               <div class="work-info">
                 <div class="work-icon">
-                  <span
-                    ><img
-                      src="assets/img/icons/work-03.svg"
-                      alt="calendar-icon"
-                  /></span>
+                  <span><img src="assets/img/icons/work-03.svg" alt="calendar-icon" /></span>
                 </div>
                 <div class="work-content">
                   <h5>Schedule Appointment</h5>
@@ -397,11 +299,7 @@
             <div class="col-lg-12 aos" data-aos="fade-up">
               <div class="work-info">
                 <div class="work-icon">
-                  <span
-                    ><img
-                      src="assets/img/icons/work-01.svg"
-                      alt="search-doctor-icon"
-                  /></span>
+                  <span><img src="assets/img/icons/work-01.svg" alt="search-doctor-icon" /></span>
                 </div>
                 <div class="work-content">
                   <h5>Meet your dermatologist online</h5>
@@ -416,11 +314,7 @@
             <div class="col-lg-12 aos" data-aos="fade-up">
               <div class="work-info">
                 <div class="work-icon">
-                  <span
-                    ><img
-                      src="assets/img/icons/work-04.svg"
-                      alt="solution-icon"
-                  /></span>
+                  <span><img src="assets/img/icons/work-04.svg" alt="solution-icon" /></span>
                 </div>
                 <div class="work-content">
                   <h5>Get Your Solution</h5>
@@ -451,11 +345,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="doctor-slider-one owl-theme aos"
-        data-aos="fade-up"
-        data-aos-duration="2000"
-      >
+      <div class="doctor-slider-one owl-theme aos" data-aos="fade-up" data-aos-duration="2000">
         <owl-carousel-o [options]="doctorSlider">
           @for (data of doctorSliderOne; track data) {
           <ng-template carouselSlide>
@@ -464,11 +354,7 @@
                 <div class="doc-pro-img">
                   <a [routerLink]="routes.doctorProfile2">
                     <div class="doctor-profile-img">
-                      <img
-                        [src]="data.img"
-                        class="img-fluid"
-                        alt="Ruby Perrin"
-                      />
+                      <img [src]="data.img" class="img-fluid" alt="Ruby Perrin" />
                     </div>
                   </a>
                   <div class="doctor-amount">
@@ -480,14 +366,12 @@
                     <div class="doc-pro-name">
                       <a [routerLink]="routes.doctorProfile2">{{
                         data.name
-                      }}</a>
+                        }}</a>
                       <p>{{ data.content }}</p>
                     </div>
                     <div class="reviews-ratings">
                       <p>
-                        <span
-                          ><i class="fas fa-star"></i> {{ data.rating1 }}</span
-                        >
+                        <span><i class="fas fa-star"></i> {{ data.rating1 }}</span>
                         {{ data.rating2 }}
                       </p>
                     </div>
@@ -496,9 +380,7 @@
                     <p>
                       <i class="feather icon-map-pin"></i> {{ data.location }}
                     </p>
-                    <span class="badge badge-success doc-badge"
-                      ><i class="fa-solid fa-circle"></i>Available</span
-                    >
+                    <span class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
                   </div>
                 </div>
               </div>
@@ -515,11 +397,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <ngx-slick-carousel
-            class="testimonial-slider"
-            #slickModal="slick-carousel"
-            [config]="slideConfig"
-          >
+          <ngx-slick-carousel class="testimonial-slider" #slickModal="slick-carousel" [config]="slideConfig">
             @for (data of aboutUs; track data) {
             <div class="testimonial-grid" ngxSlickItem>
               <div class="testimonial-info">
@@ -553,22 +431,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div
-            class="section-header-one aos"
-            data-aos="fade-up"
-            data-aos-duration="2000"
-          >
+          <div class="section-header-one aos" data-aos="fade-up" data-aos-duration="2000">
             <h5>Get Your Answer</h5>
             <h2 class="section-title">Frequently Asked Questions</h2>
           </div>
         </div>
       </div>
       <div class="row align-items-center">
-        <div
-          class="col-lg-6 col-md-12 aos"
-          data-aos="fade-up"
-          data-aos-duration="2000"
-        >
+        <div class="col-lg-6 col-md-12 aos" data-aos="fade-up" data-aos-duration="2000">
           <div class="faq-img">
             <img src="assets/img/faq-img.png" class="img-fluid" alt="img" />
             <div class="faq-patients-count">
@@ -577,12 +447,7 @@
               </div>
               <div class="faq-patients-content">
                 <h4>
-                  <span
-                    class="count-digit"
-                    [countUp]="95"
-                    [options]="{ enableScrollSpy: true }"
-                    >95</span
-                  >k+
+                  <span class="count-digit" [countUp]="95" [options]="{ enableScrollSpy: true }">95</span>k+
                 </h4>
                 <p>Happy Patients</p>
               </div>
@@ -595,23 +460,13 @@
               <!-- FAQ Item -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                  <a
-                    href="javascript:void(0);"
-                    class="accordion-button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne"
-                    aria-expanded="true"
-                    aria-controls="collapseOne"
-                  >
+                  <a href="javascript:void(0);" class="accordion-button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     How do I book an appointment with a doctor?
                   </a>
                 </h2>
-                <div
-                  id="collapseOne"
-                  class="accordion-collapse collapse show"
-                  aria-labelledby="headingOne"
-                  data-bs-parent="#faq-details"
-                >
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                  data-bs-parent="#faq-details">
                   <div class="accordion-body">
                     <div class="accordion-content">
                       <p>
@@ -628,23 +483,13 @@
               <!-- FAQ Item -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
-                  <a
-                    href="javascript:void(0);"
-                    class="accordion-button collapsed"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
-                    aria-expanded="false"
-                    aria-controls="collapseTwo"
-                  >
+                  <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     Can I request a specific doctor when booking my appointment?
                   </a>
                 </h2>
-                <div
-                  id="collapseTwo"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingTwo"
-                  data-bs-parent="#faq-details"
-                >
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                  data-bs-parent="#faq-details">
                   <div class="accordion-body">
                     <div class="accordion-content">
                       <p>
@@ -661,24 +506,14 @@
               <!-- FAQ Item -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
-                  <a
-                    href="javascript:void(0);"
-                    class="accordion-button collapsed"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseThree"
-                    aria-expanded="false"
-                    aria-controls="collapseThree"
-                  >
+                  <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     What should I do if I need to cancel or reschedule my
                     appointment?
                   </a>
                 </h2>
-                <div
-                  id="collapseThree"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingThree"
-                  data-bs-parent="#faq-details"
-                >
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                  data-bs-parent="#faq-details">
                   <div class="accordion-body">
                     <div class="accordion-content">
                       <p>
@@ -695,23 +530,13 @@
               <!-- FAQ Item -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFour">
-                  <a
-                    href="javascript:void(0);"
-                    class="accordion-button collapsed"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFour"
-                    aria-expanded="false"
-                    aria-controls="collapseFour"
-                  >
+                  <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     What if I'm running late for my appointment?
                   </a>
                 </h2>
-                <div
-                  id="collapseFour"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingFour"
-                  data-bs-parent="#faq-details"
-                >
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                  data-bs-parent="#faq-details">
                   <div class="accordion-body">
                     <div class="accordion-content">
                       <p>
@@ -729,23 +554,13 @@
               <!-- FAQ Item -->
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFive">
-                  <a
-                    href="javascript:void(0);"
-                    class="accordion-button collapsed"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#collapseFive"
-                    aria-expanded="false"
-                    aria-controls="collapseFive"
-                  >
+                  <a href="javascript:void(0);" class="accordion-button collapsed" data-bs-toggle="collapse"
+                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                     Can I book appointments for family members or dependents?
                   </a>
                 </h2>
-                <div
-                  id="collapseFive"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingFive"
-                  data-bs-parent="#faq-details"
-                >
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                  data-bs-parent="#faq-details">
                   <div class="accordion-body">
                     <div class="accordion-content">
                       <p>
@@ -796,12 +611,13 @@
   <!-- /Partners Section -->
 </ng-container>
 
-<ng-container *ngIf="bookAppointmentbtn === true" >
+<ng-container *ngIf="bookAppointmentbtn === true">
   <div class="content ">
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-7 col-lg-8">
-          <div class="card">
+          <div class="card card_custom">
+            <h2 class="ms-4"><i class="fa-solid fa-chevron-left fs-4" (click)="backButton()"></i>  Your Details</h2>
             <div class="card-body">
               <!-- Checkout Form -->
               <form [formGroup]="InfoForm" (ngSubmit)="initiatePayment()">
@@ -870,11 +686,18 @@
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="btn pay-btn" >Proceed to pay</button>
+                <div class="row ">
+                  <div class="col-lg-6 d-flex mt-3 justify-content-center align-items-center">
+                    <p class="mb-0">Existing Customer?
+                      <a class="login_link" [routerLink]="routes.userLogin">Click here to login</a>
+                    </p>
+                  </div>
+                  <div class="col-lg-6 d-flex mt-3 justify-content-center align-items-center">
+                    <button type="submit" class="btn pay-btn text-white">Proceed to pay</button>
+                  </div>
+                </div>
               </form>
-              <div class="exist-customer">
-                Existing Customer?
-                <a [routerLink]="routes.userLogin">Click here to login</a>
+              <div class="exist-customer mt-2">
               </div>
               <!-- /Checkout Form -->
             </div>
@@ -884,27 +707,19 @@
         <div class="col-md-5 col-lg-4">
           <div class="stickybar">
             <!-- Booking Summary -->
-            <div class="card booking-card">
+            <div class="card booking-card card_custom">
               <div class="card-header">
                 <h4 class="card-title">Booking Summary</h4>
               </div>
               <div class="card-body">
                 <!-- Booking Doctor Info -->
                 <div class="booking-doc-info">
-                  <a
-                    [routerLink]="routes.doctorProfile2"
-                    class="booking-doc-img"
-                  >
-                    <img
-                      src="assets/img/doctors/doctor-thumb-02.jpg"
-                      alt="User Image"
-                    />
+                  <a [routerLink]="routes.doctorProfile2" class="booking-doc-img">
+                    <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                   </a>
                   <div class="booking-info">
                     <h4>
-                      <a [routerLink]="routes.doctorProfile2"
-                        >Dr. Darren Elder</a
-                      >
+                      <a [routerLink]="routes.doctorProfile2">Dr. Darren Elder</a>
                     </h4>
                     <div class="rating">
                       <i class="fas fa-star filled"></i>
@@ -945,7 +760,7 @@
                       <div class="mb-1"><span class="fw-bold">Concern: </span>Hair</div>
                       <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>Yes</div>
                     </div>
-                 
+
                     <ul class="booking-fee">
                       <li>Consulting Fee <span>$100</span></li>
                       <li>Booking Fee <span>$10</span></li>
