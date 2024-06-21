@@ -82,7 +82,8 @@ export class Home1Component implements OnInit {
       },
     ],
   };
-
+  selectedValue!: any;
+  minDate!: Date;
   constructor(
     private data: DataService,
     private router: Router,
@@ -101,10 +102,11 @@ export class Home1Component implements OnInit {
     this.appointmentForm = this.fb.group({
       age: ['', Validators.required],
       gender: ['', Validators.required],
-      firstTimeConsult: ['', Validators.required],
+      firstTimeConsult: ['true'],
       selectedConcerns: this.fb.array([]),
       selectedFiles: this.fb.array([]),
     });
+    this.selectedValue = 'true';
     this.InfoForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -121,8 +123,11 @@ export class Home1Component implements OnInit {
     this.getIssues();
     this.getAvailableSlots();
     this.checkScreenSize();
+    this.minDate = new Date();
   }
-
+  onRadioChange(value: string): void {
+    this.selectedValue = value;
+  }
   get concernControls() {
     return this.appointmentForm.get('selectedConcerns') as FormArray;
   }

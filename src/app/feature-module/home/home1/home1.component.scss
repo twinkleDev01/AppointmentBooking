@@ -622,6 +622,13 @@ $__none: none;
     color: #0E82FD;
     font-weight: 500;
 }
+.selected-yes {
+    font-weight: bold !important;
+    color: white !important;
+    background-color: #0e82fd !important;
+
+}
+
 
 @media (max-width: 1200px) {
     .container {
