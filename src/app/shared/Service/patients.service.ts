@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +16,33 @@ export class PatientsService {
   bookappointment:string ='/Appointment/book_appointment'
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Detail:any;
-  constructor(private http:HttpClient) { 
-    this.getUserDetail();
+  constructor(private http:HttpClient, private auth: AuthService) { 
+    this.auth.uderDetail.subscribe((res:any)=>{
+      console.log(res,"21")
+      if(res){
+        this.Detail = res
+      }else{
+        this.Detail = localStorage.getItem('UserDetail')
+        this.Detail = JSON.parse(this.Detail);
+        console.log(this.Detail,"27")
+      }
+    })
   }
 
-  getUserDetail(): string | null {
-    const userDetail = localStorage.getItem('UserDetail');
-      if (userDetail) {
-        try {
-          this.Detail=JSON.parse(userDetail);
-          return this.Detail;
-        } catch (e) {
-          console.error('Error parsing user detail from localStorage:', e);
-          return null;
-        }
-      }
-      return null;
-    }
+  // getUserDetail(): string | null {
+  //   const userDetail = localStorage.getItem('UserDetail');
+  //   console.log(userDetail,"24")
+  //     if (userDetail) {
+  //       try {
+  //         this.Detail=JSON.parse(userDetail);
+  //         return this.Detail;
+  //       } catch (e) {
+  //         console.error('Error parsing user detail from localStorage:', e);
+  //         return null;
+  //       }
+  //     }
+  //     return null;
+  //   }
 
   getPrescription(){
   const url=`${this.baseUrl}${this.getprescription}?PatientId=${this.Detail?.nameid}`

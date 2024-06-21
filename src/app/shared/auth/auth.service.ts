@@ -13,6 +13,8 @@ export class AuthService {
 
   private _token = new BehaviorSubject('')
   token = this._token.asObservable()
+  private _userDetail = new BehaviorSubject('')
+  uderDetail = this._userDetail.asObservable()
   constructor(private http:HttpClient) {
    }
 
@@ -29,6 +31,8 @@ export class AuthService {
   getUserDetails(token: string){
     if (token) {
       localStorage.setItem('UserDetail',JSON.stringify(jwtDecode(token)))
+      console.log(jwtDecode(token),32)
+      this._userDetail.next(jwtDecode(token))
       return jwtDecode(token);
     }
     return null;
