@@ -38,6 +38,8 @@ export class HeaderComponent {
       })
       if(!localStorage.getItem('token')){
         this.isPatient = false
+      }else{
+        this.isPatient = true
       }
     this.common.base.subscribe((res: string) => {
       this.base = res;
