@@ -104,10 +104,10 @@
                   Are you consulting for the first time?
                 </h5>
                 <div class="yes_no_btn d-flex align-items-center justify-content-center">
-                  <input type="radio" id="yes" value="true" formControlName="firstTimeConsult" checked />
-                  <label for="yes">Yes</label>
-                  <input type="radio" id="no" value="false" formControlName="firstTimeConsult" />
-                  <label for="no">No</label>
+                  <input type="radio" id="yes" value="true" formControlName="firstTimeConsult" (change)="onRadioChange('true')" />
+                  <label [ngClass]="{'selected-yes': selectedValue === 'true'}" for="yes">Yes</label>
+                  <input type="radio" id="no" value="false" formControlName="firstTimeConsult" (change)="onRadioChange('false')" />
+                  <label [ngClass]="{'selected-yes': selectedValue === 'false'}" for="no">No</label>
                 </div>
               </div>
               <!-- Upload Images -->
@@ -230,12 +230,12 @@
               <div class="custom-modal-body">
                 <div class="row mt-3">
                   <div class="col-lg-6  d-flex justify-content-center align-items-center">
-                    <p-calendar [(ngModel)]="selectedDate" inline="true" dateFormat="yy-mm-dd"
+                    <p-calendar [(ngModel)]="selectedDate" [minDate]="minDate" inline="true" dateFormat="yy-mm-dd"
                       (onSelect)="onSelectDate($event)" class="calendar-p" (ngModelChange)="onDateChange($event)"
                       (onInput)="onDateChange($event)"></p-calendar>
                   </div>
                   <div class="col-lg-6  justify-content-center">
-                    <!-- Available Times -->
+                    <!-- Available Times --> 
                     <h6 class="text-center mt-5">Available Time Slots</h6>
                     <div class="row mt-5">
                       <div *ngFor="let slot of filteredAppointments" class="col-lg-3 col-md-4 col-sm-4 col-6 mt-2"
