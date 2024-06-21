@@ -37,9 +37,9 @@ export class Home1Component implements OnInit {
   activeIndex = 0;
   files: { name: string, url: string, type: string }[] = [];
   concerns: any;
-bookAppointmentbtn: boolean = false;
-  userDetails:any
-  InfoForm: FormGroup;  isMobile!: boolean;
+  bookAppointmentbtn: boolean = false;
+  userDetails: any
+  InfoForm: FormGroup; isMobile!: boolean;
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -126,7 +126,7 @@ bookAppointmentbtn: boolean = false;
   get concernControls() {
     return this.appointmentForm.get('selectedConcerns') as FormArray;
   }
-  
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.checkScreenSize();
@@ -136,7 +136,7 @@ bookAppointmentbtn: boolean = false;
     this.isMobile = window.innerWidth <= 576;
   }
 
-  
+
 
   public specialitiesSlider: OwlOptions = {
     loop: true,
@@ -369,116 +369,120 @@ bookAppointmentbtn: boolean = false;
     });
   }
 
-onSubmit(){
-  this.appointmentForm.patchValue({
-    starTime: this.selectedTimeSlot?.startTime,
-    appointmentDate: this.selectedDate
-  });
-  const user = localStorage.getItem('UserDetail');
-  if (user) {
-    this.userDetails = JSON.parse(user); // Directly parse the user object
-    console
-  } else {
-    console.log('User details not found in local storage.');
-  }
-  this.bookAppointmentbtn = true
-  if (this.appointmentForm.valid) {
-    console.log(this.appointmentForm.value);
-    
-    // Handle form submission
-  }
-}
-
-bookAppointment(value:any){
-  this.patientsService.bookAppointment(value).subscribe(response =>{
-    console.log(response);
-  })
-}
-next(): void {
-  this.activeIndex = (this.activeIndex === this.files.length - 1) ? 0 : (this.activeIndex + 1);
-}
-prev(): void {
-  this.activeIndex = (this.activeIndex === 0) ? (this.files.length - 1) : (this.activeIndex - 1);
-}
-
-openImagePreviewModal() {
-  if (this.files.length > 0) {
-    this.isImageModalOpen = true;
-  }
-}
-
-initiatePayment() {
-  if (this.InfoForm.valid) {
-  // Example parameters, replace with actual data
-  const amount = 100; // Amount in INR
-  const name = this.InfoForm.value.firstName +' '+ this.InfoForm.value.lastName;
-  const email = this.InfoForm.value.email;
-  const contact = this.InfoForm.value.phone;
-  const data = {
-    IssueIds: this.appointmentForm.value.selectedConcerns.map((issue: { issueID: any; }) => issue.issueID),
-    AppointmentDate: this.formatDatetoSend(this.selectedDate),
-    slotTime: this.removePm(this.appointmentForm.value.starTime),
-    IsCancelled: false,
-    IsCompleted: false ,
-    Images: this.appointmentForm.value.selectedFiles,
-    IsFirstTimeConsult: this.appointmentForm.value.firstTimeConsult,
-    'user.FirstName': this.InfoForm.value.firstName,
-    'user.LastName': this.InfoForm.value.lastName,
-    'user.City': this.InfoForm.value.city,
-    'user.Pincode': this.InfoForm.value.pinCode,
-    'user.State': this.InfoForm.value.state,
-    'user.Gender': this.appointmentForm.value.gender,
-    'user.Age': this.appointmentForm.value.age,
-    'user.Phone': this.InfoForm.value.phone,
-    'user.Role': 1,
-    'user.Email': this.InfoForm.value.email,
-  }
-
-  const formData = new FormData();
-
-  // Populate formData with data fields
-  // Populate formData with data fields
-  Object.entries(data).forEach(([key, value]) => {
-    if (Array.isArray(value)) {
-      value.forEach((item) => {
-        formData.append(key, item);
-      });
+  onSubmit() {
+    this.appointmentForm.patchValue({
+      starTime: this.selectedTimeSlot?.startTime,
+      appointmentDate: this.selectedDate
+    });
+    const user = localStorage.getItem('UserDetail');
+    if (user) {
+      this.userDetails = JSON.parse(user); // Directly parse the user object
+      console
     } else {
-      formData.append(key, value);
+      console.log('User details not found in local storage.');
     }
-  });
+    this.bookAppointmentbtn = true
+    if (this.appointmentForm.valid) {
+      console.log(this.appointmentForm.value);
 
-// formData.forEach((value, key) => {
-//   console.log(key, value);
-// });
+      // Handle form submission
+    }
+  }
 
-// Log formData and data for debugging purposes
-    console.log('Form Data:', formData);
-    console.log('Data Object:', data);
+  bookAppointment(value: any) {
+    this.patientsService.bookAppointment(value).subscribe(response => {
+      console.log(response);
+    })
+  }
+  next(): void {
+    this.activeIndex = (this.activeIndex === this.files.length - 1) ? 0 : (this.activeIndex + 1);
+  }
+  prev(): void {
+    this.activeIndex = (this.activeIndex === 0) ? (this.files.length - 1) : (this.activeIndex - 1);
+  }
 
-  this.paymentService.initiatePayment(amount, name, email, contact, formData);
-}else {
-  this.markAllAsTouched();
-    console.log('Form is invalid');
-}
-}
+  openImagePreviewModal() {
+    if (this.files.length > 0) {
+      this.isImageModalOpen = true;
+    }
+  }
 
-private markAllAsTouched() {
-  Object.values(this.InfoForm.controls).forEach(control => {
-    control.markAsTouched();
-  });
-}
+  initiatePayment() {
+    if (this.InfoForm.valid) {
+      // Example parameters, replace with actual data
+      const amount = 100; // Amount in INR
+      const name = this.InfoForm.value.firstName + ' ' + this.InfoForm.value.lastName;
+      const email = this.InfoForm.value.email;
+      const contact = this.InfoForm.value.phone;
+      const data = {
+        IssueIds: this.appointmentForm.value.selectedConcerns.map((issue: { issueID: any; }) => issue.issueID),
+        AppointmentDate: this.formatDatetoSend(this.selectedDate),
+        slotTime: this.removePm(this.appointmentForm.value.starTime),
+        IsCancelled: false,
+        IsCompleted: false,
+        Images: this.appointmentForm.value.selectedFiles,
+        IsFirstTimeConsult: this.appointmentForm.value.firstTimeConsult,
+        'user.FirstName': this.InfoForm.value.firstName,
+        'user.LastName': this.InfoForm.value.lastName,
+        'user.City': this.InfoForm.value.city,
+        'user.Pincode': this.InfoForm.value.pinCode,
+        'user.State': this.InfoForm.value.state,
+        'user.Gender': this.appointmentForm.value.gender,
+        'user.Age': this.appointmentForm.value.age,
+        'user.Phone': this.InfoForm.value.phone,
+        'user.Role': 1,
+        'user.Email': this.InfoForm.value.email,
+      }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-formatDatetoSend(dateString:any) {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-  const day = String(date.getDate()).padStart(2, '0');
-  
-  return `${year}-${month}-${day}`;
-}
-removePm(time: string): string {
-  return time.replace('PM', '').trim();
-}
+      const formData = new FormData();
+
+      // Populate formData with data fields
+      // Populate formData with data fields
+      Object.entries(data).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          value.forEach((item) => {
+            formData.append(key, item);
+          });
+        } else {
+          formData.append(key, value);
+        }
+      });
+
+      // formData.forEach((value, key) => {
+      //   console.log(key, value);
+      // });
+
+      // Log formData and data for debugging purposes
+      console.log('Form Data:', formData);
+      console.log('Data Object:', data);
+
+      this.paymentService.initiatePayment(amount, name, email, contact, formData);
+    } else {
+      this.markAllAsTouched();
+      console.log('Form is invalid');
+    }
+  }
+
+  private markAllAsTouched() {
+    Object.values(this.InfoForm.controls).forEach(control => {
+      control.markAsTouched();
+    });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  formatDatetoSend(dateString: any) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    const day = String(date.getDate()).padStart(2, '0');
+
+    return `${year}-${month}-${day}`;
+  }
+  removePm(time: string): string {
+    return time.replace('PM', '').trim();
+  }
+
+  backButton(){
+    this.bookAppointmentbtn = false;
+  }
 }

@@ -51,6 +51,7 @@ input[type="text"] {
     border: 1px solid #0000001c;
     width: 90%;
     border-radius: 8px;
+    font-size: 12px;
 }
 
 input[type="checkbox"] {
@@ -74,6 +75,7 @@ select {
     width: 100%;
     color: gray;
     height: 40px;
+    font-size: 12px;
 }
 
 
@@ -98,7 +100,7 @@ select {
     display: none;
 }
 
-.strong_color{
+.strong_color {
     color: #0e82fd;
 }
 
@@ -115,7 +117,7 @@ select {
     margin: 5px;
     display: inline-block;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 24px;
     color: #18191f;
 }
@@ -144,7 +146,7 @@ select {
 }
 
 .concern_label {
-    font-size: 14px;
+    font-size: 12px;
     color: black;
 }
 
@@ -165,6 +167,7 @@ select {
     background-color: #f9f9f9;
     margin-right: 10px;
     border-radius: 5px;
+    font-size: 12px;
 }
 
 .no-files-uploaded {
@@ -335,7 +338,8 @@ $__none: none;
     max-width: 100%;
     padding: 20px;
     border-radius: 25px;
-    max-height: 80vh; /* Added max-height for responsiveness */
+    max-height: 80vh;
+    /* Added max-height for responsiveness */
     overflow-y: auto;
 }
 
@@ -492,11 +496,11 @@ $__none: none;
 
 
 
-.calendar-p{
-    .p-calendar{
-        .p-component{
-            .p-datepicker-group-container{
-                .p-datepicker-group{
+.calendar-p {
+    .p-calendar {
+        .p-component {
+            .p-datepicker-group-container {
+                .p-datepicker-group {
                     width: 300px;
                 }
             }
@@ -519,104 +523,144 @@ $__none: none;
 //     border-bottom: 1px solid #ccc !important; /* Example border bottom */
 // }
 
-::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-month{
+::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-month {
     color: #0E82FD !important;
 }
 
-::ng-deep .calendar-p .p-datepicker .p-datepicker-header  .p-datepicker-year {
+::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-year {
     color: #0E82FD !important;
 }
 
-::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-next-icon  {
+::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-next-icon {
     color: #0E82FD !important;
 }
 
-::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-prev-icon  {
+::ng-deep .calendar-p .p-datepicker .p-datepicker-header .p-datepicker-prev-icon {
     color: #0E82FD !important;
 }
-::ng-deep .calendar-p .p-datepicker .p-highlight{
-    background-color:  #0E82FD !important;
+
+::ng-deep .calendar-p .p-datepicker .p-highlight {
+    background-color: #0E82FD !important;
     color: #fff;
 }
 
 /* Target the title of the datepicker */
 .calendar-p .p-datepicker-title {
-    color: #333; /* Example text color */
+    color: #333;
+    /* Example text color */
 }
 
 /* Target the previous button in the datepicker header */
 .calendar-p .p-datepicker-prev {
-    color: #000; /* Example color for the previous button */
+    color: #000;
+    /* Example color for the previous button */
 }
 
 /* Style the days in the datepicker */
 .calendar-p .p-datepicker td span {
-    color: #666; /* Example text color for days */
-    padding: 10px; /* Example padding */
-    border-radius: 50%; /* Example border-radius for circular appearance */
+    color: #666;
+    /* Example text color for days */
+    padding: 10px;
+    /* Example padding */
+    border-radius: 50%;
+    /* Example border-radius for circular appearance */
 }
 
 /* Style for selected date */
 .calendar-p .p-datepicker td span.p-highlight {
-    background-color: #007ad9; /* Example background color for selected date */
-    color: #fff; /* Example text color for selected date */
+    background-color: #007ad9;
+    /* Example background color for selected date */
+    color: #fff;
+    /* Example text color for selected date */
 }
 
 /* Disabled dates */
 .calendar-p .p-datepicker td span.p-disabled {
-    color: #999; /* Example color for disabled dates */
+    color: #999;
+    /* Example color for disabled dates */
 }
 
 .info-widget {
-    border-bottom:none !important;
+    border-bottom: none !important;
 }
+
+.card_custom {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.card_custom input {
+    width: 100%;
+}
+
+.card_custom input:hover {
+    border: 1px solid #0E82FD;
+}
+
 .card-label {
     margin-bottom: 1rem;
-  }
-  .card-label div {
+}
+
+.card-label div {
     color: red;
     font-size: 0.875rem;
-  }
-  .pay-btn{
+}
+
+.pay-btn {
     background: #0e82fd;
-  }@media (max-width: 1200px) {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.login_link{
+    color: #0E82FD;
+    font-weight: 500;
+}
+
+@media (max-width: 1200px) {
     .container {
         max-width: 90%;
     }
-    
+
     h4 {
         font-size: 14px;
     }
-    
+
     .banner-content p {
         width: 70%;
     }
-    
+
     .form_btn {
         font-size: 10px;
     }
-    
+
     h3 {
         font-size: 16px;
     }
-    
+
     .concern_label {
         font-size: 12px;
     }
-    
+
     .banner_img {
         max-width: 375px;
         top: 110px;
     }
-    
+
     .custom-file-upload {
         font-size: 12px;
     }
-    
+
     .yes_no_btn label {
         font-size: 12px;
     }
-    
+
     input[type="text"] {
         height: 30px;
         padding-left: 5px;
@@ -626,36 +670,42 @@ $__none: none;
         border-radius: 4px;
         font-size: 12px;
     }
+
     select {
         appearance: none;
         padding: 5px;
-        padding-right: 20px;  
+        padding-right: 20px;
         border-radius: 8px;
         height: 30px;
         font-size: 12px;
     }
-    .img-fluid{
+
+    .img-fluid {
         width: 100%;
     }
-    
+
     .banner-content .btn {
         border-radius: 4px;
         padding: 10px;
         min-width: 140px;
         font-size: 12px;
     }
-    h2{
+
+    h2 {
         font-size: 28px;
     }
-    .work-img-info{
+
+    .work-img-info {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .work-img-info img{
+
+    .work-img-info img {
         width: 100%;
     }
-    .concerns{
+
+    .concerns {
         padding-left: 10px;
         padding-right: 10px;
         padding-top: 5px;
@@ -668,33 +718,35 @@ $__none: none;
     h4 {
         font-size: 14px;
     }
-    
+
     .banner-content p {
         width: 70%;
     }
-    .form_btn{
+
+    .form_btn {
         font-size: 10px;
     }
-    
+
     h3 {
         font-size: 16px;
     }
-    
+
     .concern_label {
         font-size: 12px;
     }
-    
+
     .banner_img {
         max-width: 350px;
         top: 85px;
     }
-    .concerns{
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 0px;
-    padding-bottom: 10px;
+
+    .concerns {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 0px;
+        padding-bottom: 10px;
     }
-    
+
 }
 
 
@@ -703,13 +755,16 @@ $__none: none;
         width: 100%;
         text-align: center;
     }
-    .work-img-info img{
+
+    .work-img-info img {
         display: none;
     }
-    .work-img-info{
+
+    .work-img-info {
         display: none;
     }
-    .custom-modal{
+
+    .custom-modal {
         position: fixed;
         top: 55%;
         left: 50%;
@@ -723,6 +778,7 @@ $__none: none;
         max-height: 80vh;
         overflow-y: auto;
     }
+
     input[type="text"] {
         width: 100%;
     }
@@ -753,7 +809,8 @@ $__none: none;
     .banner-content p {
         width: 100%;
     }
-    .custom-modal{
+
+    .custom-modal {
         position: fixed;
         top: 55%;
         left: 50%;
@@ -766,5 +823,10 @@ $__none: none;
         border-radius: 10px;
         max-height: 80vh;
         overflow-y: auto;
+    }
+    .pay-btn {
+        background: #0e82fd;
+        padding: 10px;
+        font-size: 10px;
     }
 }
