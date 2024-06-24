@@ -18,7 +18,7 @@ export class ProfileSettingsComponent implements OnInit {
         this.Detail = JSON.parse(this.Detail);
   }
   ngOnInit() {
-
+console.log('a')
     this.myDateValue = new Date();
     this.profileForm = this.fb.group({
       profileImage: [null],
