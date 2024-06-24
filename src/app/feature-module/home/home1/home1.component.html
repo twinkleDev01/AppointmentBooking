@@ -764,7 +764,7 @@
                           <span><span class="fw-bold">Gender : </span>{{appointmentForm.value.gender}}</span>
                         </div>
                       </div>
-                      <div class="mb-1"><span class="fw-bold">Concern: </span>Hair</div>
+                      <div class="mb-1"><span class="fw-bold">Concern: </span><ng-container *ngFor="let issue of issues">{{issue.issueName}},</ng-container></div>
                       <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>{{appointmentForm.value.firstTimeConsult}}</div>
                     </div>
 

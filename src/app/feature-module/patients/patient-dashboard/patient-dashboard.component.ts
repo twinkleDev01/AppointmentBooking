@@ -192,4 +192,6 @@ this.patientsService.getAppointment().subscribe((res:any)=>{
   this.appointmentDetails = res
 })
   }
+ 
+  
 }

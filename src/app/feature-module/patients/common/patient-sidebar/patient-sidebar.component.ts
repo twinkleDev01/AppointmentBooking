@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { CommonService } from 'src/app/shared/common/common.service';
 import { routes } from 'src/app/shared/routes/routes';
@@ -14,8 +15,10 @@ export class PatientSidebarComponent {
   public base = '';
   public page = '';
   public last = '';
-
-  constructor(private common: CommonService,private authService:AuthService,private router:Router) {
+  userInfo:any;
+  Detail:any;
+  UserId = JSON.parse(localStorage.getItem('UserDetail') || '{}')?.nameid;
+  constructor(private common: CommonService,private authService:AuthService,private router:Router,private patientsService:PatientsService) {
     this.common.base.subscribe((base: string) => {
       this.base = base;
     });
@@ -25,17 +28,30 @@ export class PatientSidebarComponent {
     this.common.last.subscribe((last: string) => {
       this.last = last;
     });
+    this.Detail = localStorage.getItem('UserDetail')
+        this.Detail = JSON.parse(this.Detail);
+        console.log(this.Detail,"27")
+    this.getUserInfo();
+  }
+  ngOninit(){
+    this.getUserInfo();
   }
   Logout(){
-    const UserId = JSON.parse(localStorage.getItem('UserDetail') || '{}')?.nameid;
+    
     const data={
       LoginProvider:localStorage.getItem('token'),
-      UserId:UserId
+      UserId:this.UserId
     }
 this.authService.logout(data).subscribe((res)=>{
   console.log(res);
   localStorage.clear();
   this.router.navigate(['/authentication/login']);
 })
+  }
+  getUserInfo(){
+    this.patientsService.getPatientinfo().subscribe((res:any)=>{
+      console.log(res,"49");
+      this.userInfo=res?.data;
+    })
   }
 }
