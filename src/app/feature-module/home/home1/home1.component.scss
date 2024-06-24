@@ -674,7 +674,7 @@ $__none: none;
         align-items: center;
         border: 1px solid #0000001c;
         width: 90%;
-        border-radius: 4px;
+        border-radius: 8px;
         font-size: 12px;
     }
 
@@ -801,8 +801,23 @@ $__none: none;
         padding-top: 15px;
         padding-bottom: 15px;
         font-size: 20px;
-        border-radius: 5px;
+        border-radius: 0px;
         /* Ensure it's above other content */
+    }
+    .form {
+        padding: 25px 25px !important;
+    }
+    :host::ng-deep {
+
+        .p-multiselect {
+            width: 100% !important;
+        }
+        .p-checkbox-box{
+    border:1px solid #eeeff4;
+        }
+        .p-multiselect-header{
+            display: none;
+        }
     }
 
     select {
@@ -836,4 +851,7 @@ $__none: none;
         padding: 10px;
         font-size: 10px;
     }
+}
+:host::ng-deep .p-datepicker table td{
+    padding: 0.1rem !important;
 }

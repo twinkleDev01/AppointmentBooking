@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/shared/data/data.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { routes } from 'src/app/shared/routes/routes';
@@ -92,6 +92,7 @@ export class Home1Component implements OnInit {
     private patientsService: PatientsService,
     private fb: FormBuilder,
     private paymentService: PaymentService,
+    private el: ElementRef,
     private toastr: ToastrService
   ) {
     this.specialitiesSliderOne = this.data.specialitiesSliderOne;
@@ -120,6 +121,10 @@ export class Home1Component implements OnInit {
       phone: ['', Validators.required]
     });
     this.isMobile = window.innerWidth <= 576;
+  }
+
+  get isMobileResolution(){
+return window.innerWidth < 767
   }
 
   ngOnInit() {
@@ -229,10 +234,7 @@ export class Home1Component implements OnInit {
     console.log('Date selected:', event);
     const date = event?.target?.value;
     if (date) {
-      console.log('Selected date:', date);
       this.selectedDate = date;
-      console.log('Current date:', this.selectedDate);
-      console.log('Slot dates:');
       for (const slot of this.slots) {
         console.log(slot.date);
       }
@@ -240,7 +242,6 @@ export class Home1Component implements OnInit {
         (slot: { startTime: string; date: string }) =>
           this.isSameDay(slot.date, this.selectedDate)
       );
-      console.log('Selected slots:', this.selectedSlots);
     }
   }
 
@@ -268,18 +269,15 @@ export class Home1Component implements OnInit {
     this.uniqueTimeSlots = Array.from(timeSlotsMap.values())?.map((slot) => {
       return { ...slot, startVisibleTime: convertTo12HourFormat(slot.startTime) };
     });
-    console.log('unique time slots', this.uniqueTimeSlots);
   }
 
   onSelectTimeSlot(slot: any) {
     this.selectedTimeSlot = slot;
-    console.log(slot)
   }
 
   onDateChange(event: any) {
     console.log('date change',event);
     this.selectedDate = event;
-    console.log('Date changed:', this.selectedDate);
     this.filterAppointments(this.formatDate(this.selectedDate));
   }
 
@@ -301,7 +299,6 @@ export class Home1Component implements OnInit {
     this.filteredAppointments = this.uniqueTimeSlots.filter(
       (appointment) => appointment.date === date
     );
-    console.log('Filtered appointments:', this.filteredAppointments);
   }
 
   onFileChange(event: any): void {
@@ -369,14 +366,12 @@ export class Home1Component implements OnInit {
 
   getIssues() {
     this.patientsService.getIssues().subscribe((issues) => {
-      console.log(issues);
       this.concerns = issues;
     });
   }
 
   getAvailableSlots() {
     this.patientsService.getAvailableSlot().subscribe((availableSlots) => {
-      console.log(availableSlots);
       this.slots = availableSlots;
       this.generateUniqueTimeSlots();
       this.selectedDate = new Date();  // Initialize with the current date
@@ -386,6 +381,7 @@ export class Home1Component implements OnInit {
     });
   }
 
+
   onSubmit(){
     this.submitted=true
     const user = localStorage.getItem('UserDetail');
@@ -394,7 +390,6 @@ export class Home1Component implements OnInit {
     } else {
       console.log('User details not found in local storage.');
     }
-    console.log(this.slotConfirmed);
     if (this.appointmentForm.valid) {
       if(this.slotConfirmed===true){
     this.issues= this.appointmentForm.value.selectedConcerns;
@@ -402,6 +397,17 @@ console.log(this.issues);
         console.log(this.appointmentForm.value);
       this.bookAppointmentbtn = true
       }
+      
+    }else{
+      this.navigateToInvalidSection();
+    }
+  }
+
+  navigateToInvalidSection() {
+    // Scroll to the first invalid control if form is submitted
+    const invalidControl = document.querySelector('.ng-invalid');
+    if (invalidControl) {
+      invalidControl.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
 
@@ -465,18 +471,9 @@ initiatePayment() {
         }
       });
 
-      // formData.forEach((value, key) => {
-      //   console.log(key, value);
-      // });
-
-      // Log formData and data for debugging purposes
-      console.log('Form Data:', formData);
-      console.log('Data Object:', data);
-
       this.paymentService.initiatePayment(amount, name, email, contact, formData);
     } else {
       this.markAllAsTouched();
-      console.log('Form is invalid');
     }
   }
 
@@ -501,5 +498,11 @@ initiatePayment() {
 
   backButton(){
     this.bookAppointmentbtn = false;
+  }
+
+  selectedConcerns:any;
+
+  onSelectionChange(): void {
+    console.log(this.selectedConcerns); // Handle the selected concerns as needed
   }
 }
