@@ -8,6 +8,8 @@ import { FooterComponent } from './common/footer/footer.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DatePickerDirective } from './date-picker.directive';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { DatePickerDirective } from './date-picker.directive';
     SharedModule,
     BsDatepickerModule.forRoot(),
     CalendarModule,
-    DatePickerDirective
+    DatePickerDirective,
+    DropdownModule,
+    MultiSelectModule
   ]
 })
 export class Home1Module { }

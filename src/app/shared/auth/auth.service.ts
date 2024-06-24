@@ -31,7 +31,6 @@ export class AuthService {
   getUserDetails(token: string){
     if (token) {
       localStorage.setItem('UserDetail',JSON.stringify(jwtDecode(token)))
-      console.log(jwtDecode(token),32)
       this._userDetail.next(jwtDecode(token))
       return jwtDecode(token);
     }
@@ -40,6 +39,7 @@ export class AuthService {
 
   clearToken(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('UserDetail')
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
