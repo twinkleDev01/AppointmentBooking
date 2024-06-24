@@ -29,9 +29,7 @@ export class HeaderComponent {
     private router: Router,
     private auth: AuthService
   ) {
-    console.log("hii")
     this.auth.token.subscribe((res:any)=>{
-      console.log(res)
       if(res){
         this.isPatient = true
       }
@@ -67,11 +65,10 @@ export class HeaderComponent {
   }
   isPatient:boolean =false
 ngOnInit(){
-  console.log("58")
 }
 logout(){
-  console.log("81")
   localStorage.removeItem('token')
+  localStorage.removeItem('UserDetail')
   this.isPatient=false
 }
 }

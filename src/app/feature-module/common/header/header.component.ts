@@ -83,8 +83,8 @@ export class HeaderComponent {
     }
   }
   logout(){
-    console.log("81")
     localStorage.removeItem('token')
+    localStorage.removeItem('UserDetail')
     this.isPatient=false
   }
 }

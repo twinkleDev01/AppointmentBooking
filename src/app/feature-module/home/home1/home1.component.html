@@ -69,14 +69,14 @@
             <h4 class="text-center mb-2 form_title">Get an Appointment</h4>
             <div class="row mt-4">
               <!-- age and gender -->
-              <div class="col-lg-6 col-md-6 no_padding">
+              <div class="col-lg-6 col-md-6 col-6">
                 <input type="text" placeholder="Enter Age" formControlName="age">
                 <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted && (appointmentForm.get('age')?.touched || appointmentForm.get('age')?.invalid))" class="text-danger">
                   Age is required.
                 </div>
               </div>
-              <div class="col-lg-6 col-md-6 no_padding">
-                <select name="gender" id="gender" formControlName="gender">
+              <div class="col-lg-6 col-md-6 col-6">
+                <select name="gender" id="gender" formControlName="gender" class="mt-0">
                   <option value="">Gender</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
@@ -90,12 +90,19 @@
                 <h5 class="text-center">Select your concern(s)</h5>
               </div>
               <!-- list of concerns/decease -->
-              <div class="row concerns">
+              <div class="row concerns" *ngIf="!isMobileResolution">
                 <div *ngFor="let concern of concerns; let i = index"
                   class="col-lg-6 col-md-6 mt-3 d-flex align-items-center">
                   <input type="checkbox" id="concern{{i}}" [checked]="isConcernSelected(concern)"
                     (change)="onCheckboxChange($event, concern)">
                   <label class="concern_label" for="concern{{i}}">{{concern.issueName}}</label>
+                </div>
+              </div>
+              <div class="row concerns" *ngIf="isMobileResolution">
+                <div class="col-lg-6 col-md-6 mt-0">
+                  <p-multiSelect [options]="concerns" optionLabel="issueName"
+                  (change)="onCheckboxChange($event, concerns)" placeholder="Select Concerns" class="mutiselect">
+   </p-multiSelect>
                 </div>
               </div>
               <!-- Are you consulting for first time? -->
@@ -251,13 +258,13 @@
                     </div>
                   </div>
                 </div>
-                <div *ngIf="selectedTimeSlot" class=" row mt-5 ps-5 pe-5">
-                  <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center mt-3">
+                <div *ngIf="selectedTimeSlot" class=" row ps-5 pe-5">
+                  <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
                     <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startVisibleTime }}, {{
                         selectedDate | date: 'yyyy-MM-dd'
                         }}</strong></p>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center mt-3">
+                  <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
                     <button class="modal_btn" (click)="closeModal();slotConfirmed=true">Confirm Slot</button>
                   </div>
                 </div>
