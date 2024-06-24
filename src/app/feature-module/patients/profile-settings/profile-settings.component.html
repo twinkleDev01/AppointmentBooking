@@ -7,113 +7,125 @@
             <app-patient-sidebar class="col-lg-4 col-xl-3"></app-patient-sidebar>
             
             <div class="col-lg-8 col-xl-9">
-                
-                <form >
-                    <div class="setting-card">
-                        <div class="change-avatar img-upload">
-                            <div class="profile-img">
-                                <i class="fa-solid fa-file-image"></i>
-                            </div>
-                            <div class="upload-img">
-                                <h5>Profile Image</h5>
-                                <div class="imgs-load d-flex align-items-center">
-                                    <div class="change-photo">
-                                        Upload New 
-                                        <input type="file" class="upload">
-                                    </div>
-                                    <a href="javascript:void(0);" class="upload-remove">Remove</a>
-                                </div>
-                                <p class="form-text">Your Image should Below 4 MB, Accepted format Jpg,Png,Svg</p>
-                            </div>			
-                        </div>			
-                    </div>
-                    <div class="setting-title">
-                        <h5>Information</h5>
-                    </div>
-                    <div class="setting-card">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="First">First Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="last">Last Name <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="Date">Date of Birth <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="phone">Phone Number <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="email">Email Address <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="bloodgroup">Blood Group <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                  <div class="setting-card">
+                    <div class="change-avatar img-upload">
+                      <div class="profile-img">
+                        <i class="fa-solid fa-file-image"></i>
+                      </div>
+                      <div class="upload-img">
+                        <h5>Profile Image</h5>
+                        <div class="imgs-load d-flex align-items-center">
+                          <div class="change-photo">
+                            Upload New
+                            <input type="file" class="upload" (change)="onFileChange($event)">
+                          </div>
+                          <a href="javascript:void(0);" class="upload-remove">Remove</a>
                         </div>
+                        <p class="form-text">Your Image should Below 4 MB, Accepted format Jpg,Png,Svg</p>
+                      </div>
                     </div>
-                    <div class="setting-title">
-                        <h5>Address</h5>
-                    </div>
-                    <div class="setting-card">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="Address">Address <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="city">City <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="state">State <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="country">Country <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-wrap">
-                                    <label class="col-form-label" for="pincode">Pincode <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
+                  </div>
+                  <div class="setting-title">
+                    <h5>Information</h5>
+                  </div>
+                  <div class="setting-card">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="firstName">First Name <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" formControlName="firstName">
+                          <div *ngIf="profileForm.get('firstName')?.invalid && (profileForm.get('firstName')?.dirty || profileForm.get('firstName')?.touched)" class="text-danger">
+                            First Name is required.
+                          </div>
                         </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="lastName">Last Name <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" formControlName="lastName">
+                          <div *ngIf="profileForm.get('lastName')?.invalid && (profileForm.get('lastName')?.dirty || profileForm.get('lastName')?.touched)" class="text-danger">
+                            Last Name is required.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="dateOfBirth">Date of Birth</label>
+                          <input type="text" class="form-control" formControlName="dateOfBirth">
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
+                          <input type="text" class="form-control" formControlName="phoneNumber">
+                          <div *ngIf="profileForm.get('phoneNumber')?.invalid && (profileForm.get('phoneNumber')?.dirty || profileForm.get('phoneNumber')?.touched)" class="text-danger">
+                            Phone Number is required.
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="email">Email Address <span class="text-danger">*</span></label>
+                          <input type="email" class="form-control" formControlName="email">
+                          <div *ngIf="profileForm.get('email')?.invalid && (profileForm.get('email')?.dirty || profileForm.get('email')?.touched)" class="text-danger">
+                            <div *ngIf="profileForm.get('email')?.errors?.['required']">Email is required.</div>
+                            <div *ngIf="profileForm.get('email')?.errors?.['email']">Invalid email format.</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="bloodGroup">Blood Group</label>
+                          <input type="text" class="form-control" formControlName="bloodGroup">
+                        </div>
+                      </div>
                     </div>
-                    <div class="modal-btn text-end">
-                        <a href="javascript:void(0);" class="btn btn-gray">Cancel</a>
-                        <button type="submit" class="btn btn-primary prime-btn">Save Changes</button>
+                  </div>
+                  <div class="setting-title">
+                    <h5>Address</h5>
+                  </div>
+                  <div class="setting-card">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="address">Address</label>
+                          <input type="text" class="form-control" formControlName="address">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="city">City</label>
+                          <input type="text" class="form-control" formControlName="city">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="state">State</label>
+                          <input type="text" class="form-control" formControlName="state">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="country">Country</label>
+                          <input type="text" class="form-control" formControlName="country">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="pincode">Pincode</label>
+                          <input type="text" class="form-control" formControlName="pincode">
+                        </div>
+                      </div>
                     </div>
-
+                  </div>
+                  <div class="modal-btn text-end">
+                    <a href="javascript:void(0);" class="btn btn-gray">Cancel</a>
+                    <button type="submit" class="btn btn-primary prime-btn" [disabled]="profileForm.invalid">Save Changes</button>
+                  </div>
                 </form>
-            </div>
+              </div>
+              
 
         </div>
     </div>

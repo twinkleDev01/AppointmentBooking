@@ -18,13 +18,6 @@ const routes: Routes = [
           import('./login/login.module').then((m) => m.LoginModule),
       },
       {
-        path: 'admin-forgot-password',
-        loadChildren: () =>
-          import('./forgot-password/forgot-password.module').then(
-            (m) => m.ForgotPasswordModule
-          ),
-      },
-      {
         path: 'admin-register',
         loadChildren: () =>
           import('./register/register.module').then((m) => m.RegisterModule),

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaymentService } from 'src/app/shared/payment/payment.service';
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 
@@ -42,6 +43,7 @@ export class Home1Component implements OnInit {
   bookAppointmentbtn: boolean = false;
   userDetails: any
   InfoForm: FormGroup; isMobile!: boolean;
+  issues:any
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -90,7 +92,8 @@ export class Home1Component implements OnInit {
     private patientsService: PatientsService,
     private fb: FormBuilder,
     private paymentService: PaymentService,
-    private el: ElementRef
+    private el: ElementRef,
+    private toastr: ToastrService
   ) {
     this.specialitiesSliderOne = this.data.specialitiesSliderOne;
     this.doctorSliderOne = this.data.doctorSliderOne;
@@ -128,7 +131,6 @@ return window.innerWidth < 767
     this.getIssues();
     this.getAvailableSlots();
     this.checkScreenSize();
-    this.minDate = new Date();
   }
   onRadioChange(value: string): void {
     this.selectedValue = value;
@@ -229,6 +231,7 @@ return window.innerWidth < 767
   };
 
   onSelectDate(event: any) {
+    console.log('Date selected:', event);
     const date = event?.target?.value;
     if (date) {
       this.selectedDate = date;
@@ -273,11 +276,15 @@ return window.innerWidth < 767
   }
 
   onDateChange(event: any) {
+    console.log('date change',event);
     this.selectedDate = event;
     this.filterAppointments(this.formatDate(this.selectedDate));
   }
 
   formatDate(date: Date): string {
+    console.log('Formatted date:', `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
+      date.getDate()
+    )}T00:00:00`);
     return `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
       date.getDate()
     )}T00:00:00`;
@@ -288,6 +295,7 @@ return window.innerWidth < 767
   }
 
   filterAppointments(date: any) {
+    console.log('Date:', date);
     this.filteredAppointments = this.uniqueTimeSlots.filter(
       (appointment) => appointment.date === date
     );
@@ -366,6 +374,10 @@ return window.innerWidth < 767
     this.patientsService.getAvailableSlot().subscribe((availableSlots) => {
       this.slots = availableSlots;
       this.generateUniqueTimeSlots();
+      this.selectedDate = new Date();  // Initialize with the current date
+      this.minDate = new Date();  // Set the minimum date to the current date (optional)
+      console.log('Component initialized with current date:', this.selectedDate);
+      this.filterAppointments(this.formatDate(this.selectedDate));
     });
   }
 
@@ -380,6 +392,9 @@ return window.innerWidth < 767
     }
     if (this.appointmentForm.valid) {
       if(this.slotConfirmed===true){
+    this.issues= this.appointmentForm.value.selectedConcerns;
+console.log(this.issues);
+        console.log(this.appointmentForm.value);
       this.bookAppointmentbtn = true
       }
       

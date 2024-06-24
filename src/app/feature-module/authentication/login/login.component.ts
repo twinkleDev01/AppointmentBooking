@@ -8,6 +8,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +26,7 @@ export class LoginComponent {
   recaptchaVerifier: firebase.auth.RecaptchaVerifier | undefined;
   confirmationResult: firebase.auth.ConfirmationResult | undefined;
 
-  constructor(private router: Router,private fb: FormBuilder,private authService:AuthService,public afAuth: AngularFireAuth) {}
+  constructor(private router: Router,private fb: FormBuilder,private authService:AuthService,public afAuth: AngularFireAuth,private toastr: ToastrService) {}
 
   ngOnInit(): void {
     firebase.initializeApp(environment.firebaseConfig)
@@ -71,7 +72,10 @@ const sendData={
         this.authService.login(sendData).subscribe((res:any)=>{
                 console.log(res);
                 this.authService.setToken(res?.data.token);
+                this.toastr.success(res.message);
                 this.router.navigate(['/patients/patient-dashboard']);
+    
+
               })
       })
       .catch((error) => {
