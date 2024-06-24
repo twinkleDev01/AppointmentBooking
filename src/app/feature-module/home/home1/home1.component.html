@@ -71,7 +71,7 @@
               <!-- age and gender -->
               <div class="col-lg-6 col-md-6 no_padding">
                 <input type="text" placeholder="Enter Age" formControlName="age">
-                <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted && (appointmentForm.get('age')?.touched || appointmentForm.get('age')?.invalid))" class="text-danger">
+                <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)" class="text-danger">
                   Age is required.
                 </div>
               </div>
@@ -82,7 +82,7 @@
                   <option value="Female">Female</option>
                   <option value="Other">Other</option>
                 </select>
-                <div *ngIf="appointmentForm.get('gender')?.touched && appointmentForm.get('gender')?.invalid || (submitted && (appointmentForm.get('gender')?.touched || appointmentForm.get('gender')?.invalid))" class="text-danger">
+                <div *ngIf="appointmentForm.get('gender')?.touched && appointmentForm.get('gender')?.invalid || (submitted && appointmentForm.get('gender')?.invalid)" class="text-danger">
                   Gender is required.
                 </div>
               </div>
@@ -205,12 +205,19 @@
                 *ngIf="isImageModalOpen"
                 (click)="closeImageModal()"
               ></div>
-              <div *ngIf="slotConfirmed===false && submitted===true">
-                <p class="mb-0 text-center text-danger">Please select time slot</p>
-              </div>
-              <div *ngIf="" class="text-danger">
-                Age is required.
-              </div>
+              <ng-container *ngIf="slotConfirmed===false && submitted===true">
+                <div >
+                  <p class="mb-0 text-center text-danger">Please select time slot</p>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="selectedTimeSlot">
+              
+                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startVisibleTime }}, {{
+                        selectedDate | date: 'yyyy-MM-dd'
+                        }}</strong></p>
+                
+              </ng-container>
+             
               <div class="d-flex justify-content-center align-items-center mt-4">
                 <button class="form_btn me-3" (click)="openModal()">Select Time</button>
                 <button class="form_btn mobile-fixed-bottom" (click)="onSubmit()">Book Appointment</button>
@@ -713,13 +720,13 @@
               </div>
               <div class="card-body">
                 <!-- Booking Doctor Info -->
-                <div class="booking-doc-info">
+                <!-- <div class="booking-doc-info">
                   <a [routerLink]="routes.doctorProfile2" class="booking-doc-img">
                     <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
                   </a>
                   <div class="booking-info">
                     <h4>
-                      <a [routerLink]="routes.doctorProfile2">Dr. Darren Elder</a>
+                      <a [routerLink]="routes.doctorProfile2">{{InfoForm.value.firstName}} {{InfoForm.value.lastName}}</a>
                     </h4>
                     <div class="rating">
                       <i class="fas fa-star filled"></i>
@@ -727,7 +734,7 @@
                       <i class="fas fa-star filled"></i>
                       <i class="fas fa-star filled"></i>
                       <i class="fas fa-star"></i>
-                      <span class="d-inline-block average-rating">35</span>
+                      <span class="d-inline-block average-rating">appointmentForm.value.age</span>
                     </div>
                     <div class="clinic-details">
                       <p class="doc-location">
@@ -735,7 +742,7 @@
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <!-- Booking Doctor Info -->
 
                 <div class="booking-summary">
@@ -743,22 +750,22 @@
                     <div class="">
                       <div class="row mb-1">
                         <div class="col-6">
-                          <span><span class="fw-bold">Date : </span>16 Nov 2023</span>
+                          <span><span class="fw-bold">Date : </span>{{formatDatetoSend( this.selectedDate)}}</span>
                         </div>
                         <div class="col-6">
-                          <span><span class="fw-bold">Time : </span>10:00 AM</span>
+                          <span><span class="fw-bold">Time : </span>{{selectedTimeSlot.startVisibleTime}}</span>
                         </div>
                       </div>
                       <div class="row mb-1">
                         <div class="col-6">
-                          <span><span class="fw-bold">Age : </span>17</span>
+                          <span><span class="fw-bold">Age : </span>{{appointmentForm.value.age}}</span>
                         </div>
                         <div class="col-6">
-                          <span><span class="fw-bold">Gender : </span>Female</span>
+                          <span><span class="fw-bold">Gender : </span>{{appointmentForm.value.gender}}</span>
                         </div>
                       </div>
                       <div class="mb-1"><span class="fw-bold">Concern: </span>Hair</div>
-                      <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>Yes</div>
+                      <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>{{appointmentForm.value.firstTimeConsult}}</div>
                     </div>
 
                     <ul class="booking-fee">
