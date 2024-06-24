@@ -61,7 +61,7 @@ export class ProfileSettingsComponent implements OnInit {
     formData.append('state', this.profileForm.get('state')?.value);
     formData.append('country', this.profileForm.get('country')?.value);
     formData.append('pincode', this.profileForm.get('pincode')?.value);
-
+console.log(formData);
 this.patientsService.updatePatientinfo(formData).subscribe((res)=>{
   console.log(res)
 })
