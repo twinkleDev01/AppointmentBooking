@@ -53,16 +53,21 @@ export class PaymentService {
   formData.append('PaymentStatus', 'Success');  // Optionally add payment status
    // Ensure formData is updated correctly
     // Handle the response after successful payment
-    alert('Payment successful');
-    this.bookAppointment(formData).subscribe((response: any) => {
-      console.log('Appointment booked successfully:', response);
-     if(response){
-      this.auth.setToken(response.data.token)
-      this.route.navigate(['/patients/patient-dashboard']);
-     }
-    }, (error: any) => {
-      console.error('Error booking appointment:', error);
-    });
+    if (response.razorpay_payment_id) {
+      this.bookAppointment(formData).subscribe((response: any) => {
+        console.log('Appointment booked successfully:', response);
+        if (response) {
+          this.auth.setToken(response.data.token);
+          this.route.navigate(['/patients/patient-dashboard']);
+        }
+      }, (error: any) => {
+        console.error('Error booking appointment:', error);
+      });
+    } else {
+      console.error('Payment was not successful:', response.error_message);
+      // Optionally handle unsuccessful payment scenario
+      // For example, display an error message to the user
+    }
   }
 
   bookAppointment(formData:any){

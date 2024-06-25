@@ -673,7 +673,7 @@
                 </div>
                 <div class="">
                   <button type="submit" class="btn pay-btn text-white">Proceed to pay</button>
-                  <p class="mb-0">Existing Customer?
+                  <p *ngIf="!isPatient" class="mb-0">Existing Customer?
                     <a class="login_link" [routerLink]="routes.userLogin">Click here to login</a>
                   </p>
                 </div>

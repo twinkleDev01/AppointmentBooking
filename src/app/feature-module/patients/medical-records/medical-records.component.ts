@@ -171,6 +171,8 @@ this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
 })
   }
 
+  
+
   searchPrescription(){
     console.log(this.searchTerm,'175')
     const term = this.searchTerm.toLowerCase();

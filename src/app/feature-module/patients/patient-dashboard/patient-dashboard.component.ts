@@ -16,6 +16,7 @@ import {
 } from 'ng-apexcharts';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
+import { ToastrService } from 'ngx-toastr';
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -44,6 +45,8 @@ export class PatientDashboardComponent {
   public base = '';
   public page = '';
   public last = '';
+  Prescriptions:any;
+  baseUrlPdf: string = 'https://bookingapi.asptask.in/'
   public doctorSliderOptions: OwlOptions = {
     loop: true,
     margin: 24,
@@ -105,7 +108,7 @@ export class PatientDashboardComponent {
     },
   };
 
-  constructor(private router: Router, private renderer: Renderer2,private patientsService:PatientsService) {
+  constructor(private router: Router, private renderer: Renderer2,private patientsService:PatientsService,private toastr: ToastrService) {
     if (this.page == 'patient-dashboard') {
       this.renderer.addClass(document.body, 'date-pickers');
     }
@@ -187,11 +190,56 @@ export class PatientDashboardComponent {
 
   appointmentDetails:any
   ngOnInit(){
-this.patientsService.getAppointment().subscribe((res:any)=>{
-  console.log(res,"190")
-  this.appointmentDetails = res
-})
+    this.getAppointment()
+    this.getPrescription()
   }
- 
+
+  getAppointment(){
+    this.patientsService.getAppointment().subscribe((res:any)=>{
+      console.log(res,"190")
+      this.appointmentDetails = res
+    })
+  }
+  getPrescription(){
+    this.patientsService.getPrescription().subscribe((res:any)=>{
+      this.Prescriptions=res?.data;
+    })
+  }
+
+  formatDateString(dateString: string): string {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
+    const date = new Date(dateString);
   
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    const year = date.getFullYear();
+  
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    const minutesStr = minutes < 10 ? '0' + minutes : minutes;
+  
+    return `${day} ${month} ${year}, ${hours}:${minutesStr} ${ampm}`;
+  }
+  fullFilePath(path:string): string {
+    return this.baseUrlPdf + path;
+  }
+
+  delete(prescriptionID:string){
+    this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
+      console.log(res);
+      this.toastr.success('Prescription deleted successfully');
+      this.getPrescription();
+    })
+      }
+
+      formatDate(isoDate: string): string {
+        const date = new Date(isoDate);
+      
+        const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'long', year: 'numeric' };
+        return date.toLocaleDateString('en-GB', options);
+      }
 }

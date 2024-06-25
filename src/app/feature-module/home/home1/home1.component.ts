@@ -8,6 +8,7 @@ import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaymentService } from 'src/app/shared/payment/payment.service';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 
 declare var $: any;
 
@@ -45,6 +46,7 @@ export class Home1Component implements OnInit {
   InfoForm: FormGroup; isMobile!: boolean;
   issues:any
   userInfo:any
+  isPatient:boolean = false;
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -94,7 +96,8 @@ export class Home1Component implements OnInit {
     private fb: FormBuilder,
     private paymentService: PaymentService,
     private el: ElementRef,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private auth: AuthService
   ) {
     this.specialitiesSliderOne = this.data.specialitiesSliderOne;
     this.doctorSliderOne = this.data.doctorSliderOne;
@@ -123,6 +126,19 @@ export class Home1Component implements OnInit {
     });
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)
+    this.auth.token.subscribe((res:any)=>{
+      if(res){
+        this.isPatient = true
+        console.log(this.isPatient,'132')
+      }
+    })
+    if(!localStorage.getItem('token')){
+      this.isPatient = false
+      console.log(this.isPatient,'137')
+    }else{
+      this.isPatient = true
+      console.log(this.isPatient,'140')
+    }
   }
 
   get isMobileResolution(){
@@ -134,7 +150,11 @@ return window.innerWidth < 767
     this.getAvailableSlots();
     this.checkScreenSize();
     this.getUserInfo();
-    console.log("hii")
+    if(!localStorage.getItem('token')){
+      this.isPatient = false
+    }else{
+      this.isPatient = true
+    }
   }
   onRadioChange(value: string): void {
     this.selectedValue = value;
@@ -529,7 +549,7 @@ initiatePayment() {
         email: res.data.email,
         city: res.data.city,
         state: res.data.state,
-        pinCode: res.data.pincode
+        pinCode: res.data.pinCode
       });
     })
   }
