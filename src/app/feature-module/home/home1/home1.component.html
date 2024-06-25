@@ -219,7 +219,7 @@
               </ng-container>
               <ng-container *ngIf="selectedTimeSlot">
               
-                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startVisibleTime }}, {{
+                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startTime }}, {{
                         selectedDate | date: 'yyyy-MM-dd'
                         }}</strong></p>
                 
@@ -259,7 +259,7 @@
                             'not-selected': selectedTimeSlot !== slot
                           }"
                         >
-                          {{ slot.startVisibleTime }}
+                          {{ slot.startTime }}
                         </div>
                       </div>
                     </div>
@@ -267,7 +267,7 @@
                 </div>
                 <div *ngIf="selectedTimeSlot" class=" row ps-5 pe-5">
                   <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
-                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startVisibleTime }}, {{
+                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startTime }}, {{
                         selectedDate | date: 'yyyy-MM-dd'
                         }}</strong></p>
                   </div>
@@ -757,7 +757,7 @@
                           <span><span class="fw-bold">Date : </span>{{formatDatetoSend( this.selectedDate)}}</span>
                         </div>
                         <div class="col-6">
-                          <span><span class="fw-bold">Time : </span>{{selectedTimeSlot.startVisibleTime}}</span>
+                          <span><span class="fw-bold">Time : </span>{{selectedTimeSlot.startTime}}</span>
                         </div>
                       </div>
                       <div class="row mb-1">
