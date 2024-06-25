@@ -44,6 +44,7 @@ export class Home1Component implements OnInit {
   userDetails: any
   InfoForm: FormGroup; isMobile!: boolean;
   issues:any
+  userInfo:any
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -131,6 +132,7 @@ return window.innerWidth < 767
     this.getIssues();
     this.getAvailableSlots();
     this.checkScreenSize();
+    this.getUserInfo();
   }
   onRadioChange(value: string): void {
     this.selectedValue = value;
@@ -296,10 +298,20 @@ return window.innerWidth < 767
 
   filterAppointments(date: any) {
     console.log('Date:', date);
-    this.filteredAppointments = this.uniqueTimeSlots.filter(
-      (appointment) => appointment.date === date
+    this.filteredAppointments = this.slots.filter(
+      (appointment:any) => appointment.date === date
     );
+    console.log('Appointments:', this.filteredAppointments)
   }
+  // filterAppointments(date:any) {
+  //   console.log('Date:', date);
+  //   console.log(this.uniqueTimeSlots,this.slots)
+  //   this.filteredAppointments = this.slots.filter((appointment:any) => {
+  //     console.log(appointment.date, date);
+  //     return appointment.date === date;
+  //   });
+  //   console.log('Appointments:', this.filteredAppointments);
+  // }
 
   onFileChange(event: any): void {
     const fileInput = event.target.files;
@@ -504,5 +516,20 @@ initiatePayment() {
 
   onSelectionChange(): void {
     console.log(this.selectedConcerns); // Handle the selected concerns as needed
+  }
+  getUserInfo(){
+    this.patientsService.getPatientinfo().subscribe((res:any)=>{
+      console.log(res,"49");
+      this.userInfo=res?.data;
+      this.InfoForm.patchValue({
+        firstName: res.data.firstName,
+        lastName: res.data.lastName,
+        phone: res.data.phoneNumber,
+        email: res.data.email,
+        city: res.data.city,
+        state: res.data.state,
+        pinCode: res.data.pincode
+      });
+    })
   }
 }
