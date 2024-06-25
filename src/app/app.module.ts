@@ -20,9 +20,9 @@ import { ModalComponent } from './modal/modal.component';
     HttpClientModule,
     SharedModule,
     ToastrModule.forRoot({
-      timeOut: 3000,
+      // timeOut: 3000,
       positionClass: 'toast-top-right',
-      preventDuplicates: true,
+      // preventDuplicates: true,1
     }),
   ],
   providers: [],

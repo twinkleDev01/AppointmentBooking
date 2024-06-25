@@ -101,7 +101,7 @@ return this.http.get(url);
 
 updatePatientinfo(data:any){
 const url=`${this.baseUrl}${this.updatePatientInfo}`;
-return this.http.put(url, data);
+return this.http.post(url, data);
 }
 
  }

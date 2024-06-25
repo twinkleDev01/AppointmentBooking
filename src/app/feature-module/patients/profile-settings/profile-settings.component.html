@@ -1,6 +1,6 @@
-<app-patient-breadcrumb></app-patient-breadcrumb>
+<!-- <app-patient-breadcrumb></app-patient-breadcrumb> -->
 <!-- Page Content -->
-<div class="content">
+<div class="content profile-set">
     <div class="container">
         <div class="row">
         
@@ -11,7 +11,8 @@
                   <div class="setting-card">
                     <div class="change-avatar img-upload">
                       <div class="profile-img">
-                        <i class="fa-solid fa-file-image"></i>
+                        <img [src]="selectedImageUrl" alt="" *ngIf="selectedImageUrl">
+                        <i class="fa-solid fa-file-image" *ngIf="!selectedImageUrl"></i>
                       </div>
                       <div class="upload-img">
                         <h5>Profile Image</h5>
@@ -52,7 +53,10 @@
                       <div class="col-lg-4 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="dateOfBirth">Date of Birth</label>
-                          <input type="text" class="form-control" formControlName="dateOfBirth">
+                          <!-- <input type="text" class="form-control" formControlName="dateOfBirth"> -->
+                          <p-calendar formControlName="dateOfBirth" [maxDate]="maxDate"  dateFormat="yy-mm-dd"
+                       class="calendar-p" (ngModelChange)="onDateChange($event)"
+                      (onInput)="onDateChange($event)"></p-calendar>
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6">
