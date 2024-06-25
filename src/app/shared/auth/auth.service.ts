@@ -10,7 +10,6 @@ export class AuthService {
  baseUrl: string = environment.baseurl
   loginUrl:string='/Auth/mobile_login';
   LogOutUrl:string='/Auth/logout';
-
   private _token = new BehaviorSubject('')
   token = this._token.asObservable()
   private _userDetail = new BehaviorSubject('')
