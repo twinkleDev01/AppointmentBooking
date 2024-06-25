@@ -134,6 +134,7 @@ return window.innerWidth < 767
     this.getAvailableSlots();
     this.checkScreenSize();
     this.getUserInfo();
+    console.log("hii")
   }
   onRadioChange(value: string): void {
     this.selectedValue = value;
