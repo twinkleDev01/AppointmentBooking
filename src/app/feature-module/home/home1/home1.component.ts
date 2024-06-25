@@ -122,6 +122,7 @@ export class Home1Component implements OnInit {
       phone: ['', Validators.required]
     });
     this.isMobile = window.innerWidth <= 576;
+    this.minDate = new Date();  // Set the minimum date to the current date (optional)
   }
 
   get isMobileResolution(){
@@ -387,7 +388,6 @@ return window.innerWidth < 767
       this.slots = availableSlots;
       this.generateUniqueTimeSlots();
       this.selectedDate = new Date();  // Initialize with the current date
-      this.minDate = new Date();  // Set the minimum date to the current date (optional)
       console.log('Component initialized with current date:', this.selectedDate);
       this.filterAppointments(this.formatDate(this.selectedDate));
     });
