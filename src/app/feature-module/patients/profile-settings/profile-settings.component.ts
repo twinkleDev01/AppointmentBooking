@@ -72,7 +72,7 @@ this.patientsService.updatePatientinfo(formData).subscribe((res)=>{
   }
   
   onFileChange(event: any){
-    console.log(event);
+    console.log(event,"75");
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.profileForm.patchValue({
