@@ -79,9 +79,9 @@ export class FeatureModuleComponent implements OnInit, AfterViewInit{
 
 
   ngAfterViewInit(): void {
-    this.cursorInnerElement = this.cursorInner.nativeElement;
-    this.cursorOuterElement = this.cursorOuter.nativeElement;
-    this.initCursor();
+    // this.cursorInnerElement = this.cursorInner?.nativeElement;
+    // this.cursorOuterElement = this.cursorOuter?.nativeElement;
+    // this.initCursor();
   }
 
   private initCursor(): void {

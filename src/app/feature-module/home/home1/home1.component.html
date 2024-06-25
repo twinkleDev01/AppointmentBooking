@@ -4,7 +4,7 @@
   <!-- Home Banner -->
   <section class="banner-section">
     <div class="container">
-      <div class="row mt-5">
+      <div class="row">
         <div class="col-lg-7">
           <div class="banner-content aos" data-aos="fade-up" data-aos-duration="2000">
             <h1 class="fs-2">
@@ -66,28 +66,30 @@
         <div class="col-lg-5">
           <!-- app.component.html -->
           <div class="form" [formGroup]="appointmentForm">
-            <h4 class="text-center mb-2 form_title">Get an Appointment</h4>
+            <h4 class="text-center mb-2 form_title_appointment">Get an Appointment</h4>
             <div class="row mt-4">
               <!-- age and gender -->
-              <div class="col-lg-6 col-md-6 col-6">
-                <input type="text" placeholder="Enter Age" formControlName="age">
-                <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)" class="text-danger">
-                  Age is required.
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-6 col-6">
-                <select name="gender" id="gender" formControlName="gender" class="mt-0">
-                  <option value="">Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-                <div *ngIf="appointmentForm.get('gender')?.touched && appointmentForm.get('gender')?.invalid || (submitted && appointmentForm.get('gender')?.invalid)" class="text-danger">
-                  Gender is required.
-                </div>
-              </div>
+               <div class="row">
+                 <div class="col-lg-6 col-md-6 col-6">
+                   <input type="text" placeholder="Enter Age" formControlName="age">
+                   <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)" class="text-danger">
+                     Age is required.
+                   </div>
+                 </div>
+                 <div class="col-lg-6 col-md-6 col-6">
+                   <select name="gender" id="gender" formControlName="gender" class="mt-0">
+                     <option value="">Gender</option>
+                     <option value="Male">Male</option>
+                     <option value="Female">Female</option>
+                     <option value="Other">Other</option>
+                   </select>
+                   <div *ngIf="appointmentForm.get('gender')?.touched && appointmentForm.get('gender')?.invalid || (submitted && appointmentForm.get('gender')?.invalid)" class="text-danger">
+                     Gender is required.
+                   </div>
+                 </div>
+               </div>
               <div class="col-lg-12 mt-3">
-                <h5 class="text-center">Select your concern(s)</h5>
+                <h5 class="text-center form_title">Select your concern(s)</h5>
               </div>
               <!-- list of concerns/decease -->
               <div class="row concerns" *ngIf="!isMobileResolution">
@@ -99,7 +101,7 @@
                 </div>
               </div>
               <div class="row concerns" *ngIf="isMobileResolution">
-                <div class="col-lg-6 col-md-6 mt-0">
+                <div class="col-lg-6 col-md-6 mt-0 p-0">
                   <p-multiSelect [options]="concerns" optionLabel="issueName"
                   (change)="onCheckboxChange($event, concerns)" placeholder="Select Concerns" class="mutiselect">
    </p-multiSelect>
@@ -107,7 +109,7 @@
               </div>
               <!-- Are you consulting for first time? -->
               <div class="concerns mt-3">
-                <h5 class="text-center">
+                <h5 class="text-center const form_title">
                   Are you consulting for the first time?
                 </h5>
                 <div class="yes_no_btn d-flex align-items-center justify-content-center">
@@ -117,41 +119,9 @@
                   <label [ngClass]="{'selected-yes': selectedValue === 'false'}" for="no">No</label>
                 </div>
               </div>
-              <!-- Upload Images -->
-              <!-- <div class="concerns mt-3">
-              <h4 class="text-center">Upload up to 5 Images</h4>
-              <div class="file-upload-container">
-                <input type="file" (change)="onFileChange($event)" multiple id="fileInput" style="display: none;">
-                <label for="fileInput" class="custom-file-upload">Select Files</label>
-                <div *ngIf="files.length === 0" class="no-files-uploaded">No file uploaded</div>
-              </div>
-              <div class="preview-container">
-                <div *ngFor="let file of files">
-                  <img *ngIf="file.type.startsWith('image')" (click)="openImageModal(file.url)" [src]="file.url"
-                    alt="File Preview" class="preview_img clickable">
-                  <span *ngIf="!file.type.startsWith('image')">{{file.name}}</span>
-                </div>
-              </div>
-            </div> -->
-
-              <!-- Custom Modal -->
-              <!-- <div class="custom-modal" *ngIf="isImageModalOpen">
-              <div class="custom-modal-content">
-                <div class="custom-modal-header">
-                  <h5 class="custom-modal-title">Image Preview</h5>
-                  <button type="button" class="close" (click)="closeImageModal()">
-                    <i class="fa-regular fa-circle-xmark text-black"></i>
-                  </button>
-                </div>
-                <div class="custom-modal-body">
-                  <img [src]="selectedImageUrl" alt="Selected Image">
-                </div>
-              </div>
-            </div>
-            <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div> -->
-
+             
               <div class="concerns mt-3">
-                <h5 class="text-center">Upload up to 5 Images</h5>
+                <h5 class="text-center const form_title">Upload up to 5 Images</h5>
 
                 <!-- Display count of selected files -->
 
