@@ -528,7 +528,7 @@ initiatePayment() {
         email: res.data.email,
         city: res.data.city,
         state: res.data.state,
-        pinCode: res.data.pincode
+        pinCode: res.data.pinCode
       });
     })
   }
