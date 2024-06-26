@@ -20,6 +20,7 @@ export class PatientInvoiceComponent {
   GetInvoices(){
     this.patientsService.getInvoice().subscribe((res:any)=>{
       console.log(res);
+      this.invoices=res;
     })
   }
 }

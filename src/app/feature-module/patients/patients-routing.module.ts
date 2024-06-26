@@ -33,11 +33,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'checkout',
-        loadChildren: () =>
-          import('./checkout/checkout.module').then((m) => m.CheckoutModule),
-      },
-      {
         path: 'patient-dashboard',
         loadChildren: () =>
           import('./patient-dashboard/patient-dashboard.module').then(
