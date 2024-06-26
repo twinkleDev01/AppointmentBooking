@@ -64,13 +64,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'change-password',
-        loadChildren: () =>
-          import('./change-password/change-password.module').then(
-            (m) => m.ChangePasswordModule
-          ),
-      },
-      {
         path: 'booking-success',
         loadChildren: () =>
           import('./booking/booking-success/booking-success.module').then(

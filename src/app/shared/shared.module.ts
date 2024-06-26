@@ -21,7 +21,6 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MatSliderModule } from '@angular/material/slider';
 import { PatientSidebarModule } from '../feature-module/patients/common/patient-sidebar/patient-sidebar.module';
 import { DoctorBreadcrumbModule } from '../feature-module/doctors/common/doctor-breadcrumb/doctor-breadcrumb.module';
-import { PatientBreadcrumbModule } from '../feature-module/patients/common/patient-breadcrumb/patient-breadcrumb.module';
 import { DoctorSidebarModule } from '../feature-module/doctors/common/doctor-sidebar/doctor-sidebar.module';
 import { ChipsModule } from 'primeng/chips';
 import { AuthInterceptor } from './Interceptor/auth.interceptor';
@@ -77,7 +76,6 @@ import { AuthInterceptor } from './Interceptor/auth.interceptor';
     NgScrollbarModule,
     PatientSidebarModule,
     DoctorBreadcrumbModule,
-    PatientBreadcrumbModule,
     DoctorSidebarModule,
     ChipsModule,
     HttpClientModule
@@ -106,7 +104,6 @@ import { AuthInterceptor } from './Interceptor/auth.interceptor';
     NgScrollbarModule,
     PatientSidebarModule,
     DoctorBreadcrumbModule,
-    PatientBreadcrumbModule,
     DoctorSidebarModule,
     ChipsModule
   ],
