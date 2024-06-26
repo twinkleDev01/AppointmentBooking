@@ -30,24 +30,24 @@
                                         <th>Appointment Date</th>
                                         <th>Booked on</th>
                                         <th>Amount</th>
-                                        <th>Action</th>
+                                        <!-- <th>Action</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <ng-container *ngFor="let invoice of invoices"><tr>
-                                        <td class="text-blue-600">#Inv-2021</td>
+                                    <ng-container *ngFor="let invoice of invoices; let i = index"><tr>
+                                        <td class="text-blue-600">#Inv-{{i}}</td>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
                                                     <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
                                                 </a>
-                                                <a [routerLink] = "routes.doctorProfile2">Edalin Hendry</a>
+                                                <a [routerLink] = "routes.doctorProfile2">{{invoice.doctorName}}</a>
                                             </h2>
                                         </td>
-                                        <td>24 Mar 2024</td>
-                                        <td>21 Mar 2024</td>
-                                        <td>$300</td>
-                                        <td>
+                                        <td>{{invoice.appointmentDate}}</td>
+                                        <td>{{invoice.bookedDate}}</td>
+                                        <td>{{invoice.amount}}</td>
+                                        <!-- <td>
                                             <div class="action-item">
                                                 <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
                                                     <i class="fa-solid fa-link"></i>
@@ -56,7 +56,7 @@
                                                     <i class="fa-solid fa-print"></i>
                                                 </a>
                                             </div>
-                                        </td>
+                                        </td> -->
                                     </tr></ng-container>
                                     
                                 </tbody>
@@ -64,33 +64,6 @@
                         </div>
                     </div>
 
-                    <!-- Pagination -->
-                    <div class="pagination dashboard-pagination">
-                        <ul>
-                            <li>
-                                <a href="javascript:void(0);" class="page-link"><i class="fa-solid fa-chevron-left"></i></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="page-link">1</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="page-link active">2</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="page-link">3</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="page-link">4</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="page-link">...</a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="page-link"><i class="fa-solid fa-chevron-right"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /Pagination -->
             </div>
             <!-- /Invoices -->
 
