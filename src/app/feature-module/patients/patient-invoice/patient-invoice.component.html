@@ -15,8 +15,8 @@
 
                 <div class="search-header">
                         <div class="search-field">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                            <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search">
+                            <button class="search-icon" (click)="filterAppointments()"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </div>
 
@@ -35,7 +35,7 @@
                                 </thead>
                                 <tbody>
                                     <ng-container *ngFor="let invoice of invoices; let i = index"><tr>
-                                        <td class="text-blue-600">#Inv-{{i}}</td>
+                                        <td class="text-blue-600">#Inv-{{i+1}}</td>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
