@@ -487,7 +487,8 @@ initiatePayment() {
     'user.Phone': this.InfoForm.value.phone,
     'user.Role': 1,
     'user.Email': this.InfoForm.value.email,
-    'user.LoginProvider': 'JWT'
+    'user.LoginProvider': 'JWT',
+    Fees:200.00
   }
 
       const formData = new FormData();
