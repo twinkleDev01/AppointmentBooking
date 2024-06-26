@@ -13,10 +13,12 @@ export class PaymentService {
   private razorpayKey = 'rzp_test_gFC2jjp7SLGBxp';
   baseUrl: string = environment.baseurl;
   bookappointment:string='/Appointment/book_appointment'
+  getZoomtoken: string='/Zoom/token'
+  createmetting:string='/Zoom/createMeeting'
 
   constructor(private http:HttpClient, private auth:AuthService, private route:Router) { }
 
-  initiatePayment(amount: number, name: string, email: string, contact: string, formData: any) {
+  initiatePayment(amount: number, name: string, email: string, contact: string, formData: any,zoomData:any) {
     const options = {
       key: this.razorpayKey,
       amount: amount * 200,
@@ -36,7 +38,7 @@ export class PaymentService {
         color: "#F37254"
       },
       // handler: this.paymentHandler.bind(response, formData)
-      handler: (response: any) => this.paymentHandler(response, formData)
+      handler: (response: any) => this.paymentHandler(response, formData,zoomData,email)
     };
   
     console.log('Initiating payment with options:', options);
@@ -46,7 +48,7 @@ export class PaymentService {
   }
   
 
-  paymentHandler(response: any, formData: FormData) {
+  paymentHandler(response: any, formData: FormData,zoomData:any,email:string) {
     console.log(response, formData);
     // Append the payment ID to the form data
   formData.append('PaymentId', response.razorpay_payment_id);
@@ -58,6 +60,7 @@ export class PaymentService {
         console.log('Appointment booked successfully:', response);
         if (response) {
           this.auth.setToken(response.data.token);
+          this.getZoomToken(zoomData,email);
           this.route.navigate(['/patients/patient-dashboard']);
         }
       }, (error: any) => {
@@ -73,5 +76,24 @@ export class PaymentService {
   bookAppointment(formData:any){
     const url = `${this.baseUrl}${this.bookappointment}`
 return this.http.post(url, formData);
+  }
+
+  getZoomToken(zoomData:any,email:string){
+ const url=this.baseUrl+this.getZoomtoken
+this.http.get(url).subscribe((res:any)=>{
+  console.log(res); 
+    const accessToken = res.access_token;
+    zoomData.accessToken = accessToken;
+    console.log(zoomData);
+    this.createMeeting(zoomData,email)
+})
+  }
+
+  createMeeting(dataToCreate:any,email:string){
+const url = `${this.baseUrl}${this.createmetting}?patientEmail=${email}`
+this.http.post(url, dataToCreate).subscribe((res:any)=>{
+  console.log(res);
+});
+
   }
 }

@@ -490,6 +490,27 @@ initiatePayment() {
     'user.LoginProvider': 'JWT',
     Fees:200.00
   }
+  const zoomData={
+    
+      "accessToken": "",
+      "topic": "Appointment",
+      "type": 2,
+      "start_time": `${this.formatDatetoSend( this.selectedDate)}T${this.selectedTimeSlot?.startTime}Z`,
+      "duration": 30,
+      "timezone": "UTC",
+      "agenda": "Discuss health concerns",
+      "settings": {
+      "host_video": true,
+      "participant_video": true,
+      "join_before_host": false,
+      "mute_upon_entry": false,
+      "watermark": false,
+      "approval_type": 2,
+      "audio": "both",
+      "auto_recording": "none"
+      }
+      
+  }
 
       const formData = new FormData();
 
@@ -505,7 +526,7 @@ initiatePayment() {
         }
       });
 
-      this.paymentService.initiatePayment(amount, name, email, contact, formData);
+      this.paymentService.initiatePayment(amount, name, email, contact, formData,zoomData);
     } else {
       this.markAllAsTouched();
     }
