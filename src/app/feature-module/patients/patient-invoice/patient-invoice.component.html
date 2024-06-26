@@ -44,8 +44,8 @@
                                                 <a [routerLink] = "routes.doctorProfile2">{{invoice.doctorName}}</a>
                                             </h2>
                                         </td>
-                                        <td>{{invoice.appointmentDate}}</td>
-                                        <td>{{invoice.bookedDate}}</td>
+                                        <td>{{formatDate(invoice.appointmentDate)}}</td>
+                                        <td>{{formatDate(invoice.bookedDate)}}</td>
                                         <td>{{invoice.amount}}</td>
                                         <!-- <td>
                                             <div class="action-item">

@@ -19,7 +19,7 @@ export class PaymentService {
   initiatePayment(amount: number, name: string, email: string, contact: string, formData: any) {
     const options = {
       key: this.razorpayKey,
-      amount: amount * 100,
+      amount: amount * 200,
       currency: "INR",
       name: "Your Company Name",
       description: "Test Transaction",
