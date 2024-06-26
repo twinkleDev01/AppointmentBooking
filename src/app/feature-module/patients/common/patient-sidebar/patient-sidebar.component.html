@@ -13,7 +13,7 @@
                     <div class="patient-details">
                         <h5 class="mb-0">Patient ID :{{UserId}}</h5>
                     </div>
-                    <span>{{userInfo?.gender}} <i class="fa-solid fa-circle"></i> {{userInfo.age}} years </span>
+                    <span>{{userInfo?.gender}} <i class="fa-solid fa-circle"></i> {{userInfo?.age}} years </span>
                 </div>
             </div>
         </div>
@@ -81,12 +81,6 @@
                             <span>Medical Details</span>
                         </a>
                     </li> -->
-                    <li routerLinkActive="active">
-                        <a [routerLink]="routes.patientsChangePassword">
-                            <i class="fa-solid fa-key"></i>
-                            <span>Change Password</span>
-                        </a>
-                    </li>
                     <li routerLinkActive="active" >
                         <a href="javascript:void(0);" (click)="Logout()">
                             <i class="fa-solid fa-calendar-check"></i>

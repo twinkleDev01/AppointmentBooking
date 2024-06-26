@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { routes } from 'src/app/shared/routes/routes';
 
 @Component({
@@ -8,4 +9,18 @@ import { routes } from 'src/app/shared/routes/routes';
 })
 export class PatientInvoiceComponent {
   public routes = routes;
+  invoices:any
+  constructor(private patientsService:PatientsService){
+    this.GetInvoices()
+  }
+  ngOninit(){
+    this.GetInvoices()
+  }
+
+  GetInvoices(){
+    this.patientsService.getInvoice().subscribe((res:any)=>{
+      console.log(res);
+      this.invoices=res;
+    })
+  }
 }

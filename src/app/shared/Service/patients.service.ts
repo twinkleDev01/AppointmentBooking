@@ -16,6 +16,7 @@ export class PatientsService {
   bookappointment:string ='/Appointment/book_appointment'
   getPatientInfo:string ='/Patient/patientInfoDetails'
   updatePatientInfo:string ='/Patient/updatePatientDetails'
+  getinvoice:string ='/Invoice/GetInvoices'
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Detail:any;
   constructor(private http:HttpClient, private auth: AuthService) { 
@@ -102,6 +103,11 @@ return this.http.get(url);
 updatePatientinfo(data:any){
 const url=`${this.baseUrl}${this.updatePatientInfo}`;
 return this.http.post(url, data);
+}
+
+getInvoice(){
+const url=`${this.baseUrl}${this.getinvoice}?PatientId=${this.Detail?.nameid}`;
+return this.http.get(url);
 }
 
  }
