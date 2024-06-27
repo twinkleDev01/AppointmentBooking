@@ -4,9 +4,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { ModalComponent } from './modal/modal.component';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { AuthInterceptor } from './shared/Interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,7 @@ import { ModalComponent } from './modal/modal.component';
     ModalComponent,
   ],
   imports: [
+    LoaderComponent,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -25,7 +28,7 @@ import { ModalComponent } from './modal/modal.component';
       // preventDuplicates: true,1
     }),
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,6 +10,7 @@ import { DataService } from './shared/data/data.service';
 import { SidebarService } from './shared/sidebar/sidebar.service';
 import { routes } from 'src/app/shared/routes/routes';
 import { url } from './shared/models/models';
+import { LoaderServiceService } from './shared/loader/loader-service.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,7 +31,8 @@ export class AppComponent {
     private common: CommonService,
     private router: Router,
     private data: DataService,
-    private sidebar: SidebarService
+    private sidebar: SidebarService,
+    private loaderServiceService:LoaderServiceService
   ) {
     this.common.base.subscribe((res: string) => {
       this.base = res;
@@ -106,4 +108,12 @@ export class AppComponent {
     this.common.page.next(splitVal[2]);
     this.common.last.next(splitVal[3]);
   }
+
+  // ngOnInit() {
+  //   // Show loader on initial load for 10 seconds
+  //   this.loaderServiceService.show();
+  //   setTimeout(() => {
+  //     this.loaderServiceService.hide();
+  //   }, 10000); // 10000 milliseconds = 10 seconds
+  // }
 }
