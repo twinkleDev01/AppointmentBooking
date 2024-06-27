@@ -1,27 +1,70 @@
 .loader-overlay {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: rgba(255, 255, 255, 0.8) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    z-index: 1000 !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+  // display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 1000 !important;
+}
+
+.loader {
+  position: relative;
+  width: 120px !important;
+  height: 120px !important;
+}
+
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 16px solid #f3f3f3 !important;
+  border-top: 16px solid #0E82FD !important;
+  border-radius: 50% !important;
+  animation: spin 2s linear infinite, fillColor 2s linear infinite !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fillColor {
+  0% {
+      border-top-color: transparent !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      border-left-color: #0E82FD !important;
   }
-  
-  .loader {
-    border: 16px solid #f3f3f3 !important;
-    border-top: 16px solid #0E82FD !important;
-    border-radius: 50% !important;
-    width: 120px !important;
-    height: 120px !important;
-    animation: spin 2s linear infinite !important;
+  25% {
+      border-top-color: #0E82FD !important;
+      border-right-color: transparent !important;
+      border-bottom-color: transparent !important;
+      border-left-color: #0E82FD !important;
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg) !important; }
-    100% { transform: rotate(360deg) !important; }
+  50% {
+      border-top-color: #0E82FD !important;
+      border-right-color: #0E82FD !important;
+      border-bottom-color: transparent !important;
+      border-left-color: #0E82FD !important;
   }
-  
+  75% {
+      border-top-color: #0E82FD !important;
+      border-right-color: #0E82FD !important;
+      border-bottom-color: #0E82FD !important;
+      border-left-color: #0E82FD !important;
+  }
+  100% {
+      border-top-color: #0E82FD !important;
+      border-right-color: #0E82FD !important;
+      border-bottom-color: #0E82FD !important;
+      border-left-color: #0E82FD !important;
+  }
+}
