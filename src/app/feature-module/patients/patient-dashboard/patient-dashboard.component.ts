@@ -47,6 +47,7 @@ export class PatientDashboardComponent {
   public last = '';
   Prescriptions:any;
   baseUrlPdf: string = 'https://bookingapi.asptask.in/'
+  invoices:any
   public doctorSliderOptions: OwlOptions = {
     loop: true,
     margin: 24,
@@ -192,6 +193,7 @@ export class PatientDashboardComponent {
   ngOnInit(){
     this.getAppointment()
     this.getPrescription()
+    this.GetInvoices()
   }
 
   getAppointment(){
@@ -241,5 +243,12 @@ export class PatientDashboardComponent {
       
         const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'long', year: 'numeric' };
         return date.toLocaleDateString('en-GB', options);
+      }
+
+      GetInvoices(){
+        this.patientsService.getInvoice().subscribe((res:any)=>{
+          console.log(res);
+          this.invoices=res;
+        })
       }
 }

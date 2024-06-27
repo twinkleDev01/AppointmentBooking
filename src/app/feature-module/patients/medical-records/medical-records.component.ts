@@ -9,6 +9,7 @@ import { DataService } from 'src/app/shared/data/data.service';
 import { apiResultFormat, medicalrecords } from 'src/app/shared/models/models';
 import { routes } from 'src/app/shared/routes/routes';
 import { Prescription } from './prescription.modal';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-medical-records',
@@ -36,8 +37,10 @@ export class MedicalRecordsComponent {
     private data: DataService,
     private pagination: PaginationService,
     private router: Router,
-    private patientsService:PatientsService
+    private patientsService:PatientsService,
+    private toastr: ToastrService,
   ) {
+
     this.getPrescription();
     this.pagination.tablePageSize.subscribe((res: tablePageSize) => {
       if (this.router.url == this.routes.medicalrecords) {
@@ -167,6 +170,7 @@ export class MedicalRecordsComponent {
   delete(prescriptionID:string){
 this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
   console.log(res);
+  this.toastr.success('Prescription deleted Successfully', "Success");
   this.getPrescription();
 })
   }

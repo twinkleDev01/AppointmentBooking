@@ -1,6 +1,7 @@
 export const environment = {
     production: false,
     baseurl: 'https://bookingapi.asptask.in/api',
+    // baseurl: 'https://localhost:7199/api',
     firebaseConfig: {
         apiKey: "AIzaSyCGfhi1nXNcdn-HHsMM-U8PXA7MwAq_gU0",
         authDomain: "cliniclly-9b678.firebaseapp.com",
