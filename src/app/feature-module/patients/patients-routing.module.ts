@@ -33,11 +33,6 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'checkout',
-        loadChildren: () =>
-          import('./checkout/checkout.module').then((m) => m.CheckoutModule),
-      },
-      {
         path: 'patient-dashboard',
         loadChildren: () =>
           import('./patient-dashboard/patient-dashboard.module').then(
@@ -61,13 +56,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./profile-settings/profile-settings.module').then(
             (m) => m.ProfileSettingsModule
-          ),
-      },
-      {
-        path: 'change-password',
-        loadChildren: () =>
-          import('./change-password/change-password.module').then(
-            (m) => m.ChangePasswordModule
           ),
       },
       {

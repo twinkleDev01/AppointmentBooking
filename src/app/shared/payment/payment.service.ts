@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,15 @@ export class PaymentService {
   private razorpayKey = 'rzp_test_gFC2jjp7SLGBxp';
   baseUrl: string = environment.baseurl;
   bookappointment:string='/Appointment/book_appointment'
+  getZoomtoken: string='/Zoom/token'
+  createmetting:string='/Zoom/createMeeting'
 
-  constructor(private http:HttpClient, private auth:AuthService, private route:Router) { }
+  constructor(private http:HttpClient, private auth:AuthService, private route:Router,private toastr: ToastrService,) { }
 
-  initiatePayment(amount: number, name: string, email: string, contact: string, formData: any) {
+  initiatePayment(amount: number, name: string, email: string, contact: string, formData: any,zoomData:any) {
     const options = {
       key: this.razorpayKey,
-      amount: amount * 100,
+      amount: amount * 200,
       currency: "INR",
       name: "Your Company Name",
       description: "Test Transaction",
@@ -36,7 +39,7 @@ export class PaymentService {
         color: "#F37254"
       },
       // handler: this.paymentHandler.bind(response, formData)
-      handler: (response: any) => this.paymentHandler(response, formData)
+      handler: (response: any) => this.paymentHandler(response, formData,zoomData,email)
     };
   
     console.log('Initiating payment with options:', options);
@@ -46,27 +49,53 @@ export class PaymentService {
   }
   
 
-  paymentHandler(response: any, formData: FormData) {
+  paymentHandler(response: any, formData: FormData,zoomData:any,email:string) {
     console.log(response, formData);
     // Append the payment ID to the form data
   formData.append('PaymentId', response.razorpay_payment_id);
-  formData.append('PaymentStatus', 'Success');  // Optionally add payment status
+  formData.append('PaymentStatus', 'true');  // Optionally add payment status
    // Ensure formData is updated correctly
     // Handle the response after successful payment
-    alert('Payment successful');
-    this.bookAppointment(formData).subscribe((response: any) => {
-      console.log('Appointment booked successfully:', response);
-     if(response){
-      this.auth.setToken(response.data.token)
-      this.route.navigate(['/patients/patient-dashboard']);
-     }
-    }, (error: any) => {
-      console.error('Error booking appointment:', error);
-    });
+    if (response.razorpay_payment_id) {
+      this.bookAppointment(formData).subscribe((response: any) => {
+        console.log('Appointment booked successfully:', response);
+        if (response) {
+          this.toastr.success('Appointment created Successfully', "Success");
+          this.auth.setToken(response.data.token);
+          this.getZoomToken(zoomData,email);
+          this.route.navigate(['/patients/patient-dashboard']);
+        }
+      }, (error: any) => {
+        console.error('Error booking appointment:', error);
+      });
+    } else {
+      console.error('Payment was not successful:', response.error_message);
+      // Optionally handle unsuccessful payment scenario
+      // For example, display an error message to the user
+    }
   }
 
   bookAppointment(formData:any){
     const url = `${this.baseUrl}${this.bookappointment}`
 return this.http.post(url, formData);
+  }
+
+  getZoomToken(zoomData:any,email:string){
+ const url=this.baseUrl+this.getZoomtoken
+this.http.get(url).subscribe((res:any)=>{
+  console.log(res); 
+    const accessToken = res.access_token;
+    zoomData.accessToken = accessToken;
+    console.log(zoomData);
+    this.createMeeting(zoomData,email)
+})
+  }
+
+  createMeeting(dataToCreate:any,email:string){
+const url = `${this.baseUrl}${this.createmetting}?patientEmail=${email}`
+this.http.post(url, dataToCreate).subscribe((res:any)=>{
+  console.log(res);
+});
+
   }
 }

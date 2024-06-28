@@ -26,7 +26,9 @@ export class LoginComponent {
   recaptchaVerifier: firebase.auth.RecaptchaVerifier | undefined;
   confirmationResult: firebase.auth.ConfirmationResult | undefined;
 
-  constructor(private router: Router,private fb: FormBuilder,private authService:AuthService,public afAuth: AngularFireAuth,private toastr: ToastrService) {}
+  constructor(private router: Router,private fb: FormBuilder,private authService:AuthService,public afAuth: AngularFireAuth,private toastr: ToastrService) {
+    
+  }
 
   ngOnInit(): void {
     firebase.initializeApp(environment.firebaseConfig)

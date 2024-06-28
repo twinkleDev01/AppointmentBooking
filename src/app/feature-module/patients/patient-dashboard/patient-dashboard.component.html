@@ -1,4 +1,4 @@
-<!-- <app-patient-breadcrumb></app-patient-breadcrumb> -->
+ 
 <!-- Page Content -->
 <div class="content">
   <div class="container">
@@ -18,7 +18,7 @@
             
           </div>
           <div class="col-xl-5">
-            <div class="dashboard-card w-100">
+            <div class="dashboard-card w-100 card-appointment">
               <div class="dashboard-card-head">
                 <div class="header-title">
                   <h5><span class="card-head-icon"><i class="fa-solid fa-calendar-days"></i></span>Appointment</h5>
@@ -97,7 +97,7 @@
                         <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-hospital"></i></a>
                       </div>
                       <div class="date-time">
-                        <p><i class="fa-solid fa-clock"></i>{{data.appointmentDate | date: 'dd-MMM-yy'}} - {{data.appointmentTime}} </p>
+                        <p><i class="fa-solid fa-clock"></i>{{formatDate(data.appointmentDate)}} - {{data.appointmentTime}} </p>
                       </div>
                       <div class="card-btns">
                         <a [routerLink]="routes.chat" class="btn btn-gray"><i class="fa-solid fa-comment-dots"></i>Chat Now</a>
@@ -133,101 +133,7 @@
               </div>
 
             </div>
-            <div class="dashboard-card w-100">
-              <div class="dashboard-card-head">
-                <div class="header-title">
-                  <h5>Notifications</h5>
-                </div>
-                <div class="card-view-link">
-                  <a href="javascript:void(0);">View All</a>
-                </div>
-              </div>
-              <div class="dashboard-card-body">
-                <div class="table-responsive">
-                  <table class="table dashboard-table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="table-noti-info">
-                            <div class="table-noti-icon color-violet">
-                              <i class="fa-solid fa-bell"></i>
-                            </div>
-
-                            <div class="table-noti-message">
-                              <h6><a href="javascript:void(0);">Booking Confirmed on <span> 21 Mar 2024 </span> 10:30
-                                  AM</a></h6>
-                              <span class="message-time">Just Now</span>
-                            </div>
-                          </div>
-                        </td>
-
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="table-noti-info">
-                            <div class="table-noti-icon color-blue">
-                              <i class="fa-solid fa-star"></i>
-                            </div>
-
-                            <div class="table-noti-message">
-                              <h6><a href="javascript:void(0);">You have a <span> New </span> Review for your
-                                  Appointment </a></h6>
-                              <span class="message-time">5 Days ago</span>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="table-noti-info">
-                            <div class="table-noti-icon color-red">
-                              <i class="fa-solid fa-calendar-check"></i>
-                            </div>
-
-                            <div class="table-noti-message">
-                              <h6><a href="javascript:void(0);">You have Appointment with <span> Ahmed </span> by 01:20
-                                  PM </a></h6>
-                              <span class="message-time">12:55 PM</span>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="table-noti-info">
-                            <div class="table-noti-icon color-yellow">
-                              <i class="fa-solid fa-money-bill-1-wave"></i>
-                            </div>
-
-                            <div class="table-noti-message">
-                              <h6><a href="javascript:void(0);">Sent an amount of <span> $200 </span> for an Appointment
-                                  by 01:20 PM </a></h6>
-                              <span class="message-time">2 Days ago</span>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="table-noti-info">
-                            <div class="table-noti-icon color-blue">
-                              <i class="fa-solid fa-star"></i>
-                            </div>
-
-                            <div class="table-noti-message">
-                              <h6><a href="javascript:void(0);">You have a <span> New </span> Review for your
-                                  Appointment </a></h6>
-                              <span class="message-time">5 Days ago</span>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-            </div>
+            
           </div>
           <div class="col-xl-7">
            
@@ -381,153 +287,41 @@
                             <thead>
                               <tr>
                                 <th>ID</th>
-                                <th>Test Name</th>
+                                <th>Name</th>
                                 <th>Date</th>
-                                <th>Referred By</th>
-                                <th>Amount</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
                                 <th>Comments</th>
                                 <th>Status</th>
                                 <th></th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>
-                                  <a href="javascript:void(0);"><span class="text-blue">RE124343</span></a>
-                                </td>
-                                <td>
-                                  Electro cardiography
-                                </td>
-                                <td>21 Mar 2024</td>
-                                <td>Edalin Hendry</td>
-                                <td>$300</td>
-                                <td>Good take rest</td>
-                                <td>
-                                  <span class="badge badge-success-bg">Normal</span>
-                                </td>
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <a href="javascript:void(0);" class="account-action me-2"><i class="fa-solid fa-prescription"></i></a>
-                                    <a href="javascript:void(0);" class="account-action"><i
-                                        class="fa-solid fa-file-invoice-dollar"></i></a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <a href="javascript:void(0);"><span class="text-blue">RE124342</span></a>
-                                </td>
-                                <td>
-                                  Complete Blood Count
-                                </td>
-                                <td>28 Mar 2024</td>
-                                <td>Shanta Nesmith</td>
-                                <td>$400</td>
-                                <td>Stable, no change</td>
-                                <td>
-                                  <span class="badge badge-success-bg">Normal</span>
-                                </td>
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <a href="javascript:void(0);" class="account-action me-2"><i class="fa-solid fa-prescription"></i></a>
-                                    <a href="javascript:void(0);" class="account-action"><i
-                                        class="fa-solid fa-file-invoice-dollar"></i></a>
-                                  </div>
-
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <a href="javascript:void(0);"><span class="text-blue">RE124341</span></a>
-                                </td>
-                                <td>
-                                  Blood Glucose Test
-                                </td>
-                                <td>02 Apr 2024</td>
-                                <td>John Ewel</td>
-                                <td>$350</td>
-                                <td>All Clear</td>
-                                <td>
-                                  <span class="badge badge-success-bg">Normal</span>
-                                </td>
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <a href="javascript:void(0);" class="account-action me-2"><i class="fa-solid fa-prescription"></i></a>
-                                    <a href="javascript:void(0);" class="account-action"><i
-                                        class="fa-solid fa-file-invoice-dollar"></i></a>
-                                  </div>
-
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <a href="javascript:void(0);"><span class="text-blue">RE124340</span></a>
-                                </td>
-                                <td>
-                                  Liver Function Tests
-                                </td>
-                                <td>15 Apr 2024</td>
-                                <td>Joseph Engels</td>
-                                <td>$480</td>
-                                <td>Stable, no change</td>
-                                <td>
-                                  <span class="badge badge-success-bg">Normal</span>
-                                </td>
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <a href="javascript:void(0);" class="account-action me-2"><i class="fa-solid fa-prescription"></i></a>
-                                    <a href="javascript:void(0);" class="account-action"><i
-                                        class="fa-solid fa-file-invoice-dollar"></i></a>
-                                  </div>
-
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <a href="javascript:void(0);"><span class="text-blue">RE124339</span></a>
-                                </td>
-                                <td>
-                                  Lipid Profile
-                                </td>
-                                <td>27 Apr 2024</td>
-                                <td>Victoria Selzer</td>
-                                <td>$250</td>
-                                <td>Good take rest</td>
-                                <td>
-                                  <span class="badge badge-success-bg">Normal</span>
-                                </td>
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <a href="javascript:void(0);" class="account-action me-2"><i class="fa-solid fa-prescription"></i></a>
-                                    <a href="javascript:void(0);" class="account-action"><i
-                                        class="fa-solid fa-file-invoice-dollar"></i></a>
-                                  </div>
-
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  <a href="javascript:void(0);"><span class="text-blue">RE124338</span></a>
-                                </td>
-                                <td>
-                                  Blood Cultures
-                                </td>
-                                <td>10 May 2024</td>
-                                <td>Juliet Gabriel</td>
-                                <td>$320</td>
-                                <td>Good take rest</td>
-                                <td>
-                                  <span class="badge badge-success-bg">Normal</span>
-                                </td>
-                                <td>
-                                  <div class="d-flex align-items-center">
-                                    <a href="javascript:void(0);" class="account-action me-2"><i class="fa-solid fa-prescription"></i></a>
-                                    <a href="javascript:void(0);" class="account-action"><i
-                                        class="fa-solid fa-file-invoice-dollar"></i></a>
-                                  </div>
-
-                                </td>
-                              </tr>
+                              <ng-container *ngFor="let data of appointmentDetails?.data.appointments">
+                                <tr>
+                                  <td>
+                                    <a href="javascript:void(0);"><span class="text-blue">{{data.customAppointmentID}}</span></a>
+                                  </td>
+                                  <td>
+                                    {{data.doctorName}}
+                                  </td>
+                                  <td>{{formatDate(data.appointmentDate)}}</td>
+                                  <td>{{data.doctorPhone}}</td>
+                                  <td>{{data.doctorEmail}}</td>
+                                  <td>Good take rest</td>
+                                  <td>
+                                    <span class="badge badge-success-bg">Upcoming</span>
+                                  </td>
+                                  <td>
+                                    <div class="d-flex align-items-center">
+                                      <a href="javascript:void(0);" class="account-action me-2"><i class="fa-solid fa-prescription"></i></a>
+                                      <a href="javascript:void(0);" class="account-action"><i
+                                          class="fa-solid fa-file-invoice-dollar"></i></a>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </ng-container>
+                              
                             </tbody>
                           </table>
                         </div>
@@ -710,156 +504,39 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#view_prescription">#PR-123</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon prescription">
-                                    <span><i class="fa-solid fa-prescription"></i></span>Prescription
-                                  </a>
-                                </td>
-                                <td>24 Mar 2024, 10:30 AM</td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                              <ng-container *ngFor="let data of Prescriptions">
+                                <tr>
+                                  <td class="text-blue-600"><a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#view_prescription">{{data.customPrescriptionID}}</a></td>
+                                  <td>
+                                    <a href="javascript:void(0);" class="lab-icon prescription">
+                                      <span><i class="fa-solid fa-prescription"></i></span>Prescription
                                     </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Edalin Hendry</a>
-                                  </h2>
-                                </td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">
-                                      <i class="fa-solid fa-link"></i>
+                                  </td>
+                                  <td>{{formatDateString(data.createdDate)}}</td>
+                                  <td>
+                                    <h2 class="table-avatar">
+                                      <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
+                                        <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                                      </a>
+                                      <a [routerLink] = "routes.doctorProfile2">{{data.doctorName}}</a>
+                                    </h2>
+                                  </td>
+                                  <td>
+                                    <div class="action-item">
+                                      <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">
+                                        <i class="fa-solid fa-link"></i>
+                                      </a>
+                                      <a [href]="fullFilePath(data.pdfFilePath)" [download]="fullFilePath(data.pdfFilePath)" target="_blank">
+                                        <i class="fa-solid fa-download"></i>
                                     </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
+                                    <a href="javascript:void(0);" (click)="delete(data.prescriptionID)">
                                       <i class="fa-solid fa-trash-can"></i>
                                     </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>															
-                                <td class="text-blue-600"><a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#view_prescription">#PR-124</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon prescription">
-                                    <span><i class="fa-solid fa-prescription"></i></span>Prescription
-                                  </a>
-                                </td>
-                                <td>27 Mar 2024, 11:15 AM</td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-05.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">John Homes</a>
-                                  </h2>
-                                </td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>														
-                                <td class="text-blue-600"><a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#view_prescription">#PR-125</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon prescription">
-                                    <span><i class="fa-solid fa-prescription"></i></span>Prescription
-                                  </a>
-                                </td>
-                                <td>11 Apr 2024, 09:00 AM</td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-03.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Shanta Neill</a>
-                                  </h2>
-                                </td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>														
-                                <td class="text-blue-600"><a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#view_prescription">#PR-126</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon prescription">
-                                    <span><i class="fa-solid fa-prescription"></i></span>Prescription
-                                  </a>
-                                </td>
-                                <td>15 Apr 2024, 02:30 PM</td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-08.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Anthony Tran</a>
-                                  </h2>
-                                </td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>														
-                                <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">#PR-127</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon prescription">
-                                    <span><i class="fa-solid fa-prescription"></i></span>Prescription
-                                  </a>
-                                </td>
-                                <td>23 Apr 2024, 06:40 PM</td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Susan Lingo</a>
-                                  </h2>
-                                </td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
+                                    </div>
+                                  </td>
+                                </tr>
+                              </ng-container>
+                              
                             </tbody>
                           </table>
                         </div>
@@ -879,178 +556,36 @@
                                 <th>Appointment Date</th>
                                 <th>Booked on</th>
                                 <th>Amount</th>
-                                <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-2021</a></td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Edalin Hendry</a>
-                                  </h2>
-                                </td>
-                                <td>24 Mar 2024</td>
-                                <td>21 Mar 2024</td>
-                                <td>$300</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-print"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-2021</a></td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-13.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">John Homes</a>
-                                  </h2>
-                                </td>
-                                <td>17 Mar 2024</td>
-                                <td>14 Mar 2024</td>
-                                <td>$450</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-print"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-2021</a></td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-03.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Shanta Neill</a>
-                                  </h2>
-                                </td>
-                                <td>11 Mar 2024</td>
-                                <td>07 Mar 2024</td>
-                                <td>$250</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-print"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-2021</a></td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-08.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Anthony Tran</a>
-                                  </h2>
-                                </td>
-                                <td>26 Feb 2024</td>
-                                <td>23 Feb 2024</td>
-                                <td>$320</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-print"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-2021</a></td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-01.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Susan Lingo</a>
-                                  </h2>
-                                </td>
-                                <td>18 Feb 2024</td>
-                                <td>15 Feb 2024</td>
-                                <td>$480</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-print"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-2021</a></td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-09.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Joseph Boyd</a>
-                                  </h2>
-                                </td>
-                                <td>10 Feb 2024</td>
-                                <td>07 Feb 2024</td>
-                                <td>$260</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-print"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-2021</a></td>
-                                <td>
-                                  <h2 class="table-avatar">
-                                    <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                      <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-07.jpg" alt="User Image">
-                                    </a>
-                                    <a [routerLink] = "routes.doctorProfile2">Juliet Gabriel</a>
-                                  </h2>
-                                </td>
-                                <td>28 Jan 2024</td>
-                                <td>25 Jan 2024</td>
-                                <td>$350</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
-                                      <i class="fa-solid fa-link"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-print"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
+                              <ng-container *ngFor="let invoice of invoices;let i = index">
+                                <tr>
+                                  <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-{{i+1}}</a></td>
+                                  <td>
+                                    <h2 class="table-avatar">
+                                      <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
+                                        <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
+                                      </a>
+                                      <a [routerLink] = "routes.doctorProfile2">{{invoice.doctorName}}</a>
+                                    </h2>
+                                  </td>
+                                  <td>{{formatDate(invoice.appointmentDate)}}</td>
+                                  <td>{{formatDate(invoice.bookedDate)}}</td>
+                                  <td>{{invoice.amount}}</td>
+                                  <!-- <td>
+                                    <div class="action-item">
+                                      <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
+                                        <i class="fa-solid fa-link"></i>
+                                      </a>
+                                      <a href="javascript:void(0);">
+                                        <i class="fa-solid fa-print"></i>
+                                      </a>
+                                    </div>
+                                  </td> -->
+                                </tr>
+                              </ng-container>
+                             
                             </tbody>
                           </table>
                         </div>

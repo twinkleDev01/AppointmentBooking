@@ -13,7 +13,7 @@
             </h1>
             <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
             <p class="text-success">
-              Proven Results with 98.6% User Satisfaction 
+              Proven Results with 98.4% User Satisfaction 
             </p>
             <!-- <a [routerLink]="routes.booking1" class="btn">Start a Consult</a> -->
             <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
@@ -673,7 +673,7 @@
                 </div>
                 <div class="">
                   <button type="submit" class="btn pay-btn text-white">Proceed to pay</button>
-                  <p class="mb-0">Existing Customer?
+                  <p *ngIf="!isPatient" class="mb-0">Existing Customer?
                     <a class="login_link" [routerLink]="routes.userLogin">Click here to login</a>
                   </p>
                 </div>
@@ -743,15 +743,15 @@
                     </div>
 
                     <ul class="booking-fee">
-                      <li>Consulting Fee <span>$100</span></li>
-                      <li>Booking Fee <span>$10</span></li>
-                      <li>Video Call <span>$50</span></li>
+                      <li>Consulting Fee <span>200</span></li>
+                      <li>Booking Fee <span>0</span></li>
+                      <li>Video Call <span>0</span></li>
                     </ul>
                     <div class="booking-total">
                       <ul class="booking-total-list">
                         <li>
                           <span>Total</span>
-                          <span class="total-cost">$160</span>
+                          <span class="total-cost">200</span>
                         </li>
                       </ul>
                     </div>
