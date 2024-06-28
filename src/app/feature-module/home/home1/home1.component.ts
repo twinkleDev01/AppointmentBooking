@@ -461,18 +461,23 @@ console.log(this.issues);
       this.isImageModalOpen = true;
     }
   }
+  formatTime(inputTime :any) {
+    const timeParts = inputTime.split(":");
+    const hours = timeParts[0];
+    const minutes = timeParts[1];
+    return hours + ":" + minutes;
+  }
 
 initiatePayment() {
   if (this.InfoForm.valid) {
-  // Example parameters, replace with actual data
-  const amount = 100; // Amount in INR
+  const amount = 100;
   const name = this.InfoForm.value.firstName +' '+ this.InfoForm.value.lastName;
   const email = this.InfoForm.value.email;
   const contact = this.InfoForm.value.phone;
   const data = {
     IssueIds: this.appointmentForm.value.selectedConcerns.map((issue: { issueID: any; }) => issue.issueID),
     AppointmentDate: this.formatDatetoSend( this.selectedDate),
-    slotTime: this.selectedTimeSlot?.startTime,
+    slotTime:this.formatTime(this.selectedTimeSlot?.startTime) ,
     IsCancelled: false,
     IsCompleted: false ,
     Images: this.appointmentForm.value.selectedFiles,

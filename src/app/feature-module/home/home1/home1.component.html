@@ -71,7 +71,7 @@
               <!-- age and gender -->
                <div class="row">
                  <div class="col-lg-6 col-md-6 col-6">
-                   <input type="text" placeholder="Enter Age" formControlName="age">
+                   <input type="number" placeholder="Enter Age" formControlName="age">
                    <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)" class="text-danger">
                      Age is required.
                    </div>
@@ -103,7 +103,7 @@
               <div class="row concerns" *ngIf="isMobileResolution">
                 <div class="col-lg-6 col-md-6 mt-0 p-0">
                   <p-multiSelect [options]="concerns" optionLabel="issueName"
-                  (change)="onCheckboxChange($event, concerns)" placeholder="Select Concerns" class="mutiselect">
+                  (onChange)="onCheckboxChange($event, concerns)" placeholder="Select Concerns" class="mutiselect">
    </p-multiSelect>
                 </div>
               </div>

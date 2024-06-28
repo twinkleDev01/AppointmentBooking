@@ -26,6 +26,10 @@ input[type="text"]:hover {
     border: 1px solid #0e82fd;
 }
 
+input[type="number"]:hover {
+    border: 1px solid #0e82fd;
+}
+
 input[type="checkbox"]:hover {
     border: 1px solid #0e82fd;
 }
@@ -44,6 +48,17 @@ select:hover {
 
 
 input[type="text"] {
+    height: 40px;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid #eeeff4;
+    width: 90%;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+input[type="number"] {
     height: 40px;
     padding-left: 10px;
     padding-top: 8px;
