@@ -47,6 +47,8 @@ export class Home1Component implements OnInit {
   issues:any
   userInfo:any
   isPatient:boolean = false;
+  choosenIssues:any;
+  existingUser:boolean = false;
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -110,19 +112,19 @@ export class Home1Component implements OnInit {
     this.appointmentForm = this.fb.group({
       age: ['', Validators.required],
       gender: ['', Validators.required],
+      description: [''],
       firstTimeConsult: ['true'],
-      selectedConcerns: this.fb.array([]),
       selectedFiles: this.fb.array([]),
     });
     this.selectedValue = 'true';
     this.InfoForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      pinCode: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required]
+      firstName: [{ value: '', disabled: this.existingUser }, Validators.required],
+      lastName: [{ value: '', disabled: this.existingUser }, Validators.required],
+      city: [{ value: '', disabled: this.existingUser }, Validators.required],
+      state: [{ value: '', disabled: this.existingUser }, Validators.required],
+      pinCode: [{ value: '', disabled: this.existingUser }, Validators.required],
+      email: [{ value: '', disabled: this.existingUser }, [Validators.required, Validators.email]],
+      phone: [{ value: '', disabled: this.existingUser }, Validators.required]
     });
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)
@@ -155,6 +157,10 @@ return window.innerWidth < 767
     }else{
       this.isPatient = true
     }
+  }
+
+  onCheckboxChanges(selectedIssues: any) {
+    this.choosenIssues = selectedIssues
   }
   onRadioChange(value: string): void {
     this.selectedValue = value;
@@ -374,12 +380,12 @@ return window.innerWidth < 767
     }
   }
 
-  isConcernSelected(concernId: number): boolean {
-    const selectedConcerns = this.appointmentForm.get(
-      'selectedConcerns'
-    ) as FormArray;
-    return selectedConcerns.controls.some((x) => x.value === concernId);
-  }
+  // isConcernSelected(concernId: number): boolean {
+  //   const selectedConcerns = this.appointmentForm.get(
+  //     'selectedConcerns'
+  //   ) as FormArray;
+  //   return selectedConcerns.controls.some((x) => x.value === concernId);
+  // }
 
   openImageModal(imageUrl: string) {
     this.selectedImageUrl = imageUrl;
@@ -423,7 +429,7 @@ return window.innerWidth < 767
     } else {
       console.log('User details not found in local storage.');
     }
-    if (this.appointmentForm.valid) {
+    if (this.appointmentForm.valid && this.choosenIssues?.length > 0) {
       if(this.slotConfirmed===true){
     this.issues= this.appointmentForm.value.selectedConcerns;
 console.log(this.issues);
@@ -475,12 +481,13 @@ initiatePayment() {
   const email = this.InfoForm.value.email;
   const contact = this.InfoForm.value.phone;
   const data = {
-    IssueIds: this.appointmentForm.value.selectedConcerns.map((issue: { issueID: any; }) => issue.issueID),
+    IssueIds: this.choosenIssues?.map((issue: { issueID: any; }) => issue.issueID),
     AppointmentDate: this.formatDatetoSend( this.selectedDate),
     slotTime:this.formatTime(this.selectedTimeSlot?.startTime) ,
     IsCancelled: false,
     IsCompleted: false ,
     Images: this.appointmentForm.value.selectedFiles,
+
     IsFirstTimeConsult: this.appointmentForm.value.firstTimeConsult,
     'user.FirstName': this.InfoForm.value.firstName,
     'user.LastName': this.InfoForm.value.lastName,
@@ -569,6 +576,7 @@ initiatePayment() {
     this.patientsService.getPatientinfo().subscribe((res:any)=>{
       console.log(res,"49");
       this.userInfo=res?.data;
+      this.existingUser=true
       this.InfoForm.patchValue({
         firstName: res.data.firstName,
         lastName: res.data.lastName,
@@ -578,6 +586,10 @@ initiatePayment() {
         state: res.data.state,
         pinCode: res.data.pinCode
       });
+//       Object.keys(this.InfoForm.controls).forEach((control:any)=>{
+// this.InfoForm?.get(control)?.disable();
+//       })
+      
     })
   }
 }

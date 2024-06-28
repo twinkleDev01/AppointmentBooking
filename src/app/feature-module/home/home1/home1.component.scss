@@ -100,10 +100,10 @@ select {
     border-radius: 10px;
     margin-left: 0px;
     margin-right: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 15px;
+    padding-left: 5px;
+    // padding-right: -12px;
+    // padding-top: -1px;
+    padding-bottom: 0px;
 }
 
 .no_padding {
@@ -783,7 +783,9 @@ $__none: none;
 
 }
 
-
+:host::ng-deep .p-placeholder {
+    font-size: 15px; /* Change the font size */
+}
 @media (max-width: 768px) {
     .container{
         max-width: 100%;
@@ -854,6 +856,19 @@ font-size: 17px;
         padding-bottom: 0px;
     }
 }
+:host::ng-deep {
+
+    .p-multiselect {
+        width: 100% !important;
+        border-radius: 10px;
+    }
+    .p-checkbox-box{
+border:1px solid #eeeff4;
+    }
+    .p-multiselect-header{
+        display: none;
+    }
+}
 
 @media (max-width: 576px) {
     .mobile-fixed-bottom {
@@ -918,4 +933,20 @@ font-size: 17px;
 }
 :host::ng-deep .p-datepicker table td{
     padding: 0.1rem !important;
+}
+.description{
+    border: 1px solid  #eeeff4;
+    border-radius: 6px;
+    width: 100%;
+    padding: 9px;
+}
+.file-UploadSection{
+    border: 1px solid #eeeff4;
+    border-radius: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
 }

@@ -70,13 +70,13 @@
             <div class="row mt-4">
               <!-- age and gender -->
                <div class="row">
-                 <div class="col-lg-6 col-md-6 col-6">
+                 <div class="col-lg-6 col-md-6 col-6 p-0">
                    <input type="number" placeholder="Enter Age" formControlName="age">
                    <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)" class="text-danger">
                      Age is required.
                    </div>
                  </div>
-                 <div class="col-lg-6 col-md-6 col-6">
+                 <div class="col-lg-6 col-md-6 col-6 p-0">
                    <select name="gender" id="gender" formControlName="gender" class="mt-0">
                      <option value="">Gender</option>
                      <option value="Male">Male</option>
@@ -92,23 +92,31 @@
                 <h5 class="text-center form_title">Select your concern(s)</h5>
               </div>
               <!-- list of concerns/decease -->
-              <div class="row concerns" *ngIf="!isMobileResolution">
+              <!-- <div class="row concerns" *ngIf="!isMobileResolution">
                 <div *ngFor="let concern of concerns; let i = index"
                   class="col-lg-6 col-md-6 mt-3 d-flex align-items-center">
                   <input type="checkbox" id="concern{{i}}" [checked]="isConcernSelected(concern)"
                     (change)="onCheckboxChange($event, concern)">
                   <label class="concern_label" for="concern{{i}}">{{concern.issueName}}</label>
                 </div>
-              </div>
-              <div class="row concerns" *ngIf="isMobileResolution">
-                <div class="col-lg-6 col-md-6 mt-0 p-0">
-                  <p-multiSelect [options]="concerns" optionLabel="issueName"
-                  (onChange)="onCheckboxChange($event, concerns)" placeholder="Select Concerns" class="mutiselect">
-   </p-multiSelect>
+              </div> -->
+              <div class="row concerns p-0" >
+                <div class=" mt-0 p-0">
+                  <!-- <p-multiSelect [options]="concerns" optionLabel="issueName"
+                  (onChange)="onCheckboxChange($event, concerns)"   placeholder="Select Concerns" class="mutiselect">
+   </p-multiSelect> -->
+   <p-multiSelect [options]="concerns" optionLabel="issueName"
+   (onChange)="onCheckboxChanges($event.value)"   
+   placeholder="Select Concerns" class="mutiselect">
+</p-multiSelect>
+
                 </div>
               </div>
+              <div *ngIf="submitted && (!choosenIssues?.length)" class="text-danger">
+                Please select issue
+              </div>
               <!-- Are you consulting for first time? -->
-              <div class="concerns mt-3">
+              <!-- <div class="concerns mt-3">
                 <h5 class="text-center const form_title">
                   Are you consulting for the first time?
                 </h5>
@@ -118,9 +126,12 @@
                   <input type="radio" id="no" value="false" formControlName="firstTimeConsult" (change)="onRadioChange('false')" />
                   <label [ngClass]="{'selected-yes': selectedValue === 'false'}" for="no">No</label>
                 </div>
+              </div> -->
+              <div class="mt-1 col-12 p-0">
+                <!-- <input type="text" placeholder="Enter description" formControlName="description"> -->
+                <textarea placeholder="Enter description" class="description" formControlName="description" rows="3" cols="50"></textarea>
               </div>
-             
-              <div class="concerns mt-3">
+              <div class="file-UploadSection mt-3">
                 <h5 class="text-center const form_title">Upload up to 5 Images</h5>
 
                 <!-- Display count of selected files -->
@@ -610,7 +621,7 @@
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="first-name" class="mb-2">First Name</label>
-                      <input formControlName="firstName" class="form-control" type="text" />
+                      <input formControlName="firstName" [readOnly]="existingUser" class="form-control" type="text" />
                       <div *ngIf="InfoForm.get('firstName')?.invalid && InfoForm.get('firstName')?.touched">
                         First Name is required
                       </div>
@@ -619,7 +630,7 @@
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="last-name" class="mb-2">Last Name</label>
-                      <input formControlName="lastName" class="form-control" type="text" />
+                      <input formControlName="lastName" [readOnly]="existingUser" class="form-control" type="text" />
                       <div *ngIf="InfoForm.get('lastName')?.invalid && InfoForm.get('lastName')?.touched">
                         Last Name is required
                       </div>
@@ -628,7 +639,7 @@
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="city" class="mb-2">City</label>
-                      <input formControlName="city" class="form-control" type="text" />
+                      <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" />
                       <div *ngIf="InfoForm.get('city')?.invalid && InfoForm.get('city')?.touched">
                         City is required
                       </div>
@@ -637,7 +648,7 @@
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="state" class="mb-2">State</label>
-                      <input formControlName="state" class="form-control" type="text" />
+                      <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" />
                       <div *ngIf="InfoForm.get('state')?.invalid && InfoForm.get('state')?.touched">
                         State is required
                       </div>
@@ -646,7 +657,7 @@
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="pinCode" class="mb-2">PIN Code</label>
-                      <input formControlName="pinCode" class="form-control" type="text" />
+                      <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" />
                       <div *ngIf="InfoForm.get('pinCode')?.invalid && InfoForm.get('pinCode')?.touched">
                         PIN Code is required
                       </div>
@@ -655,7 +666,7 @@
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="email" class="mb-2">Email</label>
-                      <input formControlName="email" class="form-control" type="email" />
+                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" />
                       <div *ngIf="InfoForm.get('email')?.invalid && InfoForm.get('email')?.touched">
                         Enter a valid email
                       </div>
@@ -664,7 +675,7 @@
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="phone" class="mb-2">Phone</label>
-                      <input formControlName="phone" class="form-control" type="text" />
+                      <input formControlName="phone" [readOnly]="existingUser" class="form-control" type="text" />
                       <div *ngIf="InfoForm.get('phone')?.invalid && InfoForm.get('phone')?.touched">
                         Phone is required
                       </div>
