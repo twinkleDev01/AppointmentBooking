@@ -118,7 +118,8 @@ this.patientsService.updatePatientinfo(formData).subscribe((res:any)=>{
           city: res.data.city,
           state: res.data.state,
           country: res.data.country,
-          pincode: res.data.pinCode
+          pincode: res.data.pinCode,
+          selectedImageUrl:res.data.image,
         });
       }
     })
