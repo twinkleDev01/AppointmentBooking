@@ -15,10 +15,8 @@ export class LoaderComponent {
   constructor(private loaderService: LoaderServiceService) { }
 
   ngOnInit(): void {
-    console.log(this.isLoading,'17 loader')
     this.loaderService.isLoading.subscribe((value:boolean) => {
       this.isLoading = value;
-      console.log(this.isLoading,'20 loader')
     });
   }
 }

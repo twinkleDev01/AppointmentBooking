@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
 import {
   ChartComponent,
@@ -17,6 +17,9 @@ import {
   ApexResponsive,
   ApexFill,
 } from 'ng-apexcharts';
+import { PatientsService } from '../shared/Service/patients.service';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -57,7 +60,7 @@ export class ModalComponent implements OnInit {
   public chartOptionsThree!: Partial<ChartOptions>;
   public chartOptionsFour!: Partial<ChartOptions>;
 
-  constructor() {
+  constructor(private patientsService:PatientsService) {
     this.chartOptionsOne = {
       series: [
         {
@@ -315,8 +318,13 @@ export class ModalComponent implements OnInit {
   dltHours(index: number) {
     this.hours.splice(index, 1);
   }
+  invoiceDetail:any
   ngOnInit() {
     this.myDateValue = new Date();
+    this.patientsService.invoiceData.subscribe((res:any)=>{
+      console.log("332",res)
+      this.invoiceDetail = res
+    })
 
   }
   onDateChange(newDate: Date) {
@@ -338,5 +346,22 @@ export class ModalComponent implements OnInit {
   }
   dltBill(index: number) {
     this.bill.splice(index, 1);
+  }
+
+  @ViewChild('invoice') invoiceElement!: ElementRef;
+
+  downloadPDF() {
+    const DATA = this.invoiceElement.nativeElement;
+    html2canvas(DATA).then(canvas => {
+      const fileWidth = 208;
+      const fileHeight = (canvas.height * fileWidth) / canvas.width;
+
+      const FILEURI = canvas.toDataURL('image/png');
+      const PDF = new jsPDF('p', 'mm', 'a4');
+      const position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+
+      PDF.save('invoice.pdf');
+    });
   }
 }
