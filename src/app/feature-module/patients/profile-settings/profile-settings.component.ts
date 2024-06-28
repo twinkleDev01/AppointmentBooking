@@ -14,7 +14,7 @@ export class ProfileSettingsComponent implements OnInit {
   myDateValue!: Date ;
   profileForm!: FormGroup;
   maxDate!: Date;
-  Detail:any
+  Detail:any;
   constructor(private fb: FormBuilder,private patientsService:PatientsService, private toastr:ToastrService) {
     this.maxDate = new Date();
     this.Detail = localStorage.getItem('UserDetail')
@@ -42,17 +42,14 @@ export class ProfileSettingsComponent implements OnInit {
 
   onSubmit(){
     if (this.profileForm.valid) {
-      console.log(this.profileForm.value);
       const formData = new FormData();
 
     // Append each form field to the FormData instance
     formData.append('Image', this.profileForm.get('profileImage')?.value);
     formData.append('PatientId',this.Detail?.nameid);
     formData.append('Name', this.profileForm.get('firstName')?.value + ' ' + this.profileForm.get('lastName')?.value);
-    // formData.append('Image', 'profileImage.png');
     formData.append('FirstName', this.profileForm.get('firstName')?.value);
     formData.append('LastName', this.profileForm.get('lastName')?.value);
-    // formData.append('DateOfBirth', this.profileForm.get('dateOfBirth')?.value);
     formData.append('DateOfBirth', this.dateOfBirth);
     formData.append('PhoneNumber', this.profileForm.get('phoneNumber')?.value);
     formData.append('Email', this.profileForm.get('email')?.value);
@@ -62,11 +59,12 @@ export class ProfileSettingsComponent implements OnInit {
     formData.append('State', this.profileForm.get('state')?.value);
     formData.append('Country', this.profileForm.get('country')?.value);
     formData.append('PinCode', this.profileForm.get('pincode')?.value);
-console.log(formData);
 this.patientsService.updatePatientinfo(formData).subscribe((res:any)=>{
-  console.log(res)
+  
   if (res.isSuccess) {
-    this.toastr.success(res.message, "Success");
+    const data = res;
+this.patientsService.userSubject.next(data);
+    this.toastr.success(res.message);
   } else {
     this.toastr.error('Failed to update patient details.');
   } 
@@ -78,14 +76,12 @@ this.patientsService.updatePatientinfo(formData).subscribe((res:any)=>{
   }
   selectedImageUrl: string | ArrayBuffer | null = null;
   onFileChange(event: any){
-    console.log(event,"75");
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
        // Read the file and set the URL to display
        const reader = new FileReader();
        reader.onload = () => {
          this.selectedImageUrl = reader.result;
-         console.log(this.selectedImageUrl,"83")
        };
        reader.readAsDataURL(file);
       this.profileForm.patchValue({
@@ -93,7 +89,6 @@ this.patientsService.updatePatientinfo(formData).subscribe((res:any)=>{
       });
     }
     else{
-      console.log('No file selected');
       this.profileForm.patchValue({
         profileImage: null
       });
@@ -119,8 +114,10 @@ this.patientsService.updatePatientinfo(formData).subscribe((res:any)=>{
           state: res.data.state,
           country: res.data.country,
           pincode: res.data.pinCode,
-          selectedImageUrl:res.data.image,
+          
         });
+        this.selectedImageUrl=res.data.image,
+        console.log(this.selectedImageUrl,"118")
       }
     })
   }
@@ -134,7 +131,6 @@ this.patientsService.updatePatientinfo(formData).subscribe((res:any)=>{
     const formattedDate = this.formatDate(date);
     this.profileForm.get('dateOfBirth')?.setValue(formattedDate, { emitEvent: false });
     this.dateOfBirth = formattedDate
-    console.log('Formatted date:', formattedDate); // For debugging
   }
 
   formatDate(date: Date): string {

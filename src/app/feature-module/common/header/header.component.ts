@@ -32,7 +32,11 @@ export class HeaderComponent {
   ) {
     this.auth.token.subscribe((res:any)=>{
       if(res){
+        console.log("35")
         this.isPatient = true
+      }else{
+        this.isPatient = false
+        console.log("38 feature",this.isPatient)
       }
     })
     if(!localStorage.getItem('token')){
@@ -83,8 +87,9 @@ export class HeaderComponent {
     }
   }
   logout(){
-    localStorage.removeItem('token')
-    localStorage.removeItem('UserDetail')
+    // localStorage.removeItem('token')
+    // localStorage.removeItem('UserDetail')
     this.isPatient=false
+    this.auth.clearToken();
   }
 }

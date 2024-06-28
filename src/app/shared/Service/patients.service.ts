@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,13 @@ export class PatientsService {
   getPatientInfo:string ='/Patient/patientInfoDetails'
   updatePatientInfo:string ='/Patient/updatePatientDetails'
   getinvoice:string ='/Invoice/GetInvoices'
+  contactInfo:string='/ContactUs'
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Detail:any;
+  // private userSubject = new BehaviorSubject<any>(null); // Initial value null
+  // user$ = this.userSubject.asObservable();
+  public userSubject:BehaviorSubject<any> = new BehaviorSubject<any>({});
+  public invoiceData:BehaviorSubject<any> = new BehaviorSubject<any>({});
   constructor(private http:HttpClient, private auth: AuthService) { 
     this.auth.uderDetail.subscribe((res:any)=>{
       console.log(res,"21")
@@ -32,6 +38,9 @@ export class PatientsService {
     })
   }
 
+  // updateUser(user: any) {
+  //   this.userSubject.next(user); // Update the BehaviorSubject
+  // }
   // getUserDetail(): string | null {
   //   const userDetail = localStorage.getItem('UserDetail');
   //   console.log(userDetail,"24")
@@ -108,6 +117,11 @@ return this.http.post(url, data);
 getInvoice(){
 const url=`${this.baseUrl}${this.getinvoice}?PatientId=${this.Detail?.nameid}`;
 return this.http.get(url);
+}
+
+contactData(data:any){
+  const url=`${this.baseUrl}${this.contactInfo}`;
+return this.http.post(url, data);
 }
 
  }

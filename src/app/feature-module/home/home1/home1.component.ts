@@ -108,7 +108,7 @@ export class Home1Component implements OnInit {
     this.bsRangeValue = [today, endDate]; // Initialize the date range
     this.date = new Date();
     this.appointmentForm = this.fb.group({
-      age: ['', Validators.required],
+      age: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       gender: ['', Validators.required],
       firstTimeConsult: ['true'],
       selectedConcerns: this.fb.array([]),

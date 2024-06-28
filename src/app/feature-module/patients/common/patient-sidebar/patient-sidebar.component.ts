@@ -30,28 +30,28 @@ export class PatientSidebarComponent {
     });
     this.Detail = localStorage.getItem('UserDetail')
         this.Detail = JSON.parse(this.Detail);
-        console.log(this.Detail,"27")
     this.getUserInfo();
+    this.patientsService.userSubject.subscribe((res:any)=>{
+      if(res){
+        this.getUserInfo();
+      }
+    })
   }
-  ngOninit(){
-    this.getUserInfo();
+  ngOnInit(){
+  
   }
+  isPatient:boolean =false
   Logout(){
-    
-    const data={
-      LoginProvider:localStorage.getItem('token'),
-      UserId:this.UserId
-    }
-this.authService.logout(data).subscribe((res)=>{
-  console.log(res);
-  localStorage.clear();
+    console.log("45")
+localStorage.removeItem('token')
+  localStorage.removeItem('UserDetail')
+  this.isPatient=false
   this.router.navigate(['/authentication/login']);
-})
   }
   getUserInfo(){
     this.patientsService.getPatientinfo().subscribe((res:any)=>{
-      console.log(res,"49");
       this.userInfo=res?.data;
+      console.log(this.userInfo,"66")
     })
   }
 }

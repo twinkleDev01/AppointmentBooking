@@ -75,6 +75,9 @@
                    <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)" class="text-danger">
                      Age is required.
                    </div>
+                   <div *ngIf="appointmentForm.get('age')?.hasError('pattern') && appointmentForm.get('age')?.touched" class="text-danger">
+                    Age must be a number
+                  </div>
                  </div>
                  <div class="col-lg-6 col-md-6 col-6">
                    <select name="gender" id="gender" formControlName="gender" class="mt-0">
