@@ -168,6 +168,13 @@ select {
 .banner-content p {
     width: 40%;
 }
+.banner-section {
+    background: #F9FCFF;
+    padding: 200px 0 30px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
 
 .form h3 {
     color: #0e82fd;
@@ -875,6 +882,15 @@ border:1px solid #eeeff4;
 }
 
 @media (max-width: 576px) {
+    .alt_text{
+        min-height: 100px !important;
+        
+    }
+    .close{
+        position: absolute;
+        top: -13px !important;
+        right: -10px !important;
+    }
     .mobile-fixed-bottom {
         position: fixed;
         bottom: 0;
