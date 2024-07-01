@@ -246,6 +246,9 @@
                           {{ slot.startTime }}
                         </div>
                       </div>
+                      <div *ngIf="!filteredAppointments.length" class="alt_text">
+                        no slots available
+                      </div>
                     </div>
                   </div>
                 </div>
