@@ -112,7 +112,7 @@ export class Home1Component implements OnInit {
     this.appointmentForm = this.fb.group({
       age: ['', [Validators.required, Validators.pattern("^[0-9]*$"), this.noWhitespaceValidator]],
       gender: ['', Validators.required],
-      description: [''],
+      description: ['', Validators.required],
       firstTimeConsult: ['true'],
       selectedFiles: this.fb.array([]),
     });
@@ -509,6 +509,7 @@ console.log(this.issues);
 
 initiatePayment() {
   if (this.InfoForm.valid) {
+  
   const amount = 100;
   const name = this.InfoForm.value.firstName +' '+ this.InfoForm.value.lastName;
   const email = this.InfoForm.value.email;
@@ -521,7 +522,7 @@ initiatePayment() {
     IsCompleted: false ,
     Images: this.appointmentForm.value.selectedFiles,
 
-    IsFirstTimeConsult: this.appointmentForm.value.firstTimeConsult,
+    Descriptions: this.appointmentForm.value.description,
     'user.FirstName': this.InfoForm.value.firstName,
     'user.LastName': this.InfoForm.value.lastName,
     'user.City': this.InfoForm.value.city,
@@ -572,6 +573,7 @@ initiatePayment() {
       });
 
       this.paymentService.initiatePayment(amount, name, email, contact, formData,zoomData);
+      this.InfoForm.reset();
     } else {
       this.markAllAsTouched();
     }

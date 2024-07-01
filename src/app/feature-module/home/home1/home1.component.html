@@ -134,6 +134,9 @@
                 <!-- <input type="text" placeholder="Enter description" formControlName="description"> -->
                 <textarea placeholder="Enter description" class="description" formControlName="description" rows="3" cols="50"></textarea>
               </div>
+              <div *ngIf="appointmentForm.get('description')?.touched && appointmentForm.get('description')?.invalid || (submitted && appointmentForm.get('description')?.invalid)" class="text-danger">
+                Description is required.
+              </div>
               <div class="file-UploadSection mt-3">
                 <h5 class="text-center const form_title">Upload up to 5 Images</h5>
 
