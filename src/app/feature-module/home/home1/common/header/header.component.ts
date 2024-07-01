@@ -31,7 +31,11 @@ export class HeaderComponent {
   ) {
     this.auth.token.subscribe((res:any)=>{
       if(res){
+        console.log("34")
         this.isPatient = true
+      }else{
+        this.isPatient = false
+        console.log("37 home",this.isPatient)
       }
       })
       if(!localStorage.getItem('token')){
@@ -66,9 +70,11 @@ export class HeaderComponent {
   isPatient:boolean =false
 ngOnInit(){
 }
-logout(){
-  localStorage.removeItem('token')
-  localStorage.removeItem('UserDetail')
+logout(route: string){
+  // localStorage.removeItem('token')
+  // localStorage.removeItem('UserDetail')
   this.isPatient=false
+  this.auth.clearToken();
+  this.router.navigate([route])
 }
 }

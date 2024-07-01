@@ -15,7 +15,7 @@ export class PatientInvoiceComponent {
     this.GetInvoices()
   }
   ngOninit(){
-    this.GetInvoices()
+    // this.GetInvoices()
   }
 
   GetInvoices(){
@@ -47,5 +47,10 @@ export class PatientInvoiceComponent {
     const year = date.getFullYear();
   
     return `${day} ${month} ${year}`;
+  }
+  sendData(invoiceObject:any){
+    console.log(invoiceObject,"obj");
+    const matchingObj = this.invoices.find((invoice:any)=>invoice.id == invoiceObject.id);
+this.patientsService.invoiceData.next(matchingObj);
   }
 }

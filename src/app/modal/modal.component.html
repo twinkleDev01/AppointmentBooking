@@ -1933,24 +1933,24 @@
       </div>
       <div class="modal-body pb-0">
         <div class="prescribe-download">
-          <h5>21 Mar 2024</h5>
+          <h5>{{ invoiceDetail.bookedDate | date:'dd MMM yyyy' }}</h5>
           <ul>
-            <li><a href="javascript:void(0);" class="print-link"><i class="fa-solid fa-print"></i></a></li>
-            <li><a href="javascript:void(0);" class="btn btn-primary prime-btn">Download</a></li>
+            <!-- <li><a href="javascript:void(0);" class="print-link"><i class="fa-solid fa-print"></i></a></li> -->
+            <li><a href="javascript:void(0);" class="btn btn-primary prime-btn" (click)="downloadPDF()">Download</a></li>
           </ul>
         </div>
-        <div class="view-prescribe invoice-content">
+        <div #invoice class="view-prescribe invoice-content">
           <div class="invoice-item">
             <div class="row">
               <div class="col-md-6">
                 <div class="invoice-logo">
-                  <img src="assets/img/logo.png" alt="logo">
+                  <!-- <img src="assets/img/logo.png" alt="logo"> -->
                 </div>
               </div>
               <div class="col-md-6">
                 <p class="invoice-details">
                   <strong>Invoice No : </strong> #INV005<br>
-                  <strong>Issued:</strong> 21 Mar 2024
+                  <strong>Issued:</strong> {{ invoiceDetail.bookedDate | date:'dd MMM yyyy' }}
                 </p>
               </div>
             </div>
@@ -1963,7 +1963,7 @@
                 <div class="invoice-info">
                   <h6 class="customer-text">Billing From</h6>
                   <p class="invoice-details invoice-details-two">
-                    Edalin Hendry <br>
+                    {{invoiceDetail.doctorName}} <br>
                     806 Twin Willow Lane, <br>
                     Newyork, USA <br>
                   </p>
@@ -2012,14 +2012,14 @@
                       <tr>
                         <td>General Consultation</td>
                         <td>1</td>
-                        <td>$0</td>
-                        <td>$150</td>
+                        <td>0</td>
+                        <td>INR150</td>
                       </tr>
                       <tr>
                         <td>Video Call</td>
                         <td>1</td>
-                        <td>$0</td>
-                        <td>$100</td>
+                        <td>0</td>
+                        <td>INR100</td>
                       </tr>
                     </tbody>
                   </table>
@@ -2031,15 +2031,15 @@
                     <tbody>
                       <tr>
                         <th>Subtotal:</th>
-                        <td><span>$350</span></td>
+                        <td><span>{{invoiceDetail.amount}}</span></td>
                       </tr>
                       <tr>
                         <th>Discount:</th>
-                        <td><span>-10%</span></td>
+                        <td><span>0%</span></td>
                       </tr>
                       <tr>
                         <th>Total Amount:</th>
-                        <td><span>$315</span></td>
+                        <td><span>{{invoiceDetail.amount}}</span></td>
                       </tr>
                     </tbody>
                   </table>

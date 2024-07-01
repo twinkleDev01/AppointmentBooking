@@ -86,7 +86,7 @@
                               <div class="col-md-6">
                                 <div class="mb-3">
                                   <label for="phone" class="mb-2">Phone Number</label>
-                                  <input type="text" class="form-control" formControlName="phone" placeholder="Enter Phone Number">
+                                  <input type="text" class="form-control" formControlName="contactNumber" placeholder="Enter Phone Number">
                                   <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="text-danger">
                                     <div *ngIf="phone?.errors?.['required']">Phone number is required.</div>
                                   </div>
@@ -95,7 +95,7 @@
                               <div class="col-md-6">
                                 <div class="mb-3">
                                   <label for="services" class="mb-2">Services</label>
-                                  <input type="text" class="form-control" formControlName="services" placeholder="Enter Services">
+                                  <input type="text" class="form-control" formControlName="service" placeholder="Enter Services">
                                   <div *ngIf="services?.invalid && (services?.dirty || services?.touched)" class="text-danger">
                                     <div *ngIf="services?.errors?.['required']">Services are required.</div>
                                   </div>
