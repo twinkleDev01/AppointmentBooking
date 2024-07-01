@@ -118,13 +118,13 @@ export class Home1Component implements OnInit {
     });
     this.selectedValue = 'true';
     this.InfoForm = this.fb.group({
-      firstName: [{ value: '', disabled: this.existingUser }, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      lastName: [{ value: '', disabled: this.existingUser }, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      city: [{ value: '', disabled: this.existingUser }, [Validators.required, this.noWhitespaceValidator]],
-      state: [{ value: '', disabled: this.existingUser }, [Validators.required, this.noWhitespaceValidator]],
-      pinCode: [{ value: '', disabled: this.existingUser }, [Validators.required, this.noWhitespaceValidator]],
-      email: [{ value: '', disabled: this.existingUser }, [Validators.required, Validators.email, this.noWhitespaceValidator]],
-      phone: [{ value: '', disabled: this.existingUser }, [Validators.required, this.noWhitespaceValidator]]
+      firstName: [ '', Validators.required],
+      lastName: [ '', Validators.required],
+      city: [ '' , Validators.required],
+      state: ['', Validators.required],
+      pinCode: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required]
     });
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)
@@ -344,30 +344,7 @@ return window.innerWidth < 767
     );
     console.log('Appointments:', this.filteredAppointments)
   }
-  // filterAppointments(date:any) {
-  //   console.log('Date:', date);
-  //   console.log(this.uniqueTimeSlots,this.slots)
-  //   this.filteredAppointments = this.slots.filter((appointment:any) => {
-  //     console.log(appointment.date, date);
-  //     return appointment.date === date;
-  //   });
-  //   console.log('Appointments:', this.filteredAppointments);
-  // }
-
-  // Custom validator to prevent whitespace
-  noWhitespaceValidator(control: FormControl) {
-    const isWhitespace = (control.value || '').trim().length === 0;
-    const isValid = !isWhitespace;
-    return isValid ? null : { 'whitespace': true };
-  }
-
-  // Method to validate and prevent non-numeric input
-  validateNumber(event: KeyboardEvent) {
-    const input = String.fromCharCode(event.keyCode);
-    if (!/^[0-9]*$/.test(input)) {
-      event.preventDefault();
-    }
-  }
+  
 
   onFileChange(event: any): void {
     const fileInput = event.target.files;
@@ -626,5 +603,16 @@ initiatePayment() {
 //       })
       
     })
+  }
+  noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+  validateNumber(event: KeyboardEvent) {
+    const input = String.fromCharCode(event.keyCode);
+    if (!/^[0-9]*$/.test(input)) {
+      event.preventDefault();
+    }
   }
 }

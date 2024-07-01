@@ -44,9 +44,6 @@ export class AppComponent {
       this.last = res;
     });
     this.router.events.subscribe((data: RouterEvent) => {
-      // console.log('base',this.base);
-      // console.log('page',this.page);
-      // console.log('last',this.last);
       if (data instanceof NavigationStart) {
         this.getRoutes(data);
         this.mobileSidebar = false;
