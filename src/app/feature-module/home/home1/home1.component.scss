@@ -967,3 +967,10 @@ border:1px solid #eeeff4;
 .text-danger{
     font-size: 11px;
 }
+.alt_text{
+    min-height: 200px;
+    border: 1px solid #eee;
+    align-items: center;
+    display: flex;
+    justify-content: center
+}
