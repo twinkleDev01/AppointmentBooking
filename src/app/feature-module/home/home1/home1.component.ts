@@ -110,7 +110,7 @@ export class Home1Component implements OnInit {
     this.bsRangeValue = [today, endDate]; // Initialize the date range
     this.date = new Date();
     this.appointmentForm = this.fb.group({
-      age: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      age: ['', [Validators.required, Validators.pattern("^[0-9]*$"), this.noWhitespaceValidator]],
       gender: ['', Validators.required],
       description: ['', Validators.required],
       firstTimeConsult: ['true'],
@@ -118,20 +118,19 @@ export class Home1Component implements OnInit {
     });
     this.selectedValue = 'true';
     this.InfoForm = this.fb.group({
-      firstName: [{ value: ''}, Validators.required],
-      lastName: [{ value: ''}, Validators.required],
-      city: [{ value: '' }, Validators.required],
-      state: [{ value: ''}, Validators.required],
-      pinCode: [{ value: ''}, Validators.required],
-      email: [{ value: '' }, [Validators.required, Validators.email]],
-      phone: [{ value: '' }, Validators.required]
+      firstName: [{ value: '', disabled: this.existingUser }, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      lastName: [{ value: '', disabled: this.existingUser }, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      city: [{ value: '', disabled: this.existingUser }, [Validators.required, this.noWhitespaceValidator]],
+      state: [{ value: '', disabled: this.existingUser }, [Validators.required, this.noWhitespaceValidator]],
+      pinCode: [{ value: '', disabled: this.existingUser }, [Validators.required, this.noWhitespaceValidator]],
+      email: [{ value: '', disabled: this.existingUser }, [Validators.required, Validators.email, this.noWhitespaceValidator]],
+      phone: [{ value: '', disabled: this.existingUser }, [Validators.required, this.noWhitespaceValidator]]
     });
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)
     this.auth.token.subscribe((res:any)=>{
       if(res){
         this.isPatient = true
-        console.log(this.isPatient,'132')
       }
     })
     if(!localStorage.getItem('token')){
@@ -156,6 +155,20 @@ return window.innerWidth < 767
       this.isPatient = false
     }else{
       this.isPatient = true
+    }
+  }
+
+  validateAlphabetic(event: any): void {
+    const input = event.target;
+    const value = input.value;
+    const alphabeticValue = value.replace(/[^a-zA-Z]/g, '');
+    if (value !== alphabeticValue) {
+      input.value = alphabeticValue;
+      if (input.name === 'firstName') {
+        this.InfoForm.get('firstName')?.setValue(alphabeticValue);
+      } else if (input.name === 'lastName') {
+        this.InfoForm.get('lastName')?.setValue(alphabeticValue);
+      }
     }
   }
 
@@ -341,6 +354,21 @@ return window.innerWidth < 767
   //   console.log('Appointments:', this.filteredAppointments);
   // }
 
+  // Custom validator to prevent whitespace
+  noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+
+  // Method to validate and prevent non-numeric input
+  validateNumber(event: KeyboardEvent) {
+    const input = String.fromCharCode(event.keyCode);
+    if (!/^[0-9]*$/.test(input)) {
+      event.preventDefault();
+    }
+  }
+
   onFileChange(event: any): void {
     const fileInput = event.target.files;
     const filesArray = this.appointmentForm.get('selectedFiles') as FormArray;
@@ -353,6 +381,8 @@ return window.innerWidth < 767
 
     for (let i = 0; i < filesToAdd; i++) {
       const file = fileInput[i];
+      const fileType = file.type;
+      if (fileType === 'image/jpeg' || fileType === 'image/png') {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         const fileUrl = e.target.result;
@@ -362,6 +392,9 @@ return window.innerWidth < 767
         );
       };
       reader.readAsDataURL(file);
+    }else{
+      this.toastr.error('Invalid file type. Only JPG, JPEG, and PNG files are allowed.');
+    }
     }
   }
 
