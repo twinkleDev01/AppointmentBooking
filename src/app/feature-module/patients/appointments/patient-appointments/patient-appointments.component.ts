@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { routes } from 'src/app/shared/routes/routes';
 
@@ -20,7 +21,7 @@ export class PatientAppointmentsComponent {
   startDate:any
   endDate:any
 
-  constructor(private patientsService:PatientsService,private datePipe: DatePipe) {
+  constructor(private patientsService:PatientsService,private datePipe: DatePipe,private router:Router) {
     this.bsRangeValue = [this.startDate, this.endDate]; 
   }
 
@@ -67,5 +68,10 @@ export class PatientAppointmentsComponent {
     this.activeTab = tabName;
     console.log('Active Tab:', this.activeTab);
     this.getAppointmentData(this.activeTab)
+  }
+  navigateToPatientUpcomingAppointment(data:any) {
+    this.router.navigate(['/patients/appointments/patient-upcoming-appointment'], {
+      state: { appointment: data },
+    });
   }
 }

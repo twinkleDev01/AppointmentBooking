@@ -47,7 +47,6 @@ export class LoginComponent {
     this.afAuth.signInWithPhoneNumber('+91'+this.phoneNumber, this.recaptchaVerifier!)
       .then((confirmationResult) => {
         this.confirmationResult = confirmationResult;
-        console.log('SMS sent');
         this.otpSent = true
       })
       .catch((error) => {
@@ -69,15 +68,10 @@ const sendData={
 }
     this.confirmationResult.confirm(this.verificationCode)
       .then((result) => {
-        console.log('User signed in successfully', result.user);
-        // Handle successful login (e.g., navigate to home page)
         this.authService.login(sendData).subscribe((res:any)=>{
-                console.log(res);
                 this.authService.setToken(res?.data.token);
                 this.toastr.success(res.message);
                 this.router.navigate(['/patients/patient-dashboard']);
-    
-
               })
       })
       .catch((error) => {

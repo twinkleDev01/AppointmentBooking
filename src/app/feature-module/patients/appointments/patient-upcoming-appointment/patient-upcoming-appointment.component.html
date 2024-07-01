@@ -26,11 +26,11 @@
                                     </a>
                                     <div class="patient-info">
                                         <p>#Apt0001</p>
-                                        <h6><a href="javascript:void(0);">Dr Edalin Hendry</a></h6>
+                                        <h6><a href="javascript:void(0);">{{appointmentData.doctorName}}</a></h6>
                                         <div class="mail-info-patient">
                                             <ul>
-                                                <li><i class="fa-solid fa-envelope"></i>edalin&#64;example.com</li>
-                                                <li><i class="fa-solid fa-phone"></i> +1 504 368 6874</li>
+                                                <li><i class="fa-solid fa-envelope"></i>{{appointmentData.doctorEmail}}</li>
+                                                <li><i class="fa-solid fa-phone"></i>{{appointmentData.doctorPhone}}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -40,39 +40,34 @@
                                 <div class="person-info">
                                     <p>Type of Appointment</p>
                                     <ul class="d-flex apponitment-types">
-                                        <li><i class="fa-solid fa-hospital text-green"></i>Direct Visit</li>
+                                        <li><i class="fa-solid fa-hospital text-green"></i>Video Call</li>
                                     </ul>
+                                    <p class="mt-2">Concens</p>
+                                    <ul class="d-flex apponitment-types">
+                                        <li>{{appointmentData.issue}}</li>
+                                    </ul>
+                                    <button class="mt-2 btn btn-outline-info" (click)="openImagePreviewModal()" >Preview issue Images</button>
                                 </div>
                             </li>
                             <li class="appointment-action">
                                 <div class="detail-badge-info">
-                                    <span class="badge bg-yellow">Upcoming</span>
+                                    <span *ngIf="appointmentData.isUpcomming===true" class="badge bg-yellow">Upcoming</span>
+                                    <span  *ngIf="appointmentData.isCancelled===true" class="badge bg-danger">Upcoming</span>
+                                    <span  *ngIf="appointmentData.isCompleted===true" class="badge bg-success">Upcoming</span>
                                 </div>
                                 <div class="consult-fees">
-                                    <h6>Consultation Fees : $200</h6>
+                                    <h6>Consultation Fees : 200</h6>
                                 </div>
-                                <ul>
-                                    <li>
-                                        <a href="javascript:void(0);"><i class="fa-solid fa-comments"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);"><i class="fa-solid fa-xmark"></i></a>
-                                    </li>
-                                </ul>
                             </li>
                         </ul>
                         <ul class="detail-card-bottom-info">
                             <li>
                                 <h6>Appointment Date & Time</h6>
-                                <span>22 Jul 2023 - 12:00 pm</span>
+                                <span>{{formatDate(appointmentData.appointmentDate)}}-{{appointmentData.startTime}}</span>
                             </li>
                             <li>
                                 <h6>Clinic Location</h6>
-                                <span>Adrian’s Dentistry</span>
-                            </li>
-                            <li>
-                                <h6>Location</h6>
-                                <span>Newyork, United States</span>
+                                <span>{{appointmentData.address}}</span>
                             </li>
                             <li>
                                 <h6>Visit Type</h6>
@@ -87,85 +82,6 @@
                     </div>
                     <!-- /Appointment Detail Card -->
 
-                    <div class="recent-appointments">
-                        <h5 class="head-text">Recent Appointments</h5>
-                        <!-- Appointment List -->
-                        <div class="appointment-wrap">
-                            <ul>
-                                <li>
-                                    <div class="patinet-information">
-                                        <a href="javascript:void(0);">
-                                            <img src="assets/img/doctors/doctor-15.jpg" alt="User Image">
-                                        </a>
-                                        <div class="patient-info">
-                                            <p>#Apt0002</p>
-                                            <h6><a href="javascript:void(0);">Dr.Shanta Nesmith</a></h6>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="appointment-info">
-                                    <p><i class="fa-solid fa-clock"></i>11 Nov 2024 10.45 AM</p>
-                                    <ul class="d-flex apponitment-types">
-                                        <li>General Visit</li>
-                                        <li>Chat</li>
-                                    </ul>
-                                    
-                                </li>
-                                <li class="mail-info-patient">
-                                    <ul>
-                                        <li><i class="fa-solid fa-envelope"></i>shanta&#64;example.com</li>
-                                        <li><i class="fa-solid fa-phone"></i> +1 504 368 6874</li>
-                                    </ul>
-                                </li>
-                                <li class="appointment-action">
-                                    <ul>
-                                        <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-eye"></i></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /Appointment List -->
-                        <!-- Appointment List -->
-                        <div class="appointment-wrap">
-                            <ul>
-                                <li>
-                                    <div class="patinet-information">
-                                        <a href="javascript:void(0);">
-                                            <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
-                                        </a>
-                                        <div class="patient-info">
-                                            <p>#Apt0003</p>
-                                            <h6><a href="javascript:void(0);">Dr.John Ewel</a></h6>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="appointment-info">
-                                    <p><i class="fa-solid fa-clock"></i>27 Oct 2024 09.30 AM</p>
-                                    <ul class="d-flex apponitment-types">
-                                        <li>General Visit</li>
-                                        <li>Video Call</li>
-                                    </ul>
-                                    
-                                </li>
-                                <li class="mail-info-patient">
-                                    <ul>
-                                        <li><i class="fa-solid fa-envelope"></i>john&#64;example.com</li>
-                                        <li><i class="fa-solid fa-phone"></i> +1 749 104 6291</li>
-                                    </ul>
-                                </li>
-                                <li class="appointment-action">
-                                    <ul>
-                                        <li>
-                                            <a href="javascript:void(0);"><i class="fa-solid fa-eye"></i></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /Appointment List -->
-                    </div>
                 </div>
             </div>
         </div>
@@ -174,3 +90,36 @@
 
 </div>		
 <!-- /Page Content -->
+<div class="custom-modal" *ngIf="isImageModalOpen">
+    <div class="custom-modal-content">
+      <div class="custom-modal-header">
+        <h5 class="custom-modal-title">Image Preview</h5>
+        <button type="button" class="close" (click)="closeImageModal()">
+          <i class="fa-regular fa-circle-xmark text-black"></i>
+        </button>
+      </div>
+      <div class="custom-modal-body">
+        <div id="fileCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let file of files; let i = index" class="carousel-item"
+              [ngClass]="{ active: i === activeIndex }">
+              <ng-container *ngIf="file.type.startsWith('image')">
+                <img [src]="file.url" alt="File Preview" class="d-block w-100" />
+              </ng-container>
+              <ng-container *ngIf="!file.type.startsWith('image')">
+                <span>{{ file.name }}</span>
+              </ng-container>
+            </div>
+          </div>
+          <a class="carousel-control-prev" role="button" data-slide="prev" (click)="prev()">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" role="button" data-slide="next" (click)="next()">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>

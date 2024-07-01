@@ -118,13 +118,13 @@ export class Home1Component implements OnInit {
     });
     this.selectedValue = 'true';
     this.InfoForm = this.fb.group({
-      firstName: [{ value: ''}, Validators.required],
-      lastName: [{ value: ''}, Validators.required],
-      city: [{ value: '' }, Validators.required],
-      state: [{ value: ''}, Validators.required],
-      pinCode: [{ value: ''}, Validators.required],
-      email: [{ value: '' }, [Validators.required, Validators.email]],
-      phone: [{ value: '' }, Validators.required]
+      firstName: [ '', Validators.required],
+      lastName: [ '', Validators.required],
+      city: [ '' , Validators.required],
+      state: ['', Validators.required],
+      pinCode: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required]
     });
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)
@@ -331,15 +331,7 @@ return window.innerWidth < 767
     );
     console.log('Appointments:', this.filteredAppointments)
   }
-  // filterAppointments(date:any) {
-  //   console.log('Date:', date);
-  //   console.log(this.uniqueTimeSlots,this.slots)
-  //   this.filteredAppointments = this.slots.filter((appointment:any) => {
-  //     console.log(appointment.date, date);
-  //     return appointment.date === date;
-  //   });
-  //   console.log('Appointments:', this.filteredAppointments);
-  // }
+  
 
   onFileChange(event: any): void {
     const fileInput = event.target.files;

@@ -12,12 +12,8 @@
           <h3>Dashboard</h3>
         </div>
         <div class="row">
-           <div class="col-xl-8 d-flex">
-          </div>
-          <div class="col-xl-4 d-flex">
-            
-          </div>
-          <div class="col-xl-5">
+          
+          <!-- <div class="col-xl-5">
             <div class="dashboard-card w-100 card-appointment">
               <div class="dashboard-card-head">
                 <div class="header-title">
@@ -103,7 +99,7 @@
                         <a [routerLink]="routes.chat" class="btn btn-gray"><i class="fa-solid fa-comment-dots"></i>Chat Now</a>
                         <a class="btn btn-outline-primary"><i
                             class="fa-solid fa-calendar-check"></i>Attend</a>
-                             <!-- [routerLink]="routes.patientAppointment"  -->
+                              [routerLink]="routes.patientAppointment" 
                       </div>
                     </div>
                   }
@@ -226,7 +222,7 @@
               </div>
             </div>
             
-          </div> 
+          </div>  -->
           <div class="col-xl-12 d-flex">
             <div class="dashboard-card w-100">
               <div class="dashboard-card-head">
@@ -274,14 +270,13 @@
                                 <th>Email</th>
                                 <th>Comments</th>
                                 <th>Status</th>
-                                <th></th>
                               </tr>
                             </thead>
                             <tbody>
-                              <ng-container *ngFor="let data of appointmentDetails?.data.appointments">
+                              <ng-container *ngFor="let data of appointmentDetails?.data.appointments,let i=index">
                                 <tr>
                                   <td>
-                                    <a href="javascript:void(0);"><span class="text-blue">{{data.customAppointmentID}}</span></a>
+                                    <a href="javascript:void(0);"><span class="text-blue">#PR-00{{i+1}}</span></a>
                                   </td>
                                   <td>
                                     {{data.doctorName}}
@@ -291,14 +286,9 @@
                                   <td>{{data.doctorEmail}}</td>
                                   <td>Good take rest</td>
                                   <td>
-                                    <span class="badge badge-success-bg">Upcoming</span>
-                                  </td>
-                                  <td>
-                                    <div class="d-flex align-items-center">
-                                      <a href="javascript:void(0);" class="account-action me-2"><i class="fa-solid fa-prescription"></i></a>
-                                      <a href="javascript:void(0);" class="account-action"><i
-                                          class="fa-solid fa-file-invoice-dollar"></i></a>
-                                    </div>
+                                    <span *ngIf="data.isUpcomming === true" class="badge badge-warning-bg">Upcoming</span>
+                                    <span *ngIf="data.isCancelled === true" class="badge badge-danger-bg">Cancelled</span>
+                                    <span *ngIf="data.isCompleted === true" class="badge badge-success-bg">Completed</span>
                                   </td>
                                 </tr>
                               </ng-container>
