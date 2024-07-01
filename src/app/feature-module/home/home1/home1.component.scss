@@ -978,3 +978,13 @@ border:1px solid #eeeff4;
     display: flex;
     justify-content: center
 }
+.form-control::placeholder {
+    color: #a9a9a9; /* Customize this color */
+    // font-style: italic; /* Customize other styles as needed */
+    font-weight: normal;
+    font-size: 10px;
+  }
+  .required-asterisk {
+    color: red;
+    margin-left: 5px; /* Optional: to add some space between the text and the asterisk */
+  }

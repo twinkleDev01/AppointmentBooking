@@ -71,7 +71,7 @@
               <!-- age and gender -->
                <div class="row">
                  <div class="col-lg-6 col-md-6 col-6 p-0">
-                   <input type="number" placeholder="Enter Age" formControlName="age">
+                   <input type="text" placeholder="Enter Age" formControlName="age" (keypress)="validateNumber($event)">
                    <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)" class="text-danger">
                      Age is required.
                    </div>
@@ -626,8 +626,8 @@
                 <div class="row">
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="first-name" class="mb-2">First Name</label>
-                      <input formControlName="firstName" [readOnly]="existingUser" class="form-control" type="text" />
+                      <label for="first-name" class="mb-2">First Name<span class="required-asterisk">*</span></label>
+                      <input formControlName="firstName" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter First Name" (input)="validateAlphabetic($event)"/>
                       <div *ngIf="InfoForm.get('firstName')?.invalid && InfoForm.get('firstName')?.touched">
                         First Name is required
                       </div>
@@ -635,8 +635,8 @@
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="last-name" class="mb-2">Last Name</label>
-                      <input formControlName="lastName" [readOnly]="existingUser" class="form-control" type="text" />
+                      <label for="last-name" class="mb-2">Last Name<span class="required-asterisk">*</span></label>
+                      <input formControlName="lastName" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Last Name" (input)="validateAlphabetic($event)"/>
                       <div *ngIf="InfoForm.get('lastName')?.invalid && InfoForm.get('lastName')?.touched">
                         Last Name is required
                       </div>
@@ -644,8 +644,8 @@
                   </div>
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="city" class="mb-2">City</label>
-                      <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" />
+                      <label for="city" class="mb-2">City<span class="required-asterisk">*</span></label>
+                      <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter City"/>
                       <div *ngIf="InfoForm.get('city')?.invalid && InfoForm.get('city')?.touched">
                         City is required
                       </div>
@@ -653,8 +653,8 @@
                   </div>
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="state" class="mb-2">State</label>
-                      <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" />
+                      <label for="state" class="mb-2">State<span class="required-asterisk">*</span></label>
+                      <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter State"/>
                       <div *ngIf="InfoForm.get('state')?.invalid && InfoForm.get('state')?.touched">
                         State is required
                       </div>
@@ -662,8 +662,8 @@
                   </div>
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="pinCode" class="mb-2">PIN Code</label>
-                      <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" />
+                      <label for="pinCode" class="mb-2">PIN Code<span class="required-asterisk">*</span></label>
+                      <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter PinCode"/>
                       <div *ngIf="InfoForm.get('pinCode')?.invalid && InfoForm.get('pinCode')?.touched">
                         PIN Code is required
                       </div>
@@ -671,8 +671,8 @@
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="email" class="mb-2">Email</label>
-                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" />
+                      <label for="email" class="mb-2">Email<span class="required-asterisk">*</span></label>
+                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" placeholder="Enter Email"/>
                       <div *ngIf="InfoForm.get('email')?.invalid && InfoForm.get('email')?.touched">
                         Enter a valid email
                       </div>
@@ -680,8 +680,8 @@
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="phone" class="mb-2">Phone</label>
-                      <input formControlName="phone" [readOnly]="existingUser" class="form-control" type="text" />
+                      <label for="phone" class="mb-2">Phone<span class="required-asterisk">*</span></label>
+                      <input formControlName="phone" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Phone Number" (keypress)="validateNumber($event)" maxlength="10"/>
                       <div *ngIf="InfoForm.get('phone')?.invalid && InfoForm.get('phone')?.touched">
                         Phone is required
                       </div>
@@ -710,31 +710,6 @@
                 <h4 class="card-title">Booking Summary</h4>
               </div>
               <div class="card-body">
-                <!-- Booking Doctor Info -->
-                <!-- <div class="booking-doc-info">
-                  <a [routerLink]="routes.doctorProfile2" class="booking-doc-img">
-                    <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" />
-                  </a>
-                  <div class="booking-info">
-                    <h4>
-                      <a [routerLink]="routes.doctorProfile2">{{InfoForm.value.firstName}} {{InfoForm.value.lastName}}</a>
-                    </h4>
-                    <div class="rating">
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star filled"></i>
-                      <i class="fas fa-star"></i>
-                      <span class="d-inline-block average-rating">appointmentForm.value.age</span>
-                    </div>
-                    <div class="clinic-details">
-                      <p class="doc-location">
-                        <i class="fas fa-map-marker-alt"></i> Newyork, USA
-                      </p>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- Booking Doctor Info -->
 
                 <div class="booking-summary">
                   <div class="booking-item-wrap">
@@ -756,11 +731,11 @@
                         </div>
                       </div>
                       <div class="mb-1"><span class="fw-bold">Concern: </span><ng-container *ngFor="let issue of issues">{{issue.issueName}},</ng-container></div>
-                      <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>{{appointmentForm.value.firstTimeConsult}}</div>
+                      <!-- <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>{{appointmentForm.value.firstTimeConsult === true?'Yes':'No'}}</div> -->
                     </div>
 
                     <ul class="booking-fee">
-                      <li>Consulting Fee <span>200</span></li>
+                      <li>Consulting Fee<span>INR 200</span></li>
                       <li>Booking Fee <span>0</span></li>
                       <li>Video Call <span>0</span></li>
                     </ul>
@@ -768,7 +743,7 @@
                       <ul class="booking-total-list">
                         <li>
                           <span>Total</span>
-                          <span class="total-cost">200</span>
+                          <span class="total-cost">INR 200</span>
                         </li>
                       </ul>
                     </div>
