@@ -168,6 +168,13 @@ select {
 .banner-content p {
     width: 40%;
 }
+.banner-section {
+    background: #F9FCFF;
+    padding: 200px 0 30px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
 
 .form h3 {
     color: #0e82fd;
