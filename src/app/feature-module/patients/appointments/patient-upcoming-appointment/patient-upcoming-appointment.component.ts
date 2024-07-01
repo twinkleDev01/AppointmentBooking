@@ -11,12 +11,13 @@ export class PatientUpcomingAppointmentComponent implements OnInit {
   public routes = routes;
   isImageModalOpen: boolean = false;
   selectedImageUrl!: string;
-  files: { name: string, url: string, type: string }[] = [];
+  files:any
   activeIndex = 0;
   ngOnInit(): void {
     if (history.state && history.state.appointment) {
       this.appointmentData = history.state.appointment;
       console.log('appointmentData', this.appointmentData);
+      this.files=this.convertToUrls(this.appointmentData.issueImage)
     }
   }
 formatDate(inputDate:any) {
@@ -48,4 +49,23 @@ formatDate(inputDate:any) {
   prev(): void {
     this.activeIndex = (this.activeIndex === 0) ? (this.files.length - 1) : (this.activeIndex - 1);
   }
+  convertToUrls(filePathsStr:any) {
+    const baseUrl = "https://bookingapi.asptask.in/";
+
+    // Parse the string to get the array
+    let filePaths;
+    try {
+        filePaths = JSON.parse(filePathsStr);
+    } catch (error) {
+        throw new TypeError("Invalid JSON string");
+    }
+
+    if (!Array.isArray(filePaths)) {
+        throw new TypeError("Parsed data is not an array");
+    }
+
+    const urls = filePaths.map(filePath => baseUrl + filePath.split('/').pop());
+    console.log(JSON.stringify(urls, null, 2))
+    return JSON.stringify(urls, null, 2); // Pretty print JSON with 2 space indentation
+}
 }

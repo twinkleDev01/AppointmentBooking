@@ -1964,8 +1964,7 @@
                   <h6 class="customer-text">Billing From</h6>
                   <p class="invoice-details invoice-details-two">
                     {{invoiceDetail.doctorName}} <br>
-                    806 Twin Willow Lane, <br>
-                    Newyork, USA <br>
+                    {{invoiceDetail.docotrAddress}} <br>
                   </p>
                 </div>
               </div>
@@ -1973,9 +1972,8 @@
                 <div class="invoice-info">
                   <h6 class="customer-text">Billing To</h6>
                   <p class="invoice-details invoice-details-two">
-                    Richard Wilson <br>
-                    299 Star Trek Drive<br>
-                    Florida, 32405, USA<br>
+                    {{invoiceDetail.patientName}}<br>
+                    {{invoiceDetail.patientAddress}}<br>
                   </p>
                 </div>
               </div>
