@@ -604,4 +604,15 @@ initiatePayment() {
       
     })
   }
+  noWhitespaceValidator(control: FormControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true };
+  }
+  validateNumber(event: KeyboardEvent) {
+    const input = String.fromCharCode(event.keyCode);
+    if (!/^[0-9]*$/.test(input)) {
+      event.preventDefault();
+    }
+  }
 }
