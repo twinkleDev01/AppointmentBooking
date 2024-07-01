@@ -875,6 +875,15 @@ border:1px solid #eeeff4;
 }
 
 @media (max-width: 576px) {
+    .alt_text{
+        min-height: 100px !important;
+        
+    }
+    .close{
+        position: absolute;
+        top: -13px !important;
+        right: -10px !important;
+    }
     .mobile-fixed-bottom {
         position: fixed;
         bottom: 0;

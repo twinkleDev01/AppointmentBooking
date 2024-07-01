@@ -118,13 +118,13 @@ export class Home1Component implements OnInit {
     });
     this.selectedValue = 'true';
     this.InfoForm = this.fb.group({
-      firstName: [{ value: '', disabled: this.existingUser }, Validators.required],
-      lastName: [{ value: '', disabled: this.existingUser }, Validators.required],
-      city: [{ value: '', disabled: this.existingUser }, Validators.required],
-      state: [{ value: '', disabled: this.existingUser }, Validators.required],
-      pinCode: [{ value: '', disabled: this.existingUser }, Validators.required],
-      email: [{ value: '', disabled: this.existingUser }, [Validators.required, Validators.email]],
-      phone: [{ value: '', disabled: this.existingUser }, Validators.required]
+      firstName: [{ value: ''}, Validators.required],
+      lastName: [{ value: ''}, Validators.required],
+      city: [{ value: '' }, Validators.required],
+      state: [{ value: ''}, Validators.required],
+      pinCode: [{ value: ''}, Validators.required],
+      email: [{ value: '' }, [Validators.required, Validators.email]],
+      phone: [{ value: '' }, Validators.required]
     });
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)
