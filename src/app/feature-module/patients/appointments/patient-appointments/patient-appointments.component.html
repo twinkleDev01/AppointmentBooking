@@ -265,8 +265,8 @@
                                             </li> -->
                                         </ul>
                                     </li>
-                                    <li class="appointment-detail-btn">
-                                        <a href="javascript:void(0);" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
+                                    <li *ngIf="data.isUpcomming===true" class="appointment-detail-btn">
+                                        <a [href]=data.zoomLink target="_blank" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                     </li>
                                 </ul>
                             </div>

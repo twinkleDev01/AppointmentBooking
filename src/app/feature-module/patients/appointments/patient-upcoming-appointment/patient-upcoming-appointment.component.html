@@ -47,6 +47,7 @@
                                         <li>{{appointmentData.issue}}</li>
                                     </ul>
                                     <button class="mt-2 btn btn-outline-info" (click)="openImagePreviewModal()" >Preview issue Images</button>
+                                    
                                 </div>
                             </li>
                             <li class="appointment-action">
@@ -75,7 +76,7 @@
                             </li>
                             <li>
                                 <div class="start-btn">
-                                    <a href="javascript:void(0);" class="btn btn-secondary">Start Session</a>
+                                    <a [href]=appointmentData.zoomLink target="_blank" class="btn btn-secondary">Start Session</a>
                                 </div>
                             </li>
                         </ul>
