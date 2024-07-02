@@ -1442,24 +1442,24 @@
       </div>
       <div class="modal-body pb-0">
         <div class="prescribe-download">
-          <h5>21 Mar 2024</h5>
+          <h5>{{formatDate(PrescriptionsDetails.createdDate)}}</h5>
           <ul>
-            <li><a href="javascript:void(0);" class="print-link"><i class="fa-solid fa-print"></i></a></li>
-            <li><a href="javascript:void(0);" class="btn btn-primary prime-btn">Download</a></li>
+            <!-- <li><a href="javascript:void(0);" class="print-link"><i class="fa-solid fa-print"></i></a></li> -->
+            <li><a href="javascript:void(0);" class="btn btn-primary prime-btn" (click)="downloadPDFPrescription()">Download</a></li>
           </ul>
         </div>
-        <div class="view-prescribe invoice-content">
+        <div  #prescriptions class="view-prescribe invoice-content">
           <div class="invoice-item">
             <div class="row">
               <div class="col-md-6">
                 <div class="invoice-logo">
-                  <img src="assets/img/logo.png" alt="logo">
+                  <!-- <img src="assets/img/logo.png" alt="logo"> -->
                 </div>
               </div>
               <div class="col-md-6">
                 <p class="invoice-details">
-                  <strong>Prescription ID :</strong> #PR-123 <br>
-                  <strong>Issued:</strong> 21 Mar 2024
+                  <!-- <strong>Prescription ID :</strong> #PR-123 <br> -->
+                  <strong>Issued:</strong>{{formatDate(PrescriptionsDetails.createdDate)}}
                 </p>
               </div>
             </div>
@@ -1472,9 +1472,9 @@
                 <div class="invoice-info">
                   <h6 class="customer-text">Doctor Details</h6>
                   <p class="invoice-details invoice-details-two">
-                    Edalin Hendry <br>
-                    806 Twin Willow Lane, <br>
-                    Newyork, USA <br>
+                    {{PrescriptionsDetails.doctorName}}<br>
+                    {{PrescriptionsDetails.doctorState}} <br>
+                    {{PrescriptionsDetails.doctorCountry}}<br>
                   </p>
                 </div>
               </div>
@@ -1482,9 +1482,9 @@
                 <div class="invoice-info invoice-info2">
                   <h6 class="customer-text">Patient Details</h6>
                   <p class="invoice-details">
-                    Adrian Marshall <br>
-                    299 Star Trek Drive,<br>
-                    Florida, 32405, USA <br>
+                    {{PrescriptionsDetails.patientName}} <br>
+                    {{PrescriptionsDetails.patientState}}<br>
+                    {{PrescriptionsDetails.patientCountry}}<br>
                   </p>
                 </div>
               </div>
@@ -1505,38 +1505,19 @@
                         <th>Dosage</th>
                         <th>Frequency</th>
                         <th>Duration</th>
-                        <th>Timings</th>
+                        <th>Instruction</th>
                       </tr>
                     </thead>
                     <tbody>
+                      <ng-container *ngFor="let medicine of PrescriptionsDetails.medicines">
                       <tr>
-                        <td>Ecosprin 75MG [Asprin 75 MG Oral Tab]</td>
-                        <td>75 mg <span>Oral Tab</span></td>
-                        <td>1-0-0-1</td>
-                        <td>1 month</td>
-                        <td>Before Meal</td>
+                        <td>{{medicine.medicineName}}</td>
+                        <td>{{medicine.dosage}}</td>
+                        <td>{{medicine.frequency}}</td>
+                        <td>{{medicine.duration}}</td>
+                        <td>{{medicine.instruction}}</td>
                       </tr>
-                      <tr>
-                        <td>Alexer 90MG Tab</td>
-                        <td>90 mg <span>Oral Tab</span></td>
-                        <td>1-0-0-1</td>
-                        <td>1 month</td>
-                        <td>Before Meal</td>
-                      </tr>
-                      <tr>
-                        <td>Ramistar XL2.5</td>
-                        <td>60 mg <span>Oral Tab</span></td>
-                        <td>1-0-0-0</td>
-                        <td>1 month</td>
-                        <td>After Meal</td>
-                      </tr>
-                      <tr>
-                        <td>Metscore</td>
-                        <td>90 mg <span>Oral Tab</span></td>
-                        <td>1-0-0-1</td>
-                        <td>1 month</td>
-                        <td>After Meal</td>
-                      </tr>
+                    </ng-container>
                     </tbody>
                   </table>
                 </div>
@@ -1546,7 +1527,7 @@
           <!-- /Invoice Item -->
 
           <!-- Invoice Information -->
-          <div class="other-info">
+          <!-- <div class="other-info">
             <h4>Other information</h4>
             <p class="text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum
               ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed
@@ -1556,10 +1537,9 @@
           <div class="other-info">
             <h4>Follow Up</h4>
             <p class="text-muted mb-0">Follow u p after 3 months, Have to come on empty stomach</p>
-          </div>
+          </div> -->
           <div class="prescriber-info">
-            <h6>Dr. Edalin Hendry</h6>
-            <p>Dept of Cardiology</p>
+            <h6>{{PrescriptionsDetails.doctorName}}</h6>
           </div>
           <!-- /Invoice Information -->
 
@@ -1591,7 +1571,7 @@
         <div class="view-prescribe-details">
           <div class="hospital-addr">
             <div class="invoice-logo">
-              <img src="assets/img/logo.png" alt="logo">
+              <!-- <img src="assets/img/logo.png" alt="logo"> -->
             </div>
             <h5>16, Wardlow, Buxton, Derbyshire, SK17 8RW. Phone : 01298 872268 </h5>
             <p>Monday to Sunday - 09:30am to 12:00pm</p>

@@ -60,7 +60,7 @@ export class PaymentService {
       this.bookAppointment(formData).subscribe((response: any) => {
         console.log('Appointment booked successfully:', response);
         if (response) {
-          this.toastr.success('Appointment created Successfully', "Success");
+          this.toastr.success('Appointment Created Successfully', "Success");
           this.auth.setToken(response.data.token);
           this.getZoomToken(zoomData,email);
           this.route.navigate(['/patients/patient-dashboard']);

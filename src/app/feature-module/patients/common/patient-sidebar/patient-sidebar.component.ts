@@ -42,7 +42,6 @@ export class PatientSidebarComponent {
   }
   isPatient:boolean =false
   Logout(){
-    console.log("45")
 localStorage.removeItem('token')
   localStorage.removeItem('UserDetail')
   this.isPatient=false
@@ -51,7 +50,6 @@ localStorage.removeItem('token')
   getUserInfo(){
     this.patientsService.getPatientinfo().subscribe((res:any)=>{
       this.userInfo=res?.data;
-      console.log(this.userInfo,"66")
     })
   }
 }
