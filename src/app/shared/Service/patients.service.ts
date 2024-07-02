@@ -19,12 +19,14 @@ export class PatientsService {
   updatePatientInfo:string ='/Patient/updatePatientDetails'
   getinvoice:string ='/Invoice/GetInvoices'
   contactInfo:string='/ContactUs'
+  getDoctorsList:string ='/Doctor/ListOfDoctorWithCountAppointments'
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Detail:any;
   // private userSubject = new BehaviorSubject<any>(null); // Initial value null
   // user$ = this.userSubject.asObservable();
   public userSubject:BehaviorSubject<any> = new BehaviorSubject<any>({});
   public invoiceData:BehaviorSubject<any> = new BehaviorSubject<any>({});
+  public Prescriptions:BehaviorSubject<any> = new BehaviorSubject<any>({});
   constructor(private http:HttpClient, private auth: AuthService) { 
     this.auth.uderDetail.subscribe((res:any)=>{
       console.log(res,"21")
@@ -120,8 +122,12 @@ return this.http.get(url);
 }
 
 contactData(data:any){
-  const url=`${this.baseUrl}${this.contactInfo}`;
+const url=`${this.baseUrl}${this.contactInfo}`;
 return this.http.post(url, data);
+}
+getDoctors(){
+  const url=`${this.baseUrl}${this.getDoctorsList}`;
+  return this.http.get(url);
 }
 
  }

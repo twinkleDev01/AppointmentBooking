@@ -48,6 +48,7 @@ export class LoginComponent {
       .then((confirmationResult) => {
         this.confirmationResult = confirmationResult;
         this.otpSent = true
+        this.toastr.success('OTP sent Successfully', "Success");
       })
       .catch((error) => {
         console.error('Error during signInWithPhoneNumber', error);

@@ -319,11 +319,16 @@ export class ModalComponent implements OnInit {
     this.hours.splice(index, 1);
   }
   invoiceDetail:any
+  PrescriptionsDetails:any
   ngOnInit() {
     this.myDateValue = new Date();
     this.patientsService.invoiceData.subscribe((res:any)=>{
       console.log("332",res)
       this.invoiceDetail = res
+    })
+    this.patientsService.Prescriptions.subscribe((res:any)=>{
+      console.log("330",res)
+      this.PrescriptionsDetails = res
     })
 
   }
@@ -349,6 +354,7 @@ export class ModalComponent implements OnInit {
   }
 
   @ViewChild('invoice') invoiceElement!: ElementRef;
+  @ViewChild('prescriptions') prescriptionElement!: ElementRef;
 
   downloadPDF() {
     const DATA = this.invoiceElement.nativeElement;
@@ -364,4 +370,31 @@ export class ModalComponent implements OnInit {
       PDF.save('invoice.pdf');
     });
   }
+  downloadPDFPrescription() {
+    const DATA = this.prescriptionElement.nativeElement;
+    html2canvas(DATA).then(canvas => {
+      const fileWidth = 208;
+      const fileHeight = (canvas.height * fileWidth) / canvas.width;
+
+      const FILEURI = canvas.toDataURL('image/png');
+      const PDF = new jsPDF('p', 'mm', 'a4');
+      const position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+
+      PDF.save('prescription.pdf');
+    });
+  }
+
+ formatDate(dateString:any) {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const year = date.getFullYear();
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const month = monthNames[date.getMonth()];
+    const formattedDay = day < 10 ? '0' + day : day;
+    return `${formattedDay} ${month} ${year}`;
+}
 }

@@ -52,5 +52,5 @@ export class PatientInvoiceComponent {
     console.log(invoiceObject,"obj");
     const matchingObj = this.invoices.find((invoice:any)=>invoice.id == invoiceObject.id);
 this.patientsService.invoiceData.next(matchingObj);
-  }
+  } 
 }

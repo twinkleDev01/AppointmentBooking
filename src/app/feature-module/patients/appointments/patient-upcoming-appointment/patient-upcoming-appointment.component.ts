@@ -31,8 +31,11 @@ formatDate(inputDate:any) {
   }
   
   openImagePreviewModal() {
+    console.log(this.files)
     if (this.files.length > 0) {
+      console.log(this.isImageModalOpen,36)
       this.isImageModalOpen = true;
+      console.log(this.isImageModalOpen,38)
     }
   }
   openImageModal(imageUrl: string) {
@@ -49,11 +52,11 @@ formatDate(inputDate:any) {
   prev(): void {
     this.activeIndex = (this.activeIndex === 0) ? (this.files.length - 1) : (this.activeIndex - 1);
   }
-  convertToUrls(filePathsStr:any) {
-    const baseUrl = "https://bookingapi.asptask.in/";
+  convertToUrls(filePathsStr: string): string[] {
+    const baseUrl = "https://bookingapi.asptask.in/Upload/image/";
 
     // Parse the string to get the array
-    let filePaths;
+    let filePaths: string[];
     try {
         filePaths = JSON.parse(filePathsStr);
     } catch (error) {
@@ -63,9 +66,7 @@ formatDate(inputDate:any) {
     if (!Array.isArray(filePaths)) {
         throw new TypeError("Parsed data is not an array");
     }
-
-    const urls = filePaths.map(filePath => baseUrl + filePath.split('/').pop());
-    console.log(JSON.stringify(urls, null, 2))
-    return JSON.stringify(urls, null, 2); // Pretty print JSON with 2 space indentation
-}
+console.log(filePaths.map(filePath => baseUrl + filePath.split('/').pop()))
+    return filePaths.map(filePath => baseUrl + filePath.split('/').pop());
+  }
 }
