@@ -5,7 +5,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import { aboutUs, doctorSliderOne, partnersSlider, specialitiesSliderOne } from 'src/app/shared/models/models';
 import { Router } from '@angular/router';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { PaymentService } from 'src/app/shared/payment/payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/auth/auth.service';
@@ -321,8 +321,10 @@ return window.innerWidth < 767
     });
   }
 
+  tempSelectedTimeSlot:any
   onSelectTimeSlot(slot: any) {
-    this.selectedTimeSlot = slot;
+    // this.selectedTimeSlot = slot;
+    this.tempSelectedTimeSlot = slot; // Store the time slot temporarily
   }
 
   onDateChange(event: any) {
@@ -438,6 +440,10 @@ return window.innerWidth < 767
     });
   }
 
+  confirmSlot(): void {
+    this.selectedTimeSlot = this.tempSelectedTimeSlot; // Confirm the time slot
+    this.closeModal();
+  }
 
   onSubmit(){
     this.submitted=true
@@ -558,7 +564,13 @@ initiatePayment() {
       });
 
       this.paymentService.initiatePayment(amount, name, email, contact, formData,zoomData);
-      this.InfoForm.reset();
+      this.paymentService.paymentId.subscribe((res:any)=>{
+        console.log(res,"560")
+        if(res && Object.keys(res).length !== 0){
+          console.log("562")
+ this.InfoForm.reset();
+        }
+      })
     } else {
       this.markAllAsTouched();
     }
@@ -612,10 +624,12 @@ initiatePayment() {
       
     })
   }
-  noWhitespaceValidator(control: FormControl) {
-    const isWhitespace = (control.value || '').trim().length === 0;
-    const isValid = !isWhitespace;
-    return isValid ? null : { 'whitespace': true };
+  noWhitespaceValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const isWhitespace = (control.value || '').trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { 'whitespace': true };
+    };
   }
   validateNumber(event: KeyboardEvent) {
     const input = String.fromCharCode(event.keyCode);
@@ -623,4 +637,15 @@ initiatePayment() {
       event.preventDefault();
     }
   }
+
+  preventWhitespace(event: any): void {
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+  }
+
+  ngOnDestroy(){
+this.paymentService.paymentId.unsubscribe()
+  }
+
 }

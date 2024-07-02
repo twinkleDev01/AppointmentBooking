@@ -1,3 +1,18 @@
 .profile-set{
     margin-top: 70px;
 }
+:host ::ng-deep span.p-calendar{
+    width: 100%;
+}
+:host ::ng-deep p-element{
+    display: block;
+}
+:host ::ng-deep .p-inputtext{
+    border-color: #E2E8F0;
+    border-radius: 6px;
+    min-height: 40px;
+    padding: 7px 15px;
+}
+:host ::ng-deep .p-datepicker table td{
+    padding: 0;
+}

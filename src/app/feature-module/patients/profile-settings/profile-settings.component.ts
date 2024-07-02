@@ -78,15 +78,34 @@ this.patientsService.userSubject.next(data);
   onFileChange(event: any){
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      const fileType = file.type;
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+
        // Read the file and set the URL to display
-       const reader = new FileReader();
-       reader.onload = () => {
-         this.selectedImageUrl = reader.result;
-       };
-       reader.readAsDataURL(file);
-      this.profileForm.patchValue({
-        profileImage: file
-      });
+      //  const reader = new FileReader();
+      //  reader.onload = () => {
+      //    this.selectedImageUrl = reader.result;
+      //  };
+      //  reader.readAsDataURL(file);
+      // this.profileForm.patchValue({
+      //   profileImage: file
+      // });
+      if (validImageTypes.includes(fileType)) {
+        // Read the file and set the URL to display
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.selectedImageUrl = reader.result;
+        };
+        reader.readAsDataURL(file);
+  
+        this.profileForm.patchValue({
+          profileImage: file
+        });
+      } else {
+        // Display an error message or handle invalid file type
+        // alert('Please upload a valid image file (jpg, jpeg, png).');
+        this.toastr.error("Please upload a valid image file (jpg, jpeg, png).")
+      }
     }
     else{
       this.profileForm.patchValue({
@@ -138,5 +157,24 @@ this.patientsService.userSubject.next(data);
       const month = (date.getMonth() + 1).toString().padStart(2, '0');
       const day = date.getDate().toString().padStart(2, '0');
       return `${year}-${month}-${day}`;
+  }
+
+  removeFile(){
+    this.selectedImageUrl = '';
+    this.profileForm.get('profileImage')?.setValue(null)
+    this.patientsService.userSubject.next('')
+  }
+
+  validateNumber(event: KeyboardEvent) {
+    const input = String.fromCharCode(event.keyCode);
+    if (!/^[0-9]*$/.test(input)) {
+      event.preventDefault();
+    }
+  }
+
+  preventWhitespace(event: any): void {
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
   }
 }

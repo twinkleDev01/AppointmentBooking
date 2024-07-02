@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class PaymentService {
   bookappointment:string='/Appointment/book_appointment'
   getZoomtoken: string='/Zoom/token'
   createmetting:string='/Zoom/createMeeting'
+  public paymentId:BehaviorSubject<any> = new BehaviorSubject<any>({});
 
   constructor(private http:HttpClient, private auth:AuthService, private route:Router,private toastr: ToastrService,) { }
 
@@ -51,6 +53,7 @@ export class PaymentService {
 
   paymentHandler(response: any, formData: FormData,zoomData:any,email:string) {
     console.log(response, formData);
+    const paymentIdData = response.razorpay_payment_id
     // Append the payment ID to the form data
   formData.append('PaymentId', response.razorpay_payment_id);
   formData.append('PaymentStatus', 'true');  // Optionally add payment status
@@ -60,7 +63,8 @@ export class PaymentService {
       this.bookAppointment(formData).subscribe((response: any) => {
         console.log('Appointment booked successfully:', response);
         if (response) {
-          this.toastr.success('Appointment Created Successfully', "Success");
+          this.paymentId.next(paymentIdData)
+          this.toastr.success('Appointment created Successfully', "Success");
           this.auth.setToken(response.data.token);
           this.getZoomToken(zoomData,email);
           this.route.navigate(['/patients/patient-dashboard']);
