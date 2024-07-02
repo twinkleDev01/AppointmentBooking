@@ -7,30 +7,12 @@
         <div class="row">
             
             <!-- Profile Sidebar -->
-            <app-patient-sidebar class="col-lg-4 col-xl-3"></app-patient-sidebar>
+            <app-patient-sidebar class="col-lg-4 col-xl-3 mt-5"></app-patient-sidebar>
             <!-- / Profile Sidebar -->
             
-            <div class="col-lg-8 col-xl-9">
+            <div class="col-lg-8 col-xl-9 mt-5">
                 <div class="dashboard-header">
                     <h3>Appointments</h3>
-                    <ul class="header-list-btns">
-                        <li>
-                            <div class="input-block dash-search-input">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="view-icons">
-                                <a [routerLink] = "routes.patientAppointment" class="active"><i class="fa-solid fa-list"></i></a>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="view-icons">
-                                <a [routerLink] = "routes.patientAppointmentsGrid"><i class="fa-solid fa-th"></i></a>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
                 <div class="appointment-tab-head">
                     <div class="appointment-tabs">
