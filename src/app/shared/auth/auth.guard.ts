@@ -34,3 +34,21 @@ export class PharmacyAuthGuard  {
     return true;
   }
 }
+
+
+@Injectable({
+  providedIn: 'root',
+})
+export class PatientAuthGuard  {
+  constructor(private router: Router) {}
+
+  canActivate(): boolean | UrlTree {
+    const authenticatedPatient = localStorage.getItem('token');
+
+    if (!authenticatedPatient) {
+      return this.router.createUrlTree(['authentication/login']);
+    }
+
+    return true;
+  }
+}

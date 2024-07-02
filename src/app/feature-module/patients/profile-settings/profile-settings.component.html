@@ -21,7 +21,7 @@
                             Upload New
                             <input type="file" class="upload" (change)="onFileChange($event)">
                           </div>
-                          <a href="javascript:void(0);" class="upload-remove">Remove</a>
+                          <a href="javascript:void(0);" class="upload-remove" (click)="removeFile()">Remove</a>
                         </div>
                         <p class="form-text">Your Image should Below 4 MB, Accepted format Jpg,Png,Svg</p>
                       </div>
@@ -35,7 +35,7 @@
                       <div class="col-lg-4 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="firstName">First Name <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" formControlName="firstName">
+                          <input type="text" class="form-control" formControlName="firstName" (keypress)="preventWhitespace($event)">
                           <div *ngIf="profileForm.get('firstName')?.invalid && (profileForm.get('firstName')?.dirty || profileForm.get('firstName')?.touched)" class="text-danger">
                             First Name is required.
                           </div>
@@ -44,7 +44,7 @@
                       <div class="col-lg-4 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="lastName">Last Name <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" formControlName="lastName">
+                          <input type="text" class="form-control" formControlName="lastName" (keypress)="preventWhitespace($event)">
                           <div *ngIf="profileForm.get('lastName')?.invalid && (profileForm.get('lastName')?.dirty || profileForm.get('lastName')?.touched)" class="text-danger">
                             Last Name is required.
                           </div>
@@ -62,7 +62,7 @@
                       <div class="col-lg-4 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
-                          <input type="text" class="form-control" formControlName="phoneNumber">
+                          <input type="text" class="form-control" formControlName="phoneNumber" (keypress)="validateNumber($event)">
                           <div *ngIf="profileForm.get('phoneNumber')?.invalid && (profileForm.get('phoneNumber')?.dirty || profileForm.get('phoneNumber')?.touched)" class="text-danger">
                             Phone Number is required.
                           </div>
@@ -71,7 +71,7 @@
                       <div class="col-lg-4 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="email">Email Address <span class="text-danger">*</span></label>
-                          <input type="email" class="form-control" formControlName="email">
+                          <input type="email" class="form-control" formControlName="email" (keypress)="preventWhitespace($event)">
                           <div *ngIf="profileForm.get('email')?.invalid && (profileForm.get('email')?.dirty || profileForm.get('email')?.touched)" class="text-danger">
                             <div *ngIf="profileForm.get('email')?.errors?.['required']">Email is required.</div>
                             <div *ngIf="profileForm.get('email')?.errors?.['email']">Invalid email format.</div>
@@ -81,7 +81,7 @@
                       <div class="col-lg-4 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="bloodGroup">Blood Group</label>
-                          <input type="text" class="form-control" formControlName="bloodGroup">
+                          <input type="text" class="form-control" formControlName="bloodGroup" (keypress)="preventWhitespace($event)">
                         </div>
                       </div>
                     </div>
@@ -94,31 +94,31 @@
                       <div class="col-lg-12">
                         <div class="form-wrap">
                           <label class="col-form-label" for="address">Address</label>
-                          <input type="text" class="form-control" formControlName="address">
+                          <input type="text" class="form-control" formControlName="address" (keypress)="preventWhitespace($event)">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="city">City</label>
-                          <input type="text" class="form-control" formControlName="city">
+                          <input type="text" class="form-control" formControlName="city" (keypress)="preventWhitespace($event)">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="state">State</label>
-                          <input type="text" class="form-control" formControlName="state">
+                          <input type="text" class="form-control" formControlName="state" (keypress)="preventWhitespace($event)">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="country">Country</label>
-                          <input type="text" class="form-control" formControlName="country">
+                          <input type="text" class="form-control" formControlName="country" (keypress)="preventWhitespace($event)">
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="pincode">Pincode</label>
-                          <input type="text" class="form-control" formControlName="pincode">
+                          <input type="text" class="form-control" formControlName="pincode" (keypress)="validateNumber($event)">
                         </div>
                       </div>
                     </div>
