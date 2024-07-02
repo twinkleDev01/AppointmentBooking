@@ -52,9 +52,9 @@
                             </li>
                             <li class="appointment-action">
                                 <div class="detail-badge-info">
-                                    <span *ngIf="appointmentData.isUpcomming===true" class="badge bg-yellow">Upcoming</span>
-                                    <span  *ngIf="appointmentData.isCancelled===true" class="badge bg-danger">Upcoming</span>
-                                    <span  *ngIf="appointmentData.isCompleted===true" class="badge bg-success">Upcoming</span>
+                                    <span *ngIf="appointmentData.isUpcomming" class="badge bg-yellow">Upcoming</span>
+                                    <span  *ngIf="appointmentData.isCancelled" class="badge bg-danger">Upcoming</span>
+                                    <span  *ngIf="appointmentData.isCompleted" class="badge bg-success">Upcoming</span>
                                 </div>
                                 <div class="consult-fees">
                                     <h6>Consultation Fees : 200</h6>
@@ -74,7 +74,7 @@
                                 <h6>Visit Type</h6>
                                 <span>General</span>
                             </li>
-                            <li>
+                            <li *ngIf="appointmentData.isUpcomming">
                                 <div class="start-btn">
                                     <a [href]=appointmentData.zoomLink target="_blank" class="btn btn-secondary">Start Session</a>
                                 </div>
