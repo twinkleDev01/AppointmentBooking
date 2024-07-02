@@ -351,14 +351,16 @@
       </div>
       <div class="doctor-slider-one owl-theme aos" data-aos="fade-up" data-aos-duration="2000">
         <owl-carousel-o [options]="doctorSlider">
-          @for (data of doctorSliderOne; track data) {
+          @for (data of Doctors; track data) {
           <ng-template carouselSlide>
             <div class="item">
               <div class="doctor-profile-widget doc-item">
                 <div class="doc-pro-img">
-                  <a [routerLink]="routes.doctorProfile2">
+                  <!-- [routerLink]="routes.doctorProfile2" -->
+                  <a>
                     <div class="doctor-profile-img">
-                      <img [src]="data.img" class="img-fluid" alt="Ruby Perrin" />
+                      <img *ngIf="!data.img" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
+                      <img *ngIf="data.img" [src]="data.img" class="img-fluid" alt="doctor">
                     </div>
                   </a>
                   <div class="doctor-amount">
@@ -371,20 +373,22 @@
                       <a [routerLink]="routes.doctorProfile2">{{
                         data.name
                         }}</a>
-                      <p>{{ data.content }}</p>
+                      <p>{{ data.specialty }}</p>
                     </div>
                     <div class="reviews-ratings">
                       <p>
-                        <span><i class="fas fa-star"></i> {{ data.rating1 }}</span>
-                        {{ data.rating2 }}
+                        <!-- <span>Count</span> -->
+                        {{ data.appointmentCount }}
                       </p>
                     </div>
                   </div>
                   <div class="doc-pro-location">
                     <p>
-                      <i class="feather icon-map-pin"></i> {{ data.location }}
+                      <i class="feather icon-map-pin"></i> {{ data.email }}
                     </p>
-                    <span class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
+                    <span *ngIf="data.isAvailable" class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
+                    <span *ngIf="!data.isAvailable" class="badge badge-warning doc-badge"><i class="fa-solid fa-circle"></i>Unavailable</span>
+
                   </div>
                 </div>
               </div>

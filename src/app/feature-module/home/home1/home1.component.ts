@@ -91,6 +91,7 @@ export class Home1Component implements OnInit {
   };
   selectedValue!: any;
   minDate!: Date;
+  Doctors:any
   constructor(
     private data: DataService,
     private router: Router,
@@ -151,13 +152,19 @@ return window.innerWidth < 767
     this.getAvailableSlots();
     this.checkScreenSize();
     this.getUserInfo();
+    this.getDoctors();
     if(!localStorage.getItem('token')){
       this.isPatient = false
     }else{
       this.isPatient = true
     }
   }
-
+  getDoctors(){
+    this.patientsService.getDoctors().subscribe((res:any)=>{
+      console.log(res.result.data,'doctors')
+      this.Doctors=res.result.data
+    })
+  }
   validateAlphabetic(event: any): void {
     const input = event.target;
     const value = input.value;
@@ -419,6 +426,7 @@ return window.innerWidth < 767
   getIssues() {
     this.patientsService.getIssues().subscribe((issues) => {
       this.concerns = issues;
+      console.log(this.concerns)
     });
   }
 
