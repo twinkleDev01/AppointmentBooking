@@ -242,8 +242,8 @@
                       <div *ngFor="let slot of filteredAppointments" class="col-lg-3 col-md-4 col-sm-4 col-6 mt-2"
                         (click)="onSelectTimeSlot(slot)">
                         <div [ngClass]="{
-                            selected: selectedTimeSlot === slot,
-                            'not-selected': selectedTimeSlot !== slot
+                            selected: tempSelectedTimeSlot === slot,
+                            'not-selected': tempSelectedTimeSlot !== slot
                           }"
                         >
                           {{ slot.startTime }}
@@ -255,14 +255,14 @@
                     </div>
                   </div>
                 </div>
-                <div *ngIf="selectedTimeSlot" class=" row ps-5 pe-5">
+                <div *ngIf="tempSelectedTimeSlot" class=" row ps-5 pe-5">
                   <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
-                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startTime }}, {{
+                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ tempSelectedTimeSlot.startTime }}, {{
                         selectedDate | date: 'yyyy-MM-dd'
                         }}</strong></p>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
-                    <button class="modal_btn" (click)="closeModal();slotConfirmed=true">Confirm Slot</button>
+                    <button class="modal_btn" (click)="confirmSlot();slotConfirmed=true">Confirm Slot</button>
                   </div>
                 </div>
               </div>
@@ -652,7 +652,7 @@
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="city" class="mb-2">City<span class="required-asterisk">*</span></label>
-                      <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter City"/>
+                      <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter City" (input)="validateAlphabetic($event)"/>
                       <div *ngIf="InfoForm.get('city')?.invalid && InfoForm.get('city')?.touched">
                         City is required
                       </div>
@@ -661,7 +661,7 @@
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="state" class="mb-2">State<span class="required-asterisk">*</span></label>
-                      <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter State"/>
+                      <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter State" (input)="validateAlphabetic($event)"/>
                       <div *ngIf="InfoForm.get('state')?.invalid && InfoForm.get('state')?.touched">
                         State is required
                       </div>
@@ -670,7 +670,7 @@
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="pinCode" class="mb-2">PIN Code<span class="required-asterisk">*</span></label>
-                      <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter PinCode"/>
+                      <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter PinCode" (keypress)="validateNumber($event)"/>
                       <div *ngIf="InfoForm.get('pinCode')?.invalid && InfoForm.get('pinCode')?.touched">
                         PIN Code is required
                       </div>
@@ -679,7 +679,7 @@
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="email" class="mb-2">Email<span class="required-asterisk">*</span></label>
-                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" placeholder="Enter Email"/>
+                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" placeholder="Enter Email" (keypress)="preventWhitespace($event)"/>
                       <div *ngIf="InfoForm.get('email')?.invalid && InfoForm.get('email')?.touched">
                         Enter a valid email
                       </div>
@@ -737,7 +737,7 @@
                           <span><span class="fw-bold">Gender : </span>{{appointmentForm.value.gender}}</span>
                         </div>
                       </div>
-                      <div class="mb-1"><span class="fw-bold">Concern: </span><ng-container *ngFor="let issue of issues">{{issue.issueName}},</ng-container></div>
+                      <div class="mb-1"><span class="fw-bold">Concern: </span><ng-container *ngFor="let issue of choosenIssues">{{issue.issueName}},</ng-container></div>
                       <!-- <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>{{appointmentForm.value.firstTimeConsult === true?'Yes':'No'}}</div> -->
                     </div>
 

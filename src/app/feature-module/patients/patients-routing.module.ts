@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PatientsComponent } from './patients.component';
 import { PatientInvoiceComponent } from './patient-invoice/patient-invoice.component';
+import { PatientAuthGuard } from '../../shared/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
           import('./patient-dashboard/patient-dashboard.module').then(
             (m) => m.PatientDashboardModule
           ),
+          canActivate: [PatientAuthGuard] // Apply AuthGuard to protect this route
       },
       {
         path: 'favourites',

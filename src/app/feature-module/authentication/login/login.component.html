@@ -80,7 +80,9 @@
                     name="phoneNumber"
                     required
                   />
+                  <span *ngIf="isNumber" class="text-danger">please enter mobile number</span>
                 </div>
+
               
                 <div class="mb-3" *ngIf="otpSent">
                   <input
