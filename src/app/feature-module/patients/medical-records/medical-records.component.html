@@ -49,7 +49,7 @@
                   <tbody>
                     <ng-container *ngFor="let Prescription of filteredPrescriptions,let i=index">
                       <tr>
-                        <td><a class="text-blue-600" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">PR-00{{i+1}}</a></td>
+                        <td><a class="text-blue-600" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">{{i+1}}</a></td>
                         <td>
                           <a href="javascript:void(0);" class="lab-icon prescription">
                             <span><i class="fa-solid fa-prescription"></i></span>Prescription
