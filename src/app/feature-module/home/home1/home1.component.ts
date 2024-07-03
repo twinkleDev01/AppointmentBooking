@@ -151,7 +151,10 @@ return window.innerWidth < 767
     this.getIssues();
     this.getAvailableSlots();
     this.checkScreenSize();
-    this.getUserInfo();
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.getUserInfo();
+    }
     this.getDoctors();
     if(!localStorage.getItem('token')){
       this.isPatient = false
@@ -645,7 +648,9 @@ initiatePayment() {
   }
 
   ngOnDestroy(){
-this.paymentService.paymentId.unsubscribe()
+this.paymentService.paymentId.unsubscribe();
+this.InfoForm.reset();
+console.log('destroy')
   }
 
   convertToUrl(filePath:string) {

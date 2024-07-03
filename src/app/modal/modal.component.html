@@ -1929,7 +1929,7 @@
               </div>
               <div class="col-md-6">
                 <p class="invoice-details">
-                  <strong>Invoice No : </strong> #INV005<br>
+                  <!-- <strong>Invoice No : </strong> #INV005<br> -->
                   <strong>Issued:</strong> {{ invoiceDetail.bookedDate | date:'dd MMM yyyy' }}
                 </p>
               </div>
@@ -1958,14 +1958,7 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="invoice-info invoice-info2">
-                  <h6 class="customer-text">Payment Method</h6>
-                  <p class="invoice-details">
-                    Debit Card <br>
-                    XXXXXXXXXXXX-2541<br>
-                    HDFC Bank<br>
-                  </p>
-                </div>
+               
               </div>
             </div>
           </div>
@@ -1991,14 +1984,9 @@
                         <td>General Consultation</td>
                         <td>1</td>
                         <td>0</td>
-                        <td>INR150</td>
+                        <td>{{invoiceDetail.amount}}</td>
                       </tr>
-                      <tr>
-                        <td>Video Call</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>INR100</td>
-                      </tr>
+                     
                     </tbody>
                   </table>
                 </div>
@@ -2026,16 +2014,6 @@
             </div>
           </div>
           <!-- /Invoice Item -->
-
-          <!-- Invoice Information -->
-          <div class="other-info mb-0">
-            <h4>Other information</h4>
-            <p class="text-muted mb-0">An account of the present illness, which includes the circumstances surrounding
-              the onset of recent health changes and the chronology of subsequent events that have led the patient to
-              seek medicine</p>
-          </div>
-          <!-- /Invoice Information -->
-
         </div>
       </div>
     </div>
