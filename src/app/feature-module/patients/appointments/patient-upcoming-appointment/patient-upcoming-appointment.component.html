@@ -5,9 +5,9 @@
 
         <div class="row">
             
-            <app-patient-sidebar class="col-lg-4 col-xl-3"></app-patient-sidebar>
+            <app-patient-sidebar class="col-lg-4 col-xl-3 mt-5"></app-patient-sidebar>
             
-            <div class="col-lg-8 col-xl-9">
+            <div class="col-lg-8 col-xl-9 mt-5">
                 <div class="dashboard-header">
                     <div class="header-back">
                         <a [routerLink] = "routes.appointmentsListUser" class="back-arrow"><i class="fa-solid fa-arrow-left"></i></a>
@@ -26,7 +26,6 @@
                                         <img *ngIf="!appointmentData.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="Dr Image">
                                     </a>
                                     <div class="patient-info">
-                                        <p>#Apt0001</p>
                                         <h6><a href="javascript:void(0);">{{appointmentData.doctorName}}</a></h6>
                                         <div class="mail-info-patient">
                                             <ul>
@@ -43,11 +42,8 @@
                                     <ul class="d-flex apponitment-types">
                                         <li><i class="fa-solid fa-hospital text-green"></i>Video Call</li>
                                     </ul>
-                                    <p class="mt-2">Concens</p>
-                                    <ul class="d-flex apponitment-types">
-                                        <li>{{appointmentData.issue}}</li>
-                                    </ul>
-                                    <button class="mt-2 btn btn-outline-info" (click)="openImagePreviewModal()" >Preview issue Images</button>
+                                   
+                                   
                                     
                                 </div>
                             </li>
@@ -60,6 +56,19 @@
                                 <div class="consult-fees">
                                     <h6>Consultation Fees : 200</h6>
                                 </div>
+                            </li>
+                        </ul>
+                        <ul class="">
+                            <li>
+                                <h6 class="mt-2">Concens</h6>
+                                <p>{{appointmentData.issue}}</p>
+                            </li>
+                            <li>
+                                <h6>Description</h6>
+                                <span>test Description</span>
+                            </li>
+                            <li>
+                                <button class="mt-2 btn btn-outline-info" (click)="openImagePreviewModal()" >Preview issue Images</button>
                             </li>
                         </ul>
                         <ul class="detail-card-bottom-info">

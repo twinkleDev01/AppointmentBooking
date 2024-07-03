@@ -39,11 +39,10 @@ export class LoginComponent {
 
   isNumber:boolean=false
   sendLoginCode() {
-    if (!this.phoneNumber) {
-      console.error('Invalid phone number');
-      this.isNumber = true
-      return;
-    }
+    // if (!this.phoneNumber || !/^\+\d{1,15}$/.test(this.phoneNumber)) {
+    //   console.error('Invalid phone number');
+    //   return;
+    // }
 
     this.afAuth.signInWithPhoneNumber('+91'+this.phoneNumber, this.recaptchaVerifier!)
       .then((confirmationResult) => {

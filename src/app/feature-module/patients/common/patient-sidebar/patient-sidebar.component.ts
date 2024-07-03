@@ -52,4 +52,23 @@ localStorage.removeItem('token')
       this.userInfo=res?.data;
     })
   }
+
+  calculateAge(dobString:any) {
+    // Convert the input date string to a Date object
+    const dob = new Date(dobString);
+    const today = new Date();
+
+    // Calculate the age in years
+    let age = today.getFullYear() - dob.getFullYear();
+
+    // Adjust the age if the birthday hasn't occurred yet this year
+    const monthDiff = today.getMonth() - dob.getMonth();
+    const dayDiff = today.getDate() - dob.getDate();
+
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+    }
+
+    return age;
+}
 }

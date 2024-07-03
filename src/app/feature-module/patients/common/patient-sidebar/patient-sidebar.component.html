@@ -11,10 +11,7 @@
                 </a>
                 <div class="profile-det-info">
                     <h3><a [routerLink]="routes.profileSettings">{{userInfo?.firstName}} {{userInfo?.lastName}}</a></h3>
-                    <div class="patient-details">
-                        <h5 class="mb-0">Patient ID :{{UserId}}</h5>
-                    </div>
-                    <span>{{userInfo?.gender}} <i class="fa-solid fa-circle"></i> {{userInfo?.age}} years </span>
+                    <span>{{userInfo?.gender}} <i class="fa-solid fa-circle"></i> {{calculateAge(userInfo?.dateOfBirth)}} years</span>
                 </div>
             </div>
         </div>

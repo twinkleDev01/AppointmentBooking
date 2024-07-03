@@ -276,7 +276,7 @@
                               <ng-container *ngFor="let data of appointmentDetails?.data.appointments,let i=index">
                                 <tr>
                                   <td>
-                                    <a href="javascript:void(0);"><span class="text-blue">#PR-00{{i+1}}</span></a>
+                                    <a href="javascript:void(0);"><span class="text-blue">{{i+1}}</span></a>
                                   </td>
                                   <td>
                                     {{data.doctorName}}
@@ -300,166 +300,6 @@
                     </div>
                     <!-- /Appointments Tab -->
 
-                    <!-- Medical Records Tab -->
-                    <!-- <div class="tab-pane fade" id="medical-tab">
-                      <div class="custom-table">
-                        <div class="table-responsive">
-                          <table class="table table-center mb-0">
-                            <thead>
-                              <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Date</th>
-                                <th>Description</th>
-                                <th>Action</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);">#MR-123</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon">
-                                    <span><i class="fa-solid fa-paperclip"></i></span>Lab Report
-                                  </a>
-                                </td>
-                                <td>24 Mar 2024</td>
-                                <td>Glucose Test V12</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);">#MR-124</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon">
-                                    <span><i class="fa-solid fa-paperclip"></i></span>Lab Report
-                                  </a>
-                                </td>
-                                <td>27 Mar 2024</td>
-                                <td>Complete Blood Count(CBC)</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);">#MR-125</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon">
-                                    <span><i class="fa-solid fa-paperclip"></i></span>Lab Report
-                                  </a>
-                                </td>
-                                <td>10 Apr 2024</td>
-                                <td>Echocardiogram</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);">#MR-126</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon">
-                                    <span><i class="fa-solid fa-paperclip"></i></span>Lab Report
-                                  </a>
-                                </td>
-                                <td>19 Apr 2024</td>
-                                <td>COVID-19 Test</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);">#MR-127</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon">
-                                    <span><i class="fa-solid fa-paperclip"></i></span>Lab Report
-                                  </a>
-                                </td>
-                                <td>27 Apr 2024</td>
-                                <td>Allergy Tests</td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-blue-600"><a href="javascript:void(0);">#MR-128</a></td>
-                                <td>
-                                  <a href="javascript:void(0);" class="lab-icon">
-                                    <span><i class="fa-solid fa-paperclip"></i></span>Lab Report
-                                  </a>
-                                </td>
-                                <td>02 May  2024</td>
-                                <td>Lipid Panel </td>
-                                <td>
-                                  <div class="action-item">
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-pen-to-square"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-download"></i>
-                                    </a>
-                                    <a href="javascript:void(0);">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div> -->
-                    <!-- /Medical Records Tab -->
-
                     <!-- Prescriptions Tab -->
                     <div class="tab-pane fade" id="prsc-tab">
                       <div class="custom-table">
@@ -475,9 +315,9 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <ng-container *ngFor="let data of Prescriptions">
+                              <ng-container *ngFor="let data of Prescriptions,let i =index">
                                 <tr>
-                                  <td class="text-blue-600"><a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#view_prescription">{{data.customPrescriptionID}}</a></td>
+                                  <td class="text-blue-600"><a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#view_prescription">{{i+1}}</a></td>
                                   <td>
                                     <a href="javascript:void(0);" class="lab-icon prescription">
                                       <span><i class="fa-solid fa-prescription"></i></span>Prescription
@@ -486,8 +326,9 @@
                                   <td>{{formatDateString(data.createdDate)}}</td>
                                   <td>
                                     <h2 class="table-avatar">
-                                      <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                        <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                                      <a  class="avatar avatar-sm me-2">
+                                        <img *ngIf="!data.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                                        <img *ngIf="data.doctorImage" class="avatar-img rounded-3" [src]="convertToUrl(data.doctorImage)" alt="User Image">
                                       </a>
                                       <a [routerLink] = "routes.doctorProfile2">{{data.doctorName}}</a>
                                     </h2>
@@ -497,12 +338,6 @@
                                       <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">
                                         <i class="fa-solid fa-link"></i>
                                       </a>
-                                      <!-- <a [href]="fullFilePath(data.pdfFilePath)" [download]="fullFilePath(data.pdfFilePath)" target="_blank">
-                                        <i class="fa-solid fa-download"></i>
-                                    </a> -->
-                                    <a href="javascript:void(0);" (click)="delete(data.prescriptionID)">
-                                      <i class="fa-solid fa-trash-can"></i>
-                                    </a>
                                     </div>
                                   </td>
                                 </tr>
@@ -532,13 +367,14 @@
                             <tbody>
                               <ng-container *ngFor="let invoice of invoices;let i = index">
                                 <tr>
-                                  <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">#Inv-{{i+1}}</a></td>
+                                  <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">{{i+1}}</a></td>
                                   <td>
                                     <h2 class="table-avatar">
-                                      <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                                        <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
+                                      <a  class="avatar avatar-sm me-2">
+                                        <img *ngIf="!invoice.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                                        <img *ngIf="invoice.doctorImage" class="avatar-img rounded-3" [src]="convertToUrl(invoice.doctorImage)" alt="User Image">
                                       </a>
-                                      <a [routerLink] = "routes.doctorProfile2">{{invoice.doctorName}}</a>
+                                      <a >{{invoice.doctorName}}</a>
                                     </h2>
                                   </td>
                                   <td>{{formatDate(invoice.appointmentDate)}}</td>
