@@ -58,10 +58,11 @@
                         <td>{{formatDateString(Prescription.createdDate)}}</td>
                         <td>
                           <h2 class="table-avatar">
-                            <a [routerLink] = "routes.doctorProfile2" class="avatar avatar-sm me-2">
-                              <img class="avatar-img rounded-3" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
+                            <a  class="avatar avatar-sm me-2">
+                              <img class="avatar-img rounded-3" *ngIf="!Prescription.doctorImage" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                              <img class="avatar-img rounded-3" *ngIf="Prescription.doctorImage" [src]="convertToUrl(Prescription.doctorImage)" alt="User Image">
                             </a>
-                            <a [routerLink] = "routes.doctorProfile2">{{Prescription.doctorName}}</a>
+                            <a  >{{Prescription.doctorName}}</a>
                           </h2>
                         </td>
                         <td>

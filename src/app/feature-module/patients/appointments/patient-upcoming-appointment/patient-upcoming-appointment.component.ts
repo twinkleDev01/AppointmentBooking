@@ -69,4 +69,10 @@ formatDate(inputDate:any) {
 console.log(filePaths.map(filePath => baseUrl + filePath.split('/').pop()))
     return filePaths.map(filePath => baseUrl + filePath.split('/').pop());
   }
+  convertToUrl(filePath:string) {
+    const baseUrl = "https://bookingapi.asptask.in/";
+    const urlPath = filePath.replace(/\\/g, '/').replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
+    const fullUrl = baseUrl + urlPath;
+    return fullUrl;
+}
 }

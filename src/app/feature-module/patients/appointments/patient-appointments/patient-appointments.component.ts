@@ -74,4 +74,10 @@ export class PatientAppointmentsComponent {
       state: { appointment: data },
     });
   }
+  convertToUrl(filePath:string) {
+    const baseUrl = "https://bookingapi.asptask.in/";
+    const urlPath = filePath.replace(/\\/g, '/').replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
+    const fullUrl = baseUrl + urlPath;
+    return fullUrl;
+}
 }

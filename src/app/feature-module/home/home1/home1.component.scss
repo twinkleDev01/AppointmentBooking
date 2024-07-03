@@ -195,6 +195,14 @@ select {
 .no-files-uploaded {
     margin-right: 10px;
 }
+.owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+    height: 421px !important;
+}
+.doc_img{
+    height: 421px !important;
+}
 
 // Define the CSS variables and mixins if they are not already defined
 $__relative: relative;
