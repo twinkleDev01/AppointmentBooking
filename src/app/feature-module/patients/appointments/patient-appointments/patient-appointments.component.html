@@ -70,8 +70,9 @@
                                 <ul>
                                     <li>
                                         <div class="patinet-information">
-                                            <a [routerLink] = "routes.patientUpcomingAppointment">
-                                                <img src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
+                                            <a >
+                                                <img *ngIf="!data.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                                                <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" alt="User Image">
                                             </a>
                                             <div class="patient-info">
                                                 <p>#Apt0001</p>
