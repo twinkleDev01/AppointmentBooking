@@ -25,5 +25,6 @@ export class ProfileComponent implements OnInit {
 
   onDateChange(newDate: Date) {
     console.log(newDate);
+
   }
 }

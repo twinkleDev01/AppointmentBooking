@@ -39,11 +39,18 @@ export class LoginComponent {
 
   isNumber:boolean=false
   sendLoginCode() {
-    if (!this.phoneNumber) {
-      console.error('Invalid phone number');
-      this.isNumber = true
-      return;
+    const sendData={
+      mobileNo:this.phoneNumber
     }
+    this.authService.login(sendData).subscribe((res:any)=>{
+      this.authService.setToken(res?.data.token);
+      this.toastr.success(res.message);
+      this.router.navigate(['/patients/patient-dashboard']);
+    })
+    // if (!this.phoneNumber || !/^\+\d{1,15}$/.test(this.phoneNumber)) {
+    //   console.error('Invalid phone number');
+    //   return;
+    // }
 
     this.afAuth.signInWithPhoneNumber('+91'+this.phoneNumber, this.recaptchaVerifier!)
       .then((confirmationResult) => {
