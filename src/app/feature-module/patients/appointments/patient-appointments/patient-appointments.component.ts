@@ -1,6 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { BsDaterangepickerConfig, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { routes } from 'src/app/shared/routes/routes';
 
@@ -19,10 +20,11 @@ export class PatientAppointmentsComponent {
   appointmentsDetail:any;
   activeTab: string = 'upcoming';
   startDate:any
-  endDate:any
-
-  constructor(private patientsService:PatientsService,private datePipe: DatePipe,private router:Router) {
-    this.bsRangeValue = [this.startDate, this.endDate]; 
+  endDate:any;
+  // @ViewChild('dateRangePicker') dateRangePicker!: ElementRef;
+  @ViewChild(BsDaterangepickerDirective, { static: false }) datepicker!: BsDaterangepickerDirective;
+  constructor(private patientsService:PatientsService,private datePipe: DatePipe,private router:Router, private renderer: Renderer2) {
+    this.bsRangeValue = [this.startDate, this.endDate];
   }
 
   ngOnInit(){
@@ -73,6 +75,15 @@ export class PatientAppointmentsComponent {
     this.router.navigate(['/patients/appointments/patient-upcoming-appointment'], {
       state: { appointment: data },
     });
+  }
+  ngAfterViewInit() {
+   // Listen to the onShown event of the datepicker
+   this.datepicker.onShown.subscribe(() => {
+    const datepickerContainer = document.querySelector('bs-daterangepicker-container');
+    if (datepickerContainer) {
+      this.renderer.addClass(datepickerContainer, 'custom-daterangepicker-container');
+    }
+  });
   }
   convertToUrl(filePath:string) {
     const baseUrl = "https://bookingapi.asptask.in/";
