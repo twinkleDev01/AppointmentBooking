@@ -359,18 +359,18 @@
                   <!-- [routerLink]="routes.doctorProfile2" -->
                   <a>
                     <div class="doctor-profile-img">
-                      <img *ngIf="!data.img" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
-                      <img *ngIf="data.img" [src]="data.img" class="img-fluid" alt="doctor">
+                      <img *ngIf="!data.doctorImage" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
+                      <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" class="img-fluid doc_img" alt="doctor">
                     </div>
                   </a>
-                  <div class="doctor-amount">
+                  <!-- <div class="doctor-amount">
                     <span>{{ data.amount }}</span>
-                  </div>
+                  </div> -->
                 </div>
                 <div class="doc-content">
                   <div class="doc-pro-info">
                     <div class="doc-pro-name">
-                      <a [routerLink]="routes.doctorProfile2">{{
+                      <a >{{
                         data.name
                         }}</a>
                       <p>{{ data.specialty }}</p>
@@ -384,7 +384,7 @@
                   </div>
                   <div class="doc-pro-location">
                     <p>
-                      <i class="feather icon-map-pin"></i> {{ data.email }}
+                      {{ data.email }}
                     </p>
                     <span *ngIf="data.isAvailable" class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
                     <span *ngIf="!data.isAvailable" class="badge badge-warning doc-badge"><i class="fa-solid fa-circle"></i>Unavailable</span>

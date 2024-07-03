@@ -22,7 +22,8 @@
                             <li>
                                 <div class="patinet-information">
                                     <a href="javascript:void(0);">
-                                        <img src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="User Image">
+                                        <img *ngIf="appointmentData.doctorImage" [src]="convertToUrl(appointmentData.doctorImage)" alt="Dr Image">
+                                        <img *ngIf="!appointmentData.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="Dr Image">
                                     </a>
                                     <div class="patient-info">
                                         <p>#Apt0001</p>

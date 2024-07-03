@@ -6,4 +6,5 @@ export interface Prescription {
   createdDate: string;
   pdfFilePath: string;
   customPrescriptionID: string;
+  doctorImage:string
 }
