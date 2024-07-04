@@ -494,6 +494,7 @@ console.log(this.issues);
   }
 
 initiatePayment() {
+  console.log(this.InfoForm)
   if (this.InfoForm.valid) {
   
   const amount = 100;
@@ -568,6 +569,81 @@ initiatePayment() {
       })
     } else {
       this.markAllAsTouched();
+    }
+    const token = localStorage.getItem('token');
+    if (token) {
+  
+        const amount = 100;
+        const name = this.InfoForm.value.firstName +' '+ this.InfoForm.value.lastName;
+        const email = this.InfoForm.value.email;
+        const contact = this.InfoForm.value.phone;
+        const data = {
+          IssueIds: this.choosenIssues?.map((issue: { issueID: any; }) => issue.issueID),
+          AppointmentDate: this.formatDatetoSend( this.selectedDate),
+          slotTime:this.formatTime(this.selectedTimeSlot?.startTime) ,
+          IsCancelled: false,
+          IsCompleted: false ,
+          Images: this.appointmentForm.value.selectedFiles,
+      
+          Descriptions: this.appointmentForm.value.description,
+          'user.FirstName': this.InfoForm.value.firstName,
+          'user.LastName': this.InfoForm.value.lastName,
+          'user.City': this.InfoForm.value.city,
+          'user.Pincode': this.InfoForm.value.pinCode,
+          'user.State': this.InfoForm.value.state,
+          'user.Gender': this.appointmentForm.value.gender,
+          'user.Age': this.appointmentForm.value.age,
+          'user.Phone': this.InfoForm.value.phone,
+          'user.Role': 1,
+          'user.Email': this.InfoForm.value.email,
+          'user.LoginProvider': 'JWT',
+          Fees:200.00
+        }
+        const zoomData={
+          
+            "accessToken": "",
+            "topic": "Appointment",
+            "type": 2,
+            "start_time": `${this.formatDatetoSend( this.selectedDate)}T${this.selectedTimeSlot?.startTime}Z`,
+            "duration": 30,
+            "timezone": "UTC",
+            "agenda": "Discuss health concerns",
+            "settings": {
+            "host_video": true,
+            "participant_video": true,
+            "join_before_host": false,
+            "mute_upon_entry": false,
+            "watermark": false,
+            "approval_type": 2,
+            "audio": "both",
+            "auto_recording": "none"
+            }
+            
+        }
+      
+            const formData = new FormData();
+      
+            // Populate formData with data fields
+            // Populate formData with data fields
+            Object.entries(data).forEach(([key, value]) => {
+              if (Array.isArray(value)) {
+                value.forEach((item) => {
+                  formData.append(key, item);
+                });
+              } else {
+                formData.append(key, value);
+              }
+            });
+      
+            this.paymentService.initiatePayment(amount, name, email, contact, formData,zoomData);
+            this.paymentService.paymentId.subscribe((res:any)=>{
+              console.log(res,"560")
+              if(res && Object.keys(res).length !== 0){
+                console.log("562")
+       this.InfoForm.reset();
+              }
+            })
+          
     }
   }
 
