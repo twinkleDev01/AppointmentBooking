@@ -50,8 +50,5 @@ export class DoctorBreadcrumbComponent {
         this.last = res?.replaceAll('-', ' ');
       }
     });
-    console.log('base', this.base);
-    console.log('page', this.page);
-    console.log('last', this.last);
   }
 }

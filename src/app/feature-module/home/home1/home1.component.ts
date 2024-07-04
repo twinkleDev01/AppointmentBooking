@@ -161,6 +161,10 @@ return window.innerWidth < 767
     }else{
       this.isPatient = true
     }
+    this.patientsService.buttonState$.subscribe((state:boolean) => {
+      console.log(state,'165')
+      this.bookAppointmentbtn = state;
+    });
   }
   
   getDoctors(){
