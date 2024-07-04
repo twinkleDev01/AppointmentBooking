@@ -39,28 +39,33 @@
             <h4 class="text-center mb-2 form_title_appointment">Get an Appointment</h4>
             <div class="row mt-4">
               <!-- age and gender -->
-               <div class="row">
-                 <div class="col-lg-6 col-md-6 col-6 p-0">
-                   <input type="text" placeholder="Enter Age" formControlName="age" (keypress)="validateNumber($event)">
-                   <div *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)" class="text-danger">
-                     Age is required.
-                   </div>
-                   <div *ngIf="appointmentForm.get('age')?.hasError('pattern') && appointmentForm.get('age')?.touched" class="text-danger">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-6 p-0">
+                  <input type="text" placeholder="Enter Age" formControlName="age" (keypress)="validateNumber($event)">
+                  <div
+                    *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)"
+                    class="text-danger">
+                    Age is required.
+                  </div>
+                  <div *ngIf="appointmentForm.get('age')?.hasError('pattern') && appointmentForm.get('age')?.touched"
+                    class="text-danger">
                     Age must be a number
                   </div>
-                 </div>
-                 <div class="col-lg-6 col-md-6 col-6 p-0">
-                   <select name="gender" id="gender" formControlName="gender" class="mt-0">
-                     <option value="">Select Gender</option>
-                     <option value="Male">Male</option>
-                     <option value="Female">Female</option>
-                     <option value="Other">Other</option>
-                   </select>
-                   <div *ngIf="appointmentForm.get('gender')?.touched && appointmentForm.get('gender')?.invalid || (submitted && appointmentForm.get('gender')?.invalid)" class="text-danger">
-                     Gender is required.
-                   </div>
-                 </div>
-               </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-6 p-0">
+                  <select name="gender" id="gender" formControlName="gender" class="mt-0">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <div
+                    *ngIf="appointmentForm.get('gender')?.touched && appointmentForm.get('gender')?.invalid || (submitted && appointmentForm.get('gender')?.invalid)"
+                    class="text-danger">
+                    Gender is required.
+                  </div>
+                </div>
+              </div>
               <div class="col-lg-12 mt-3">
                 <h5 class="text-center form_title">Select your concern(s)</h5>
               </div>
@@ -73,15 +78,14 @@
                   <label class="concern_label" for="concern{{i}}">{{concern.issueName}}</label>
                 </div>
               </div> -->
-              <div class="row concerns p-0" >
+              <div class="row concerns p-0">
                 <div class=" mt-0 p-0">
                   <!-- <p-multiSelect [options]="concerns" optionLabel="issueName"
                   (onChange)="onCheckboxChange($event, concerns)"   placeholder="Select Concerns" class="mutiselect">
    </p-multiSelect> -->
-   <p-multiSelect [options]="concerns" optionLabel="issueName"
-   (onChange)="onCheckboxChanges($event.value)"   
-   placeholder="Select Concerns" class="mutiselect">
-</p-multiSelect>
+                  <p-multiSelect [options]="concerns" optionLabel="issueName"
+                    (onChange)="onCheckboxChanges($event.value)" placeholder="Select Concerns" class="mutiselect">
+                  </p-multiSelect>
 
                 </div>
               </div>
@@ -102,9 +106,12 @@
               </div> -->
               <div class="mt-1 col-12 p-0">
                 <!-- <input type="text" placeholder="Enter description" formControlName="description"> -->
-                <textarea placeholder="Enter description" class="description" formControlName="description" rows="3" cols="50"></textarea>
+                <textarea placeholder="Enter description" class="description" formControlName="description" rows="3"
+                  cols="50"></textarea>
               </div>
-              <div *ngIf="appointmentForm.get('description')?.touched && appointmentForm.get('description')?.invalid || (submitted && appointmentForm.get('description')?.invalid)" class="text-danger">
+              <div
+                *ngIf="appointmentForm.get('description')?.touched && appointmentForm.get('description')?.invalid || (submitted && appointmentForm.get('description')?.invalid)"
+                class="text-danger">
                 Description is required.
               </div>
               <div class="file-UploadSection mt-3">
@@ -130,7 +137,7 @@
               <!-- Button to open image preview modal -->
 
               <!-- Custom Modal -->
-              <div class="custom-modal" *ngIf="isImageModalOpen">
+              <!-- <div class="custom-modal" *ngIf="isImageModalOpen">
                 <div class="custom-modal-content">
                   <div class="custom-modal-header">
                     <h5 class="custom-modal-title">Image Preview</h5>
@@ -162,33 +169,59 @@
                     </div>
                   </div>
                 </div>
+              </div> -->
+              <div class="img-custom-modal" *ngIf="isImageModalOpen">
+                <div class="img-custom-modal-content">
+                  <button type="button" class="img-close" (click)="closeImageModal()">
+                    <i class="fa-regular fa-circle-xmark text-black"></i>
+                  </button>
+                  <div class="img-custom-modal-body">
+                    <div id="fileCarousel" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div *ngFor="let file of files; let i = index" class="carousel-item carousel-items"
+                          [ngClass]="{ 'active': i === activeIndex }">
+                          <ng-container *ngIf="file.type.startsWith('image')">
+                            <img [src]="file.url" class="d-block w-100 img-fluid" alt="File Preview" />
+                          </ng-container>
+                          <ng-container *ngIf="!file.type.startsWith('image')">
+                            <span>{{ file.name }}</span>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <a class="carousel-control-prev" role="button" data-slide="prev" (click)="prev()">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" role="button" data-slide="next" (click)="next()">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <div
-                class="custom-modal-backdrop"
-                *ngIf="isImageModalOpen"
-                (click)="closeImageModal()"
-              ></div>
+              <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div>
               <ng-container *ngIf="slotConfirmed===false && submitted===true">
-                <div >
+                <div>
                   <p class="mb-0 text-center text-danger">Please select time slot</p>
                 </div>
               </ng-container>
               <ng-container *ngIf="selectedTimeSlot">
-              
-                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startTime }}, {{
-                        selectedDate | date: 'yyyy-MM-dd'
-                        }}</strong></p>
-                
+
+                <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ selectedTimeSlot.startTime
+                    }}, {{
+                    selectedDate | date: 'yyyy-MM-dd'
+                    }}</strong></p>
+
               </ng-container>
-             
+
               <div class="d-flex justify-content-center align-items-center mt-4">
                 <button class="form_btn me-3" (click)="openModal()">Select Time</button>
                 <button class="form_btn mobile-fixed-bottom" (click)="onSubmit()">Book Appointment</button>
               </div>
             </div>
           </div>
-        
+
           <!-- Custom Modal -->
           <div class="custom-modal" *ngIf="isModalOpen">
             <div class="custom-modal-content">
@@ -206,16 +239,15 @@
                       (onInput)="onDateChange($event)"></p-calendar>
                   </div>
                   <div class="col-lg-6  justify-content-center">
-                    <!-- Available Times --> 
+                    <!-- Available Times -->
                     <h6 class="text-center mt-md-5">Available Time Slots</h6>
-                    <div class="row mt-md-5 mb-5" >
+                    <div class="row mt-md-5 mb-5">
                       <div *ngFor="let slot of filteredAppointments" class="col-lg-3 col-md-4 col-sm-4 col-6 mt-2"
                         (click)="onSelectTimeSlot(slot)">
                         <div [ngClass]="{
                             selected: tempSelectedTimeSlot === slot,
                             'not-selected': tempSelectedTimeSlot !== slot
-                          }"
-                        >
+                          }">
                           {{ slot.startTime }}
                         </div>
                       </div>
@@ -227,7 +259,8 @@
                 </div>
                 <div *ngIf="tempSelectedTimeSlot" class=" row ps-5 pe-5">
                   <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
-                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ tempSelectedTimeSlot.startTime }}, {{
+                    <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{
+                        tempSelectedTimeSlot.startTime }}, {{
                         selectedDate | date: 'yyyy-MM-dd'
                         }}</strong></p>
                   </div>
@@ -356,8 +389,10 @@
                     <p>
                       {{ data.email }}
                     </p>
-                    <span *ngIf="data.isAvailable" class="badge badge-success doc-badge"><i class="fa-solid fa-circle"></i>Available</span>
-                    <span *ngIf="!data.isAvailable" class="badge badge-warning doc-badge"><i class="fa-solid fa-circle"></i>Unavailable</span>
+                    <span *ngIf="data.isAvailable" class="badge badge-success doc-badge"><i
+                        class="fa-solid fa-circle"></i>Available</span>
+                    <span *ngIf="!data.isAvailable" class="badge badge-warning doc-badge"><i
+                        class="fa-solid fa-circle"></i>Unavailable</span>
 
                   </div>
                 </div>
@@ -691,37 +726,38 @@
           </div>
         </div>
 
-        <div class="col-md-5 col-lg-4">
-          <div class="stickybar">
-            <!-- Booking Summary -->
-            <div class="">
-              <div class="card-header">
-                <h4 class="card-title">Booking Summary</h4>
-              </div>
-              <div class="card-body">
+          <div class="col-md-5 col-lg-4">
+            <div class="stickybar">
+              <!-- Booking Summary -->
+              <div class="">
+                <div class="card-header">
+                  <h4 class="card-title">Booking Summary</h4>
+                </div>
+                <div class="card-body">
 
-                <div class="booking-summary">
-                  <div class="booking-item-wrap">
-                    <div class="">
-                      <div class="row mb-1">
-                        <div class="col-6">
-                          <span><span class="fw-bold">Date : </span>{{formatDatetoSend( this.selectedDate)}}</span>
+                  <div class="booking-summary">
+                    <div class="booking-item-wrap">
+                      <div class="">
+                        <div class="row mb-1">
+                          <div class="col-6">
+                            <span><span class="fw-bold">Date : </span>{{formatDatetoSend( this.selectedDate)}}</span>
+                          </div>
+                          <div class="col-6">
+                            <span><span class="fw-bold">Time : </span>{{selectedTimeSlot.startTime}}</span>
+                          </div>
                         </div>
-                        <div class="col-6">
-                          <span><span class="fw-bold">Time : </span>{{selectedTimeSlot.startTime}}</span>
+                        <div class="row mb-1">
+                          <div class="col-6">
+                            <span><span class="fw-bold">Age : </span>{{appointmentForm.value.age}}</span>
+                          </div>
+                          <div class="col-6">
+                            <span><span class="fw-bold">Gender : </span>{{appointmentForm.value.gender}}</span>
+                          </div>
                         </div>
+                        <div class="mb-1"><span class="fw-bold">Concern: </span><ng-container
+                            *ngFor="let issue of choosenIssues">{{issue.issueName}},</ng-container></div>
+                        <!-- <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>{{appointmentForm.value.firstTimeConsult === true?'Yes':'No'}}</div> -->
                       </div>
-                      <div class="row mb-1">
-                        <div class="col-6">
-                          <span><span class="fw-bold">Age : </span>{{appointmentForm.value.age}}</span>
-                        </div>
-                        <div class="col-6">
-                          <span><span class="fw-bold">Gender : </span>{{appointmentForm.value.gender}}</span>
-                        </div>
-                      </div>
-                      <div class="mb-1"><span class="fw-bold">Concern: </span><ng-container *ngFor="let issue of choosenIssues">{{issue.issueName}},</ng-container></div>
-                      <!-- <div class="mb-1"><span class="fw-bold">Are you consulting for this first time?: </span>{{appointmentForm.value.firstTimeConsult === true?'Yes':'No'}}</div> -->
-                    </div>
 
                     <ul class="booking-fee">
                       <li>Consulting Fee<span>INR 200</span></li>

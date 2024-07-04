@@ -39,7 +39,7 @@
     -moz-background-size: $__cover;
     -o-background-size: $__cover;
     background-size: $__cover;
-    z-index: -1 !important;
+    z-index: -1;
   }
   .divider {
     .carousel-caption {

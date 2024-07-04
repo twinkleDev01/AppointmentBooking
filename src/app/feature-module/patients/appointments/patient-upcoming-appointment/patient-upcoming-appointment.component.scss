@@ -1,4 +1,218 @@
+// .custom-modal {
+//     position: fixed;
+//     top: 55%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     background-color: white;
+//     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+//     z-index: 99999;
+//     width: 1000px;
+//     max-width: 100%;
+//     padding: 20px;
+//     border-radius: 25px;
+//     max-height: 80vh;
+//     /* Added max-height for responsiveness */
+//     overflow-y: auto;
+// }
+
 .custom-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  z-index: 9999;
+  /* Ensure modal is on top */
+}
+
+.custom-modal-content {
+  position: relative;
+  max-width: 90vw;
+  /* Maximum width 90% of viewport width */
+  max-height: 90vh;
+  /* Maximum height 90% of viewport height */
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Prevent scrolling within the modal */
+}
+
+.custom-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-modal-body {
+  position: relative;
+  flex: 1;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+.img-custom-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 8%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent background */
+  z-index: 9999;
+  /* Ensure modal is on top */
+}
+
+.img-custom-modal-content {
+  position: relative;
+  max-width: 90vw;
+  /* Maximum width 90% of viewport width */
+  max-height: 90vh;
+  /* Maximum height 90% of viewport height */
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Prevent scrolling within the modal */
+}
+
+.img-custom-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.img-custom-modal-body {
+  position: relative;
+  flex: 1;
+}
+
+
+.img-custom-modal-body img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Ensure image fits within its container */
+}
+
+
+.img-custom-modal-title {
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.img-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 9999;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.25;
+}
+
+.img-close:hover {
+  opacity: 1;
+}
+
+.carousel-items {
+  position: relative;
+  z-index: 1;
+  /* Ensure the carousel items are above background */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  /* Adjust the size */
+  height: 40px;
+  /* Adjust the size */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Low opacity by default */
+  border-radius: 50%;
+  /* Circular background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  /* Low opacity */
+  transition: opacity 0.3s;
+  /* Smooth transition */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Higher opacity on hover */
+  opacity: 1;
+  /* Full opacity on hover */
+}
+
+.custom-modal-body img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Ensure image fits within its container */
+}
+
+
+.custom-modal-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.custom-modal-title {
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.custom-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+  .custom-modal {
     position: fixed;
     top: 55%;
     left: 50%;
@@ -6,102 +220,67 @@
     background-color: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     z-index: 99999;
-    width: 1000px;
-    max-width: 100%;
+    max-width: 90%;
     padding: 20px;
     border-radius: 25px;
     max-height: 80vh;
-    /* Added max-height for responsiveness */
     overflow-y: auto;
-}
-.custom-modal-header {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #e5e5e5;
+  }
+
 }
 
-.custom-modal-title {
-    margin: 0;
-    flex-grow: 1;
-    text-align: center;
-}
-.custom-modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1040;
-}
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-}
 
-@media (max-width: 768px) {
-    
-    .custom-modal {
-        position: fixed;
-        top: 55%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        z-index: 99999;
-        max-width: 90%;
-        padding: 20px;
-        border-radius: 25px;
-        max-height: 80vh;
-        overflow-y: auto;
-    }
-   
-}
-.carousel-control-prev-icon{
-color: black;
-}
 @media (max-width: 576px) {
-    .custom-modal {
-        position: fixed;
-        top: 55%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        z-index: 99999;
-        max-width: 90%;
-        padding: 20px;
-        border-radius: 10px;
-        max-height: 80vh;
-        // overflow-y: auto;
-        // position: fixed;
-        // top: 55%;
-        // left: 50%;
-        // transform: translate(-50%, -50%);
-        // background-color: white;
-        // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        // z-index: 99999;
-        // /* max-width: 90%; */
-        // padding: 20px;
-        // border-radius: 10px;
-        // max-height: 80vh;
-        // /* overflow-y: auto; */
-        // max-height: 400px;
-        // overflow-x: scroll;
-    }
-    .close{
-        position: absolute;
-        top: -13px !important;
-        right: -10px !important;
-    }
-    
-    
+  .custom-modal {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    max-width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 80vh;
+    // overflow-y: auto;
+    // position: fixed;
+    // top: 55%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // background-color: white;
+    // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    // z-index: 99999;
+    // /* max-width: 90%; */
+    // padding: 20px;
+    // border-radius: 10px;
+    // max-height: 80vh;
+    // /* overflow-y: auto; */
+    // max-height: 400px;
+    // overflow-x: scroll;
+  }
+
+  .close {
+    position: absolute;
+    top: -13px !important;
+    right: -10px !important;
+  }
+
+  .carousel-inner {
+    height: fit-content;
+  }
+
+  .img-custom-modal {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    max-width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    height: fit-content;
+  }
 }

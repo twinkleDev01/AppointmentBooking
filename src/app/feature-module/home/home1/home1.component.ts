@@ -407,6 +407,7 @@ return window.innerWidth < 767
   }
 
   closeImageModal() {
+    console.log(this.isImageModalOpen, "is image modal open")
     this.isImageModalOpen = false;
   }
 
@@ -474,11 +475,12 @@ console.log(this.issues);
       console.log(response);
     })
   }
-  next(): void {
-    this.activeIndex = (this.activeIndex === this.files.length - 1) ? 0 : (this.activeIndex + 1);
+  prev() {
+    this.activeIndex = (this.activeIndex - 1 + this.files.length) % this.files.length;
   }
-  prev(): void {
-    this.activeIndex = (this.activeIndex === 0) ? (this.files.length - 1) : (this.activeIndex - 1);
+
+  next() {
+    this.activeIndex = (this.activeIndex + 1) % this.files.length;
   }
 
   openImagePreviewModal() {
