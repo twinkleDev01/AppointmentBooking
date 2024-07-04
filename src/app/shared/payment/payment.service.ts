@@ -6,6 +6,7 @@ import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
+import { LoaderServiceService } from '../loader/loader-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +20,10 @@ export class PaymentService {
   createmetting:string='/Zoom/createMeeting'
   public paymentId:BehaviorSubject<any> = new BehaviorSubject<any>({});
 
-  constructor(private http:HttpClient, private auth:AuthService, private route:Router,private toastr: ToastrService,) { }
+  constructor(private http:HttpClient, private auth:AuthService, private route:Router,private toastr: ToastrService,private loaderServiceService:LoaderServiceService) { }
 
   initiatePayment(amount: number, name: string, email: string, contact: string, formData: any,zoomData:any) {
+    this.loaderServiceService.show();
     const options = {
       key: this.razorpayKey,
       amount: amount * 200,
@@ -52,6 +54,7 @@ export class PaymentService {
   
 
   paymentHandler(response: any, formData: FormData,zoomData:any,email:string) {
+    
     console.log(response, formData);
     const paymentIdData = response.razorpay_payment_id
     // Append the payment ID to the form data
@@ -68,12 +71,15 @@ export class PaymentService {
           this.auth.setToken(response.data.token);
           this.getZoomToken(zoomData,email);
           this.route.navigate(['/patients/patient-dashboard']);
+          this.loaderServiceService.hide();
         }
       }, (error: any) => {
         console.error('Error booking appointment:', error);
+        this.loaderServiceService.hide();
       });
     } else {
       console.error('Payment was not successful:', response.error_message);
+      this.loaderServiceService.hide();
       // Optionally handle unsuccessful payment scenario
       // For example, display an error message to the user
     }
@@ -92,14 +98,20 @@ this.http.get(url).subscribe((res:any)=>{
     zoomData.accessToken = accessToken;
     console.log(zoomData);
     this.createMeeting(zoomData,email)
-})
+},((err:any)=>{
+  this.loaderServiceService.hide();
+  }))
   }
 
   createMeeting(dataToCreate:any,email:string){
+    this.loaderServiceService.show();
 const url = `${this.baseUrl}${this.createmetting}?patientEmail=${email}`
 this.http.post(url, dataToCreate).subscribe((res:any)=>{
   console.log(res);
-});
+  this.loaderServiceService.hide();
+},((err:any)=>{
+this.loaderServiceService.hide();
+}));
 
   }
 }
