@@ -10,6 +10,8 @@ import { PatientAppointmentsComponent } from './patient-appointments/patient-app
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PatientAppoinmentDetailsComponent } from './patient-appoinment-details/patient-appoinment-details.component';
 import { PatientAppointmentGridComponent } from './patient-appointment-grid/patient-appointment-grid.component';
+import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,6 @@ import { PatientAppointmentGridComponent } from './patient-appointment-grid/pati
     PatientAppoinmentDetailsComponent,
     PatientAppointmentGridComponent
   ],
-  imports: [CommonModule, AppointmentsRoutingModule, SharedModule],
+  imports: [CommonModule, AppointmentsRoutingModule, SharedModule,FormsModule,CalendarModule],
 })
 export class AppointmentsModule {}

@@ -75,4 +75,8 @@ console.log(filePaths.map(filePath => baseUrl + filePath.split('/').pop()))
     const fullUrl = baseUrl + urlPath;
     return fullUrl;
 }
+handleImageError(event: Event): void {
+  const target = event.target as HTMLImageElement;
+  target.src = '../../../../../assets/img/dummy/doload.jpg'; 
+}
 }
