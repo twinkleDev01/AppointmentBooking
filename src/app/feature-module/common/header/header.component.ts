@@ -32,11 +32,9 @@ export class HeaderComponent {
   ) {
     this.auth.token.subscribe((res:any)=>{
       if(res){
-        console.log("35")
         this.isPatient = true
       }else{
         this.isPatient = false
-        console.log("38 feature",this.isPatient)
       }
     })
     if(!localStorage.getItem('token')){

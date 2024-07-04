@@ -27,6 +27,8 @@ export class PatientsService {
   public userSubject:BehaviorSubject<any> = new BehaviorSubject<any>({});
   public invoiceData:BehaviorSubject<any> = new BehaviorSubject<any>({});
   public Prescriptions:BehaviorSubject<any> = new BehaviorSubject<any>({});
+  private buttonStateSource = new BehaviorSubject<boolean>(false);
+  buttonState$ = this.buttonStateSource.asObservable();
   constructor(private http:HttpClient, private auth: AuthService) { 
     this.auth.uderDetail.subscribe((res:any)=>{
       console.log(res,"21")
@@ -40,6 +42,11 @@ export class PatientsService {
     })
   }
 
+
+  setButtonState(state: boolean) {
+    this.buttonStateSource.next(state);
+    console.log(state)
+  }
   // updateUser(user: any) {
   //   this.userSubject.next(user); // Update the BehaviorSubject
   // }

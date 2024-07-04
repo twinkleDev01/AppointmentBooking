@@ -6,6 +6,7 @@ import { CommonService } from 'src/app/shared/common/common.service';
 import { DataService } from 'src/app/shared/data/data.service';
 import { header } from 'src/app/shared/models/sidebar-model';
 import { routes } from 'src/app/shared/routes/routes';
+import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { SidebarService } from 'src/app/shared/sidebar/sidebar.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class HeaderComponent {
     private data: DataService,
     private sidebar: SidebarService,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private patientsService:PatientsService
   ) {
     this.auth.token.subscribe((res:any)=>{
       if(res){
@@ -76,5 +78,9 @@ logout(route: string){
   this.isPatient=false
   this.auth.clearToken();
   this.router.navigate([route])
+}
+sendTrue() {
+  this.patientsService.setButtonState(false);
+  console.log('84')
 }
 }
