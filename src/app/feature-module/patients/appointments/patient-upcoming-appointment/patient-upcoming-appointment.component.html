@@ -91,7 +91,7 @@
 
 </div>		
 <!-- /Page Content -->
-<div class="custom-modal" *ngIf="isImageModalOpen">
+<!-- <div class="custom-modal" *ngIf="isImageModalOpen">
     <div class="custom-modal-content">
       <div class="custom-modal-header">
         <h5 class="custom-modal-title">Image Preview</h5>
@@ -123,4 +123,36 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+  <div class="img-custom-modal" *ngIf="isImageModalOpen">
+    <div class="img-custom-modal-content">
+      <button type="button" class="img-close" (click)="closeImageModal()">
+        <i class="fa-regular fa-circle-xmark text-black"></i>
+      </button>
+      <div class="img-custom-modal-body">
+        <div id="fileCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let file of files; let i = index" class="carousel-item carousel-items"
+              [ngClass]="{ 'active': i === activeIndex }">
+              <ng-container *ngIf="file">
+                <img [src]="file" class="d-block w-100 img-fluid" alt="File Preview" />
+              </ng-container>
+              <ng-container *ngIf="!file">
+                <span>{{ file }}</span>
+              </ng-container>
+            </div>
+          </div>
+          <a class="carousel-control-prev" role="button" data-slide="prev" (click)="prev()">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" role="button" data-slide="next" (click)="next()">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div>

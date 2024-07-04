@@ -386,8 +386,113 @@ $__none: none;
     padding: 10px;
     border-bottom: 1px solid #e5e5e5;
 }
+/* Common styles for carousel control icons */
+  
+  .custom-modal-content {
+    position: relative;
+    max-width: 90vw; /* Maximum width 90% of viewport width */
+    max-height: 90vh; /* Maximum height 90% of viewport height */
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden; /* Prevent scrolling within the modal */
+  }
+  
+  .custom-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .custom-modal-body {
+    position: relative;
+    flex: 1;
+  }
+  
+  .img-custom-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 8%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Ensure modal is on top */
+  }
+  
+  .img-custom-modal-content {
+    position: relative;
+    max-width: 90vw; /* Maximum width 90% of viewport width */
+    max-height: 90vh; /* Maximum height 90% of viewport height */
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden; /* Prevent scrolling within the modal */
+  }
+  
+  .img-custom-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .img-custom-modal-body {
+    position: relative;
+    flex: 1;
+  }
+
+  .carousel-item{
+    z-index: 1;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px; /* Adjust the size */
+    height: 40px; /* Adjust the size */
+    background-color: rgba(0, 0, 0, 0.2); /* Low opacity by default */
+    border-radius: 50%; /* Circular background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6; /* Low opacity */
+    transition: opacity 0.3s; /* Smooth transition */
+  }
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Higher opacity on hover */
+    opacity: 1; /* Full opacity on hover */
+  }
+  
+  
+  .custom-modal-body img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure image fits within its container */
+  }
+  
 
 .custom-modal-title {
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.img-custom-modal-body img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure image fits within its container */
+  }
+  
+
+.img-custom-modal-title {
     margin: 0;
     flex-grow: 1;
     text-align: center;
@@ -401,6 +506,24 @@ $__none: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
+}
+
+.img-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.25;
+}
+
+.img-close:hover{
+opacity: 1;
 }
 
 .custom-modal-backdrop {
@@ -524,6 +647,8 @@ $__none: none;
     padding: 10px;
 }
 
+
+  
 
 
 .calendar-p {
@@ -840,6 +965,20 @@ $__none: none;
         max-height: 80vh;
         overflow-y: auto;
     }
+    .img-custom-modal {
+        position: fixed;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 99999;
+        max-width: 90%;
+        padding: 20px;
+        border-radius: 25px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
     .form_title_appointment{
 font-weight: bold;
 font-size: 17px;
@@ -943,21 +1082,22 @@ border:1px solid #eeeff4;
         padding: 20px;
         border-radius: 10px;
         max-height: 80vh;
-        // overflow-y: auto;
-        // position: fixed;
-        // top: 55%;
-        // left: 50%;
-        // transform: translate(-50%, -50%);
-        // background-color: white;
-        // box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        // z-index: 99999;
-        // /* max-width: 90%; */
-        // padding: 20px;
-        // border-radius: 10px;
-        // max-height: 80vh;
-        // /* overflow-y: auto; */
-        // max-height: 400px;
-        // overflow-x: scroll;
+    }
+    .carousel-inner{
+        height: fit-content;
+    }
+    .img-custom-modal {
+        position: fixed;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 99999;
+        max-width: 90%;
+        padding: 20px;
+        border-radius: 10px;
+        height: fit-content;
     }
     .pay-btn {
         background: #0e82fd;
@@ -1004,3 +1144,5 @@ border:1px solid #eeeff4;
     color: red;
     margin-left: 5px; /* Optional: to add some space between the text and the asterisk */
   }
+
+  
