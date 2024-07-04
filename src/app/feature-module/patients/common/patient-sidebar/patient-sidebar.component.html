@@ -7,7 +7,7 @@
             <div class="profile-info-widget">
                 <a [routerLink]="routes.profileSettings" class="booking-doc-img">
                     <img src="assets/img/dummy/doload.jpg" alt="User Image" *ngIf="!userInfo?.image">
-                    <img [src]="userInfo.image" alt="User Image" *ngIf="userInfo?.image">
+                    <img [src]="userInfo.image" alt="User Image" (error)="handleImageError($event)" *ngIf="userInfo?.image">
                 </a>
                 <div class="profile-det-info">
                     <h3><a [routerLink]="routes.profileSettings">{{userInfo?.firstName}} {{userInfo?.lastName}}</a></h3>

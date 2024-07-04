@@ -22,8 +22,8 @@
                             <li>
                                 <div class="patinet-information">
                                     <a href="javascript:void(0);">
-                                        <img *ngIf="appointmentData.doctorImage" [src]="convertToUrl(appointmentData.doctorImage)" alt="Dr Image">
-                                        <img *ngIf="!appointmentData.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="Dr Image">
+                                        <img *ngIf="appointmentData.doctorImage" [src]="convertToUrl(appointmentData.doctorImage)" (error)="handleImageError($event)" alt="Dr Image">
+                                        <img *ngIf="!appointmentData.doctorImage" src="../../../../../assets/img/dummy/doload.jpg"  alt="Dr Image">
                                     </a>
                                     <div class="patient-info">
                                         <h6><a href="javascript:void(0);">{{appointmentData.doctorName}}</a></h6>
@@ -65,7 +65,7 @@
                             </li>
                             <li>
                                 <h6>Description</h6>
-                                <span>test Description</span>
+                                <span>{{appointmentData.description}}</span>
                             </li>
                             <li>
                                 <button class="mt-2 btn btn-outline-info" (click)="openImagePreviewModal()" >Preview issue Images</button>

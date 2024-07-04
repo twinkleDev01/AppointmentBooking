@@ -91,4 +91,19 @@ export class PatientAppointmentsComponent {
     const fullUrl = baseUrl + urlPath;
     return fullUrl;
 }
+handleImageError(event: Event): void {
+  const target = event.target as HTMLImageElement;
+  target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
+}
+isButtonDisabled(appointmentDate: string, appointmentTime: string): boolean {
+  const currentDateTime = new Date()
+  const appointmentDateTimeString = `${appointmentDate.slice(0, 10)}T${appointmentTime}`;
+  const appointmentDateTime = new Date(appointmentDateTimeString);
+  if (isNaN(appointmentDateTime.getTime())) {
+    return false;
+  }
+  const timeDifference = appointmentDateTime.getTime() - currentDateTime.getTime();
+  const hoursDifference = timeDifference / (1000 * 60 * 60);
+  return hoursDifference <= 24;
+}
 }

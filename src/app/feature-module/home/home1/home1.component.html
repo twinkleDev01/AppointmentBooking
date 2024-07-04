@@ -360,7 +360,7 @@
                   <a>
                     <div class="doctor-profile-img">
                       <img *ngIf="!data.doctorImage" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
-                      <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" class="img-fluid doc_img" alt="doctor">
+                      <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
                     </div>
                   </a>
                   <!-- <div class="doctor-amount">
@@ -626,7 +626,7 @@
       <div class="row">
         <div class="col-md-7 col-lg-8">
           <div class="">
-            <h4 class="ms-4"><i class="fa-solid fa-chevron-left fs-4" (click)="backButton()"></i>  Your Details</h4>
+            <h4 class="ms-4"><i class="fa-solid fa-chevron-left fs-4" ></i>  Your Details</h4>
             <div class="card-body">
               <!-- Checkout Form -->
               <form [formGroup]="InfoForm" (ngSubmit)="initiatePayment()">
@@ -634,36 +634,48 @@
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="first-name" class="mb-2">First Name<span class="required-asterisk">*</span></label>
-                      <input formControlName="firstName" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter First Name" (input)="validateAlphabetic($event)"/>
-                      <div *ngIf="InfoForm.get('firstName')?.invalid && InfoForm.get('firstName')?.touched">
+                      <input formControlName="firstName" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter First Name" />
+                      <div *ngIf="InfoForm.get('firstName')?.errors?.['required'] && InfoForm.get('firstName')?.touched">
                         First Name is required
+                      </div>
+                      <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('firstName')?.touched">
+                        First name must contain only letters.
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="last-name" class="mb-2">Last Name<span class="required-asterisk">*</span></label>
-                      <input formControlName="lastName" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Last Name" (input)="validateAlphabetic($event)"/>
-                      <div *ngIf="InfoForm.get('lastName')?.invalid && InfoForm.get('lastName')?.touched">
+                      <input formControlName="lastName" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Last Name" />
+                      <div *ngIf="InfoForm.get('lastName')?.errors?.['required'] && InfoForm.get('lastName')?.touched">
                         Last Name is required
+                      </div>
+                      <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('lastName')?.touched">
+                        Last name must contain only letters.
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="city" class="mb-2">City<span class="required-asterisk">*</span></label>
-                      <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter City" (input)="validateAlphabetic($event)"/>
-                      <div *ngIf="InfoForm.get('city')?.invalid && InfoForm.get('city')?.touched">
+                      <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter City" />
+                      <div *ngIf="InfoForm.get('city')?.errors?.['required'] && InfoForm.get('city')?.touched">
                         City is required
+                      </div>
+                      <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('city')?.touched">
+                        City must contain only letters.
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="state" class="mb-2">State<span class="required-asterisk">*</span></label>
-                      <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter State" (input)="validateAlphabetic($event)"/>
-                      <div *ngIf="InfoForm.get('state')?.invalid && InfoForm.get('state')?.touched">
+                      <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter State" />
+                      <div *ngIf="InfoForm.get('state')?.errors?.['required'] && InfoForm.get('state')?.touched">
                         State is required
+                      </div>
+                      <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('state')?.touched">
+                        State must contain only letters.
                       </div>
                     </div>
                   </div>

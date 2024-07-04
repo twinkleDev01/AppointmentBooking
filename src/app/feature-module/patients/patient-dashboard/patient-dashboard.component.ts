@@ -197,7 +197,8 @@ export class PatientDashboardComponent {
   }
 
   getAppointment(){
-    this.patientsService.getAppointment().subscribe((res:any)=>{
+    const isUpcoming:boolean=true;
+    this.patientsService.getAppointment(undefined,undefined,undefined, undefined, isUpcoming).subscribe((res:any)=>{
       console.log(res,"190")
       this.appointmentDetails = res
     })
@@ -257,5 +258,9 @@ export class PatientDashboardComponent {
         const urlPath = filePath.replace(/\\/g, '/').replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
         const fullUrl = baseUrl + urlPath;
         return fullUrl;
+    }
+    handleImageError(event: Event): void {
+      const target = event.target as HTMLImageElement;
+      target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
     }
 }

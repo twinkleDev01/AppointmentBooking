@@ -200,4 +200,8 @@ this.patientsService.Prescriptions.next(matchingObj);
     const fullUrl = baseUrl + urlPath;
     return fullUrl;
 }
+handleImageError(event: Event): void {
+  const target = event.target as HTMLImageElement;
+  target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
+}
 }

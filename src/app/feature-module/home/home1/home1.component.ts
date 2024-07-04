@@ -119,10 +119,10 @@ export class Home1Component implements OnInit {
     });
     this.selectedValue = 'true';
     this.InfoForm = this.fb.group({
-      firstName: [ '', Validators.required],
-      lastName: [ '', Validators.required],
-      city: [ '' , Validators.required],
-      state: ['', Validators.required],
+      firstName: ['', [Validators.required, this.alphabeticValidator()]],
+      lastName: ['', [Validators.required, this.alphabeticValidator()]],
+      city: ['', [Validators.required, this.alphabeticValidator()]],
+      state: ['', [Validators.required, this.alphabeticValidator()]],
       pinCode: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required]
@@ -162,24 +162,12 @@ return window.innerWidth < 767
       this.isPatient = true
     }
   }
+  
   getDoctors(){
     this.patientsService.getDoctors().subscribe((res:any)=>{
       console.log(res.result.data,'doctors')
       this.Doctors=res.result.data
     })
-  }
-  validateAlphabetic(event: any): void {
-    const input = event.target;
-    const value = input.value;
-    const alphabeticValue = value.replace(/[^a-zA-Z]/g, '');
-    if (value !== alphabeticValue) {
-      input.value = alphabeticValue;
-      if (input.name === 'firstName') {
-        this.InfoForm.get('firstName')?.setValue(alphabeticValue);
-      } else if (input.name === 'lastName') {
-        this.InfoForm.get('lastName')?.setValue(alphabeticValue);
-      }
-    }
   }
 
   onCheckboxChanges(selectedIssues: any) {
@@ -660,4 +648,15 @@ console.log('destroy')
     return fullUrl;
 }
 
+handleImageError(event: Event): void {
+  const target = event.target as HTMLImageElement;
+  target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
+}
+
+alphabeticValidator(): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const valid = /^[a-zA-Z]*$/.test(control.value);
+    return valid ? null : { 'alphabetic': { value: control.value } };
+  };
+}
 }

@@ -65,17 +65,17 @@
                 <div class="tab-content appointment-tab-content">
                     <div class="tab-pane fade show active" id="pills-upcoming" role="tabpanel" aria-labelledby="pills-upcoming-tab">
                         <!-- Appointment List -->
-                         @for (data of this.appointmentsDetail?.data.appointments; track data){
+                            <ng-container *ngFor="let data of appointmentsDetail?.data?.appointments; let i = index">
                             <div class="appointment-wrap">
                                 <ul>
                                     <li>
                                         <div class="patinet-information">
                                             <a >
                                                 <img *ngIf="!data.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="User Image">
-                                                <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" alt="User Image">
+                                                <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" (error)="handleImageError($event)" alt="User Image">
                                             </a>
                                             <div class="patient-info">
-                                                <p>#Apt0001</p>
+                                                <p>Appointment {{i+1}}</p>
                                                 <h6><a [routerLink] = "routes.patientUpcomingAppointment">{{data.doctorName}}</a></h6>
                                             </div>
                                         </div>
@@ -109,9 +109,15 @@
                                     <li *ngIf="data.isUpcomming===true" class="appointment-detail-btn">
                                         <a [href]=data.zoomLink target="_blank" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
                                     </li>
+                                    <li *ngIf="data.isUpcomming===true" class="appointment-detail-btn">
+                                        <button [disabled]="isButtonDisabled(data.appointmentDate, data.startTime)" [ngStyle]="{
+                                            'color': isButtonDisabled(data.appointmentDate, data.startTime) ? 'grey' : '',
+                                            'border-color': isButtonDisabled(data.appointmentDate, data.startTime) ? 'grey' : ''
+                                          }" class="start-link reshedule_btn"><i class="fa-solid fa-calendar-alt me-1"></i>Reschedule</button>
+                                    </li>
                                 </ul>
                             </div>
-                         }
+                        </ng-container>
                         
 
                     </div>
@@ -121,12 +127,12 @@
                             <ul>
                                 <li>
                                     <div class="patinet-information">
-                                        <a [routerLink] = "routes.patientCancelledAppointment">
+                                        <a >
                                             <img src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt00011</p>
-                                            <h6><a [routerLink] = "routes.patientCancelledAppointment">Dr Edalin</a></h6>
+                                            <h6><a >Dr Edalin</a></h6>
                                         </div>
                                     </div>
                                 </li>
@@ -139,7 +145,7 @@
                                     
                                 </li>
                                 <li class="appointment-detail-btn">
-                                    <a [routerLink] = "routes.patientCancelledAppointment" class="start-link">View Details<i class="fa-regular fa-circle-right ms-1"></i></a>
+                                    <a  class="start-link">View Details<i class="fa-regular fa-circle-right ms-1"></i></a>
                                 </li>
                             </ul>
                         </div>
@@ -150,12 +156,12 @@
                             <ul>
                                 <li>
                                     <div class="patinet-information">
-                                        <a [routerLink] = "routes.patientCancelledAppointment">
+                                        <a>
                                             <img src="assets/img/doctors/doctor-thumb-13.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0002</p>
-                                            <h6><a [routerLink] = "routes.patientCancelledAppointment">Dr.Shanta</a><span class="badge new-tag">New</span></h6>
+                                            <h6><a >Dr.Shanta</a><span class="badge new-tag">New</span></h6>
                                         </div>
                                     </div>
                                 </li>
