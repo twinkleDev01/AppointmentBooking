@@ -26,7 +26,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     CalendarModule,
     DatePickerDirective,
     DropdownModule,
-    MultiSelectModule
+    MultiSelectModule,
+    CalendarModule
   ]
 })
 export class Home1Module { }

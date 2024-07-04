@@ -21,14 +21,23 @@ export class PatientAppointmentsComponent {
   activeTab: string = 'upcoming';
   startDate:any
   endDate:any;
+  isModalOpen = false;
+  selectedDate: Date = new Date();
+  minDate!: Date;
+  filteredAppointments: any;
+  selectedTimeSlot: any;
+  slots: any;
+  selectedSlots: any[] = [];
+  slotConfirmed: boolean=false;
   // @ViewChild('dateRangePicker') dateRangePicker!: ElementRef;
   @ViewChild(BsDaterangepickerDirective, { static: false }) datepicker!: BsDaterangepickerDirective;
   constructor(private patientsService:PatientsService,private datePipe: DatePipe,private router:Router, private renderer: Renderer2) {
     this.bsRangeValue = [this.startDate, this.endDate];
+    this.minDate = new Date();
   }
 
   ngOnInit(){
-    
+    this.getAvailableSlots();
     this.getAppointmentData(this.activeTab)
   }
   public showFilter(){
@@ -65,6 +74,11 @@ export class PatientAppointmentsComponent {
       console.log(res.data.appointments,"24")
       this.appointmentsDetail = res
     }) 
+  }
+  tempSelectedTimeSlot:any
+  onSelectTimeSlot(slot: any) {
+    // this.selectedTimeSlot = slot;
+    this.tempSelectedTimeSlot = slot; // Store the time slot temporarily
   }
   showFilterData(tabName: string) {
     this.activeTab = tabName;
@@ -105,5 +119,78 @@ isButtonDisabled(appointmentDate: string, appointmentTime: string): boolean {
   const timeDifference = appointmentDateTime.getTime() - currentDateTime.getTime();
   const hoursDifference = timeDifference / (1000 * 60 * 60);
   return hoursDifference <= 24;
+}
+openModal(): void {
+  this.isModalOpen = true;
+}
+closeModal(): void {
+  this.isModalOpen = false;
+}
+onSelectDate(event: any) {
+  console.log('Date selected:', event);
+  const date = event?.target?.value;
+  if (date) {
+    this.selectedDate = date;
+    for (const slot of this.slots) {
+      console.log(slot.date);
+    }
+    this.selectedSlots = this.slots.filter(
+      (slot: { startTime: string; date: string }) =>
+        this.isSameDay(slot.date, this.selectedDate)
+    );
+  }
+}
+isSameDay(slotDate: string, selectedDate: Date): boolean {
+  const slotDateTime = new Date(slotDate).toDateString(); // Extract date part only
+  const selectedDateTime = selectedDate.toDateString(); // Extract date part only
+  return slotDateTime === selectedDateTime;
+}
+getAvailableSlots() {
+  this.patientsService.getAvailableSlot().subscribe((availableSlots) => {
+    this.slots = availableSlots;
+    this.generateUniqueTimeSlots();
+    this.selectedDate = new Date();  // Initialize with the current date
+    console.log('Component initialized with current date:', this.selectedDate);
+    this.filterAppointments(this.formatDate(this.selectedDate));
+  });
+}
+
+generateUniqueTimeSlots() {
+  const timeSlotsMap = new Map();
+  this.slots.forEach((slot: { startTime: any }) => {
+    if (!timeSlotsMap.has(slot.startTime)) {
+      timeSlotsMap.set(slot.startTime, slot);
+    }
+  });
+}
+onDateChange(event: any) {
+  console.log('date change',event);
+  this.selectedDate = event;
+  this.filterAppointments(this.formatDate(this.selectedDate));
+}
+
+filterAppointments(date: any) {
+  console.log('Date:', date);
+  this.filteredAppointments = this.slots.filter(
+    (appointment:any) => appointment.date === date
+  );
+  console.log('Appointments:', this.filteredAppointments)
+}
+confirmSlot(): void {
+  this.selectedTimeSlot = this.tempSelectedTimeSlot; // Confirm the time slot
+  this.closeModal();
+}
+formatDate(date: any): string {
+  console.log('Formatted date:', `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
+    date.getDate()
+  )}T00:00:00`);
+  return `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
+    date.getDate()
+  )}T00:00:00`;
+}
+
+
+padZero(num: number): string {
+  return num < 10 ? `0${num}` : `${num}`;
 }
 }

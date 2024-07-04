@@ -113,7 +113,7 @@
                                         <button [disabled]="isButtonDisabled(data.appointmentDate, data.startTime)" [ngStyle]="{
                                             'color': isButtonDisabled(data.appointmentDate, data.startTime) ? 'grey' : '',
                                             'border-color': isButtonDisabled(data.appointmentDate, data.startTime) ? 'grey' : ''
-                                          }" class="start-link reshedule_btn"><i class="fa-solid fa-calendar-alt me-1"></i>Reschedule</button>
+                                          }" class="start-link reshedule_btn" (click)="openModal()"><i class="fa-solid fa-calendar-alt me-1"></i>Reschedule</button>
                                     </li>
                                 </ul>
                             </div>
@@ -598,3 +598,51 @@
 
 </div>		
 <!-- /Page Content -->
+<div class="custom-modal" *ngIf="isModalOpen">
+    <div class="custom-modal-content">
+      <div class="custom-modal-header">
+        <h3 class="custom-modal-title">Select Preferred Date and Available Time Slot</h3>
+        <button type="button" class="close" (click)="closeModal()">
+          <i class="fa-regular fa-circle-xmark text-black"></i>
+        </button>
+      </div>
+      <div class="custom-modal-body">
+        <div class="row mt-3">
+          <div class="col-lg-6  d-flex justify-content-center align-items-center">
+            <p-calendar [(ngModel)]="selectedDate"  inline="true" dateFormat="yy-mm-dd"
+              (onSelect)="onSelectDate($event)" class="calendar-p" (ngModelChange)="onDateChange($event)"
+              (onInput)="onDateChange($event)"></p-calendar>
+          </div>
+          <div class="col-lg-6  justify-content-center">
+            <!-- Available Times --> 
+            <h6 class="text-center mt-md-5">Available Time Slots</h6>
+            <div class="row mt-md-5 mb-5" >
+              <div *ngFor="let slot of filteredAppointments" class="col-lg-3 col-md-4 col-sm-4 col-6 mt-2"
+                (click)="onSelectTimeSlot(slot)">
+                <div [ngClass]="{
+                    selected: tempSelectedTimeSlot === slot,
+                    'not-selected': tempSelectedTimeSlot !== slot
+                  }"
+                >
+                  {{ slot.startTime }}
+                </div>
+              </div>
+              <div *ngIf="!filteredAppointments?.length" class="alt_text">
+                no slots available
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="tempSelectedTimeSlot" class=" row ps-5 pe-5">
+          <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
+            <p class="mb-0 text-center">Selected Slot: <strong class="strong_color">{{ tempSelectedTimeSlot.startTime }}, {{
+                selectedDate | date: 'yyyy-MM-dd'
+                }}</strong></p>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
+            <button class="modal_btn" (click)="confirmSlot();slotConfirmed=true">Confirm Slot</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
