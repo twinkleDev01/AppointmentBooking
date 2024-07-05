@@ -328,7 +328,7 @@
                                         <img *ngIf="!data.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
                                         <img *ngIf="data.doctorImage" class="avatar-img rounded-3" [src]="convertToUrl(data.doctorImage)" alt="User Image">
                                       </a>
-                                      <a [routerLink] = "routes.doctorProfile2">{{data.doctorName}}</a>
+                                      <a >{{data.doctorName}}</a>
                                     </h2>
                                   </td>
                                   <td>
