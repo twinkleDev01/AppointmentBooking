@@ -113,7 +113,7 @@
                                         <button [disabled]="isButtonDisabled(data.appointmentDate, data.startTime)" [ngStyle]="{
                                             'color': isButtonDisabled(data.appointmentDate, data.startTime) ? 'grey' : '',
                                             'border-color': isButtonDisabled(data.appointmentDate, data.startTime) ? 'grey' : ''
-                                          }" class="start-link reshedule_btn" (click)="openModal()"><i class="fa-solid fa-calendar-alt me-1"></i>Reschedule</button>
+                                          }" class="start-link reshedule_btn" (click)="openModal(data)"><i class="fa-solid fa-calendar-alt me-1"></i>Reschedule</button>
                                     </li>
                                 </ul>
                             </div>
@@ -640,7 +640,7 @@
                 }}</strong></p>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
-            <button class="modal_btn" (click)="confirmSlot();slotConfirmed=true">Confirm Slot</button>
+            <button class="modal_btn" (click)="confirmSlot();slotConfirmed=true">Reschedule Slot</button>
           </div>
         </div>
       </div>
