@@ -66,11 +66,12 @@ export class PaymentService {
       this.bookAppointment(formData).subscribe((response: any) => {
         console.log('Appointment booked successfully:', response);
         if (response) {
+          console.log(response,'success');
           this.paymentId.next(paymentIdData)
-          this.toastr.success('Appointment created Successfully', "Success");
-          this.auth.setToken(response.data.token);
-          this.getZoomToken(zoomData,email);
           this.route.navigate(['/patients/patient-dashboard']);
+          this.auth.setToken(response.data.token);
+          this.toastr.success('Appointment created Successfully', "Success");
+          this.getZoomToken(zoomData,email);
           this.loaderServiceService.hide();
         }
       }, (error: any) => {
