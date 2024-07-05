@@ -29,6 +29,7 @@ export class PatientAppointmentsComponent {
   slots: any;
   selectedSlots: any[] = [];
   slotConfirmed: boolean=false;
+  selectedAppointmentId:any
   // @ViewChild('dateRangePicker') dateRangePicker!: ElementRef;
   @ViewChild(BsDaterangepickerDirective, { static: false }) datepicker!: BsDaterangepickerDirective;
   constructor(private patientsService:PatientsService,private datePipe: DatePipe,private router:Router, private renderer: Renderer2) {
@@ -79,6 +80,7 @@ export class PatientAppointmentsComponent {
   onSelectTimeSlot(slot: any) {
     // this.selectedTimeSlot = slot;
     this.tempSelectedTimeSlot = slot; // Store the time slot temporarily
+    console.log(this.tempSelectedTimeSlot,"24")
   }
   showFilterData(tabName: string) {
     this.activeTab = tabName;
@@ -120,8 +122,9 @@ isButtonDisabled(appointmentDate: string, appointmentTime: string): boolean {
   const hoursDifference = timeDifference / (1000 * 60 * 60);
   return hoursDifference <= 24;
 }
-openModal(): void {
+openModal(data:any): void {
   this.isModalOpen = true;
+  this.selectedAppointmentId=data.appointmentId
 }
 closeModal(): void {
   this.isModalOpen = false;
@@ -177,8 +180,24 @@ filterAppointments(date: any) {
   console.log('Appointments:', this.filteredAppointments)
 }
 confirmSlot(): void {
-  this.selectedTimeSlot = this.tempSelectedTimeSlot; // Confirm the time slot
-  this.closeModal();
+  console.log(this.tempSelectedTimeSlot.startTime,this.selectedDate,this.convertToISOFormat(this.tempSelectedTimeSlot.startTime,this.selectedDate));
+  const data={
+    
+      "startTime": this.convertToISOFormat(this.tempSelectedTimeSlot.startTime,this.selectedDate),
+      "duration": 15,
+      "timezone": "Asia/Kolkata"
+    
+  }
+ this.patientsService.rescheduleMeeting(data,this.selectedAppointmentId).subscribe((res:any)=>{
+  console.log(res,"39")
+  this.isModalOpen = false;
+ })
+}
+convertToISOFormat(inputTime:any, inputDate:any) {
+  let date = new Date(inputDate);
+  let [hours, minutes, seconds] = inputTime.split(':').map(Number);
+  date.setHours(hours, minutes, seconds, 0);
+  return date.toISOString();
 }
 formatDate(date: any): string {
   console.log('Formatted date:', `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(

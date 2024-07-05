@@ -20,6 +20,7 @@ export class PatientsService {
   getinvoice:string ='/Invoice/GetInvoices'
   contactInfo:string='/ContactUs'
   getDoctorsList:string ='/Doctor/ListOfDoctorWithCountAppointments'
+  reschedule:string='/Zoom/MeetingReschedule'
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   Detail:any;
   // private userSubject = new BehaviorSubject<any>(null); // Initial value null
@@ -135,6 +136,11 @@ return this.http.post(url, data);
 getDoctors(){
   const url=`${this.baseUrl}${this.getDoctorsList}`;
   return this.http.get(url);
+}
+
+rescheduleMeeting(data:any,appointmentId:any){
+const url=`${this.baseUrl}${this.reschedule}/${appointmentId}`;
+return this.http.post(url, data);
 }
 
  }

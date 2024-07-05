@@ -499,8 +499,6 @@ return window.innerWidth < 767
   initiatePayment() {
     const isValid = this.InfoForm.valid;
     const token = localStorage.getItem('token');
-  console.log()
-    // Check if form is valid or token exists
     if (isValid || token) {
       console.log(this.InfoForm);
   
