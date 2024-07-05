@@ -655,7 +655,7 @@
                       <div *ngIf="InfoForm.get('lastName')?.errors?.['required'] && InfoForm.get('lastName')?.touched">
                         Last Name is required
                       </div>
-                      <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('lastName')?.touched">
+                      <div *ngIf="InfoForm.get('lastName')?.errors?.['alphabetic'] && InfoForm.get('lastName')?.touched">
                         Last name must contain only letters.
                       </div>
                     </div>
@@ -667,7 +667,7 @@
                       <div *ngIf="InfoForm.get('city')?.errors?.['required'] && InfoForm.get('city')?.touched">
                         City is required
                       </div>
-                      <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('city')?.touched">
+                      <div *ngIf="InfoForm.get('city')?.errors?.['alphabetic'] && InfoForm.get('city')?.touched">
                         City must contain only letters.
                       </div>
                     </div>
@@ -679,7 +679,7 @@
                       <div *ngIf="InfoForm.get('state')?.errors?.['required'] && InfoForm.get('state')?.touched">
                         State is required
                       </div>
-                      <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('state')?.touched">
+                      <div *ngIf="InfoForm.get('state')?.errors?.['alphabetic'] && InfoForm.get('state')?.touched">
                         State must contain only letters.
                       </div>
                     </div>

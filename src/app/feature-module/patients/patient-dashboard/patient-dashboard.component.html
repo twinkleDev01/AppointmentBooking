@@ -268,7 +268,6 @@
                                 <th>Date</th>
                                 <th>Phone Number</th>
                                 <th>Email</th>
-                                <th>Comments</th>
                                 <th>Status</th>
                               </tr>
                             </thead>
@@ -284,7 +283,6 @@
                                   <td>{{formatDate(data.appointmentDate)}}</td>
                                   <td>{{data.doctorPhone}}</td>
                                   <td>{{data.doctorEmail}}</td>
-                                  <td>Good take rest</td>
                                   <td>
                                     <span *ngIf="data.isUpcomming === true" class="badge badge-warning-bg">Upcoming</span>
                                     <span *ngIf="data.isCancelled === true" class="badge badge-danger-bg">Cancelled</span>
