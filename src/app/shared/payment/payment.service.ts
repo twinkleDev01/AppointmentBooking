@@ -66,12 +66,11 @@ export class PaymentService {
       this.bookAppointment(formData).subscribe((response: any) => {
         console.log('Appointment booked successfully:', response);
         if (response) {
+          this.route.navigate(['/patients/patient-dashboard']);
           console.log(response,'success');
           this.paymentId.next(paymentIdData)
-          this.route.navigate(['/patients/patient-dashboard']);
           this.auth.setToken(response.data.token);
           this.toastr.success('Appointment created Successfully', "Success");
-          this.getZoomToken(zoomData,email);
           this.loaderServiceService.hide();
         }
       }, (error: any) => {
@@ -91,28 +90,4 @@ export class PaymentService {
 return this.http.post(url, formData);
   }
 
-  getZoomToken(zoomData:any,email:string){
- const url=this.baseUrl+this.getZoomtoken
-this.http.get(url).subscribe((res:any)=>{
-  console.log(res); 
-    const accessToken = res.access_token;
-    zoomData.accessToken = accessToken;
-    console.log(zoomData);
-    this.createMeeting(zoomData,email)
-},((err:any)=>{
-  this.loaderServiceService.hide();
-  }))
-  }
-
-  createMeeting(dataToCreate:any,email:string){
-    this.loaderServiceService.show();
-const url = `${this.baseUrl}${this.createmetting}?patientEmail=${email}`
-this.http.post(url, dataToCreate).subscribe((res:any)=>{
-  console.log(res);
-  this.loaderServiceService.hide();
-},((err:any)=>{
-this.loaderServiceService.hide();
-}));
-
-  }
 }

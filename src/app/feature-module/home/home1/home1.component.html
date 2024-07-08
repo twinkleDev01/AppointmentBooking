@@ -662,6 +662,18 @@
                   </div>
                   <div class="col-md-4 col-sm-12">
                     <div class="mb-3 card-label">
+                      <label for="address" class="mb-2">Address<span class="required-asterisk">*</span></label>
+                      <input formControlName="address" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter address" />
+                      <div *ngIf="InfoForm.get('address')?.errors?.['required'] && InfoForm.get('address')?.touched">
+                        address is required
+                      </div>
+                      <div *ngIf="InfoForm.get('city')?.errors?.['alphabetic'] && InfoForm.get('city')?.touched">
+                        address must contain only letters.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+                    <div class="mb-3 card-label">
                       <label for="city" class="mb-2">City<span class="required-asterisk">*</span></label>
                       <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter City" />
                       <div *ngIf="InfoForm.get('city')?.errors?.['required'] && InfoForm.get('city')?.touched">
@@ -684,9 +696,21 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-4 col-sm-12">
+                  <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="pinCode" class="mb-2">PIN Code<span class="required-asterisk">*</span></label>
+                      <label for="pinCode" class="mb-2">Country<span class="required-asterisk">*</span></label>
+                      <input formControlName="country" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Country"/>
+                      <div *ngIf="InfoForm.get('country')?.errors?.['required'] && InfoForm.get('country')?.touched">
+                        country is required
+                      </div>
+                      <div *ngIf="InfoForm.get('country')?.errors?.['alphabetic'] && InfoForm.get('country')?.touched">
+                        country must contain only letters.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="mb-3 card-label">
+                      <label for="pinCode" class="mb-2">Country<span class="required-asterisk">*</span></label>
                       <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter PinCode" (keypress)="validateNumber($event)"/>
                       <div *ngIf="InfoForm.get('pinCode')?.invalid && InfoForm.get('pinCode')?.touched">
                         PIN Code is required

@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsDaterangepickerConfig, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker';
+import { ToastrService } from 'ngx-toastr';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { routes } from 'src/app/shared/routes/routes';
 
@@ -32,7 +33,7 @@ export class PatientAppointmentsComponent {
   selectedAppointmentId:any
   // @ViewChild('dateRangePicker') dateRangePicker!: ElementRef;
   @ViewChild(BsDaterangepickerDirective, { static: false }) datepicker!: BsDaterangepickerDirective;
-  constructor(private patientsService:PatientsService,private datePipe: DatePipe,private router:Router, private renderer: Renderer2) {
+  constructor(private patientsService:PatientsService,private datePipe: DatePipe,private router:Router, private renderer: Renderer2,private toastr:ToastrService) {
     this.bsRangeValue = [this.startDate, this.endDate];
     this.minDate = new Date();
   }
@@ -190,6 +191,10 @@ confirmSlot(): void {
   }
  this.patientsService.rescheduleMeeting(data,this.selectedAppointmentId).subscribe((res:any)=>{
   console.log(res,"39")
+  this.closeModal();
+  this.toastr.success(res.message);
+  this.getAvailableSlots();
+  this.getAppointmentData(this.activeTab)
   this.isModalOpen = false;
  })
 }
