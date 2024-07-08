@@ -123,6 +123,8 @@ export class Home1Component implements OnInit {
       lastName: ['', [Validators.required, this.alphabeticValidator()]],
       city: ['', [Validators.required, this.alphabeticValidator()]],
       state: ['', [Validators.required, this.alphabeticValidator()]],
+      address: ['', [Validators.required, this.alphabeticValidator()]],
+      country: ['', [Validators.required, this.alphabeticValidator()]],
       pinCode: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required]
@@ -452,8 +454,6 @@ return window.innerWidth < 767
     if (this.appointmentForm.valid && this.choosenIssues?.length > 0) {
       if(this.slotConfirmed===true){
     this.issues= this.appointmentForm.value.selectedConcerns;
-    console.log(this.InfoForm.value); // Should show the whole form value
-    console.log(this.InfoForm.value.age); // Should show the age value
     
       this.bookAppointmentbtn = true
       }
@@ -522,9 +522,9 @@ return window.innerWidth < 767
         'user.Gender': this.appointmentForm.value.gender,
         'user.Age': this.appointmentForm.value.age,
         'user.Phone': this.InfoForm.value.phone,
-        'user.Role': 1,
         'user.Email': this.InfoForm.value.email,
-        'user.LoginProvider': 'JWT',
+        'user.Country': this.InfoForm.value.country,
+        'user.Address':this.InfoForm.value.address,
         Fees: 200.00
       };
       console.log(data, "545",this.InfoForm.value.age);
@@ -616,7 +616,9 @@ return window.innerWidth < 767
         email: res.data.email,
         city: res.data.city,
         state: res.data.state,
-        pinCode: res.data.pinCode
+        pinCode: res.data.pinCode,
+        address: res.data.address,
+        country:res.data.country
       });
 //       Object.keys(this.InfoForm.controls).forEach((control:any)=>{
 // this.InfoForm?.get(control)?.disable();
