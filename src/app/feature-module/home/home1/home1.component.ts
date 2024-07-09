@@ -124,7 +124,7 @@ export class Home1Component implements OnInit {
       lastName: ['', [Validators.required, this.alphabeticValidator()]],
       city: ['', [Validators.required, this.alphabeticValidator()]],
       state: ['', [Validators.required, this.alphabeticValidator()]],
-      address: ['', [Validators.required, this.alphabeticValidator()]],
+      address: ['', [Validators.required]],
       country: ['', [Validators.required, this.alphabeticValidator()]],
       pinCode: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -501,8 +501,9 @@ return window.innerWidth < 767
   initiatePayment() {
     const isValid = this.InfoForm.valid;
     const token = localStorage.getItem('token');
+    console.log(this.InfoForm);
     if (isValid || token) {
-      console.log(this.InfoForm);
+      
   
       const amount = 100;
       const name = this.InfoForm.value.firstName + ' ' + this.InfoForm.value.lastName;
