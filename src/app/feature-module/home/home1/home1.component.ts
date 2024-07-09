@@ -91,7 +91,8 @@ export class Home1Component implements OnInit {
   };
   selectedValue!: any;
   minDate!: Date;
-  Doctors:any
+  Doctors:any;
+  consultationFees:any
   constructor(
     private data: DataService,
     private router: Router,
@@ -422,8 +423,9 @@ return window.innerWidth < 767
   }
 
   getIssues() {
-    this.patientsService.getIssues().subscribe((issues) => {
-      this.concerns = issues;
+    this.patientsService.getIssues().subscribe((issues:any) => {
+      this.concerns = issues.issues;
+      this.consultationFees=issues.consultationFees
       console.log(this.concerns)
     });
   }
@@ -525,7 +527,7 @@ return window.innerWidth < 767
         'user.Email': this.InfoForm.value.email,
         'user.Country': this.InfoForm.value.country,
         'user.Address':this.InfoForm.value.address,
-        Fees: 200.00
+        Fees: `${this.consultationFees}.00`
       };
       console.log(data, "545",this.InfoForm.value.age);
       const zoomData = {
