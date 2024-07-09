@@ -695,7 +695,7 @@
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="pinCode" class="mb-2">Country<span class="required-asterisk">*</span></label>
+                      <label for="country" class="mb-2">Country<span class="required-asterisk">*</span></label>
                       <input formControlName="country" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Country"/>
                       <div *ngIf="InfoForm.get('country')?.errors?.['required'] && InfoForm.get('country')?.touched">
                         country is required
@@ -707,7 +707,7 @@
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="pinCode" class="mb-2">Country<span class="required-asterisk">*</span></label>
+                      <label for="pinCode" class="mb-2">pinCode<span class="required-asterisk">*</span></label>
                       <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter PinCode" (keypress)="validateNumber($event)"/>
                       <div *ngIf="InfoForm.get('pinCode')?.invalid && InfoForm.get('pinCode')?.touched">
                         PIN Code is required
