@@ -193,139 +193,54 @@
     </div>
 
     <div class="row">
+      <owl-carousel-o [options]="doctorSlider">
+        @for (data of Doctors; track data) {
+        <ng-template carouselSlide>
+          <div class="item">
+            <div class="doctor-profile-widget doc-item">
+              <div class="doc-pro-img">
+                <!-- [routerLink]="routes.doctorProfile2" -->
+                <a>
+                  <div class="doctor-profile-img">
+                    <img *ngIf="!data.doctorImage" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid s" alt="doctor" />
+                    <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
+                  </div>
+                </a>
+                <!-- <div class="doctor-amount">
+                  <span>{{ data.amount }}</span>
+                </div> -->
+              </div>
+              <div class="doc-content">
+                <div class="doc-pro-info">
+                  <div class="doc-pro-name">
+                    <a >{{
+                      data.name
+                      }}</a>
+                    <p>{{ data.specialty }}</p>
+                  </div>
+                  <div class="reviews-ratings">
+                    <p>
+                      <!-- <span>Count</span> -->
+                      {{ data.appointmentCount }}
+                    </p>
+                  </div>
+                </div>
+                <div class="doc-pro-location">
+                  <p>
+                    {{ data.email }}
+                  </p>
+                  <span *ngIf="data.isAvailable" class="badge badge-success doc-badge"><i
+                      class="fa-solid fa-circle"></i>Available</span>
+                  <span *ngIf="!data.isAvailable" class="badge badge-warning doc-badge"><i
+                      class="fa-solid fa-circle"></i>Unavailable</span>
 
-      <!-- Doctor Item -->
-      <div class="col-lg-3 col-md-6 d-flex">
-        <div class="doctor-profile-widget w-100">
-          <div class="doc-pro-img">
-            <a [routerLink] = "routes.doctorProfile2">
-              <div class="doctor-profile-img">
-                <img src="assets/img/doctors/doctor-03.jpg" class="img-fluid" alt="Ruby Perrin">
+                </div>
               </div>
-            </a>
-            <div class="doctor-amount">
-              <span>$ 200</span>
             </div>
           </div>
-          <div class="doc-content">
-            <div class="doc-pro-info">
-              <div class="doc-pro-name">
-                <a [routerLink] = "routes.doctorProfile2">Dr. Ruby Perrin</a>
-                <p>Cardiology</p>
-              </div>
-              <div class="reviews-ratings">
-                <p>
-                  <span><i class="fas fa-star"></i> 4.5</span> (35)
-                </p>
-              </div>
-            </div>
-            <div class="doc-pro-location">
-              <p><i class="feather icon-map-pin"></i> Newyork, USA</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Doctor Item -->
-
-      <!-- Doctor Item -->
-      <div class="col-lg-3 col-md-6 d-flex">
-        <div class="doctor-profile-widget w-100">
-          <div class="doc-pro-img">
-            <a [routerLink] = "routes.doctorProfile2">
-              <div class="doctor-profile-img">
-                <img src="assets/img/doctors/doctor-04.jpg" class="img-fluid" alt="Darren Elder">
-              </div>
-            </a>
-            <div class="doctor-amount">
-              <span>$ 360</span>
-            </div>
-          </div>
-          <div class="doc-content">
-            <div class="doc-pro-info">
-              <div class="doc-pro-name">
-                <a [routerLink] = "routes.doctorProfile2">Dr. Darren Elder</a>
-                <p>Neurology</p>
-              </div>
-              <div class="reviews-ratings">
-                <p>
-                  <span><i class="fas fa-star"></i> 4.0</span> (20)
-                </p>
-              </div>
-            </div>
-            <div class="doc-pro-location">
-              <p><i class="feather icon-map-pin"></i> Florida, USA</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Doctor Item -->
-
-      <!-- Doctor Item -->
-      <div class="col-lg-3 col-md-6 d-flex">
-        <div class="doctor-profile-widget w-100">
-          <div class="doc-pro-img">
-            <a [routerLink] = "routes.doctorProfile2">
-              <div class="doctor-profile-img">
-                <img src="assets/img/doctors/doctor-05.jpg" class="img-fluid" alt="Sofia Brient">
-              </div>
-            </a>
-            <div class="doctor-amount">
-              <span>$ 450</span>
-            </div>
-          </div>
-          <div class="doc-content">
-            <div class="doc-pro-info">
-              <div class="doc-pro-name">
-                <a [routerLink] = "routes.doctorProfile2">Dr. Sofia Brient</a>
-                <p>Urology</p>
-              </div>
-              <div class="reviews-ratings">
-                <p>
-                  <span><i class="fas fa-star"></i> 4.5</span> (30)
-                </p>
-              </div>
-            </div>
-            <div class="doc-pro-location">
-              <p><i class="feather icon-map-pin"></i> Georgia, USA</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Doctor Item -->
-
-      <!-- Doctor Item -->
-      <div class="col-lg-3 col-md-6 d-flex">
-        <div class="doctor-profile-widget w-100">
-          <div class="doc-pro-img">
-            <a [routerLink] = "routes.doctorProfile2">
-              <div class="doctor-profile-img">
-                <img src="assets/img/doctors/doctor-02.jpg" class="img-fluid" alt="Paul Richard">
-              </div>
-            </a>
-            <div class="doctor-amount">
-              <span>$ 570</span>
-            </div>
-          </div>
-          <div class="doc-content">
-            <div class="doc-pro-info">
-              <div class="doc-pro-name">
-                <a [routerLink] = "routes.doctorProfile2">Dr. Paul Richard</a>
-                <p>Orthopedic</p>
-              </div>
-              <div class="reviews-ratings">
-                <p>
-                  <span><i class="fas fa-star"></i> 4.3</span> (45)
-                </p>
-              </div>
-            </div>
-            <div class="doc-pro-location">
-              <p><i class="feather icon-map-pin"></i> Michigan, USA</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /Doctor Item -->
-
+        </ng-template>
+        }
+      </owl-carousel-o>
     </div>
   </div>
 </section>

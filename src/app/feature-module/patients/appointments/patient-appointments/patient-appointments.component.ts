@@ -192,17 +192,21 @@ confirmSlot(): void {
  this.patientsService.rescheduleMeeting(data,this.selectedAppointmentId).subscribe((res:any)=>{
   console.log(res,"39")
   this.closeModal();
-  this.toastr.success(res.message);
+  this.toastr.success("Appointment rescheduled successfully");
   this.getAvailableSlots();
   this.getAppointmentData(this.activeTab)
   this.isModalOpen = false;
  })
 }
-convertToISOFormat(inputTime:any, inputDate:any) {
-  let date = new Date(inputDate);
-  let [hours, minutes, seconds] = inputTime.split(':').map(Number);
-  date.setHours(hours, minutes, seconds, 0);
-  return date.toISOString();
+convertToISOFormat(timeStr:any, dateStr:any) {
+  const inputDate = new Date(dateStr);
+  const year = inputDate.getFullYear();
+  const month = String(inputDate.getMonth() + 1).padStart(2, '0'); 
+  const day = String(inputDate.getDate()).padStart(2, '0');
+  const combinedDateTimeStr = `${year}-${month}-${day}T${timeStr}.000Z`;
+  const combinedDateTime = new Date(combinedDateTimeStr);
+  const output = combinedDateTime.toISOString();
+  return output;
 }
 formatDate(date: any): string {
   console.log('Formatted date:', `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(

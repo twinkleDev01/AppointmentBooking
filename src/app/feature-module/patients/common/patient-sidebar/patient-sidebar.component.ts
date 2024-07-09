@@ -75,4 +75,10 @@ handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
 }
+convertToUrl(filePath:string) {
+  const baseUrl = "https://bookingapi.asptask.in/";
+  const urlPath = filePath.replace(/\\/g, '/').replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
+  const fullUrl = baseUrl + urlPath;
+  return fullUrl;
+}
 }

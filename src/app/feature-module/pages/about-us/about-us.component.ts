@@ -1,16 +1,48 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { DataService } from 'src/app/shared/data/data.service';
 import { aboutUs } from 'src/app/shared/models/models';
 import { routes } from 'src/app/shared/routes/routes';
+import { PatientsService } from 'src/app/shared/Service/patients.service';
 
 @Component({
   selector: 'app-about-us',
   templateUrl: './about-us.component.html',
   styleUrls: ['./about-us.component.scss'],
 })
-export class AboutUsComponent {
+export class AboutUsComponent implements OnInit {
   public routes = routes;
   public aboutUs: aboutUs[];
+  Doctors:any;
+  public doctorSlider: OwlOptions = {
+    loop: true,
+    margin: 24,
+    dots: false,
+    nav: false,
+    smartSpeed: 2000,
+    navText: [
+      '<i class="fas fa-chevron-left"></i>',
+      '<i class="fas fa-chevron-right"></i>',
+    ],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      500: {
+        items: 1,
+      },
+      768: {
+        items: 2,
+      },
+      1000: {
+        items: 4,
+      },
+      1200: {
+        items: 4,
+      },
+    },
+  };
+
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -51,7 +83,27 @@ export class AboutUsComponent {
       },
     ],
   };
-  constructor(private data: DataService) {
+  constructor(private data: DataService,private patientsService: PatientsService,) {
     this.aboutUs = this.data.aboutUs;
   }
+  ngOnInit(): void {
+    this.getDoctors();
+  }
+  getDoctors(){
+    this.patientsService.getDoctors().subscribe((res:any)=>{
+      console.log(res.result.data,'doctors')
+      this.Doctors=res.result.data
+    })
+  }
+  convertToUrl(filePath:string) {
+    const baseUrl = "https://bookingapi.asptask.in/";
+    const urlPath = filePath.replace(/\\/g, '/').replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
+    const fullUrl = baseUrl + urlPath;
+    return fullUrl;
+}
+handleImageError(event: Event): void {
+  const target = event.target as HTMLImageElement;
+  target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
+}
+
 }

@@ -6,8 +6,10 @@
         <div class="widget-profile pro-widget-content">
             <div class="profile-info-widget">
                 <a [routerLink]="routes.profileSettings" class="booking-doc-img">
-                    <img src="assets/img/dummy/doload.jpg" alt="User Image" *ngIf="!userInfo?.image">
-                    <img [src]="userInfo.image" alt="User Image" (error)="handleImageError($event)" *ngIf="userInfo?.image">
+                    <!-- <img src="assets/img/dummy/doload.jpg" alt="User Image" *ngIf="!userInfo?.image">
+                    <img [src]="userInfo.image" alt="User Image" (error)="handleImageError($event)" *ngIf="userInfo?.image"> -->
+                    <img *ngIf="!userInfo?.image" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
+                      <img *ngIf="!userInfo?.imagee" [src]="convertToUrl(userInfo?.image)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
                 </a>
                 <div class="profile-det-info">
                     <h3><a [routerLink]="routes.profileSettings">{{userInfo?.firstName}} {{userInfo?.lastName}}</a></h3>
