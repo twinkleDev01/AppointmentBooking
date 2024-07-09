@@ -122,13 +122,13 @@ export class Home1Component implements OnInit {
     this.InfoForm = this.fb.group({
       firstName: ['', [Validators.required, this.alphabeticValidator()]],
       lastName: ['', [Validators.required, this.alphabeticValidator()]],
-      city: ['', [Validators.required, this.alphabeticValidator()]],
-      state: ['', [Validators.required, this.alphabeticValidator()]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      country: ['', [Validators.required, this.alphabeticValidator()]],
+      country: ['', [Validators.required]],
       pinCode: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required]
+      email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}')]],
+      phone: ['', Validators.required,Validators.pattern('^[0-9]{10}$')]
     });
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)

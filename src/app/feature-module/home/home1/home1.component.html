@@ -676,9 +676,6 @@
                       <div *ngIf="InfoForm.get('city')?.errors?.['required'] && InfoForm.get('city')?.touched">
                         City is required
                       </div>
-                      <div *ngIf="InfoForm.get('city')?.errors?.['alphabetic'] && InfoForm.get('city')?.touched">
-                        City must contain only letters.
-                      </div>
                     </div>
                   </div>
                   <div class="col-md-4 col-sm-12">
@@ -688,9 +685,6 @@
                       <div *ngIf="InfoForm.get('state')?.errors?.['required'] && InfoForm.get('state')?.touched">
                         State is required
                       </div>
-                      <div *ngIf="InfoForm.get('state')?.errors?.['alphabetic'] && InfoForm.get('state')?.touched">
-                        State must contain only letters.
-                      </div>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-12">
@@ -699,9 +693,6 @@
                       <input formControlName="country" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Country"/>
                       <div *ngIf="InfoForm.get('country')?.errors?.['required'] && InfoForm.get('country')?.touched">
                         country is required
-                      </div>
-                      <div *ngIf="InfoForm.get('country')?.errors?.['alphabetic'] && InfoForm.get('country')?.touched">
-                        country must contain only letters.
                       </div>
                     </div>
                   </div>
@@ -717,18 +708,27 @@
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="email" class="mb-2">Email<span class="required-asterisk">*</span></label>
-                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" placeholder="Enter Email" (keypress)="preventWhitespace($event)"/>
-                      <div *ngIf="InfoForm.get('email')?.invalid && InfoForm.get('email')?.touched">
-                        Enter a valid email
+                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" placeholder="Enter Email" (keypress)="preventWhitespace($event)" id="email">
+                      <div *ngIf="InfoForm.get('email')?.errors?.['required'] && InfoForm.get('email')?.touched" class="text-danger">
+                        Email is required.
+                      </div>
+                      <div *ngIf="InfoForm.get('email')?.errors?.['pattern'] && InfoForm.get('email')?.touched" class="text-danger">
+                        Please enter a valid email address.
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="phone" class="mb-2">Phone<span class="required-asterisk">*</span></label>
-                      <input formControlName="phone" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Phone Number" (keypress)="validateNumber($event)" maxlength="10"/>
-                      <div *ngIf="InfoForm.get('phone')?.invalid && InfoForm.get('phone')?.touched">
-                        Phone is required
+                      <input formControlName="phone" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Phone Number" (keypress)="validateNumber($event)" maxlength="10" id="phone">
+                      <div *ngIf="InfoForm.get('phone')?.errors?.['required'] && InfoForm.get('phone')?.touched" class="text-danger">
+                        Phone number is required.
+                      </div>
+                      <div *ngIf="InfoForm.get('phone')?.errors?.['minlength'] && InfoForm.get('phone')?.touched" class="text-danger">
+                        Phone number must be 10 digits long.
+                      </div>
+                      <div *ngIf="InfoForm.get('phone')?.errors?.['pattern'] && InfoForm.get('phone')?.touched" class="text-danger">
+                        Please enter a valid 10-digit phone number.
                       </div>
                     </div>
                   </div>
