@@ -70,9 +70,7 @@ this.patientsService.userSubject.next(data);
   } 
 })
 
-    } else {
-      console.log('Form is not valid');
-    }
+    } 
   }
   selectedImageUrl: string | ArrayBuffer | null = null;
   onFileChange(event: any){
@@ -116,8 +114,6 @@ this.patientsService.userSubject.next(data);
 
   getUserInfo(){
     this.patientsService.getPatientinfo().subscribe((res:any)=>{
-      console.log(res,"49");
-      // this.userInfo=res?.data;
       if (res.data) {
         const dateOfBirth = new Date(res.data.dateOfBirth);
         this.profileForm.patchValue({
@@ -135,16 +131,21 @@ this.patientsService.userSubject.next(data);
           pincode: res.data.pinCode,
           
         });
-        this.selectedImageUrl=res.data.image,
-        console.log(this.selectedImageUrl,"118")
+        this.selectedImageUrl=this.convertToUrl(res.data.image)
       }
     })
+  }
+  convertToUrl(filePath:string) {
+    if(filePath==null) return null;
+    const baseUrl = "https://bookingapi.asptask.in/";
+    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
+    const fullUrl = baseUrl + urlPath;
+    return fullUrl;
   }
   dateOfBirth: any
   onDateChange(event: any) {
     const date = new Date(event);
     if (isNaN(date.getTime())) {
-      console.error('Invalid date:', event);
       return;
     }
     const formattedDate = this.formatDate(date);

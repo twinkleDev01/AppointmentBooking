@@ -22,11 +22,11 @@ export class PaymentService {
 
   constructor(private http:HttpClient, private auth:AuthService, private route:Router,private toastr: ToastrService,private loaderServiceService:LoaderServiceService) { }
 
-  initiatePayment(amount: number, name: string, email: string, contact: string, formData: any,zoomData:any) {
+  initiatePayment(amount: number, name: string, email: string, contact: string, formData: any,zoomData:any,fees:number) {
     this.loaderServiceService.show();
     const options = {
       key: this.razorpayKey,
-      amount: amount * 200,
+      amount: amount * fees,
       currency: "INR",
       name: "Your Company Name",
       description: "Test Transaction",

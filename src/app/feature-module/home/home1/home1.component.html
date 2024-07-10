@@ -665,7 +665,7 @@
                       <label for="address" class="mb-2">Address<span class="required-asterisk">*</span></label>
                       <input formControlName="address" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter address" />
                       <div *ngIf="InfoForm.get('address')?.errors?.['required'] && InfoForm.get('address')?.touched">
-                        address is required
+                        Address is required
                       </div>
                     </div>
                   </div>
@@ -674,10 +674,7 @@
                       <label for="city" class="mb-2">City<span class="required-asterisk">*</span></label>
                       <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter City" />
                       <div *ngIf="InfoForm.get('city')?.errors?.['required'] && InfoForm.get('city')?.touched">
-                        City is required
-                      </div>
-                      <div *ngIf="InfoForm.get('city')?.errors?.['alphabetic'] && InfoForm.get('city')?.touched">
-                        City must contain only letters.
+                        city is required
                       </div>
                     </div>
                   </div>
@@ -686,49 +683,49 @@
                       <label for="state" class="mb-2">State<span class="required-asterisk">*</span></label>
                       <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter State" />
                       <div *ngIf="InfoForm.get('state')?.errors?.['required'] && InfoForm.get('state')?.touched">
-                        State is required
-                      </div>
-                      <div *ngIf="InfoForm.get('state')?.errors?.['alphabetic'] && InfoForm.get('state')?.touched">
-                        State must contain only letters.
+                        state is required
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="pinCode" class="mb-2">Country<span class="required-asterisk">*</span></label>
+                      <label for="country" class="mb-2">Country<span class="required-asterisk">*</span></label>
                       <input formControlName="country" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Country"/>
                       <div *ngIf="InfoForm.get('country')?.errors?.['required'] && InfoForm.get('country')?.touched">
                         country is required
                       </div>
-                      <div *ngIf="InfoForm.get('country')?.errors?.['alphabetic'] && InfoForm.get('country')?.touched">
-                        country must contain only letters.
-                      </div>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
-                      <label for="pinCode" class="mb-2">Country<span class="required-asterisk">*</span></label>
+                      <label for="pinCode" class="mb-2">pinCode<span class="required-asterisk">*</span></label>
                       <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter PinCode" (keypress)="validateNumber($event)"/>
-                      <div *ngIf="InfoForm.get('pinCode')?.invalid && InfoForm.get('pinCode')?.touched">
-                        PIN Code is required
+                      <div *ngIf="InfoForm.get('pinCode')?.errors?.['required'] && InfoForm.get('pinCode')?.touched">
+                        pinCode is required
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="email" class="mb-2">Email<span class="required-asterisk">*</span></label>
-                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" placeholder="Enter Email" (keypress)="preventWhitespace($event)"/>
-                      <div *ngIf="InfoForm.get('email')?.invalid && InfoForm.get('email')?.touched">
-                        Enter a valid email
+                      <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" placeholder="Enter Email" (keypress)="preventWhitespace($event)" id="email">
+                      <div *ngIf="InfoForm.get('email')?.errors?.['required'] && InfoForm.get('email')?.touched">
+                       email is required
+                      </div>
+                      <div *ngIf="InfoForm.get('email')?.errors?.['email'] && InfoForm.get('email')?.touched">
+                    enter correct email format
                       </div>
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="phone" class="mb-2">Phone<span class="required-asterisk">*</span></label>
-                      <input formControlName="phone" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Phone Number" (keypress)="validateNumber($event)" maxlength="10"/>
-                      <div *ngIf="InfoForm.get('phone')?.invalid && InfoForm.get('phone')?.touched">
-                        Phone is required
+                      <input formControlName="phone" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Phone Number" (keypress)="validateNumber($event)" maxlength="10" id="phone">
+                      <div *ngIf="InfoForm.get('phone')?.errors?.['required'] && InfoForm.get('phone')?.touched">
+                        Phone number is required
+                      </div>
+                      <div *ngIf="InfoForm.get('phone')?.errors?.['tenDigitNumber'] && InfoForm.get('phone')?.touched">
+                        Phone number must be 10 digits
                       </div>
                     </div>
                   </div>
@@ -781,13 +778,13 @@
                       </div>
 
                     <ul class="booking-fee">
-                      <li>Consulting Fee<span>INR 200</span></li>
+                      <li>Consulting Fee<span>INR {{consultationFees}}</span></li>
                     </ul>
                     <div class="booking-total">
                       <ul class="booking-total-list">
                         <li>
                           <span>Total</span>
-                          <span class="total-cost">INR 200</span>
+                          <span class="total-cost">INR {{consultationFees}}</span>
                         </li>
                       </ul>
                     </div>

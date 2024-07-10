@@ -73,14 +73,19 @@
                 <div id="recaptcha-container"></div>
                 <div class="mb-3">
                   <input
-                    type="tel"
-                    class="form-control"
-                    placeholder="Enter phone number"
-                    [(ngModel)]="phoneNumber"
-                    name="phoneNumber"
-                    required
-                  />
-                  <span *ngIf="isNumber" class="text-danger">please enter mobile number</span>
+                  type="tel"
+                  class="form-control"
+                  placeholder="Enter phone number"
+                  [(ngModel)]="phoneNumber"
+                  name="phoneNumber"
+                  #phoneNumberInput="ngModel"
+                  required
+                  pattern="^[0-9]{10}$"
+                />
+                <div *ngIf="submitClicked && phoneNumberInput.invalid && (phoneNumberInput.dirty || phoneNumberInput.touched)" class="text-danger">
+                  <div *ngIf="phoneNumberInput.errors?.['required']">Phone number is required.</div>
+                  <div *ngIf="phoneNumberInput.errors?.['pattern']">Please enter a valid 10-digit phone number.</div>
+                </div>
                 </div>
 
               

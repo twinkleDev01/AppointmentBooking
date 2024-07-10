@@ -19,7 +19,7 @@ export class LoginComponent {
   loginForm!: FormGroup;
   formSubmitted: boolean = false;
   otpSent: boolean = false;
-
+  submitClicked: boolean = false;
 
   phoneNumber: string = '';
   verificationCode: string = '';
@@ -43,16 +43,21 @@ export class LoginComponent {
     //   console.error('Invalid phone number');
     //   return;
     // }
-
-    this.afAuth.signInWithPhoneNumber('+91'+this.phoneNumber, this.recaptchaVerifier!)
+    this.submitClicked = true;
+    if (this.phoneNumber) {
+      console.log('Submitted phone number:', this.phoneNumber);
+      this.afAuth.signInWithPhoneNumber('+91'+this.phoneNumber, this.recaptchaVerifier!)
       .then((confirmationResult) => {
         this.confirmationResult = confirmationResult;
         this.otpSent = true
         this.toastr.success('OTP sent Successfully', "Success");
+        this.submitClicked = false;
       })
       .catch((error) => {
         console.error('Error during signInWithPhoneNumber', error);
       });
+    }
+   
   }
 
   verifyLoginCode() {

@@ -122,14 +122,15 @@ export class Home1Component implements OnInit {
     this.InfoForm = this.fb.group({
       firstName: ['', [Validators.required, this.alphabeticValidator()]],
       lastName: ['', [Validators.required, this.alphabeticValidator()]],
-      city: ['', [Validators.required, this.alphabeticValidator()]],
-      state: ['', [Validators.required, this.alphabeticValidator()]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      country: ['', [Validators.required, this.alphabeticValidator()]],
+      country: ['', [Validators.required]],
       pinCode: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required]
+      email: ['', [Validators.required, this.emailValidator()]],
+      phone: ['', [Validators.required, this.tenDigitNumberValidator()]]
     });
+    
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)
     this.auth.token.subscribe((res:any)=>{
@@ -564,7 +565,7 @@ return window.innerWidth < 767
         }
       });
   
-      this.paymentService.initiatePayment(amount, name, email, contact, formData, zoomData);
+      this.paymentService.initiatePayment(amount, name, email, contact, formData, zoomData,this.consultationFees);
       this.paymentService.paymentId.subscribe((res: any) => {
         console.log(res, "560");
         if (res && Object.keys(res).length !== 0) {
@@ -657,7 +658,7 @@ console.log('destroy')
 
   convertToUrl(filePath:string) {
     const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath.replace(/\\/g, '/').replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
+    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
     const fullUrl = baseUrl + urlPath;
     return fullUrl;
 }
@@ -671,6 +672,20 @@ alphabeticValidator(): ValidatorFn {
   return (control: AbstractControl): { [key: string]: any } | null => {
     const valid = /^[a-zA-Z]*$/.test(control.value);
     return valid ? null : { 'alphabetic': { value: control.value } };
+  };
+}
+emailValidator(): ValidatorFn {
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const valid = emailPattern.test(control.value);
+    return valid ? null : { 'email': { value: control.value } };
+  };
+}
+tenDigitNumberValidator(): ValidatorFn {
+  const numberPattern = /^[0-9]{10}$/;
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const valid = numberPattern.test(control.value);
+    return valid ? null : { 'tenDigitNumber': { value: control.value } };
   };
 }
 }
