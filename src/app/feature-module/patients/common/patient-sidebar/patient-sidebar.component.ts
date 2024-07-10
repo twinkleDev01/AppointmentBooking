@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
@@ -10,7 +10,7 @@ import { routes } from 'src/app/shared/routes/routes';
   templateUrl: './patient-sidebar.component.html',
   styleUrl: './patient-sidebar.component.scss'
 })
-export class PatientSidebarComponent {
+export class PatientSidebarComponent implements OnInit {
   public routes = routes
   public base = '';
   public page = '';
@@ -30,15 +30,15 @@ export class PatientSidebarComponent {
     });
     this.Detail = localStorage.getItem('UserDetail')
         this.Detail = JSON.parse(this.Detail);
-    this.getUserInfo();
     this.patientsService.userSubject.subscribe((res:any)=>{
       if(res){
         this.getUserInfo();
       }
     })
   }
-  ngOnInit(){
-  
+  ngOnInit(): void {
+    this.getUserInfo();
+    
   }
   isPatient:boolean =false
   Logout(){
@@ -55,6 +55,9 @@ localStorage.removeItem('token')
 
   calculateAge(dobString:any) {
     // Convert the input date string to a Date object
+    if(dobString==null){
+      return 'Please Update DOB';
+    }
     const dob = new Date(dobString);
     const today = new Date();
 
@@ -69,15 +72,16 @@ localStorage.removeItem('token')
         age--;
     }
 
-    return age;
+    return `${age} years`;
 }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
-  target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
+  target.src = '../../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
 }
 convertToUrl(filePath:string) {
+  if(filePath==null) return null;
   const baseUrl = "https://bookingapi.asptask.in/";
-  const urlPath = filePath.replace(/\\/g, '/').replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
+  const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
   const fullUrl = baseUrl + urlPath;
   return fullUrl;
 }
