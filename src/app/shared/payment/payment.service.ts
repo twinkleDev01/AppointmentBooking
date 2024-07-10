@@ -46,7 +46,6 @@ export class PaymentService {
       handler: (response: any) => this.paymentHandler(response, formData,zoomData,email)
     };
   
-    console.log('Initiating payment with options:', options);
   
     const rzp = new (window as any).Razorpay(options);
     rzp.open();
@@ -55,7 +54,6 @@ export class PaymentService {
 
   paymentHandler(response: any, formData: FormData,zoomData:any,email:string) {
     
-    console.log(response, formData);
     const paymentIdData = response.razorpay_payment_id
     // Append the payment ID to the form data
   formData.append('PaymentId', response.razorpay_payment_id);
@@ -64,14 +62,13 @@ export class PaymentService {
     // Handle the response after successful payment
     if (response.razorpay_payment_id) {
       this.bookAppointment(formData).subscribe((response: any) => {
-        console.log('Appointment booked successfully:', response);
         if (response) {
-          this.route.navigate(['/patients/patient-dashboard']);
-          console.log(response,'success');
-          this.paymentId.next(paymentIdData)
+          
           this.auth.setToken(response.data.token);
+          this.route.navigate(['/patients/patient-dashboard']);
           this.toastr.success('Appointment created Successfully', "Success");
           this.loaderServiceService.hide();
+          this.paymentId.next(paymentIdData)
         }
       }, (error: any) => {
         console.error('Error booking appointment:', error);
