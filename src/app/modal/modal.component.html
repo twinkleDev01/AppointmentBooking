@@ -1473,6 +1473,7 @@
                   <h6 class="customer-text">Doctor Details</h6>
                   <p class="invoice-details invoice-details-two">
                     {{PrescriptionsDetails.doctorName}}<br>
+                    {{PrescriptionsDetails.doctorAddress}} &nbsp;
                     {{PrescriptionsDetails.doctorState}} <br>
                     {{PrescriptionsDetails.doctorCountry}}<br>
                   </p>
@@ -1483,6 +1484,7 @@
                   <h6 class="customer-text">Patient Details</h6>
                   <p class="invoice-details">
                     {{PrescriptionsDetails.patientName}} <br>
+                    {{PrescriptionsDetails.patientAddress}} &nbsp;
                     {{PrescriptionsDetails.patientState}}<br>
                     {{PrescriptionsDetails.patientCountry}}<br>
                   </p>
@@ -1518,8 +1520,17 @@
                         <td>{{medicine.instruction}}</td>
                       </tr>
                     </ng-container>
+
+                    
                     </tbody>
                   </table>
+                  <p class="mt-5">
+                    <span class="fw-semibold ">Advice:</span> {{PrescriptionsDetails.advice}}
+                  </p>
+                <p>
+                 <span class="fw-semibold "> FollowUp: </span>{{PrescriptionsDetails.followUp}}
+                </p>
+                   
                 </div>
               </div>
             </div>
@@ -1944,7 +1955,7 @@
                   <h6 class="customer-text">Billing From</h6>
                   <p class="invoice-details invoice-details-two">
                     {{invoiceDetail.doctorName}} <br>
-                    {{invoiceDetail.docotrAddress}} <br>
+                    {{invoiceDetail.docotrAddress}}&nbsp;{{invoiceDetail.doctorState}}&nbsp;{{invoiceDetail.doctorCountry}} <br>
                   </p>
                 </div>
               </div>
@@ -1953,7 +1964,7 @@
                   <h6 class="customer-text">Billing To</h6>
                   <p class="invoice-details invoice-details-two">
                     {{invoiceDetail.patientName}}<br>
-                    {{invoiceDetail.patientAddress}}<br>
+                    {{invoiceDetail.patientAddress}}&nbsp;{{invoiceDetail.patientState}}&nbsp;{{invoiceDetail.patientCountry}}<br>
                   </p>
                 </div>
               </div>
@@ -1981,10 +1992,10 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>General Consultation</td>
+                        <td>Video Consultation</td>
                         <td>1</td>
                         <td>0</td>
-                        <td>{{invoiceDetail.fees}}</td>
+                        <td>INR {{invoiceDetail.fees}}</td>
                       </tr>
                      
                     </tbody>
@@ -1995,17 +2006,10 @@
                 <div class="table-responsive">
                   <table class="invoice-table-two table">
                     <tbody>
-                      <tr>
-                        <th>Subtotal:</th>
-                        <td><span>{{invoiceDetail.fees}}</span></td>
-                      </tr>
-                      <tr>
-                        <th>Discount:</th>
-                        <td><span>0%</span></td>
-                      </tr>
+                      
                       <tr>
                         <th>Total Amount:</th>
-                        <td><span>{{invoiceDetail.fees}}</span></td>
+                        <td><span>INR {{invoiceDetail.fees}}</span></td>
                       </tr>
                     </tbody>
                   </table>

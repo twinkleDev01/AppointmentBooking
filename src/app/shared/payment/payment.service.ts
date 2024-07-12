@@ -43,12 +43,23 @@ export class PaymentService {
         color: "#F37254"
       },
       // handler: this.paymentHandler.bind(response, formData)
-      handler: (response: any) => this.paymentHandler(response, formData,zoomData,email)
+      handler: (response: any) => this.paymentHandler(response, formData,zoomData,email),
+      modal: {
+        ondismiss: () => {
+          console.log('Checkout form closed');
+          // Handle cancel event here
+          this.handlePaymentCancel();
+        }
+      }
     };
-  
-  
+
     const rzp = new (window as any).Razorpay(options);
     rzp.open();
+    
+  }
+  handlePaymentCancel():void{
+    console.log("cancelled")
+      this.loaderServiceService.hide();
   }
   
 
