@@ -328,7 +328,7 @@
                                     <h2 class="table-avatar">
                                       <a  class="avatar avatar-sm me-2">
                                         <img *ngIf="!data.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
-                                        <img *ngIf="data.doctorImage" class="avatar-img rounded-3" [src]="convertToUrl(data.doctorImage)" alt="User Image">
+                                        <img *ngIf="data.doctorImage" class="avatar-img rounded-3" [src]="generateImageUrl(data.doctorImage)" alt="User Image">
                                       </a>
                                       <a >{{data.doctorName}}</a>
                                     </h2>
@@ -372,7 +372,7 @@
                                     <h2 class="table-avatar">
                                       <a  class="avatar avatar-sm me-2">
                                         <img *ngIf="!invoice.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
-                                        <img *ngIf="invoice.doctorImage" class="avatar-img rounded-3" [src]="convertToUrl(invoice.doctorImage)" (error)="handleImageError($event)" alt="User Image">
+                                        <img *ngIf="invoice.doctorImage" class="avatar-img rounded-3" [src]="generateImageUrl(invoice.doctorImage)" (error)="handleImageError($event)" alt="User Image">
                                       </a>
                                       <a >{{invoice.doctorName}}</a>
                                     </h2>

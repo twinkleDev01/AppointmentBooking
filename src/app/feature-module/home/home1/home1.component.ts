@@ -9,6 +9,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { PaymentService } from 'src/app/shared/payment/payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 declare var $: any;
 
@@ -49,6 +50,7 @@ export class Home1Component implements OnInit {
   isPatient:boolean = false;
   choosenIssues:any;
   existingUser:boolean = false;
+  baseUrl: string = environment.ImgBaseUrl
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -656,13 +658,9 @@ this.InfoForm.reset();
 console.log('destroy')
   }
 
-  convertToUrl(filePath:string) {
-    const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-    const fullUrl = baseUrl + urlPath;
-    return fullUrl;
-}
-
+  generateImageUrl(imageId:any) {
+    return `${this.baseUrl}${imageId}`;
+  }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image

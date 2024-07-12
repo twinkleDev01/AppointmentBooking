@@ -60,7 +60,7 @@
                           <h2 class="table-avatar">
                             <a  class="avatar avatar-sm me-2">
                               <img class="avatar-img rounded-3" *ngIf="!Prescription.doctorImage" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
-                              <img class="avatar-img rounded-3" *ngIf="Prescription.doctorImage" [src]="convertToUrl(Prescription.doctorImage)" (error)="handleImageError($event)" alt="User Image">
+                              <img class="avatar-img rounded-3" *ngIf="Prescription.doctorImage" [src]="generateImageUrl(Prescription.doctorImage)" (error)="handleImageError($event)" alt="User Image">
                             </a>
                             <a  >{{Prescription.doctorName}}</a>
                           </h2>

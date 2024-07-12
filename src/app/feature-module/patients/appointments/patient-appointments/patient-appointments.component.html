@@ -72,7 +72,7 @@
                                         <div class="patinet-information">
                                             <a >
                                                 <img *ngIf="!data.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="User Image">
-                                                <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" (error)="handleImageError($event)" alt="User Image">
+                                                <img *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" alt="User Image">
                                             </a>
                                             <div class="patient-info">
                                                 <p>Appointment {{i+1}}</p>

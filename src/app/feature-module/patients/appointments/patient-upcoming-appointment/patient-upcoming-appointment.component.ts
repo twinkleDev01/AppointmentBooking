@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-patient-upcoming-appointment',
@@ -13,6 +14,7 @@ export class PatientUpcomingAppointmentComponent implements OnInit {
   selectedImageUrl!: string;
   files:any
   activeIndex = 0;
+  baseUrl: string = environment.ImgBaseUrl
   ngOnInit(): void {
     if (history.state && history.state.appointment) {
       this.appointmentData = history.state.appointment;
@@ -54,7 +56,7 @@ formatDate(inputDate:any) {
     this.activeIndex = (this.activeIndex + 1) % this.files.length;
   }
   convertToUrls(filePathsStr: string): string[] {
-    const baseUrl = "https://bookingapi.asptask.in/Upload/image/";
+    const baseUrl = "https://bookingapi.asptask.in/Image/";
 
     // Parse the string to get the array
     let filePaths: string[];
@@ -67,15 +69,12 @@ formatDate(inputDate:any) {
     if (!Array.isArray(filePaths)) {
         throw new TypeError("Parsed data is not an array");
     }
-console.log(filePaths.map(filePath => baseUrl + filePath.split('/').pop()))
-    return filePaths.map(filePath => baseUrl + filePath.split('/').pop());
-  }
-  convertToUrl(filePath:string) {
-    const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-    const fullUrl = baseUrl + urlPath;
-    return fullUrl;
+
+    return filePaths.map(filePath => baseUrl + filePath);
 }
+  generateImageUrl(imageId:any) {
+    return `${this.baseUrl}${imageId}`;
+  }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../../assets/img/dummy/doload.jpg'; 

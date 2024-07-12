@@ -17,6 +17,7 @@ import {
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -46,6 +47,7 @@ export class PatientDashboardComponent {
   public page = '';
   public last = '';
   Prescriptions:any;
+  baseUrl: string = environment.ImgBaseUrl
   baseUrlPdf: string = 'https://bookingapi.asptask.in/'
   invoices:any
   public doctorSliderOptions: OwlOptions = {
@@ -253,12 +255,9 @@ export class PatientDashboardComponent {
         })
       }
 
-      convertToUrl(filePath:string) {
-        const baseUrl = "https://bookingapi.asptask.in/";
-        const urlPath = filePath?.replace(/\\/g, '/').replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-        const fullUrl = baseUrl + urlPath;
-        return fullUrl;
-    }
+      generateImageUrl(imageId:any) {
+        return `${this.baseUrl}${imageId}`;
+      }
     handleImageError(event: Event): void {
       const target = event.target as HTMLImageElement;
       target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image

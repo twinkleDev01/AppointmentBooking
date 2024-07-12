@@ -5,6 +5,7 @@ import { BsDaterangepickerConfig, BsDaterangepickerDirective } from 'ngx-bootstr
 import { ToastrService } from 'ngx-toastr';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { routes } from 'src/app/shared/routes/routes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-patient-appointments',
@@ -19,6 +20,7 @@ export class PatientAppointmentsComponent {
   bsRangeValue: Date[];
   maxDate = new Date();
   appointmentsDetail:any;
+  baseUrl: string = environment.ImgBaseUrl
   activeTab: string = 'upcoming';
   startDate:any
   endDate:any;
@@ -102,12 +104,9 @@ export class PatientAppointmentsComponent {
     }
   });
   }
-  convertToUrl(filePath:string) {
-    const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-    const fullUrl = baseUrl + urlPath;
-    return fullUrl;
-}
+  generateImageUrl(imageId:any) {
+    return `${this.baseUrl}${imageId}`;
+  }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image

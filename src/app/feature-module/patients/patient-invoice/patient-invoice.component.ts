@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { routes } from 'src/app/shared/routes/routes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-patient-invoice',
@@ -11,6 +12,7 @@ export class PatientInvoiceComponent {
   public routes = routes;
   invoices:any
   searchTerm!: string;
+  baseUrl: string = environment.ImgBaseUrl
   constructor(private patientsService:PatientsService){
     this.GetInvoices()
   }
@@ -54,12 +56,9 @@ export class PatientInvoiceComponent {
 this.patientsService.invoiceData.next(matchingObj);
   } 
 
-  convertToUrl(filePath:string) {
-    const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-    const fullUrl = baseUrl + urlPath;
-    return fullUrl;
-}
+  generateImageUrl(imageId:any) {
+    return `${this.baseUrl}${imageId}`;
+  }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image

@@ -10,6 +10,7 @@ import { apiResultFormat, medicalrecords } from 'src/app/shared/models/models';
 import { routes } from 'src/app/shared/routes/routes';
 import { Prescription } from './prescription.modal';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-medical-records',
@@ -33,6 +34,7 @@ export class MedicalRecordsComponent {
   Prescriptions=[]
   // pagination variables end
   filteredPrescriptions: Prescription[] = [];
+  baseUrl: string = environment.ImgBaseUrl
   constructor(
     private data: DataService,
     private pagination: PaginationService,
@@ -194,12 +196,9 @@ this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
 this.patientsService.Prescriptions.next(matchingObj);
   }
 
-  convertToUrl(filePath:string) {
-    const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-    const fullUrl = baseUrl + urlPath;
-    return fullUrl;
-}
+  generateImageUrl(imageId:any) {
+    return `${this.baseUrl}${imageId}`;
+  }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
