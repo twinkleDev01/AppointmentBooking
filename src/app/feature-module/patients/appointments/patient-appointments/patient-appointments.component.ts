@@ -73,7 +73,7 @@ export class PatientAppointmentsComponent {
     }
 
     this.patientsService.getAppointment(this.startDate,this.endDate,isCancelled, isCompleted, isUpcoming).subscribe((res:any)=>{
-      console.log(res.data.appointments,"24")
+      console.log(res?.data?.appointments,"24")
       this.appointmentsDetail = res
     }) 
   }

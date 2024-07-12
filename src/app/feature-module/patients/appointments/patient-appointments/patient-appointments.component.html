@@ -23,7 +23,7 @@
                                 [class.active]="activeTab === 'upcoming'"
                                 [attr.aria-selected]="activeTab === 'upcoming'"
                                 (click)="showFilterData('upcoming')">
-                                Upcoming<span>{{appointmentsDetail?.data.upcomingCount}}</span>
+                                Upcoming<span>{{appointmentsDetail?.data?.upcomingCount}}</span>
                               </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -32,7 +32,7 @@
                                 [class.active]="activeTab === 'cancelled'"
                                 [attr.aria-selected]="activeTab === 'cancelled'"
                                 (click)="showFilterData('cancelled')">
-                                Cancelled<span>{{appointmentsDetail?.data.cancelledCount}}</span>
+                                Cancelled<span>{{appointmentsDetail?.data?.cancelledCount}}</span>
                               </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -41,7 +41,7 @@
                                 [class.active]="activeTab === 'completed'"
                                 [attr.aria-selected]="activeTab === 'completed'"
                                 (click)="showFilterData('completed')">
-                                Completed<span>{{appointmentsDetail?.data.completedCount}}</span>
+                                Completed<span>{{appointmentsDetail?.data?.completedCount}}</span>
                               </button>
                             </li>
                           </ul>
