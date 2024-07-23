@@ -93,7 +93,6 @@ export class AboutUsComponent implements OnInit {
   }
   getDoctors(){
     this.patientsService.getDoctors().subscribe((res:any)=>{
-      console.log(res.result.data,'doctors')
       this.Doctors=res.result.data
     })
   }

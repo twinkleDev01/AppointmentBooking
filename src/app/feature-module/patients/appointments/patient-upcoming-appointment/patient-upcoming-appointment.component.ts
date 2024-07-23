@@ -18,7 +18,6 @@ export class PatientUpcomingAppointmentComponent implements OnInit {
   ngOnInit(): void {
     if (history.state && history.state.appointment) {
       this.appointmentData = history.state.appointment;
-      console.log('appointmentData', this.appointmentData);
       this.files=this.convertToUrls(this.appointmentData.issueImage)
     }
   }
@@ -33,11 +32,8 @@ formatDate(inputDate:any) {
   }
   
   openImagePreviewModal() {
-    console.log(this.files)
     if (this.files.length > 0) {
-      console.log(this.isImageModalOpen,36)
       this.isImageModalOpen = true;
-      console.log(this.isImageModalOpen,38)
     }
   }
   openImageModal(imageUrl: string) {

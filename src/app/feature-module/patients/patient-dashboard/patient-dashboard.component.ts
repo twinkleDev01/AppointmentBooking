@@ -201,7 +201,6 @@ export class PatientDashboardComponent {
   getAppointment(){
     const isUpcoming:boolean=true;
     this.patientsService.getAppointment(undefined,undefined,undefined, undefined, isUpcoming).subscribe((res:any)=>{
-      console.log(res,"190")
       this.appointmentDetails = res
     })
   }
@@ -235,7 +234,6 @@ export class PatientDashboardComponent {
 
   delete(prescriptionID:string){
     this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
-      console.log(res);
       this.toastr.success('Prescription deleted successfully');
       this.getPrescription();
     })
@@ -250,7 +248,6 @@ export class PatientDashboardComponent {
 
       GetInvoices(){
         this.patientsService.getInvoice().subscribe((res:any)=>{
-          console.log(res);
           this.invoices=res;
         })
       }

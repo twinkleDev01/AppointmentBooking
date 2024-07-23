@@ -37,7 +37,6 @@ export class AuthService {
   }
 
   clearToken(): void {
-    console.log("43")
     localStorage.removeItem('token');
     localStorage.removeItem('UserDetail')
     this._token.next('');

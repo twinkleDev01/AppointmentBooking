@@ -22,13 +22,11 @@ export class PatientInvoiceComponent {
 
   GetInvoices(){
     this.patientsService.getInvoice().subscribe((res:any)=>{
-      console.log(res);
       this.invoices=res;
     })
   }
 
   filterAppointments() {
-    console.log(this.searchTerm, '175');
     const term = this.searchTerm.toLowerCase();
     this.invoices = this.invoices.filter((appointment: any) => 
       appointment.doctorName.toLowerCase().includes(term) ||
@@ -51,7 +49,6 @@ export class PatientInvoiceComponent {
     return `${day} ${month} ${year}`;
   }
   sendData(invoiceObject:any){
-    console.log(invoiceObject,"obj");
     const matchingObj = this.invoices.find((invoice:any)=>invoice.id == invoiceObject.id);
 this.patientsService.invoiceData.next(matchingObj);
   } 

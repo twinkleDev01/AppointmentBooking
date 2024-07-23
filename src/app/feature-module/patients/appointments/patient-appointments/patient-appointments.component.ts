@@ -51,7 +51,6 @@ export class PatientAppointmentsComponent {
   dateSelectionChanged(event: any) {
     this.startDate = event[0];
     this.endDate = event[1];
-    console.log(this.startDate, this.endDate)
     this.startDate = this.datePipe.transform(this.startDate, 'yyyy-MM-dd'), 
     this.endDate = this.datePipe.transform(this.endDate, 'yyyy-MM-dd')
     this.showFilterData(this.activeTab)
@@ -75,7 +74,6 @@ export class PatientAppointmentsComponent {
     }
 
     this.patientsService.getAppointment(this.startDate,this.endDate,isCancelled, isCompleted, isUpcoming).subscribe((res:any)=>{
-      console.log(res?.data?.appointments,"24")
       this.appointmentsDetail = res
     }) 
   }
@@ -83,11 +81,9 @@ export class PatientAppointmentsComponent {
   onSelectTimeSlot(slot: any) {
     // this.selectedTimeSlot = slot;
     this.tempSelectedTimeSlot = slot; // Store the time slot temporarily
-    console.log(this.tempSelectedTimeSlot,"24")
   }
   showFilterData(tabName: string) {
     this.activeTab = tabName;
-    console.log('Active Tab:', this.activeTab);
     this.getAppointmentData(this.activeTab)
   }
   navigateToPatientUpcomingAppointment(data:any) {
@@ -130,7 +126,6 @@ closeModal(): void {
   this.isModalOpen = false;
 }
 onSelectDate(event: any) {
-  console.log('Date selected:', event);
   const date = event?.target?.value;
   if (date) {
     this.selectedDate = date;
@@ -153,7 +148,6 @@ getAvailableSlots() {
     this.slots = availableSlots;
     this.generateUniqueTimeSlots();
     this.selectedDate = new Date();  // Initialize with the current date
-    console.log('Component initialized with current date:', this.selectedDate);
     this.filterAppointments(this.formatDate(this.selectedDate));
   });
 }
@@ -167,20 +161,16 @@ generateUniqueTimeSlots() {
   });
 }
 onDateChange(event: any) {
-  console.log('date change',event);
   this.selectedDate = event;
   this.filterAppointments(this.formatDate(this.selectedDate));
 }
 
 filterAppointments(date: any) {
-  console.log('Date:', date);
   this.filteredAppointments = this.slots.filter(
     (appointment:any) => appointment.date === date
   );
-  console.log('Appointments:', this.filteredAppointments)
 }
 confirmSlot(): void {
-  console.log(this.tempSelectedTimeSlot.startTime,this.selectedDate,this.convertToISOFormat(this.tempSelectedTimeSlot.startTime,this.selectedDate));
   const data={
     
       "startTime": this.convertToISOFormat(this.tempSelectedTimeSlot.startTime,this.selectedDate),
@@ -189,7 +179,6 @@ confirmSlot(): void {
     
   }
  this.patientsService.rescheduleMeeting(data,this.selectedAppointmentId).subscribe((res:any)=>{
-  console.log(res,"39")
   this.closeModal();
   this.toastr.success("Appointment rescheduled successfully");
   this.getAvailableSlots();
@@ -208,9 +197,6 @@ convertToISOFormat(timeStr:any, dateStr:any) {
   return output;
 }
 formatDate(date: any): string {
-  console.log('Formatted date:', `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
-    date.getDate()
-  )}T00:00:00`);
   return `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
     date.getDate()
   )}T00:00:00`;

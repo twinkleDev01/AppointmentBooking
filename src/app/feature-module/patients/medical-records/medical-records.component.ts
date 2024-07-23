@@ -171,7 +171,6 @@ export class MedicalRecordsComponent {
 
   delete(prescriptionID:string){
 this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
-  console.log(res);
   this.toastr.success('Prescription deleted Successfully', "Success");
   this.getPrescription();
 })
@@ -180,7 +179,6 @@ this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
   
 
   searchPrescription(){
-    console.log(this.searchTerm,'175')
     const term = this.searchTerm.toLowerCase();
     this.filteredPrescriptions = this.Prescriptions.filter((Prescriptions:any) => 
       Prescriptions.customPrescriptionID.toLowerCase().includes(term) ||

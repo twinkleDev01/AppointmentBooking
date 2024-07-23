@@ -46,7 +46,6 @@ export class PaymentService {
       handler: (response: any) => this.paymentHandler(response, formData,zoomData,email),
       modal: {
         ondismiss: () => {
-          console.log('Checkout form closed');
           // Handle cancel event here
           this.handlePaymentCancel();
         }
@@ -58,7 +57,6 @@ export class PaymentService {
     
   }
   handlePaymentCancel():void{
-    console.log("cancelled")
       this.loaderServiceService.hide();
   }
   
