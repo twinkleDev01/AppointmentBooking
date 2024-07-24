@@ -674,7 +674,7 @@
                       <label for="city" class="mb-2">City<span class="required-asterisk">*</span></label>
                       <input formControlName="city" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter City" />
                       <div *ngIf="InfoForm.get('city')?.errors?.['required'] && InfoForm.get('city')?.touched">
-                        city is required
+                        City is required
                       </div>
                     </div>
                   </div>
@@ -683,7 +683,7 @@
                       <label for="state" class="mb-2">State<span class="required-asterisk">*</span></label>
                       <input formControlName="state" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter State" />
                       <div *ngIf="InfoForm.get('state')?.errors?.['required'] && InfoForm.get('state')?.touched">
-                        state is required
+                        State is required
                       </div>
                     </div>
                   </div>
@@ -692,7 +692,7 @@
                       <label for="country" class="mb-2">Country<span class="required-asterisk">*</span></label>
                       <input formControlName="country" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter Country"/>
                       <div *ngIf="InfoForm.get('country')?.errors?.['required'] && InfoForm.get('country')?.touched">
-                        country is required
+                        Country is required
                       </div>
                     </div>
                   </div>
@@ -710,10 +710,10 @@
                       <label for="email" class="mb-2">Email<span class="required-asterisk">*</span></label>
                       <input formControlName="email" [readOnly]="existingUser" class="form-control" type="email" placeholder="Enter Email" (keypress)="preventWhitespace($event)" id="email">
                       <div *ngIf="InfoForm.get('email')?.errors?.['required'] && InfoForm.get('email')?.touched">
-                       email is required
+                       Email is required
                       </div>
                       <div *ngIf="InfoForm.get('email')?.errors?.['email'] && InfoForm.get('email')?.touched">
-                    enter correct email format
+                    Enter correct email format
                       </div>
                     </div>
                   </div>

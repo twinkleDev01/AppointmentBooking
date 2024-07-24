@@ -194,7 +194,8 @@
 
     <div class="row">
       <owl-carousel-o [options]="doctorSlider">
-        @for (data of Doctors; track data) {
+        <ng-container *ngFor="let data of Doctors">
+
         <ng-template carouselSlide>
           <div class="item">
             <div class="doctor-profile-widget doc-item">
@@ -239,7 +240,8 @@
             </div>
           </div>
         </ng-template>
-        }
+      </ng-container>
+
       </owl-carousel-o>
     </div>
   </div>

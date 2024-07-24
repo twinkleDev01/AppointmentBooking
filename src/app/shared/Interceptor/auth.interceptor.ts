@@ -48,7 +48,6 @@ export class AuthInterceptor implements HttpInterceptor {
             UserId: this.UserId,
           };
           this.authService.logout(data).subscribe((res) => {
-            console.log(res);
             localStorage.clear();
             this.router.navigate(['/authentication/login']);
           });
