@@ -131,7 +131,6 @@ this.patientsService.userSubject.next(data);
           state: res.data.state,
           country: res.data.country,
           pincode: res.data.pinCode,
-          
         });
         this.selectedImageUrl=this.generateImageUrl(res.data.image)
       }
