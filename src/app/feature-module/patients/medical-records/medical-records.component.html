@@ -29,7 +29,7 @@
           <div class="tab-pane fade show active" id="prescription">
             <div class="search-header">
               <div class="search-field">
-                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm">
+                <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchTerm" (ngModelChange)="searchPrescription()">
                 <button class="search-icon" (click)="searchPrescription()"><i class="fa-solid fa-magnifying-glass"></i></button>
               </div>
             </div>

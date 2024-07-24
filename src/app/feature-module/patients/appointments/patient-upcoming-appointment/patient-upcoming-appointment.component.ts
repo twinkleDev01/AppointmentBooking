@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
 import { environment } from 'src/environments/environment';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-patient-upcoming-appointment',
   templateUrl: './patient-upcoming-appointment.component.html',
@@ -15,6 +15,7 @@ export class PatientUpcomingAppointmentComponent implements OnInit {
   files:any
   activeIndex = 0;
   baseUrl: string = environment.ImgBaseUrl
+  constructor(private location: Location) { }
   ngOnInit(): void {
     if (history.state && history.state.appointment) {
       this.appointmentData = history.state.appointment;
@@ -74,5 +75,8 @@ formatDate(inputDate:any) {
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../../assets/img/dummy/doload.jpg'; 
+}
+back(){
+  this.location.back();
 }
 }

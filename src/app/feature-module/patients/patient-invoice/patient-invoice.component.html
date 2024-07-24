@@ -15,7 +15,7 @@
 
                 <div class="search-header">
                         <div class="search-field">
-                            <input type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Search">
+                            <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterAppointments()" class="form-control" placeholder="Search">
                             <button class="search-icon" (click)="filterAppointments()" class="search_button search-icon"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
                     </div>

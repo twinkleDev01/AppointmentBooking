@@ -1,6 +1,12 @@
-::ng-deep .custom-daterangepicker-container {
+
+@media screen and (min-width: 1200px) {
+  ::ng-deep .custom-daterangepicker-container {
     transform: translate3d(940px, 225px, 0px) !important;
 }
+  }
+//   ::ng-deep .custom-daterangepicker-container {
+//     transform: translate3d(940px, 225px, 0px) !important;
+// }
 .reshedule_btn{
      border: 1px solid #0E82FD; 
      color: #0E82FD; 
@@ -12,7 +18,9 @@
 
 
 
-
+.custom-daterangepicker-container {
+    // /* transform: translate3d(940px, 225px, 0px) !important; */
+}
 
 
 
