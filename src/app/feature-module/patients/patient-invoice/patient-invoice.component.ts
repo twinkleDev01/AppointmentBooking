@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 export class PatientInvoiceComponent {
   public routes = routes;
   invoices:any
+  filterinvoice:any
   searchTerm!: string;
   baseUrl: string = environment.ImgBaseUrl
   constructor(private patientsService:PatientsService){
@@ -23,18 +24,25 @@ export class PatientInvoiceComponent {
   GetInvoices(){
     this.patientsService.getInvoice().subscribe((res:any)=>{
       this.invoices=res;
+      this.filterinvoice=res
     })
   }
 
   filterAppointments() {
     const term = this.searchTerm.toLowerCase();
-    console.log(term,31)
-    this.invoices = this.invoices.filter((appointment: any) => 
-      appointment.doctorName.toLowerCase().includes(term) ||
-      appointment.appointmentDate.toLowerCase().includes(term) ||
-      appointment.bookedDate.toLowerCase().includes(term) ||
-      appointment.amount?.toString().toLowerCase().includes(term)
-    );
+    console.log(term,31,term.length)
+    if(term.length>0){
+      this.filterinvoice = this.invoices.filter((appointment: any) => 
+        appointment.doctorName.toLowerCase().includes(term) ||
+        appointment.appointmentDate.toLowerCase().includes(term) ||
+        appointment.bookedDate.toLowerCase().includes(term) ||
+        appointment.amount?.toString().toLowerCase().includes(term)
+      );
+    }
+    else{
+      this.filterinvoice=this.invoices
+    }
+   
     console.log(this.invoices)
   }
   formatDate(dateString:any) {
