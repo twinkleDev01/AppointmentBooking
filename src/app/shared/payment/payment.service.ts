@@ -48,7 +48,6 @@ export class PaymentService {
         ondismiss: () => {
           // Handle cancel event here
           this.handlePaymentCancel();
-          console.log('Payment cancelled')
         }
       }
     };

@@ -30,7 +30,6 @@ export class PatientInvoiceComponent {
 
   filterAppointments() {
     const term = this.searchTerm.toLowerCase();
-    console.log(term,31,term.length)
     if(term.length>0){
       this.filterinvoice = this.invoices.filter((appointment: any) => 
         appointment.doctorName.toLowerCase().includes(term) ||
@@ -43,7 +42,6 @@ export class PatientInvoiceComponent {
       this.filterinvoice=this.invoices
     }
    
-    console.log(this.invoices)
   }
   formatDate(dateString:any) {
     const date = new Date(dateString);

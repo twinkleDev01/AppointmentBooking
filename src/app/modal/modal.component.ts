@@ -330,9 +330,7 @@ export class ModalComponent implements OnInit {
     })
 
   }
-  // onDateChange(newDate: Date) {
-  //   console.log(newDate);
-  // }
+
   prescription: any[] = [{}];
   bill: any[] = [{}];
 
