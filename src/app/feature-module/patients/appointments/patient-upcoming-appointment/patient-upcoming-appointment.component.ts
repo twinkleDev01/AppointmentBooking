@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
-
+import { environment } from 'src/environments/environment';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-patient-upcoming-appointment',
   templateUrl: './patient-upcoming-appointment.component.html',
@@ -13,10 +14,11 @@ export class PatientUpcomingAppointmentComponent implements OnInit {
   selectedImageUrl!: string;
   files:any
   activeIndex = 0;
+  baseUrl: string = environment.ImgBaseUrl
+  constructor(private location: Location) { }
   ngOnInit(): void {
     if (history.state && history.state.appointment) {
       this.appointmentData = history.state.appointment;
-      console.log('appointmentData', this.appointmentData);
       this.files=this.convertToUrls(this.appointmentData.issueImage)
     }
   }
@@ -31,11 +33,8 @@ formatDate(inputDate:any) {
   }
   
   openImagePreviewModal() {
-    console.log(this.files)
     if (this.files.length > 0) {
-      console.log(this.isImageModalOpen,36)
       this.isImageModalOpen = true;
-      console.log(this.isImageModalOpen,38)
     }
   }
   openImageModal(imageUrl: string) {
@@ -54,7 +53,7 @@ formatDate(inputDate:any) {
     this.activeIndex = (this.activeIndex + 1) % this.files.length;
   }
   convertToUrls(filePathsStr: string): string[] {
-    const baseUrl = "https://bookingapi.asptask.in/Upload/image/";
+    const baseUrl = "https://bookingapi.asptask.in/Image/";
 
     // Parse the string to get the array
     let filePaths: string[];
@@ -67,17 +66,17 @@ formatDate(inputDate:any) {
     if (!Array.isArray(filePaths)) {
         throw new TypeError("Parsed data is not an array");
     }
-console.log(filePaths.map(filePath => baseUrl + filePath.split('/').pop()))
-    return filePaths.map(filePath => baseUrl + filePath.split('/').pop());
-  }
-  convertToUrl(filePath:string) {
-    const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-    const fullUrl = baseUrl + urlPath;
-    return fullUrl;
+
+    return filePaths.map(filePath => baseUrl + filePath);
 }
+  generateImageUrl(imageId:any) {
+    return `${this.baseUrl}${imageId}`;
+  }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../../assets/img/dummy/doload.jpg'; 
+}
+back(){
+  this.location.back();
 }
 }

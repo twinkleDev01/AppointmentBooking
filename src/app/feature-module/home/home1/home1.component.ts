@@ -9,6 +9,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { PaymentService } from 'src/app/shared/payment/payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 declare var $: any;
 
@@ -49,6 +50,7 @@ export class Home1Component implements OnInit {
   isPatient:boolean = false;
   choosenIssues:any;
   existingUser:boolean = false;
+  baseUrl: string = environment.ImgBaseUrl
   public slideConfig = {
     dots: false,
     autoplay: false,
@@ -140,10 +142,8 @@ export class Home1Component implements OnInit {
     })
     if(!localStorage.getItem('token')){
       this.isPatient = false
-      console.log(this.isPatient,'137')
     }else{
       this.isPatient = true
-      console.log(this.isPatient,'140')
     }
   }
 
@@ -166,14 +166,12 @@ return window.innerWidth < 767
       this.isPatient = true
     }
     this.patientsService.buttonState$.subscribe((state:boolean) => {
-      console.log(state,'165')
       this.bookAppointmentbtn = state;
     });
   }
   
   getDoctors(){
     this.patientsService.getDoctors().subscribe((res:any)=>{
-      console.log(res.result.data,'doctors')
       this.Doctors=res.result.data
     })
   }
@@ -280,12 +278,10 @@ return window.innerWidth < 767
   };
 
   onSelectDate(event: any) {
-    console.log('Date selected:', event);
     const date = event?.target?.value;
     if (date) {
       this.selectedDate = date;
       for (const slot of this.slots) {
-        console.log(slot.date);
       }
       this.selectedSlots = this.slots.filter(
         (slot: { startTime: string; date: string }) =>
@@ -327,15 +323,12 @@ return window.innerWidth < 767
   }
 
   onDateChange(event: any) {
-    console.log('date change',event);
     this.selectedDate = event;
     this.filterAppointments(this.formatDate(this.selectedDate));
   }
 
   formatDate(date: Date): string {
-    console.log('Formatted date:', `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
-      date.getDate()
-    )}T00:00:00`);
+    
     return `${date.getFullYear()}-${this.padZero(date.getMonth() + 1)}-${this.padZero(
       date.getDate()
     )}T00:00:00`;
@@ -346,11 +339,9 @@ return window.innerWidth < 767
   }
 
   filterAppointments(date: any) {
-    console.log('Date:', date);
     this.filteredAppointments = this.slots.filter(
       (appointment:any) => appointment.date === date
     );
-    console.log('Appointments:', this.filteredAppointments)
   }
   
 
@@ -411,7 +402,6 @@ return window.innerWidth < 767
   }
 
   closeImageModal() {
-    console.log(this.isImageModalOpen, "is image modal open")
     this.isImageModalOpen = false;
   }
 
@@ -427,7 +417,6 @@ return window.innerWidth < 767
     this.patientsService.getIssues().subscribe((issues:any) => {
       this.concerns = issues.issues;
       this.consultationFees=issues.consultationFees
-      console.log(this.concerns)
     });
   }
 
@@ -436,7 +425,6 @@ return window.innerWidth < 767
       this.slots = availableSlots;
       this.generateUniqueTimeSlots();
       this.selectedDate = new Date();  // Initialize with the current date
-      console.log('Component initialized with current date:', this.selectedDate);
       this.filterAppointments(this.formatDate(this.selectedDate));
     });
   }
@@ -451,9 +439,7 @@ return window.innerWidth < 767
     const user = localStorage.getItem('UserDetail');
     if (user) {
       this.userDetails = JSON.parse(user); // Directly parse the user object
-    } else {
-      console.log('User details not found in local storage.');
-    }
+    } 
     if (this.appointmentForm.valid && this.choosenIssues?.length > 0) {
       if(this.slotConfirmed===true){
     this.issues= this.appointmentForm.value.selectedConcerns;
@@ -474,11 +460,6 @@ return window.innerWidth < 767
     }
   }
 
-  bookAppointment(value: any) {
-    this.patientsService.bookAppointment(value).subscribe(response => {
-      console.log(response);
-    })
-  }
   prev() {
     this.activeIndex = (this.activeIndex - 1 + this.files.length) % this.files.length;
   }
@@ -502,7 +483,6 @@ return window.innerWidth < 767
   initiatePayment() {
     const isValid = this.InfoForm.valid;
     const token = localStorage.getItem('token');
-    console.log(this.InfoForm);
     if (isValid || token) {
       
   
@@ -531,7 +511,6 @@ return window.innerWidth < 767
         'user.Address':this.InfoForm.value.address,
         Fees: `${this.consultationFees}.00`
       };
-      console.log(data, "545",this.InfoForm.value.age);
       const zoomData = {
         "accessToken": "",
         "topic": "Appointment",
@@ -567,9 +546,7 @@ return window.innerWidth < 767
   
       this.paymentService.initiatePayment(amount, name, email, contact, formData, zoomData,this.consultationFees);
       this.paymentService.paymentId.subscribe((res: any) => {
-        console.log(res, "560");
         if (res && Object.keys(res).length !== 0) {
-          console.log("562");
           this.InfoForm.reset();
         }
       });
@@ -605,12 +582,8 @@ return window.innerWidth < 767
 
   selectedConcerns:any;
 
-  onSelectionChange(): void {
-    console.log(this.selectedConcerns); // Handle the selected concerns as needed
-  }
   getUserInfo(){
     this.patientsService.getPatientinfo().subscribe((res:any)=>{
-      console.log(res,"49");
       this.userInfo=res?.data;
       this.existingUser=true
       this.InfoForm.patchValue({
@@ -653,16 +626,11 @@ return window.innerWidth < 767
   ngOnDestroy(){
 this.paymentService.paymentId.unsubscribe();
 this.InfoForm.reset();
-console.log('destroy')
   }
 
-  convertToUrl(filePath:string) {
-    const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-    const fullUrl = baseUrl + urlPath;
-    return fullUrl;
-}
-
+  generateImageUrl(imageId:any) {
+    return `${this.baseUrl}${imageId}`;
+  }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
   target.src = '../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image

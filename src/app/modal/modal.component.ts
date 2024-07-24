@@ -323,18 +323,16 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
     this.myDateValue = new Date();
     this.patientsService.invoiceData.subscribe((res:any)=>{
-      console.log("332",res)
       this.invoiceDetail = res
     })
     this.patientsService.Prescriptions.subscribe((res:any)=>{
-      console.log("330",res)
       this.PrescriptionsDetails = res
     })
 
   }
-  onDateChange(newDate: Date) {
-    console.log(newDate);
-  }
+  // onDateChange(newDate: Date) {
+  //   console.log(newDate);
+  // }
   prescription: any[] = [{}];
   bill: any[] = [{}];
 

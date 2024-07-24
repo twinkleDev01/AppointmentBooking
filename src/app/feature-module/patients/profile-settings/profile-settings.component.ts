@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { routes } from 'src/app/shared/routes/routes';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-profile-settings',
   templateUrl: './profile-settings.component.html',
@@ -15,6 +16,7 @@ export class ProfileSettingsComponent implements OnInit {
   profileForm!: FormGroup;
   maxDate!: Date;
   Detail:any;
+  baseUrl: string = environment.ImgBaseUrl
   constructor(private fb: FormBuilder,private patientsService:PatientsService, private toastr:ToastrService) {
     this.maxDate = new Date();
     this.Detail = localStorage.getItem('UserDetail')
@@ -131,16 +133,12 @@ this.patientsService.userSubject.next(data);
           pincode: res.data.pinCode,
           
         });
-        this.selectedImageUrl=this.convertToUrl(res.data.image)
+        this.selectedImageUrl=this.generateImageUrl(res.data.image)
       }
     })
   }
-  convertToUrl(filePath:string) {
-    if(filePath==null) return null;
-    const baseUrl = "https://bookingapi.asptask.in/";
-    const urlPath = filePath?.replace(/\\/g, '/')?.replace('D:/Inetpub/vhosts/getsocialmediafollower.com/bookingapi.asptask.in/wwwroot/', '');
-    const fullUrl = baseUrl + urlPath;
-    return fullUrl;
+  generateImageUrl(imageId:any) {
+    return `${this.baseUrl}${imageId}`;
   }
   dateOfBirth: any
   onDateChange(event: any) {

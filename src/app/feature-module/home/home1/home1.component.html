@@ -129,7 +129,7 @@
                     {{ files.length === 1 ? "file" : "files" }} selected</span>
                   <button *ngIf="files.length > 0" class="preview-button" (click)="openImagePreviewModal()"
                     [disabled]="files.length === 0">
-                    Preview
+                    View Images
                   </button>
                 </div>
               </div>
@@ -363,7 +363,7 @@
                   <a>
                     <div class="doctor-profile-img">
                       <img *ngIf="!data.doctorImage" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
-                      <img *ngIf="data.doctorImage" [src]="convertToUrl(data.doctorImage)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
+                      <img *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
                     </div>
                   </a>
                   <!-- <div class="doctor-amount">

@@ -49,9 +49,7 @@ this.patientsService.contactData(this.contactForm.value).subscribe((res:any)=>{
     this.toastr.success(res.message);
   }
 })
-      console.log(this.contactForm.value);
     } else {
-      console.log('Form is invalid');
       this.markFormGroupTouched(this.contactForm);
     }
   }

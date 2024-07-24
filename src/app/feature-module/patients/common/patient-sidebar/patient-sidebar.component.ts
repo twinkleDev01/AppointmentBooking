@@ -4,6 +4,7 @@ import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { CommonService } from 'src/app/shared/common/common.service';
 import { routes } from 'src/app/shared/routes/routes';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-patient-sidebar',
@@ -15,6 +16,8 @@ export class PatientSidebarComponent implements OnInit {
   public base = '';
   public page = '';
   public last = '';
+  
+  baseUrl: string = environment.ImgBaseUrl
   userInfo:any;
   Detail:any;
   UserId = JSON.parse(localStorage.getItem('UserDetail') || '{}')?.nameid;
@@ -79,7 +82,6 @@ handleImageError(event: Event): void {
   target.src = '../../../../../assets/img/dummy/doload.jpg'; // Specify the path to your default image
 }
 generateImageUrl(imageId:any) {
-  const baseUrl = 'https://bookingapi.asptask.in/Image/';
-  return `${baseUrl}${imageId}`;
+  return `${this.baseUrl}${imageId}`;
 }
 }

@@ -32,13 +32,11 @@ export class PatientsService {
   buttonState$ = this.buttonStateSource.asObservable();
   constructor(private http:HttpClient, private auth: AuthService) { 
     this.auth.uderDetail.subscribe((res:any)=>{
-      console.log(res,"21")
       if(res){
         this.Detail = res
       }else{
         this.Detail = localStorage.getItem('UserDetail')
         this.Detail = JSON.parse(this.Detail);
-        console.log(this.Detail,"27")
       }
     })
   }
@@ -46,7 +44,6 @@ export class PatientsService {
 
   setButtonState(state: boolean) {
     this.buttonStateSource.next(state);
-    console.log(state)
   }
   // updateUser(user: any) {
   //   this.userSubject.next(user); // Update the BehaviorSubject

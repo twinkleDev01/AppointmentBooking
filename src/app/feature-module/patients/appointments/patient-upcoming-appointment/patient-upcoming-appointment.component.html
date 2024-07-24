@@ -9,7 +9,7 @@
             
             <div class="col-lg-8 col-xl-9 mt-5">
                 <div class="dashboard-header">
-                    <div class="header-back">
+                    <div class="header-back" (click)="back()">
                         <a  class="back-arrow"><i class="fa-solid fa-arrow-left"></i></a>
                         <h3>Appointment Details</h3>
                     </div>
@@ -22,7 +22,7 @@
                             <li>
                                 <div class="patinet-information">
                                     <a href="javascript:void(0);">
-                                        <img *ngIf="appointmentData.doctorImage" [src]="convertToUrl(appointmentData.doctorImage)" (error)="handleImageError($event)" alt="Dr Image">
+                                        <img *ngIf="appointmentData.doctorImage" [src]="generateImageUrl(appointmentData.doctorImage)" (error)="handleImageError($event)" alt="Dr Image">
                                         <img *ngIf="!appointmentData.doctorImage" src="../../../../../assets/img/dummy/doload.jpg"  alt="Dr Image">
                                     </a>
                                     <div class="patient-info">
@@ -68,7 +68,7 @@
                                 <span>{{appointmentData.description}}</span>
                             </li>
                             <li>
-                                <button class="mt-2 btn btn-outline-info" (click)="openImagePreviewModal()" >Preview issue Images</button>
+                                <button class="mt-2 btn btn-outline-info" (click)="openImagePreviewModal()" >View Images</button>
                             </li>
                         </ul>
                         <ul class="detail-card-bottom-info">

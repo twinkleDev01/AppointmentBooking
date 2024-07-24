@@ -29,7 +29,8 @@
           <li class="menu-item"><a [routerLink]="routes.termsCondition">T&C</a></li>
           <li class="menu-item"><a [routerLink]="routes.faq">FAQs</a></li>
          
-          <li class="login-link"><a [routerLink]="routes.userLogin">Login / Signup</a></li>
+          <li class="login-link" *ngIf="!isPatient"><a [routerLink]="routes.userLogin">Login</a></li>
+          <li class="login-link" *ngIf="isPatient" (click)="logout()"><a [routerLink]="routes.userLogin">Logout</a></li>
           <ul class="nav header-navbar-rht">
             <!-- <li class="register-btn">
               <a [routerLink]="routes.register" class="btn reg-btn"><i class="feather icon-user"></i>Register</a>

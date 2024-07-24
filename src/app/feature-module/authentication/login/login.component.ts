@@ -39,13 +39,8 @@ export class LoginComponent {
 
   isNumber:boolean=false
   sendLoginCode() {
-    // if (!this.phoneNumber || !/^\+\d{1,15}$/.test(this.phoneNumber)) {
-    //   console.error('Invalid phone number');
-    //   return;
-    // }
     this.submitClicked = true;
     if (this.phoneNumber) {
-      console.log('Submitted phone number:', this.phoneNumber);
       this.afAuth.signInWithPhoneNumber('+91'+this.phoneNumber, this.recaptchaVerifier!)
       .then((confirmationResult) => {
         this.confirmationResult = confirmationResult;
