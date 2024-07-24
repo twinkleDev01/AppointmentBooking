@@ -193,7 +193,7 @@ this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
     }
   }
 
-  sendData(invoiceObject:any){
+  sendData(){
     const matchingObj = this.Prescriptions.find((Prescriptions:any)=>Prescriptions.id == Prescriptions.id);
 this.patientsService.Prescriptions.next(matchingObj);
   }
