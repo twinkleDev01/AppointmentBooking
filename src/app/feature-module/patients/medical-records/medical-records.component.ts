@@ -182,7 +182,7 @@ this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
     const term = this.searchTerm.toLowerCase();
     if(term.length > 0){
       this.filteredPrescriptions = this.Prescriptions.filter((Prescriptions:any) => 
-        Prescriptions.customPrescriptionID.toLowerCase().includes(term) ||
+        Prescriptions.customPrescriptionID?.toLowerCase().includes(term) ||
         Prescriptions.doctorName.toLowerCase().includes(term) ||
         Prescriptions.patientId.toLowerCase().includes(term) ||
         Prescriptions.createdDate.toLowerCase().includes(term)
