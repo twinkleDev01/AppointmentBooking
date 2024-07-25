@@ -563,6 +563,14 @@ return window.innerWidth < 767
     });
   }
 
+  checkLength(event: Event, maxLength: number) {
+    const input = event.target as HTMLInputElement;
+    // Limit to specified max characters
+    if (input.value.length > maxLength) {
+      input.value = input.value.slice(0, maxLength);
+    }
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formatDatetoSend(dateString: any) {
     const date = new Date(dateString);

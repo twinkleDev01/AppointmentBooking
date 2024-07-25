@@ -17,6 +17,16 @@ export class ProfileSettingsComponent implements OnInit {
   maxDate!: Date;
   Detail:any;
   baseUrl: string = environment.ImgBaseUrl
+  bloodGroups= [
+    "A+",
+    "A-",
+    "B+",
+    "B-",
+    "AB+",
+    "AB-",
+    "O+",
+    "O-"
+  ]
   constructor(private fb: FormBuilder,private patientsService:PatientsService, private toastr:ToastrService) {
     this.maxDate = new Date();
     this.Detail = localStorage.getItem('UserDetail')
@@ -167,6 +177,14 @@ this.patientsService.userSubject.next(data);
     const input = String.fromCharCode(event.keyCode);
     if (!/^[0-9]*$/.test(input)) {
       event.preventDefault();
+    }
+  }
+
+  checkLength(event: Event) {
+    const input = event.target as HTMLInputElement;
+    // Limit to 6 characters
+    if (input.value.length > 6) {
+      input.value = input.value.slice(0, 6);
     }
   }
 
