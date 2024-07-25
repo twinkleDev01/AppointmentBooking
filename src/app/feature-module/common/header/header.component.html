@@ -24,15 +24,17 @@
         <ul class="main-nav gap-4">
           <li class="menu-item"><a [routerLink]="routes.home1">Home</a></li>
           <li class="menu-item" *ngIf="isPatient && !isMobile"><a [routerLink]="routes.patientDashboard">Patient Dashboard</a></li>
-          <li class="menu-item"  *ngIf="(!isMobile) || (isMobile && !isPatient)"><a [routerLink]="routes.aboutUs">About Us</a></li>
-          <li class="menu-item"  *ngIf="(!isMobile) || (isMobile && !isPatient)"><a [routerLink]="routes.contactUs">Contact Us</a></li>
-          <li class="menu-item" *ngIf="(!isMobile) || (isMobile && !isPatient)"><a [routerLink]="routes.termsCondition">T&C</a></li>
-          <li class="menu-item" *ngIf="(!isMobile) || (isMobile && !isPatient)"><a [routerLink]="routes.faq">FAQs</a></li>
           <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.patientDashboard">Patient Dashboard</a></li>
           <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.patientAppointment">My Appointments</a></li>
           <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.medicalrecords">Prescriptions</a></li>
           <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.patientInvoice">Invoices</a></li>
-         
+          <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.profileSettings">Profile Settings</a></li>
+          <li class="menu-item"  ><a [routerLink]="routes.aboutUs">About Us</a></li>
+          <li class="menu-item"  ><a [routerLink]="routes.contactUs">Contact Us</a></li>
+          <li class="menu-item" ><a [routerLink]="routes.termsCondition">T&C</a></li>
+          <li class="menu-item" ><a [routerLink]="routes.faq">FAQs</a></li>
+       
+      
           <li class="login-link" *ngIf="!isPatient"><a [routerLink]="routes.userLogin">Login</a></li>
           <li class="login-link" *ngIf="isPatient" (click)="logout()"><a [routerLink]="routes.userLogin">Logout</a></li>
           <ul class="nav header-navbar-rht">
