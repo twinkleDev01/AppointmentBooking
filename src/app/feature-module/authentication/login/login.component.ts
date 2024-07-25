@@ -49,6 +49,7 @@ export class LoginComponent {
         this.submitClicked = false;
       })
       .catch((error) => {
+        this.toastr.error('Error during signInWithPhoneNumber');
         console.error('Error during signInWithPhoneNumber', error);
       });
     }
@@ -61,7 +62,7 @@ export class LoginComponent {
       return;
     }
     if (!this.verificationCode || this.verificationCode.length !== 6) {
-      console.error('Invalid verification code');
+      this.toastr.error('Invalid verification code');
       return;
     }
 const sendData={
@@ -81,8 +82,9 @@ const sendData={
       })
       .catch((error) => {
         console.error('Error while verifying the code', error);
-        // Handle error (e.g., display error message)
+        this.toastr.error('Error while verifying the code');
       });
   }
+  
 
 }
