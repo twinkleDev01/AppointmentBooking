@@ -73,7 +73,11 @@ const sendData={
                 this.authService.setToken(res?.data.token);
                 this.toastr.success(res.message);
                 this.router.navigate(['/patients/patient-dashboard']);
-              })
+              },
+              err=>{
+                this.toastr.error(err.message);
+              }
+            )
       })
       .catch((error) => {
         console.error('Error while verifying the code', error);
