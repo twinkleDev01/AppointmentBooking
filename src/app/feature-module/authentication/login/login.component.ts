@@ -20,7 +20,7 @@ export class LoginComponent {
   formSubmitted: boolean = false;
   otpSent: boolean = false;
   submitClicked: boolean = false;
-
+disabled: boolean = false;
   phoneNumber: string = '';
   verificationCode: string = '';
   recaptchaVerifier: firebase.auth.RecaptchaVerifier | undefined;
@@ -47,6 +47,7 @@ export class LoginComponent {
         this.otpSent = true
         this.toastr.success('OTP sent Successfully', "Success");
         this.submitClicked = false;
+        this.disabled=true
       })
       .catch((error) => {
         this.toastr.error('Error during signInWithPhoneNumber');
@@ -76,7 +77,7 @@ const sendData={
                 this.router.navigate(['/patients/patient-dashboard']);
               },
               err=>{
-                this.toastr.error(err.message);
+                this.toastr.error("User with the given mobile number not found");
               }
             )
       })
@@ -85,6 +86,11 @@ const sendData={
         this.toastr.error('Error while verifying the code');
       });
   }
-  
+  onInputChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const sanitizedValue = input.value.replace(/[^0-9]/g, '');
+    input.value = sanitizedValue;
+    this.phoneNumber = sanitizedValue;
+  }
 
 }
