@@ -41,7 +41,7 @@
               <!-- age and gender -->
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-6 p-0">
-                  <input type="text" placeholder="Enter Age" formControlName="age" (keypress)="validateNumber($event)">
+                  <input type="text" placeholder="Enter Age" formControlName="age" (keypress)="validateNumber($event)" (input)="checkLength($event, 2)">
                   <div
                     *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)"
                     class="text-danger">
@@ -107,7 +107,7 @@
               <div class="mt-1 col-12 p-0">
                 <!-- <input type="text" placeholder="Enter description" formControlName="description"> -->
                 <textarea placeholder="Enter description" class="description" formControlName="description" rows="3"
-                  cols="50"></textarea>
+                  cols="50" (input)="checkLength($event, 150)"></textarea>
               </div>
               <div
                 *ngIf="appointmentForm.get('description')?.touched && appointmentForm.get('description')?.invalid || (submitted && appointmentForm.get('description')?.invalid)"
@@ -673,7 +673,7 @@
                   <div class="col-md-6 col-sm-12">
                     <div class="mb-3 card-label">
                       <label for="pinCode" class="mb-2">pinCode<span class="required-asterisk">*</span></label>
-                      <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter PinCode" (keypress)="validateNumber($event)"/>
+                      <input formControlName="pinCode" [readOnly]="existingUser" class="form-control" type="text" placeholder="Enter PinCode" (keypress)="validateNumber($event)" (input)="checkLength($event, 6)"/>
                       <div *ngIf="InfoForm.get('pinCode')?.errors?.['required'] && InfoForm.get('pinCode')?.touched">
                         pinCode is required
                       </div>
