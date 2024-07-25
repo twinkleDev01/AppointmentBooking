@@ -81,6 +81,7 @@
                   #phoneNumberInput="ngModel"
                   required
                   pattern="^[0-9]{10}$"
+                  [readonly]="submitClicked"
                 />
                 <div *ngIf="submitClicked && phoneNumberInput.invalid && (phoneNumberInput.dirty || phoneNumberInput.touched)" class="text-danger">
                   <div *ngIf="phoneNumberInput.errors?.['required']">Phone number is required.</div>
