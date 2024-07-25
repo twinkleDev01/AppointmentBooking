@@ -59,6 +59,7 @@ const routes: Routes = [
           import('./profile-settings/profile-settings.module').then(
             (m) => m.ProfileSettingsModule
           ),
+          canActivate: [PatientAuthGuard]
       },
       {
         path: 'booking-success',
@@ -95,6 +96,7 @@ const routes: Routes = [
           import('./medical-records/medical-records.module').then(
             (m) => m.MedicalRecordsModule
           ),
+          canActivate: [PatientAuthGuard]
       },
       {
         path: 'medical-details',
@@ -121,6 +123,7 @@ const routes: Routes = [
       {
         path: 'patient-invoice',
         component: PatientInvoiceComponent,
+        canActivate: [PatientAuthGuard]
       },
       {
         path: 'doctor-profile',

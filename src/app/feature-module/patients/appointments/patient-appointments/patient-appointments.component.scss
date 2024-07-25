@@ -808,6 +808,10 @@ border:1px solid #eeeff4;
         display: flex;
         justify-content: space-between;
     }
+    .reshedule_btn{
+        width: 100%;
+    text-align: justify;
+    }
 }
 @media (max-width: 500px) {
     .appointment-tabs ul li .nav-link {
