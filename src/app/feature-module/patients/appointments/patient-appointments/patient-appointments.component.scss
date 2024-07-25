@@ -821,6 +821,14 @@ border:1px solid #eeeff4;
         -webkit-align-items: center;
     }
   }
+  @media (max-width: 350px) {
+    .appointment-tabs ul li .nav-link {
+        border-radius: 10px;
+        padding: 4px 3px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+  }
 :host::ng-deep .p-datepicker table td{
     padding: 0.1rem !important;
 }
