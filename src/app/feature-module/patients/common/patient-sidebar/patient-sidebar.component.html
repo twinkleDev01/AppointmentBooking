@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="dashboard-widget">
-            <nav class="dashboard-menu">
+            <nav class="dashboard-menu" *ngIf="!isMobile">
                 <ul>
                     <li routerLinkActive="active">
                         <a [routerLink]="routes.patientDashboard">

@@ -656,4 +656,12 @@ tenDigitNumberValidator(): ValidatorFn {
     return valid ? null : { 'tenDigitNumber': { value: control.value } };
   };
 }
+deleteFile(file:any){
+  const fileIndex = this.files.indexOf(file);
+  if (fileIndex !== -1) {
+    this.files.splice(fileIndex, 1);
+    
+  } 
+  
+}
 }

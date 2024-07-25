@@ -21,7 +21,7 @@ export class HeaderComponent {
   page = '';
   last = '';
   isPatient:boolean=false
-  
+  isMobile:boolean
   
   constructor(
     private common: CommonService,
@@ -30,6 +30,7 @@ export class HeaderComponent {
     private router: Router,
     private auth: AuthService
   ) {
+    this.isMobile = window.innerWidth <= 991;
     this.auth.token.subscribe((res:any)=>{
       if(res){
         this.isPatient = true
