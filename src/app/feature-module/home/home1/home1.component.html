@@ -13,7 +13,7 @@
             </h1>
             <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
             <p class="text-success">
-              Proven Results with 98.6% User Satisfaction 
+              Proven Results with 98.5% User Satisfaction 
             </p>
             <!-- <a [routerLink]="routes.booking1" class="btn">Start a Consult</a> -->
             <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
@@ -127,49 +127,27 @@
                   </div>
                   <span *ngIf="files.length > 0">{{ files.length }}
                     {{ files.length === 1 ? "file" : "files" }} selected</span>
-                  <button *ngIf="files.length > 0" class="preview-button" (click)="openImagePreviewModal()"
+                  
+                  <!-- <button *ngIf="files.length > 0" class="preview-button" (click)="openImagePreviewModal()"
                     [disabled]="files.length === 0">
                     View Images
-                  </button>
+                  </button> -->
                 </div>
+                <div *ngIf="files.length>0" class="d-flex justify-content-evenly img_box">
+                  <div  *ngFor="let file of files; let i = index" 
+                  >
+                    <div class="position-relative">
+                      <img [src]="file.url" class="issueImages"  alt="File Preview" />
+                      <span class="delete_img" (click)="deleteFile(file)"><i class="fa fa-times" aria-hidden="true"></i></span>
+                      
+
+                    </div>
+                </div>
+                </div>
+           
               </div>
 
-              <!-- Button to open image preview modal -->
-
-              <!-- Custom Modal -->
-              <!-- <div class="custom-modal" *ngIf="isImageModalOpen">
-                <div class="custom-modal-content">
-                  <div class="custom-modal-header">
-                    <h5 class="custom-modal-title">Image Preview</h5>
-                    <button type="button" class="close" (click)="closeImageModal()">
-                      <i class="fa-regular fa-circle-xmark text-black"></i>
-                    </button>
-                  </div>
-                  <div class="custom-modal-body">
-                    <div id="fileCarousel" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner">
-                        <div *ngFor="let file of files; let i = index" class="carousel-item"
-                          [ngClass]="{ active: i === activeIndex }">
-                          <ng-container *ngIf="file.type.startsWith('image')">
-                            <img [src]="file.url" alt="File Preview" class="d-block w-100" />
-                          </ng-container>
-                          <ng-container *ngIf="!file.type.startsWith('image')">
-                            <span>{{ file.name }}</span>
-                          </ng-container>
-                        </div>
-                      </div>
-                      <a class="carousel-control-prev" role="button" data-slide="prev" (click)="prev()">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" role="button" data-slide="next" (click)="next()">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
+             
               <div class="img-custom-modal" *ngIf="isImageModalOpen">
                 <div class="img-custom-modal-content">
                   <button type="button" class="img-close" (click)="closeImageModal()">

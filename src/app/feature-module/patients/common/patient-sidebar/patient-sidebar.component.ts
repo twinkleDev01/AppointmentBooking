@@ -20,6 +20,7 @@ export class PatientSidebarComponent implements OnInit {
   baseUrl: string = environment.ImgBaseUrl
   userInfo:any;
   Detail:any;
+  isMobile:boolean;
   UserId = JSON.parse(localStorage.getItem('UserDetail') || '{}')?.nameid;
   constructor(private common: CommonService,private authService:AuthService,private router:Router,private patientsService:PatientsService) {
     this.common.base.subscribe((base: string) => {
@@ -38,6 +39,7 @@ export class PatientSidebarComponent implements OnInit {
         this.getUserInfo();
       }
     })
+    this.isMobile = window.innerWidth <= 991;
   }
   ngOnInit(): void {
     this.getUserInfo();

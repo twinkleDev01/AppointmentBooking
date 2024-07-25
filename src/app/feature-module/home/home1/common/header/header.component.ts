@@ -15,13 +15,14 @@ import { SidebarService } from 'src/app/shared/sidebar/sidebar.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  isMobile!: boolean;
   public searchField  = false;
   public routes = routes;
   public header: header[];
   base = '';
   page = '';
   last = '';
-  
+ 
   
   constructor(
     private common: CommonService,
@@ -31,6 +32,7 @@ export class HeaderComponent {
     private auth: AuthService,
     private patientsService:PatientsService
   ) {
+    this.isMobile = window.innerWidth <= 991;
     this.auth.token.subscribe((res:any)=>{
       if(res){
         console.log("34")
