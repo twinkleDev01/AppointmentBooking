@@ -7,6 +7,7 @@ import { PatientUpcomingAppointmentComponent } from './patient-upcoming-appointm
 import { PatientAppointmentsComponent } from './patient-appointments/patient-appointments.component';
 import { PatientAppoinmentDetailsComponent } from './patient-appoinment-details/patient-appoinment-details.component';
 import { PatientAppointmentGridComponent } from './patient-appointment-grid/patient-appointment-grid.component';
+import { PatientAuthGuard } from 'src/app/shared/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,10 +25,12 @@ const routes: Routes = [
       {
         path: 'patient-upcoming-appointment',
         component: PatientUpcomingAppointmentComponent,
+        canActivate: [PatientAuthGuard]
       },
       {
         path: 'patient-appointments',
         component: PatientAppointmentsComponent,
+        canActivate: [PatientAuthGuard]
       },
       {
         path: 'patient-appointment-details',
