@@ -20,6 +20,7 @@ import {
 import { PatientsService } from '../shared/Service/patients.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { LoaderServiceService } from '../shared/loader/loader-service.service';
 export type ChartOptions = {
   series: ApexAxisChartSeries | any;
   chart: ApexChart | any;
@@ -60,7 +61,7 @@ export class ModalComponent implements OnInit {
   public chartOptionsThree!: Partial<ChartOptions>;
   public chartOptionsFour!: Partial<ChartOptions>;
 
-  constructor(private patientsService:PatientsService) {
+  constructor(private patientsService:PatientsService,private loaderServiceService:LoaderServiceService) {
     this.chartOptionsOne = {
       series: [
         {
@@ -350,35 +351,99 @@ export class ModalComponent implements OnInit {
   }
 
   @ViewChild('invoice') invoiceElement!: ElementRef;
-  @ViewChild('prescriptions') prescriptionElement!: ElementRef;
+  @ViewChild('prescriptions') prescriptionElement!: ElementRef<HTMLDivElement>;
 
+  // downloadPDF() {
+  //   const DATA = this.invoiceElement.nativeElement;
+  //  // Set the width of the element to 1200px before capturing it
+  //  DATA.style.width = '750px';
+  
+  //  html2canvas(DATA, { scale: 2 }).then(canvas => {
+  //    const imgWidth = 208; // A4 width in mm
+  //    const pageHeight = 295; // A4 height in mm
+  //    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+ 
+  //    const imgData = canvas.toDataURL('image/png');
+  //    const pdf = new jsPDF('p', 'mm', 'a4');
+  //    let position = 0;
+ 
+  //    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+  //    pdf.save('prescription.pdf');
+ 
+  //    // Revert the width of the element to its original value
+  //    DATA.style.width = '';
+  //  });
+  // }
+  
   downloadPDF() {
-    const DATA = this.invoiceElement.nativeElement;
-    html2canvas(DATA).then(canvas => {
-      const fileWidth = 208;
-      const fileHeight = (canvas.height * fileWidth) / canvas.width;
+    this.loaderServiceService.show();
+    const { clonedElement, hiddenDiv } = this.copyNodeElementinvoice()
+    const DATA = clonedElement
 
-      const FILEURI = canvas.toDataURL('image/png');
-      const PDF = new jsPDF('p', 'mm', 'a4');
-      const position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-
-      PDF.save('invoice.pdf');
+    // Set the width of the element to 1200px before capturing it
+    DATA.style.width = '750px';
+    console.log(DATA)
+    html2canvas(DATA, { scale: 2 }).then(canvas => {
+      const imgWidth = 208; // A4 width in mm
+      const pageHeight = 295; // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+  
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('invoice.pdf');
+      document.body.removeChild(hiddenDiv)
+      this.loaderServiceService.hide()
+      // Revert the width of the element to its original value
+      DATA.style.width = '';
     });
   }
+  copyNodeElementinvoice(){
+    const clonedElement = (this.invoiceElement.nativeElement).cloneNode(true)
+    const hiddenDiv = document.createElement('div');
+    hiddenDiv.style.height = '10px';
+    hiddenDiv.style.width = '100vw';
+    hiddenDiv.style.overflow = 'scroll';
+    document.body.appendChild(hiddenDiv);
+    hiddenDiv.appendChild(clonedElement);
+    return {clonedElement: clonedElement as HTMLDivElement, hiddenDiv};
+  }
+
   downloadPDFPrescription() {
-    const DATA = this.prescriptionElement.nativeElement;
-    html2canvas(DATA).then(canvas => {
-      const fileWidth = 208;
-      const fileHeight = (canvas.height * fileWidth) / canvas.width;
+    this.loaderServiceService.show();
+    const { clonedElement, hiddenDiv } = this.copyNodeElement()
+    const DATA = clonedElement
 
-      const FILEURI = canvas.toDataURL('image/png');
-      const PDF = new jsPDF('p', 'mm', 'a4');
-      const position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-
-      PDF.save('prescription.pdf');
+    DATA.style.width = '750px';
+    console.log(DATA)
+    html2canvas(DATA, { scale: 2 }).then(canvas => {
+      const imgWidth = 208; 
+      const pageHeight = 295; 
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+  
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save('prescription.pdf');
+      document.body.removeChild(hiddenDiv)
+      this.loaderServiceService.hide();
+      DATA.style.width = '';
     });
+  }
+
+  copyNodeElement(){
+    const clonedElement = (this.prescriptionElement.nativeElement).cloneNode(true)
+    const hiddenDiv = document.createElement('div');
+    hiddenDiv.style.height = '10px';
+    hiddenDiv.style.width = '100vw';
+    hiddenDiv.style.overflow = 'scroll';
+    document.body.appendChild(hiddenDiv);
+    hiddenDiv.appendChild(clonedElement);
+    return {clonedElement: clonedElement as HTMLDivElement, hiddenDiv};
   }
 
  formatDate(dateString:any) {

@@ -1505,7 +1505,7 @@
                       <tr>
                         <th>Medicine Name</th>
                         <th>Dosage</th>
-                        <th>Frequency</th>
+                        <!-- <th>Frequency</th> -->
                         <th>Duration</th>
                         <th>Instruction</th>
                       </tr>
@@ -1515,7 +1515,7 @@
                       <tr>
                         <td>{{medicine.medicineName}}</td>
                         <td>{{medicine.dosage}}</td>
-                        <td>{{medicine.frequency}}</td>
+                        <!-- <td>{{medicine.frequency}}</td> -->
                         <td>{{medicine.duration}}</td>
                         <td>{{medicine.instruction}}</td>
                       </tr>
@@ -1955,7 +1955,8 @@
                   <h6 class="customer-text">Billing From</h6>
                   <p class="invoice-details invoice-details-two">
                     {{invoiceDetail.doctorName}} <br>
-                    {{invoiceDetail.docotrAddress}}&nbsp;{{invoiceDetail.doctorState}}&nbsp;{{invoiceDetail.doctorCountry}} <br>
+                    {{invoiceDetail.docotrAddress}}&nbsp;{{invoiceDetail.doctorState}}<br>
+                    {{invoiceDetail.doctorCountry}}
                   </p>
                 </div>
               </div>
@@ -1964,7 +1965,8 @@
                   <h6 class="customer-text">Billing To</h6>
                   <p class="invoice-details invoice-details-two">
                     {{invoiceDetail.patientName}}<br>
-                    {{invoiceDetail.patientAddress}}&nbsp;{{invoiceDetail.patientState}}&nbsp;{{invoiceDetail.patientCountry}}<br>
+                    {{invoiceDetail.patientAddress}}&nbsp;{{invoiceDetail.patientState}}<br>
+                    {{invoiceDetail.patientCountry}}
                   </p>
                 </div>
               </div>
