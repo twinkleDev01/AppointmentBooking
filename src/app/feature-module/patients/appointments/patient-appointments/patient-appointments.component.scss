@@ -1,7 +1,7 @@
 
 @media screen and (min-width: 1200px) {
   ::ng-deep .custom-daterangepicker-container {
-    transform: translate3d(940px, 225px, 0px) !important;
+    transform: translate3d(940px, 234px, 0px) !important;
 }
   }
 //   ::ng-deep .custom-daterangepicker-container {
@@ -629,6 +629,9 @@ $__none: none;
     font-size: 15px; /* Change the font size */
 }
 @media (max-width: 768px) {
+    ::ng-deep .custom-daterangepicker-container{
+        transform:  translate3d(440px, 596px, 0px) !important;
+     }
     .container{
         max-width: 100%;
     }
@@ -717,6 +720,9 @@ border:1px solid #eeeff4;
 }
 
 @media (max-width: 576px) {
+    ::ng-deep .custom-daterangepicker-container{
+       transform:  translate3d(15px, 620px, 0px) !important;
+    }
     .alt_text{
         min-height: 100px !important;
         
