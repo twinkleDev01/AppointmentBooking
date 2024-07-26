@@ -563,11 +563,18 @@ return window.innerWidth < 767
     });
   }
 
-  checkLength(event: Event, maxLength: number) {
+  checkLengthage(event: Event, maxLength: number) {
     const input = event.target as HTMLInputElement;
-    // Limit to specified max characters
     if (input.value.length > maxLength) {
       input.value = input.value.slice(0, maxLength);
+      this.appointmentForm.controls['age'].setValue(input.value, { emitEvent: false });
+    }
+  }
+  checkLength(event: Event, maxLength: number) {
+    const input = event.target as HTMLInputElement;
+    if (input.value.length > maxLength) {
+      input.value = input.value.slice(0, maxLength);
+      this.InfoForm.controls['pinCode'].setValue(input.value, { emitEvent: false });
     }
   }
 

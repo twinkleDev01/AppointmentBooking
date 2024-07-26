@@ -13,7 +13,7 @@
             </h1>
             <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
             <p class="text-success">
-              Proven Results with 98.6% User Satisfaction 
+              Proven Results with 98.4s% User Satisfaction 
             </p>
             <!-- <a [routerLink]="routes.booking1" class="btn">Start a Consult</a> -->
             <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
@@ -41,7 +41,7 @@
               <!-- age and gender -->
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-6 p-0">
-                  <input type="text" placeholder="Enter Age" formControlName="age" (keypress)="validateNumber($event)" (input)="checkLength($event, 2)">
+                  <input type="text" placeholder="Enter Age" formControlName="age" (keypress)="validateNumber($event)" (input)="checkLengthage($event, 2)">
                   <div
                     *ngIf="appointmentForm.get('age')?.touched && appointmentForm.get('age')?.invalid || (submitted &&  appointmentForm.get('age')?.invalid)"
                     class="text-danger">
