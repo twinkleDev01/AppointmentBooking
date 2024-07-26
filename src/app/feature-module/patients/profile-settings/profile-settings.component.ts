@@ -31,24 +31,25 @@ export class ProfileSettingsComponent implements OnInit {
     this.maxDate = new Date();
     this.Detail = localStorage.getItem('UserDetail')
         this.Detail = JSON.parse(this.Detail);
-    
+        this.profileForm = this.fb.group({
+          profileImage: [null],
+          firstName: ['', Validators.required],
+          lastName: ['', Validators.required],
+          dateOfBirth: [ null],
+          phoneNumber: ['', Validators.required],
+          email: ['', [Validators.required, Validators.email]],
+          bloodGroup: [''],
+          address: [''],
+          city: [''],
+          state: [''],
+          country: [''],
+          pincode: [''],
+          age:['']
+        });
   }
   ngOnInit() {
     this.myDateValue = new Date();
-    this.profileForm = this.fb.group({
-      profileImage: [null],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      dateOfBirth: [''],
-      phoneNumber: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      bloodGroup: [''],
-      address: [''],
-      city: [''],
-      state: [''],
-      country: [''],
-      pincode: [''],
-    });
+    this.profileForm.get('dateOfBirth')?.setValue(null);
     this.getUserInfo()
   }
 
@@ -71,6 +72,7 @@ export class ProfileSettingsComponent implements OnInit {
     formData.append('State', this.profileForm.get('state')?.value);
     formData.append('Country', this.profileForm.get('country')?.value);
     formData.append('PinCode', this.profileForm.get('pincode')?.value);
+    formData.append('age', this.profileForm.get('age')?.value);
 this.patientsService.updatePatientinfo(formData).subscribe((res:any)=>{
   
   if (res.isSuccess) {
@@ -127,12 +129,17 @@ this.patientsService.userSubject.next(data);
   getUserInfo(){
     this.patientsService.getPatientinfo().subscribe((res:any)=>{
       if (res.data) {
-        const dateOfBirth = new Date(res.data.dateOfBirth);
+        if(res.data.dateOfBirth){
+          // const dateOfBirth = new Date(res.data.dateOfBirth);
+          this.profileForm.patchValue({
+            dateOfBirth: res.data.dateOfBirth,
+
+          });
+        }
         this.profileForm.patchValue({
           profileImage: res.data.profileImage,
           firstName: res.data.firstName,
           lastName: res.data.lastName,
-          dateOfBirth: dateOfBirth,
           phoneNumber: res.data.phoneNumber,
           email: res.data.email,
           bloodGroup: res.data.bloodGroup,
@@ -141,6 +148,7 @@ this.patientsService.userSubject.next(data);
           state: res.data.state,
           country: res.data.country,
           pincode: res.data.pinCode,
+          age:res.data.age
         });
         this.selectedImageUrl=this.generateImageUrl(res.data.image)
       }

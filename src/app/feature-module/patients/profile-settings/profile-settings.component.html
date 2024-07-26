@@ -62,7 +62,7 @@
                       (onInput)="onDateChange($event)"></p-calendar>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-6">
+                      <div class="col-lg-6 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="phoneNumber">Phone Number <span class="text-danger">*</span></label>
                           <input type="text" class="form-control" formControlName="phoneNumber" (keypress)="validateNumber($event)">
@@ -71,7 +71,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-6">
+                      <div class="col-lg-6 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="email">Email Address <span class="text-danger">*</span></label>
                           <input type="email" class="form-control" formControlName="email" (keypress)="preventWhitespace($event)">
@@ -81,17 +81,22 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-4 col-md-6">
-                        <!-- <div class="form-wrap">
-                          <label class="col-form-label" for="bloodGroup">Blood Group</label>
-                          <input type="text" class="form-control" formControlName="bloodGroup" (keypress)="preventWhitespace($event)">
-                        </div> -->
+                      <div class="col-lg-6 col-md-6">
                         <div class="form-wrap">
                           <label class="col-form-label" for="bloodGroup">Blood Group</label>
                           <select class="form-control" formControlName="bloodGroup">
                             <option value="" disabled>Select blood group</option>
                             <option *ngFor="let group of bloodGroups" [value]="group">{{ group }}</option>
                           </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-wrap">
+                          <label class="col-form-label" for="age">Age</label>
+                          <input type="text" class="form-control" formControlName="age" (keypress)="validateNumber($event)">
+                          <div *ngIf="profileForm.get('age')?.invalid && (profileForm.get('age')?.dirty || profileForm.get('age')?.touched)" class="text-danger">
+                            age is required.
+                          </div>
                         </div>
                       </div>
                     </div>
