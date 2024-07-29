@@ -355,7 +355,7 @@ return window.innerWidth < 767
     // Restrict to maximum 5 files in total
     const filesToAdd = Math.min(fileInput.length, remainingSlots);
 
-    for (let i = 0; i < filesToAdd; i++) {
+    for (let i = 0; i < fileInput.length; i++) {
       const file = fileInput[i];
       const fileType = file.type;
       if (fileType === 'image/jpeg' || fileType === 'image/png') {
@@ -429,6 +429,8 @@ return window.innerWidth < 767
     });
   }
 
+  
+
   confirmSlot(): void {
     this.selectedTimeSlot = this.tempSelectedTimeSlot; // Confirm the time slot
     this.closeModal();
@@ -440,7 +442,7 @@ return window.innerWidth < 767
     if (user) {
       this.userDetails = JSON.parse(user); // Directly parse the user object
     } 
-    if (this.appointmentForm.valid && this.choosenIssues?.length > 0) {
+    if (this.appointmentForm.valid && this.choosenIssues?.length > 0 && this.files.length<6) {
       if(this.slotConfirmed===true){
     this.issues= this.appointmentForm.value.selectedConcerns;
     

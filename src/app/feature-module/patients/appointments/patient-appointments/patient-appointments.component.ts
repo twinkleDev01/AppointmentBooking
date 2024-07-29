@@ -3,6 +3,7 @@ import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsDaterangepickerConfig, BsDaterangepickerDirective } from 'ngx-bootstrap/datepicker';
 import { ToastrService } from 'ngx-toastr';
+import { bufferTime } from 'rxjs';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
 import { routes } from 'src/app/shared/routes/routes';
 import { environment } from 'src/environments/environment';
@@ -118,6 +119,42 @@ isButtonDisabled(appointmentDate: string, appointmentTime: string): boolean {
   const hoursDifference = timeDifference / (1000 * 60 * 60);
   return hoursDifference <= 24;
 }
+isAttendButtonDisabled(startTime: string, endTime: string, date: string): boolean {
+  const currentDateTime = new Date();
+  
+  const baseDate = new Date(date);
+  
+  // Create start and end DateTime by combining the base date with the given times
+  const startDateTime = new Date(baseDate);
+  const [startHours, startMinutes, startSeconds] = startTime.split(':').map(Number);
+  startDateTime.setHours(startHours, startMinutes, startSeconds, 0);
+
+  const endDateTime = new Date(baseDate);
+  const [endHours, endMinutes, endSeconds] = endTime.split(':').map(Number);
+  endDateTime.setHours(endHours, endMinutes, endSeconds, 0);
+
+  if (isNaN(startDateTime.getTime()) || isNaN(endDateTime.getTime())) {
+    return true; // Disable button if the dates are invalid
+  }
+
+  // Calculate 5 minutes before the start time
+  const startBufferTime = new Date(startDateTime.getTime() - 5 * 60000); // 5 minutes in milliseconds
+
+  // Check if the current time is within the range
+  const isWithinRange = currentDateTime >= startBufferTime && currentDateTime <= endDateTime;
+  
+  return !isWithinRange;
+}
+
+
+
+
+
+attend(url:any){
+  window.open(url, '_blank');
+
+}
+
 openModal(data:any): void {
   this.isModalOpen = true;
   this.selectedAppointmentId=data.appointmentId

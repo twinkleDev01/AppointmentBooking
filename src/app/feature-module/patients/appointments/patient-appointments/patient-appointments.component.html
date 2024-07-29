@@ -106,8 +106,11 @@
                                             </li> -->
                                         </ul>
                                     </li>
-                                    <li *ngIf="data.isUpcomming===true" class="appointment-detail-btn">
-                                        <a [href]=data.zoomLink target="_blank" class="start-link"><i class="fa-solid fa-calendar-check me-1"></i>Attend</a>
+                                    <li *ngIf="data.isUpcomming===true" class="appointment-detail-btn" >
+                                        <button  target="_blank" class="start-link reshedule_btn" [disabled]="isAttendButtonDisabled(data.startTime, data.endTime,data.appointmentDate)" [ngStyle]="{
+                                            'color': isAttendButtonDisabled(data.startTime, data.endTime,data.appointmentDate) ? 'grey' : '',
+                                            'border-color': isAttendButtonDisabled(data.startTime, data.endTime,data.appointmentDate) ? 'grey' : ''
+                                          }" (click)="attend(data.zoomLink)" ><i class="fa-solid fa-calendar-check me-1"></i>Attend</button>
                                     </li>
                                     <li *ngIf="data.isUpcomming===true" class="appointment-detail-btn">
                                         <button [disabled]="isButtonDisabled(data.appointmentDate, data.startTime)" [ngStyle]="{
