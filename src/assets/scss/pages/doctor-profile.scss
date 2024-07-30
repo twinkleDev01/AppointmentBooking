@@ -7,27 +7,27 @@
 	    font-weight: $__medium;
 	}
 }
-.doctor-action {
-	@extend %equal-heights;
-    margin-bottom: 15px;
-    @include respond-below(custom767) {
-    	justify-content: $__center;
-	    -webkit-justify-content: $__center;
-	    -ms-flex-pack: $__center;
-    }
-    a {
-    	& + a {
-			margin-left: 8px;
-		}
-    }
-    .fav-btn {
-    	&:hover {
-			background-color: $__red;
-			border-color: $__red;
-			color: $__white;
-		}
-    }
-}
+// .doctor-action {
+// 	@extend %equal-heights;
+//     margin-bottom: 15px;
+//     @include respond-below(custom767) {
+//     	justify-content: $__center;
+// 	    -webkit-justify-content: $__center;
+// 	    -ms-flex-pack: $__center;
+//     }
+//     a {
+//     	& + a {
+// 			margin-left: 8px;
+// 		}
+//     }
+//     .fav-btn {
+//     	&:hover {
+// 			background-color: $__red;
+// 			border-color: $__red;
+// 			color: $__white;
+// 		}
+//     }
+// }
 .msg-btn {
 	&:hover, &:focus {
 		background-color: $__primarycolor;

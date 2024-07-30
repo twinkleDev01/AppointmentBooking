@@ -216,7 +216,14 @@ select {
     height: 421px !important;
 }
 .doc_img{
-    height: 421px !important;
+    height: 300px !important;
+}
+.blue_text{
+    color: #0e82fd;
+}
+.heading_main{
+        font-weight: 700;
+        font-size: 32px !important;
 }
 
 // Define the CSS variables and mixins if they are not already defined
