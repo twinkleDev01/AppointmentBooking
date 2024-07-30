@@ -18,19 +18,9 @@ const routes: Routes = [
           import('./pages/pages.module').then((m) => m.PagesModule),
       },
       {
-        path: 'doctors',
-        loadChildren: () =>
-          import('./doctors/doctors.module').then((m) => m.DoctorsModule),
-      },
-      {
         path: 'patients',
         loadChildren: () =>
           import('./patients/patients.module').then((m) => m.PatientsModule),
-      },
-      {
-        path: 'blog',
-        loadChildren: () =>
-          import('./blog/blog.module').then((m) => m.BlogModule),
       },
       {
         path: 'authentication',
@@ -38,11 +28,6 @@ const routes: Routes = [
           import('./authentication/authentication.module').then(
             (m) => m.AuthenticationModule
           ),
-      },
-      {
-        path: 'error',
-        loadChildren: () =>
-          import('./error/error.module').then((m) => m.ErrorModule),
       },
     ],
   },

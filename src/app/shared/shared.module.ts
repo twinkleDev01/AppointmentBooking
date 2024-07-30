@@ -20,8 +20,6 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { MatSliderModule } from '@angular/material/slider';
 import { PatientSidebarModule } from '../feature-module/patients/common/patient-sidebar/patient-sidebar.module';
-import { DoctorBreadcrumbModule } from '../feature-module/doctors/common/doctor-breadcrumb/doctor-breadcrumb.module';
-import { DoctorSidebarModule } from '../feature-module/doctors/common/doctor-sidebar/doctor-sidebar.module';
 import { ChipsModule } from 'primeng/chips';
 import { AuthInterceptor } from './Interceptor/auth.interceptor';
 
@@ -75,8 +73,6 @@ import { AuthInterceptor } from './Interceptor/auth.interceptor';
     MatSliderModule,
     NgScrollbarModule,
     PatientSidebarModule,
-    DoctorBreadcrumbModule,
-    DoctorSidebarModule,
     ChipsModule,
     HttpClientModule
   ],
@@ -103,8 +99,6 @@ import { AuthInterceptor } from './Interceptor/auth.interceptor';
     MatSliderModule,
     NgScrollbarModule,
     PatientSidebarModule,
-    DoctorBreadcrumbModule,
-    DoctorSidebarModule,
     ChipsModule
   ],
   providers: [DatePipe,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],

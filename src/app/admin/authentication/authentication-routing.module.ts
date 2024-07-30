@@ -17,18 +17,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./login/login.module').then((m) => m.LoginModule),
       },
-      {
-        path: 'admin-register',
-        loadChildren: () =>
-          import('./register/register.module').then((m) => m.RegisterModule),
-      },
-      {
-        path: 'lock-screen',
-        loadChildren: () =>
-          import('./lock-screen/lock-screen.module').then(
-            (m) => m.LockScreenModule
-          ),
-      },
     ],
   },
 ];

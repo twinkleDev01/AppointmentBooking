@@ -659,7 +659,7 @@
     z-index: 1;
     &::after {
         content: '';
-        background: url(../../img/bg/ban-bg.png), $__blue-50;
+        background: url(https://images.prismic.io/skinify/ZqcsOh5LeNNTxjPv_ban-bg.png?auto=format,compress), $__blue-50;
         @include background-properties($__cover, $__no_repeat, $__center);
         @include position($__absolute, 0, null, null, 0);
         width: $__full__width;
