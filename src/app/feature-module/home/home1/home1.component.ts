@@ -19,6 +19,7 @@ declare var $: any;
   styleUrls: ['./home1.component.scss'],
 })
 export class Home1Component implements OnInit {
+  @ViewChild("calender") cal:any;
   public routes = routes;
   public specialitiesSliderOne: specialitiesSliderOne[];
   public doctorSliderOne: doctorSliderOne[];
@@ -95,6 +96,7 @@ export class Home1Component implements OnInit {
   minDate!: Date;
   Doctors:any;
   consultationFees:any
+  greenDate!: Date;
   constructor(
     private data: DataService,
     private router: Router,
@@ -146,7 +148,11 @@ export class Home1Component implements OnInit {
       this.isPatient = true
     }
   }
-
+ngAfterViewInit(){
+  
+    console.log(this.cal,"cal")
+  
+}
   get isMobileResolution(){
 return window.innerWidth < 767
   }
@@ -339,6 +345,8 @@ return window.innerWidth < 767
   }
 
   filterAppointments(date: any) {
+    console.log(this.slots,"slots",this.selectedDate);
+    this.greenDate = new Date(this.slots?.[0]?.date);
     this.filteredAppointments = this.slots.filter(
       (appointment:any) => appointment.date === date
     );
@@ -407,6 +415,8 @@ return window.innerWidth < 767
 
   openModal(): void {
     this.isModalOpen = true;
+    setTimeout(()=>{},1000)
+    console.log(this.cal,"after open",this.selectedDate);
   }
 
   closeModal(): void {

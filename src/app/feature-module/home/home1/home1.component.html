@@ -13,7 +13,7 @@
             </h1>
             <img loading="lazy" src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
             <p class="text-success">
-              Proven Results with 98.5% User Satisfaction 
+              Proven Results with 98.6% User Satisfaction 
             </p>
             <!-- <a [routerLink]="routes.booking1" class="btn">Start a Consult</a> -->
             <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
@@ -215,7 +215,7 @@
                   <div class="col-lg-6  d-flex justify-content-center align-items-center">
                     <p-calendar [(ngModel)]="selectedDate" [minDate]="minDate" inline="true" dateFormat="yy-mm-dd"
                       (onSelect)="onSelectDate($event)" class="calendar-p"  (ngModelChange)="onDateChange($event)"
-                      (onInput)="onDateChange($event)"></p-calendar>
+                      (onInput)="onDateChange($event)" #calender></p-calendar>
                   </div>
                   <div class="col-lg-6  justify-content-center">
                     <!-- Available Times -->
