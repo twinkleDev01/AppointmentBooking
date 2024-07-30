@@ -202,68 +202,9 @@
 </div>
 <!-- /Appointment Details Modal -->
 
-<!-- Voice Call Modal -->
-<div class="modal fade call-modal" id="voice_call">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <!-- Outgoing Call -->
-        <div class="call-box incoming-box">
-          <div class="call-wrapper">
-            <div class="call-inner">
-              <div class="call-user">
-                <img alt="User Image" src="assets/img/doctors/doctor-thumb-02.jpg" class="call-avatar">
-                <h4>Darren Elder</h4>
-                <span>Connecting...</span>
-              </div>
-              <div class="call-items">
-                <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
-                  aria-label="Close"><i class="material-icons">call_end</i></a>
-                <a [routerLink]="routes.voiceCall" class="btn call-item call-start"><i
-                    class="material-icons">call</i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Outgoing Call -->
 
-      </div>
-    </div>
-  </div>
-</div>
 <!-- /Voice Call Modal -->
 
-<!-- Video Call Modal -->
-<div class="modal fade call-modal" id="video_call">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-
-        <!-- Incoming Call -->
-        <div class="call-box incoming-box">
-          <div class="call-wrapper">
-            <div class="call-inner">
-              <div class="call-user">
-                <img class="call-avatar" src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image">
-                <h4>Darren Elder</h4>
-                <span>Calling ...</span>
-              </div>
-              <div class="call-items">
-                <a href="javascript:void(0);" class="btn call-item call-end" data-bs-dismiss="modal"
-                  aria-label="Close"><i class="material-icons">call_end</i></a>
-                <a [routerLink]="routes.videoCall" class="btn call-item call-start"><i
-                    class="material-icons">videocam</i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /Incoming Call -->
-
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Video Call Modal -->
 
 <!-- Add Dependent Modal-->
 <div id="modal_form" class="modal fade custom-modal" tabindex="-1" role="dialog" aria-modal="true">
@@ -443,90 +384,6 @@
 </div>
 <!-- /Edit Medical Detail -->
 
-<!-- Medical Records Modal -->
-<div class="modal fade custom-modal custom-medicalrecord-modal" id="add_medical_records_modal" style="display: none;"
-  data-select2-id="add_medical_records_modal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Medical Records</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
-      </div>
-      <form id="medical_records_form" enctype="multipart/form-data">
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="mb-3">
-                <label class="mb-2" for="title-name">Title Name</label>
-                <input type="text" name="description" class="form-control" placeholder="Enter Title Name">
-              </div>
-            </div>
-            <div class="col-12 col-md-6">
-              <div class="mb-3">
-                <label for="patient" class="mb-2">Patient</label>
-                <input type="text" name="description" class="form-control" placeholder="Enter Patient Name">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="mb-3">
-                <label for="hospital-name" class="mb-2">Hospital Name</label>
-                <input type="text" name="hospital" class="form-control" placeholder="Enter name here..">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="mb-3">
-                <label for="upload" class="mb-2">Upload</label>
-                <div class="upload-medical-records">
-                  <input class="form-control" type="file" name="user_file" id="user_files_mr">
-                  <div class="upload-content dropzone">
-                    <div>
-                      <div class="upload-icon mb-2"><img src="assets/img/upload-icon.png" alt="upload-icon"></div>
-                      <h5>Drag &amp; Drop</h5>
-                      <h6>or <span class="text-danger">Browse</span></h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="mb-3">
-                <label class="mb-2" for="symptoms">Symptoms</label>
-                <input type="text" data-role="tagsinput" class="input-tags form-control" value="Fever, Fatigue"
-                  name="services" id="services">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-6">
-              <div class="mb-3">
-                <label for="date" class="mb-2">Date</label>
-                <div class="mb-3" class="modal-date-picker">
-                  <div class="cal-icon">
-                    <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [(bsValue)]="myDateValue">
-                  </div>
-                  <input type="date" class="form-control" name="tratment_date" id="tratment_date">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="text-center mt-4">
-            <div class="submit-section text-center">
-              <button type="submit" id="medical_btn" class="btn btn-primary submit-btn">Submit</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- /Medical Records Modal -->
 
 <!-- Add Medical Records Modal -->
 <div class="modal fade custom-modal" id="add_medical_records">
@@ -1109,7 +966,7 @@
           <div class="canceled-user-info d-flex align-items-center">
             <div class="patinet-information">
               <a [routerLink] = "routes.doctorUpcomingAppointment">
-                <img src="assets/img/doctors-dashboard/profile-01.jpg" alt="User Image">
+                <img src="https://images.prismic.io/skinify/ZqiHNh5LeNNTxlYk_doc-profile-01.jpg?auto=format,compress" alt="User Image">
               </a>
               <div class="patient-info">
                 <p>#Apt0001</p>
@@ -1159,7 +1016,7 @@
           <div class="call-wrapper">
             <div class="call-inner">
               <div class="call-user">
-                <img alt="User Image" src="assets/img/patients/patient.jpg" class="call-avatar">
+                <img alt="User Image" src="https://images.prismic.io/skinify/ZqiHkB5LeNNTxlYs_profile-06.jpg?auto=format,compress" class="call-avatar">
                 <h4>Richard Wilson</h4>
                 <span>Connecting...</span>
               </div>
@@ -1190,7 +1047,7 @@
           <div class="call-wrapper">
             <div class="call-inner">
               <div class="call-user">
-                <img class="call-avatar" src="assets/img/patients/patient.jpg" alt="User Image">
+                <img class="call-avatar" src="https://images.prismic.io/skinify/ZqiHkB5LeNNTxlYs_profile-06.jpg?auto=format,compress" alt="User Image">
                 <h4>Richard Wilson</h4>
                 <span>Calling ...</span>
               </div>
@@ -1621,9 +1478,7 @@
           </div>
           <!-- /Invoice Item -->
 
-          <div class="appointment-notes">
-            <h3>Appointment Note</h3>
-          </div>
+          
           <div class="appoint-wrap">
             <h5>Advice</h5>
             <p>An account of the present illness, which includes the circumstances surrounding the onset of recent
@@ -2546,7 +2401,7 @@
         <div class="modal-body">
           <div class="med-detail-patient">
             <div class="med-patient">
-              <span><img src="assets/img/doctors-dashboard/profile-06.jpg" alt="Img"></span>
+              <span><img src="https://images.prismic.io/skinify/ZqiHkB5LeNNTxlYs_profile-06.jpg?auto=format,compress" alt="Img"></span>
               <div class="name-detail">
                 <h5>Hendrita Kearns</h5>
                 <ul>

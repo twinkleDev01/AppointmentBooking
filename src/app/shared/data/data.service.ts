@@ -1322,7 +1322,7 @@ export class DataService {
   ];
   public aboutUs = [
     {
-      img: 'assets/img/clients/client-01.jpg',
+      img: 'https://images.prismic.io/skinify/ZqiGnx5LeNNTxlYd_client-01.jpg?auto=format,compress',
       heading1: 'Testimonials',
       heading2: 'What Our Client Says',
       content:
@@ -1331,7 +1331,7 @@ export class DataService {
       location: 'New York',
     },
     {
-      img: 'assets/img/clients/client-02.jpg',
+      img: 'https://images.prismic.io/skinify/ZqiGQh5LeNNTxlYO_client-02.jpg?auto=format,compress',
       heading1: 'Testimonials',
       heading2: 'What Our Client Says',
       content:
@@ -1340,7 +1340,7 @@ export class DataService {
       location: 'Florida',
     },
     {
-      img: 'assets/img/clients/client-03.jpg',
+      img: 'https://images.prismic.io/skinify/ZqiGhB5LeNNTxlYb_client-03.jpg?auto=format,compress',
       heading1: 'Testimonials',
       heading2: 'What Our Client Says',
       content:
@@ -1349,7 +1349,7 @@ export class DataService {
       location: 'Georgia',
     },
     {
-      img: 'assets/img/clients/client-04.jpg',
+      img: 'https://images.prismic.io/skinify/ZqiGbh5LeNNTxlYX_client-04.jpg?auto=format,compress',
       heading1: 'Testimonials',
       heading2: 'What Our Client Says',
       content:
@@ -1358,7 +1358,7 @@ export class DataService {
       location: 'California',
     },
     {
-      img: 'assets/img/clients/client-05.jpg',
+      img: 'https://images.prismic.io/skinify/ZqiFyx5LeNNTxlYH_client-05.jpg?auto=format,compress',
       heading1: 'Testimonials',
       heading2: 'What Our Client Says',
       content:
