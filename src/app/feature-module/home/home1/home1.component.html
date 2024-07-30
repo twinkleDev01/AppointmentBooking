@@ -11,24 +11,24 @@
               Transform Your <span>Hair & Skin</span> with Our Online
               Dermatology Consult
             </h1>
-            <img src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
+            <img loading="lazy" src="assets/img/icons/header-icon.svg" class="header-icon" alt="header-icon" />
             <p class="text-success">
-              Proven Results with 98.7% User Satisfaction 
+              Proven Results with 98.5% User Satisfaction 
             </p>
             <!-- <a [routerLink]="routes.booking1" class="btn">Start a Consult</a> -->
             <!-- <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
-            <img src="assets/img/banner-img.png" class="img_fluid" alt="patient-image" />
+            <img loading="lazy" src="assets/img/banner-img.png" class="img_fluid" alt="patient-image" />
           </div> -->
             <div class="banner-img banner_img aos" data-aos="fade-up" data-aos-duration="2000">
-              <img src="assets/img/banner-img.png" class="img-fluid img_fluid" alt="patient-image" />
+              <img loading="lazy" src="assets/img/banner-img.png" class="img-fluid img_fluid" alt="patient-image" />
               <div class="banner-img1">
-                <img src="assets/img/banner/banner-img1.svg" class="img-fluid" alt="checkup-image" />
+                <img loading="lazy" src="assets/img/banner/banner-img1.svg" class="img-fluid" alt="checkup-image" />
               </div>
               <div class="banner-img2">
-                <img src="assets/img/banner/banner-img2.svg" class="img-fluid" alt="doctor-slide" />
+                <img loading="lazy" src="assets/img/banner/banner-img2.svg" class="img-fluid" alt="doctor-slide" />
               </div>
               <div class="banner-img3">
-                <img src="assets/img/banner/banner-img3.svg" class="img-fluid" alt="doctors-list" />
+                <img loading="lazy" src="assets/img/banner/banner-img3.svg" class="img-fluid" alt="doctors-list" />
               </div>
             </div>
           </div>
@@ -137,7 +137,7 @@
                   <div  *ngFor="let file of files; let i = index" 
                   >
                     <div class="position-relative">
-                      <img [src]="file.url" class="issueImages"  alt="File Preview" />
+                      <img loading="lazy" [src]="file.url" class="issueImages"  alt="File Preview" />
                       <span class="delete_img" (click)="deleteFile(file)"><i class="fa fa-times" aria-hidden="true"></i></span>
                       
 
@@ -160,7 +160,7 @@
                         <div *ngFor="let file of files; let i = index" class="carousel-item carousel-items"
                           [ngClass]="{ 'active': i === activeIndex }">
                           <ng-container *ngIf="file.type.startsWith('image')">
-                            <img [src]="file.url" class="d-block w-100 img-fluid" alt="File Preview" />
+                            <img loading="lazy" [src]="file.url" class="d-block w-100 img-fluid" alt="File Preview" />
                           </ng-container>
                           <ng-container *ngIf="!file.type.startsWith('image')">
                             <span>{{ file.name }}</span>
@@ -271,7 +271,7 @@
             <div class="col-lg-12 aos" data-aos="fade-up">
               <div class="work-info">
                 <div class="work-icon">
-                  <span><img src="assets/img/icons/work-03.svg" alt="calendar-icon" /></span>
+                  <span><img loading="lazy" src="assets/img/icons/work-03.svg" alt="calendar-icon" /></span>
                 </div>
                 <div class="work-content">
                   <h5>Schedule Appointment</h5>
@@ -285,7 +285,7 @@
             <div class="col-lg-12 aos" data-aos="fade-up">
               <div class="work-info">
                 <div class="work-icon">
-                  <span><img src="assets/img/icons/work-01.svg" alt="search-doctor-icon" /></span>
+                  <span><img loading="lazy" src="assets/img/icons/work-01.svg" alt="search-doctor-icon" /></span>
                 </div>
                 <div class="work-content">
                   <h5>Meet your dermatologist online</h5>
@@ -300,7 +300,7 @@
             <div class="col-lg-12 aos" data-aos="fade-up">
               <div class="work-info">
                 <div class="work-icon">
-                  <span><img src="assets/img/icons/work-04.svg" alt="solution-icon" /></span>
+                  <span><img loading="lazy" src="assets/img/icons/work-04.svg" alt="solution-icon" /></span>
                 </div>
                 <div class="work-content">
                   <h5>Get Your Solution</h5>
@@ -314,7 +314,7 @@
           </div>
         </div>
         <div class="col-lg-5 work-img-info aos" data-aos="fade-up" data-aos-duration="2000">
-          <img src="assets/img/work-img.png" class="img-fluid mirror-image" alt="doctor-image" />
+          <img loading="lazy" src="assets/img/work-img.png" class="img-fluid mirror-image" alt="doctor-image" />
         </div>
       </div>
     </div>
@@ -341,8 +341,8 @@
                   <!-- [routerLink]="routes.doctorProfile2" -->
                   <a>
                     <div class="doctor-profile-img">
-                      <img *ngIf="!data.doctorImage" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
-                      <img *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
+                      <img loading="lazy" *ngIf="!data.doctorImage" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
+                      <img loading="lazy" *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
                     </div>
                   </a>
                   <!-- <div class="doctor-amount">
@@ -390,7 +390,7 @@
             <div class="testimonial-grid" ngxSlickItem>
               <div class="testimonial-info">
                 <div class="testimonial-img">
-                  <img [src]="data.img" class="img-fluid" alt="client-image" />
+                  <img loading="lazy" [src]="data.img" class="img-fluid" alt="client-image" />
                 </div>
                 <div class="testimonial-content">
                   <div class="section-inner-header testimonial-header">
@@ -428,10 +428,10 @@
       <div class="row align-items-center">
         <div class="col-lg-6 col-md-12 aos" data-aos="fade-up" data-aos-duration="2000">
           <div class="faq-img">
-            <img src="assets/img/faq-img.png" class="img-fluid" alt="img" />
+            <img loading="lazy" src="assets/img/faq-img.png" class="img-fluid" alt="img" />
             <div class="faq-patients-count">
               <div class="faq-smile-img">
-                <img src="assets/img/icons/smiling-icon.svg" alt="icon" />
+                <img loading="lazy" src="assets/img/icons/smiling-icon.svg" alt="icon" />
               </div>
               <div class="faq-patients-content">
                 <h4>
@@ -586,7 +586,7 @@
           <ng-template carouselSlide>
             <li>
               <a href="javascript:void(0);">
-                <img class="img-fluid" [src]="data.img" alt="partners" />
+                <img loading="lazy" class="img-fluid" [src]="data.img" alt="partners" />
               </a>
             </li>
           </ng-template>

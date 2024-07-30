@@ -26,10 +26,10 @@
             <div class="col-md-6">
               <div class="about-inner-img">
                 <div class="about-img">
-                  <img src="assets/img/about-img1.jpg" class="img-fluid" alt="about-image">
+                  <img loading="lazy" src="assets/img/about-img1.jpg" class="img-fluid" alt="about-image">
                 </div>
                 <div class="about-img">
-                  <img src="assets/img/about-img2.jpg" class="img-fluid" alt="about-image">
+                  <img loading="lazy" src="assets/img/about-img2.jpg" class="img-fluid" alt="about-image">
                 </div>
               </div>
             </div>
@@ -39,7 +39,7 @@
                   <h4>Over 25+ Years Experience</h4>
                 </div>
                 <div class="about-img">
-                  <img src="assets/img/about-img3.jpg" class="img-fluid" alt="about-image">
+                  <img loading="lazy" src="assets/img/about-img3.jpg" class="img-fluid" alt="about-image">
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@
           </div>
           <div class="about-contact">
             <div class="about-contact-icon">
-              <span><img src="assets/img/icons/phone-icon.svg" alt="phone-image"></span>
+              <span><img loading="lazy" src="assets/img/icons/phone-icon.svg" alt="phone-image"></span>
             </div>
             <div class="about-contact-text">
               <p>Need Emergency?</p>
@@ -92,7 +92,7 @@
         <div class="card why-choose-card w-100">
           <div class="card-body">
             <div class="why-choose-icon">
-              <span><img src="assets/img/icons/choose-01.svg" alt="choose-image"></span>
+              <span><img loading="lazy" src="assets/img/icons/choose-01.svg" alt="choose-image"></span>
             </div>
             <div class="why-choose-content">
               <h4>Qualified Staff of Doctors</h4>
@@ -106,7 +106,7 @@
         <div class="card why-choose-card w-100">
           <div class="card-body">
             <div class="why-choose-icon">
-              <span><img src="assets/img/icons/choose-02.svg" alt="choose-image"></span>
+              <span><img loading="lazy" src="assets/img/icons/choose-02.svg" alt="choose-image"></span>
             </div>
             <div class="why-choose-content">
               <h4>Qualified Staff of Doctors</h4>
@@ -120,7 +120,7 @@
         <div class="card why-choose-card w-100">
           <div class="card-body">
             <div class="why-choose-icon">
-              <span><img src="assets/img/icons/choose-03.svg" alt="choose-image"></span>
+              <span><img loading="lazy" src="assets/img/icons/choose-03.svg" alt="choose-image"></span>
             </div>
             <div class="why-choose-content">
               <h4>Qualified Staff of Doctors</h4>
@@ -134,7 +134,7 @@
         <div class="card why-choose-card w-100">
           <div class="card-body">
             <div class="why-choose-icon">
-              <span><img src="assets/img/icons/choose-04.svg" alt="choose-image"></span>
+              <span><img loading="lazy" src="assets/img/icons/choose-04.svg" alt="choose-image"></span>
             </div>
             <div class="why-choose-content">
               <h4>Qualified Staff of Doctors</h4>
@@ -155,10 +155,10 @@
     <div class="way-bg">
       <div class="way-shapes-img">
         <div class="way-shapes-left">
-          <img src="assets/img/shape-06.png" alt="shape-image">
+          <img loading="lazy" src="assets/img/shape-06.png" alt="shape-image">
         </div>
         <div class="way-shapes-right">
-          <img src="assets/img/shape-07.png" alt="shape-image">
+          <img loading="lazy" src="assets/img/shape-07.png" alt="shape-image">
         </div>
       </div>
       <div class="row align-items-end">
@@ -172,7 +172,7 @@
         </div>
         <div class="col-lg-5 col-md-12">
           <div class="way-img">
-            <img src="assets/img/way-img.png" class="img-fluid" alt="doctor-way-image">
+            <img loading="lazy" src="assets/img/way-img.png" class="img-fluid" alt="doctor-way-image">
           </div>
         </div>
       </div>
@@ -203,8 +203,8 @@
                 <!-- [routerLink]="routes.doctorProfile2" -->
                 <a>
                   <div class="doctor-profile-img">
-                    <img *ngIf="!data.doctorImage" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid s" alt="doctor" />
-                    <img *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
+                    <img loading="lazy" *ngIf="!data.doctorImage" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid s" alt="doctor" />
+                    <img loading="lazy" *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
                   </div>
                 </a>
                 <!-- <div class="doctor-amount">
@@ -252,10 +252,10 @@
 <section class="testimonial-section">
   <div class="testimonial-shape-img">
     <div class="testimonial-shape-left">
-      <img src="assets/img/shape-04.png" alt="shape-image">
+      <img loading="lazy" src="assets/img/shape-04.png" alt="shape-image">
     </div>
     <div class="testimonial-shape-right">
-      <img src="assets/img/shape-05.png" alt="shape-image">
+      <img loading="lazy" src="assets/img/shape-05.png" alt="shape-image">
     </div>
   </div>
   <div class="container">
@@ -266,7 +266,7 @@
             <div class="testimonial-grid" ngxSlickItem>
               <div class="testimonial-info">
                 <div class="testimonial-img">
-                  <img [src]="data.img" class="img-fluid" alt="client-image">
+                  <img loading="lazy" [src]="data.img" class="img-fluid" alt="client-image">
                 </div>
                 <div class="testimonial-content">
                   <div class="section-inner-header testimonial-header">
@@ -302,10 +302,10 @@
     <div class="row align-items-center">
       <div class="col-lg-6 col-md-12">
         <div class="faq-img">
-          <img src="assets/img/faq-img.png" class="img-fluid" alt="img">
+          <img loading="lazy" src="assets/img/faq-img.png" class="img-fluid" alt="img">
           <div class="faq-patients-count">
             <div class="faq-smile-img">
-              <img src="assets/img/icons/smiling-icon.svg" alt="icon">
+              <img loading="lazy" src="assets/img/icons/smiling-icon.svg" alt="icon">
             </div>
             <div class="faq-patients-content">
               <h4><span class="count-digit" [countUp]="95" [options]="{ enableScrollSpy: true }">95</span>k+</h4>

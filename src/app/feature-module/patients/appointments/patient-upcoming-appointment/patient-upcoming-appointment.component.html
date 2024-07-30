@@ -22,8 +22,8 @@
                             <li>
                                 <div class="patinet-information">
                                     <a href="javascript:void(0);">
-                                        <img *ngIf="appointmentData.doctorImage" [src]="generateImageUrl(appointmentData.doctorImage)" (error)="handleImageError($event)" alt="Dr Image">
-                                        <img *ngIf="!appointmentData.doctorImage" src="../../../../../assets/img/dummy/doload.jpg"  alt="Dr Image">
+                                        <img loading="lazy" *ngIf="appointmentData.doctorImage" [src]="generateImageUrl(appointmentData.doctorImage)" (error)="handleImageError($event)" alt="Dr Image">
+                                        <img loading="lazy" *ngIf="!appointmentData.doctorImage" src="../../../../../assets/img/dummy/doload.jpg"  alt="Dr Image">
                                     </a>
                                     <div class="patient-info">
                                         <h6><a href="javascript:void(0);">{{appointmentData.doctorName}}</a></h6>
@@ -115,7 +115,7 @@
             <div *ngFor="let file of files; let i = index" class="carousel-item"
               [ngClass]="{ active: i === activeIndex }">
               <ng-container *ngIf="file">
-                <img [src]="file" alt="File Preview" class="d-block w-100" />
+                <img loading="lazy" [src]="file" alt="File Preview" class="d-block w-100" />
               </ng-container>
               <ng-container *ngIf="!file">
                 <span>{{ file }}</span>
@@ -146,7 +146,7 @@
             <div *ngFor="let file of files; let i = index" class="carousel-item carousel-items"
               [ngClass]="{ 'active': i === activeIndex }">
               <ng-container *ngIf="file">
-                <img [src]="file" class="d-block w-100 img-fluid" alt="File Preview" />
+                <img loading="lazy" [src]="file" class="d-block w-100 img-fluid" alt="File Preview" />
               </ng-container>
               <ng-container *ngIf="!file">
                 <span>{{ file }}</span>

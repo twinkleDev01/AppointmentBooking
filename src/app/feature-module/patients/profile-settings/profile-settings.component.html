@@ -11,7 +11,7 @@
                   <div class="setting-card">
                     <div class="change-avatar img-upload">
                       <div class="profile-img">
-                        <img [src]="selectedImageUrl" alt="" *ngIf="selectedImageUrl">
+                        <img loading="lazy" [src]="selectedImageUrl" alt="" *ngIf="selectedImageUrl">
                         <i class="fa-solid fa-file-image" *ngIf="!selectedImageUrl"></i>
                       </div>
                       <div class="upload-img">

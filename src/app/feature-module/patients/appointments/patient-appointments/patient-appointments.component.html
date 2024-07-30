@@ -71,8 +71,8 @@
                                     <li>
                                         <div class="patinet-information">
                                             <a >
-                                                <img *ngIf="!data.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="User Image">
-                                                <img *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" alt="User Image">
+                                                <img loading="lazy" *ngIf="!data.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                                                <img loading="lazy" *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" alt="User Image">
                                             </a>
                                             <div class="patient-info">
                                                 <p>Appointment {{i+1}}</p>
@@ -131,7 +131,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a >
-                                            <img src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt00011</p>
@@ -160,7 +160,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a>
-                                            <img src="assets/img/doctors/doctor-thumb-13.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-13.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0002</p>
@@ -189,7 +189,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a >
-                                            <img src="assets/img/doctors/doctor-thumb-14.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-14.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0003</p>
@@ -218,7 +218,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a  >
-                                            <img src="assets/img/doctors/doctor-thumb-15.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-15.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0004</p>
@@ -247,7 +247,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a  >
-                                            <img src="assets/img/doctors/doctor-thumb-16.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-16.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0005</p>
@@ -276,7 +276,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a  >
-                                            <img src="assets/img/doctors/doctor-thumb-17.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-17.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0006</p>
@@ -305,7 +305,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a  >
-                                            <img src="assets/img/doctors/doctor-thumb-18.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-18.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0007</p>
@@ -334,7 +334,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a  >
-                                            <img src="assets/img/doctors/doctor-thumb-19.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-19.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0008</p>
@@ -365,7 +365,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a   >
-                                            <img src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-21.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0001</p>
@@ -394,7 +394,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a   >
-                                            <img src="assets/img/doctors/doctor-thumb-13.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-13.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0002</p>
@@ -423,7 +423,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a   >
-                                            <img src="assets/img/doctors/doctor-thumb-14.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-14.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0003</p>
@@ -452,7 +452,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a   >
-                                            <img src="assets/img/doctors/doctor-thumb-15.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-15.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0004</p>
@@ -481,7 +481,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a   >
-                                            <img src="assets/img/doctors/doctor-thumb-16.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-16.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0005</p>
@@ -510,7 +510,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a   >
-                                            <img src="assets/img/doctors/doctor-thumb-17.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-17.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0006</p>
@@ -539,7 +539,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a   >
-                                            <img src="assets/img/doctors/doctor-thumb-18.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-18.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0007</p>
@@ -568,7 +568,7 @@
                                 <li>
                                     <div class="patinet-information">
                                         <a   >
-                                            <img src="assets/img/doctors/doctor-thumb-19.jpg" alt="User Image">
+                                            <img loading="lazy" src="assets/img/doctors/doctor-thumb-19.jpg" alt="User Image">
                                         </a>
                                         <div class="patient-info">
                                             <p>#Apt0008</p>

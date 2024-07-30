@@ -83,7 +83,7 @@
                       <div class="doctor-fav-list">
                         <div class="doctor-info-profile">
                           <a href="javascript:void(0);" class="table-avatar">
-                            <img src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
+                            <img loading="lazy" src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
                           </a>
                           <div class="doctor-name-info">
                             <h5><a href="javascript:void(0);">{{data.doctorName}}</a></h5>
@@ -107,7 +107,7 @@
                     <div class="doctor-fav-list">
                       <div class="doctor-info-profile">
                         <a href="javascript:void(0);" class="table-avatar">
-                          <img src="assets/img/doctors/doctor-17.jpg" alt="Img">
+                          <img loading="lazy" src="assets/img/doctors/doctor-17.jpg" alt="Img">
                         </a>
                         <div class="doctor-name-info">
                           <h5><a href="javascript:void(0);">Dr.Juliet Gabriel</a></h5>
@@ -169,7 +169,7 @@
                         <div class="doctor-fav-list">
                           <div class="doctor-info-profile">
                             <a href="javascript:void(0);" class="table-avatar">
-                              <img src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
+                              <img loading="lazy" src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
                             </a>
                             <div class="doctor-name-info">
                               <h5><a href="javascript:void(0);">Dr.Edalin Hendry</a></h5>
@@ -201,7 +201,7 @@
                         <div class="doctor-fav-list">
                           <div class="doctor-info-profile">
                             <a href="javascript:void(0);" class="table-avatar">
-                              <img src="assets/img/doctors/doctor-17.jpg" alt="Img">
+                              <img loading="lazy" src="assets/img/doctors/doctor-17.jpg" alt="Img">
                             </a>
                             <div class="doctor-name-info">
                               <h5><a href="javascript:void(0);">Dr.Juliet Gabriel</a></h5>
@@ -327,8 +327,8 @@
                                   <td>
                                     <h2 class="table-avatar">
                                       <a  class="avatar avatar-sm me-2">
-                                        <img *ngIf="!data.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
-                                        <img *ngIf="data.doctorImage" class="avatar-img rounded-3" [src]="generateImageUrl(data.doctorImage)" alt="User Image">
+                                        <img loading="lazy" *ngIf="!data.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                                        <img loading="lazy" *ngIf="data.doctorImage" class="avatar-img rounded-3" [src]="generateImageUrl(data.doctorImage)" alt="User Image">
                                       </a>
                                       <a >{{data.doctorName}}</a>
                                     </h2>
@@ -371,8 +371,8 @@
                                   <td>
                                     <h2 class="table-avatar">
                                       <a  class="avatar avatar-sm me-2">
-                                        <img *ngIf="!invoice.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
-                                        <img *ngIf="invoice.doctorImage" class="avatar-img rounded-3" [src]="generateImageUrl(invoice.doctorImage)" (error)="handleImageError($event)" alt="User Image">
+                                        <img loading="lazy" *ngIf="!invoice.doctorImage" class="avatar-img rounded-3" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                                        <img loading="lazy" *ngIf="invoice.doctorImage" class="avatar-img rounded-3" [src]="generateImageUrl(invoice.doctorImage)" (error)="handleImageError($event)" alt="User Image">
                                       </a>
                                       <a >{{invoice.doctorName}}</a>
                                     </h2>
