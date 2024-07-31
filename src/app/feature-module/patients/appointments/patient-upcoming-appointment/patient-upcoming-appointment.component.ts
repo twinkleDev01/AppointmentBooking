@@ -74,7 +74,7 @@ formatDate(inputDate:any) {
   }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
-  target.src = '../../../../../assets/img/dummy/doload.jpg'; 
+  target.src = 'https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress'; 
 }
 back(){
   this.location.back();

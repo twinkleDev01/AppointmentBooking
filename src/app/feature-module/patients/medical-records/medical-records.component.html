@@ -59,7 +59,7 @@
                         <td>
                           <h2 class="table-avatar">
                             <a  class="avatar avatar-sm me-2">
-                              <img loading="lazy" class="avatar-img rounded-3" *ngIf="!Prescription.doctorImage" src="../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                              <img loading="lazy" class="avatar-img rounded-3" *ngIf="!Prescription.doctorImage" src="https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress" alt="User Image">
                               <img loading="lazy" class="avatar-img rounded-3" *ngIf="Prescription.doctorImage" [src]="generateImageUrl(Prescription.doctorImage)" (error)="handleImageError($event)" alt="User Image">
                             </a>
                             <a  >{{Prescription.doctorName}}</a>

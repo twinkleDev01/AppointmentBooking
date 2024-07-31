@@ -6,7 +6,7 @@
         <div class="widget-profile pro-widget-content">
             <div class="profile-info-widget">
                 <a [routerLink]="routes.profileSettings" class="booking-doc-img">
-                    <img loading="lazy" *ngIf="!userInfo?.image" src="../../../../assets/img/dummy/doload.jpg" class="img-fluid" alt="doctor" />
+                    <img loading="lazy" *ngIf="!userInfo?.image" src="https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress" class="img-fluid" alt="doctor" />
                       <img loading="lazy" *ngIf="userInfo?.image" [src]="generateImageUrl(userInfo?.image)" src="" (error)="handleImageError($event)" class="img-fluid doc_img" alt="doctor">
                 </a>
                 <div class="profile-det-info">

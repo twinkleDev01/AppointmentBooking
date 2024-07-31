@@ -23,7 +23,7 @@
                                 <div class="patinet-information">
                                     <a href="javascript:void(0);">
                                         <img loading="lazy" *ngIf="appointmentData.doctorImage" [src]="generateImageUrl(appointmentData.doctorImage)" (error)="handleImageError($event)" alt="Dr Image">
-                                        <img loading="lazy" *ngIf="!appointmentData.doctorImage" src="../../../../../assets/img/dummy/doload.jpg"  alt="Dr Image">
+                                        <img loading="lazy" *ngIf="!appointmentData.doctorImage" src="https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress"  alt="Dr Image">
                                     </a>
                                     <div class="patient-info">
                                         <h6><a href="javascript:void(0);">{{appointmentData.doctorName}}</a></h6>

@@ -71,7 +71,7 @@
                                     <li>
                                         <div class="patinet-information">
                                             <a >
-                                                <img loading="lazy" *ngIf="!data.doctorImage" src="../../../../../assets/img/dummy/doload.jpg" alt="User Image">
+                                                <img loading="lazy" *ngIf="!data.doctorImage" src="https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress" alt="User Image">
                                                 <img loading="lazy" *ngIf="data.doctorImage" [src]="generateImageUrl(data.doctorImage)" (error)="handleImageError($event)" alt="User Image">
                                             </a>
                                             <div class="patient-info">
