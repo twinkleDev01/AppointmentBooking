@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "id": "#SP001",
+      "specialities": "Urology",
+      "img": "assets/img/specialities/specialities-01.png"
+    },
+    {
+      "id": "#SP002",
+      "specialities": "Neurology",
+      "img": "assets/img/specialities/specialities-02.png"
+    },
+    {
+      "id": "#SP003",
+      "specialities": "Orthopedic",
+      "img": "assets/img/specialities/specialities-03.png"
+    },
+    {
+      "id": "#SP004",
+      "specialities": "Cardiologist",
+      "img": "assets/img/specialities/specialities-04.png"
+    },
+    {
+      "id": "#SP005",
+      "specialities": "Dentist",
+      "img": "assets/img/specialities/specialities-05.png"
+    }
+  ],
+  "totalData": 5
+}

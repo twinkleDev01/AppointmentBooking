@@ -1,0 +1,45 @@
+.header.header-ten.header-fixed.home-care-header {
+	&.dentist-header {
+		.header-top-wrap {
+			background:$__blue__17;
+			.header-contact {
+				li {
+					.question-mark-icon {
+						width: 16px;
+						height: 16px;
+						border-radius: 50%;
+						background: $__white;
+						display: flex;
+						align-self: center;
+						justify-content: center;
+						color: $__purple__dark;
+						font-weight: $__semibold;
+						margin-right: 5px;
+						i {
+							margin-right: 0;
+							display: flex;
+							align-items: center;
+							font-size: $__font__size__14;
+						}
+					}
+				}
+			}
+		}
+		.header-nav .header-navbar-rht li {
+			.btn.reg-btn {
+				background: $__blue__17;
+				border-color: $__blue__17;
+			}
+			.log-btn {
+				&:hover {
+					background: $__purple__dark;
+					border-color: $__purple__dark;
+					box-shadow: none;
+				}
+			}
+		}
+		.main-nav > li.active > a {
+			color: $__purple__dark !important;
+		}
+	}
+} 

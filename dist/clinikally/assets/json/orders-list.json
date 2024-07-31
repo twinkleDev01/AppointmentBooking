@@ -1,0 +1,65 @@
+{
+  "data": [
+      {
+        "id": "1",
+        "orderId": "OD1236547890",
+        "pharmacyName": "Medlife Medical",
+        "quantity": "2",
+        "amount": "$150",
+        "paymentGateway": "Stripe",
+        "status": "Order Placed",
+        "orderDate": "11 Nov 2023 10.00 AM"
+      },
+      {
+        "id": "2",
+        "orderId": "OD1236547891",
+        "pharmacyName": "Medlife Medical",
+        "quantity": "4",
+        "amount": "$200",
+        "paymentGateway": "Stripe",
+        "status": "Order Placed",
+        "orderDate": "3 Nov 2023 11.00 AM"
+      },
+      {
+        "id": "3",
+        "orderId": "OD1236547892",
+        "pharmacyName": "Medlife Medical",
+        "quantity": "1",
+        "amount": "$75",
+        "paymentGateway": "Stripe",
+        "status": "Order Placed",
+        "orderDate": "1 Nov 2023 1.00 PM"
+      },
+      {
+        "id": "4",
+        "orderId": "OD1236547893",
+        "pharmacyName": "PharmaMed Medical",
+        "quantity": "2",
+        "amount": "$100",
+        "paymentGateway": "Paystack",
+        "status": "Shipped",
+        "orderDate": "30 Oct 2023 9.00 AM"
+      },
+      {
+        "id": "5",
+        "orderId": "OD1236547894",
+        "pharmacyName": "PharmaMed Medical",
+        "quantity": "5",
+        "amount": "$350",
+        "paymentGateway": "Stripe",
+        "status": "Shipped",
+        "orderDate": "28 Oct 2023 6.00 PM"
+      },
+      {
+        "id": "6",
+        "orderId": "OD1236547895",
+        "pharmacyName": "The Pill Club Medical",
+        "quantity": "1",
+        "amount": "$250",
+        "paymentGateway": "Paypal",
+        "status": "Order Placed",
+        "orderDate": "27 Oct 2023 8.00 AM"
+      }
+    ],
+    "totalData": 6
+}

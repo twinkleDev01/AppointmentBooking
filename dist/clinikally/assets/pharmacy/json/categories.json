@@ -1,0 +1,75 @@
+{
+    "data": [
+            {
+                "id": "01",
+                "name": "Phytopathology‎",
+                "createdDate": "01-May-2020-12:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "02",
+                "name": "Family care",
+                "createdDate": "03-May-2020-08:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "03",
+                "name": "Cancer",
+                "createdDate": "05-May-2020-06:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "04",
+                "name": "Hair care",
+                "createdDate": "06-May-2020-01:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "05",
+                "name": "Skin care",
+                "createdDate": "05-May-2020-02:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "06",
+                "name": "Rare diseases",
+                "createdDate": "06-May-2020-06:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "07",
+                "name": "Baby care",
+                "createdDate": "07-May-2020-12:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "08",
+                "name": "Inflammations",
+                "createdDate": "07-May-2020-05:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "09",
+                "name": "Sleep disorders",
+                "createdDate": "07-May-2020-08:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            },
+            {
+                "id": "10",
+                "name": "Infectious diseases",
+                "createdDate": "08-May-2020-02:00",
+                "actions1": "Edit",
+                "actions2": "Delete"
+            }
+        ],
+        "totalData": 10
+}

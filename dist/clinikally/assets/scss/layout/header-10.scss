@@ -1,0 +1,95 @@
+
+
+.header {
+    &.header-fourteen {
+        &.header-fifteen {
+            &.ent-header {
+                background: $__white !important;
+            }
+            .header-nav {
+                .logo {
+                    @include respond-below(custom1199) {
+                        margin-right: 0;
+                    }
+                }
+                @include respond-below(custom991) {
+                    justify-content: space-between;
+                }
+                .main-menu-wrapper {
+                    .main-nav {
+                        >li {
+                            @include respond-below(custom1399) {
+                                margin-right: 15px;
+                            }
+                            @include respond-below(custom1199) {
+                                margin-right: 10px;
+                            }
+                            a {
+                                color: $__midnight_black;
+                                @include respond-below(custom991) {
+                                    color: $__white
+                                }
+                            }
+                        }
+                    }
+                }
+                .header-navbar-rht {
+                    .login-in-fourteen {
+                        .reg-btn {
+                            @include margin-padding(null, 10px 15px);
+                            background: $__cyan-400 !important;
+                            border-color: $__cyan-400 !important;
+                            color: $__white;
+                            font-size: $__font__size__15;
+                            display: $__flex;
+                            align-items: $__center;
+                            border-radius: 6px;
+                            @include respond-below(custom1399) {
+                                @include margin-padding(null, 13px 10px);
+                            }
+                            @include respond-below(custom1199) {
+                                @include margin-padding(null, 10px 5px);
+                            }
+                            @include respond-below(custom991) {
+                                @include margin-padding(null, 13px 10px);
+                            }
+                            &.reg-btn-fourteen {
+                                background: $__blue__14 !important;
+                                border-color: $__blue__14 !important;
+                                border: 0;
+                                color: $__white;
+                                border-radius: 6px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-fourteen.header-fifteen {
+    .header-dropdown {
+        &.country-flag {
+            margin-top: 20px;
+            img {
+                width: 18px;
+                height: 16px;
+                margin-right: 5px;
+            }
+            a {
+                color: $__black__01;
+                font-size: $__font__size__14;
+                &.dropdown-toggle {
+                    background: $__gray-50;
+                    border-color: $__gray-50;
+                    display: inline-flex;
+                    align-items: center;
+                }
+            }
+        }
+        @include respond-below(custom1199) {
+            display: none;
+        }
+    }
+}

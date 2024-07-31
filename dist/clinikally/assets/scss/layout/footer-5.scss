@@ -1,0 +1,194 @@
+.footer {
+    &.footer-three {
+        &.footer-ten {
+            background: $__blue__17;
+            position: relative;
+            overflow: hidden;
+            .social-icon {
+                position: relative;
+            }
+            .footer-ten-bg {
+                img {
+                    position: absolute;
+                    &:nth-child(1) {
+                        left: 0;
+                        bottom: 0;
+                    }
+                    &:nth-child(2) {
+                        right:0;
+                        bottom: 0;
+                    }
+                    &:nth-child(3) {
+                        left: 50%;
+                        transform: translate(-50%, 100%);
+                    }
+                }
+            }
+            .footer-top {
+                padding: 60px 0;
+                @include respond-below (custom991) {
+                    padding: 40px 0 10px;
+                }
+                @include respond-below (custom767) {
+                    padding: 30px 0 0;
+                }
+                background: $__blue__17;
+                .footer-widget {
+                    .footer-title {
+                        padding-bottom: 15px;
+                        position: relative;
+                        &::before {
+                            content: "";
+                            @include position(absolute, null, null, 0, 0);
+                            background: $__white;
+                            width: 31px;
+                            height: 2px;
+                        }
+                    }
+                    &.footer-menu {
+                        ul {
+                            li {
+                                margin-bottom: 15px;
+                                a {
+                                    font-weight: $__medium;
+                                }
+                                &:last-child {
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+                   .footer-about-content {
+                    p {
+                        font-size: $__font__size__16;
+                        font-weight: $__medium;
+                        margin-bottom: 40px;
+                        color: $__gray-50;
+                        @include respond-below (custom991) {
+                            margin-bottom: 20px;
+                        }
+                    }
+                   }
+                }
+            }
+            .subscribe-form {
+                margin-bottom: 0;
+                .form-control {
+                    background: #FFFFFF1A;
+                    border-radius: 50px;
+                    color: $__white;
+                    border: 0;
+                    font-size: $__font__size__14;
+                    font-weight: $__normal;
+                    &::placeholder {
+                        color: $__white;
+                    }
+                }
+                .btn {
+                    color: $__black;
+                    font-size: $__font__size__14;
+                    font-weight: $__medium;
+                    padding: 7px 20px;
+                    background: $__white;
+                    right: 6px;
+                }
+            }
+            .mail-note {
+                color: #6B7280;
+            }
+            .footer-map {
+                border-radius: 35px;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                }
+            }
+            .footer-contact-info {
+                .footer-address {
+                    border-bottom: 1px solid $__sky-200;
+                    padding-bottom: 15px;
+                    margin-bottom: 15px;
+                    span {
+                        width: 32px;
+                        height: 32px;
+                        border-radius: 50%;
+                        border: 1px solid $__white;
+                        color: $__white;
+                        margin-right: 8px;
+                        @extend %flex-align-center;
+                    }
+                    .addr-info {
+                        h6 {
+                            font-size: $__font__size__14;
+                            font-weight: $__normal;
+                            margin-bottom: 0;
+                            color: $__athens_grey;
+                        }
+                        p {
+                            color: $__white;
+                            font-size: $__font__size__14;
+                            font-weight: $__semibold;
+                            margin-bottom: 0;
+                        }
+                    }
+                    &:last-child {
+                        border: 0;
+                        @include margin-padding(0, 0);
+                    }
+                }
+            }
+            .social-icon {
+                text-align: right;
+                ul {
+                    li {
+                        a {
+                            background: $__blue-400;
+                            border-color: $__blue-400;
+                            color: $__white;
+                            &:hover {
+                                background: $__blue__14;
+                                border-color: $__blue__14;
+                            }
+                        }
+                    }
+                }
+            }
+            .footer-bottom {
+                border-top: 1px solid $__broken_blue;
+                background: $__blue__17;
+                .copyright {
+                    border: 0;
+                    padding: 15px 0;
+                    @extend %flex-align-between;
+                    @include respond-below (custom991) {
+                        flex-direction: column;
+                    }
+                    .copyright-text {
+                        p {
+                            font-size: $__font__size__16;
+                            font-weight: $__medium;
+                        }
+                        @include respond-below (custom991) {
+                            margin-bottom: 15px;
+                        }
+                    }
+                    .policy-menu {
+                        li {
+                            a {
+                                font-size: $__font__size__16;
+                                color: $__white;
+                                font-weight: $__medium;
+                                &:hover {
+                                    color: $__athens_grey;
+                                }
+                            }
+                            &::after {
+                                content: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } 
+}

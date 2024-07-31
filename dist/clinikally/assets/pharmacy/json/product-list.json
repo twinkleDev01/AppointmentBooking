@@ -1,0 +1,109 @@
+{
+   "data": [
+        {
+            "id": "8",
+            "productName": "Lysofranil Dorzostin",
+            "category": "Hair care",
+            "price": "$10",
+            "quantity": "22",
+            "quantityCheck": false,
+            "discount": "0%",
+            "expire": "THE PRODUCT IS EXPIRED",
+            "action1": "Edit",
+            "action2": "Delete",
+            "img": "assets/pharmacy/img/product/product10.jpg"
+        },
+        {
+            "id": "7",
+            "productName": "Adderall",
+            "category": "Phytopathology",
+            "price": "$10",
+            "quantity": "22",
+            "quantityCheck": false,
+            "discount": "0%",
+            "expire": "THE PRODUCT IS EXPIRED",
+            "action1": "Edit",
+            "action2": "Delete",
+            "img": "assets/pharmacy/img/product/product2.jpg"
+        },
+        {
+            "id": "6",
+            "productName": "Ergorinex Caffeigestin",
+            "category": "Hair care",
+            "price": "$15",
+            "quantity": "22",
+            "quantityCheck": false,
+            "discount": "0%",
+            "expire": "THE PRODUCT IS EXPIRED",
+            "action1": "Edit",
+            "action2": "Delete",
+            "img": "assets/pharmacy/img/product/product11.jpg"
+        },
+        {
+            "id": "5",
+            "productName": "Acetrace Amionel",
+            "category": "Body care",
+            "price": "$10",
+            "quantity": "22",
+            "quantityCheck": false,
+            "discount": "0%",
+            "expire": "THE PRODUCT IS EXPIRED",
+            "action1": "Edit",
+            "action2": "Delete",
+            "img": "assets/pharmacy/img/product/product12.jpg"
+        },
+        {
+            "id": "4",
+            "productName": "Actamin",
+            "category": "Phytopathology",
+            "price": "$22",
+            "quantity": "THERE ONLY 5",
+            "quantityCheck": true,
+            "discount": "0%",
+            "expire": "THE PRODUCT IS EXPIRED",
+            "action1": "Edit",
+            "action2": "Delete",
+            "img": "assets/pharmacy/img/product/product1.jpg"
+        },
+        {
+            "id": "3",
+            "productName": "Rapalac Neuronium",
+            "category": "Skin care",
+            "price": "$16",
+            "quantity": "213",
+            "quantityCheck": false,
+            "discount": "0%",
+            "expire": "THE PRODUCT IS EXPIRED",
+            "action1": "Edit",
+            "action2": "Delete",
+            "img": "assets/pharmacy/img/product/product13.jpg"
+        },
+        {
+            "id": "2",
+            "productName": "Abilify",
+            "category": "Phytopathology",
+            "price": "$22",
+            "quantity": "THERE ONLY 2",
+            "quantityCheck": true,
+            "discount": "0%",
+            "expire": "THE PRODUCT IS EXPIRED",
+            "action1": "Edit",
+            "action2": "Delete",
+            "img": "assets/pharmacy/img/product/product.jpg"
+        },
+        {
+            "id": "1",
+            "productName": "Cordacriptine Mardipine",
+            "category": "Skin care",
+            "price": "$22",
+            "quantity": "THERE ONLY 2",
+            "quantityCheck": true,
+            "discount": "0%",
+            "expire": "THE PRODUCT IS EXPIRED",
+            "action1": "Edit",
+            "action2": "Delete",
+            "img": "assets/pharmacy/img/product/product14.jpg"
+        }
+    ],
+    "totalData": 8
+}
