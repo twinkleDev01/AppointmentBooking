@@ -137,45 +137,45 @@ span {
 .terms-and-policy a {
   color: $__primarycolor-hover;
 }
-.login-page {
-  .login-right {
-    width: $__full__width;
-    position: $__relative;
-    font-family: "Poppins", sans-serif;
-    height: 100vh;
-    border: 0;
-    border-radius: 0;
-    @extend %equal-heights;
-    @extend %align-items-center;
-    @include margin-padding(null, 0);
-    .step-process-col {
-      .select2-container--default {
-        .select2-selection--single {
-          .select2-selection__rendered {
-            color: $__gray__08;
-          }
-          .select2-selection__arrow {
-            b {
-              background-image: url(../../img/icons/down-arrow-gray.svg);
-            }
-          }
-        }
-      }
-      .form-control {
-        color: $__gray__08;
-      }
-    }
-    .search-location-input-box {
-      input {
-        background-repeat: $__no_repeat;
-        background-position: 10px 50%;
-        background-size: 16px;
-        padding-left: 38px;
-        color: $__gray__09;
-      }
-    }
-  }
-}
+// .login-page {
+//   .login-right {
+//     width: $__full__width;
+//     position: $__relative;
+//     font-family: "Poppins", sans-serif;
+//     height: 100vh;
+//     border: 0;
+//     border-radius: 0;
+//     @extend %equal-heights;
+//     @extend %align-items-center;
+//     @include margin-padding(null, 0);
+//     .step-process-col {
+//       .select2-container--default {
+//         .select2-selection--single {
+//           .select2-selection__rendered {
+//             color: $__gray__08;
+//           }
+//           .select2-selection__arrow {
+//             b {
+//               background-image: url(../../img/icons/down-arrow-gray.svg);
+//             }
+//           }
+//         }
+//       }
+//       .form-control {
+//         color: $__gray__08;
+//       }
+//     }
+//     .search-location-input-box {
+//       input {
+//         background-repeat: $__no_repeat;
+//         background-position: 10px 50%;
+//         background-size: 16px;
+//         padding-left: 38px;
+//         color: $__gray__09;
+//       }
+//     }
+//   }
+// }
 .login-bottom-copyright {
   color: $__ash__granite;
   font-family: "Poppins", sans-serif;
