@@ -85,9 +85,13 @@
                                 <span>General</span>
                             </li>
                             <li *ngIf="appointmentData.isUpcomming">
-                                <div class="start-btn">
+                                <!-- <div class="start-btn">
                                     <a [href]=appointmentData.zoomLink target="_blank" class="btn btn-secondary">Start Session</a>
-                                </div>
+                                </div> -->
+                                <button  target="_blank" class="start-link reshedule_btn" [disabled]="isAttendButtonDisabled(appointmentData.startTime, appointmentData.endTime,appointmentData.appointmentDate)" [ngStyle]="{
+                                  'color': isAttendButtonDisabled(appointmentData.startTime, appointmentData.endTime,appointmentData.appointmentDate) ? 'grey' : '',
+                                  'border-color': isAttendButtonDisabled(appointmentData.startTime, appointmentData.endTime,appointmentData.appointmentDate) ? 'grey' : ''
+                                }" (click)="attend(appointmentData.zoomLink)" ><i class="fa-solid fa-calendar-check me-1"></i>Attend</button>
                             </li>
                         </ul>
                     </div>
