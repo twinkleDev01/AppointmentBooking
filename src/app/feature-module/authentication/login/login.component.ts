@@ -52,6 +52,7 @@ disabled: boolean = false;
       .catch((error) => {
         this.toastr.error('Error during signInWithPhoneNumber');
         console.error('Error during signInWithPhoneNumber', error);
+        this.disabled=false
       });
     }
    
@@ -75,6 +76,7 @@ const sendData={
                 this.authService.setToken(res?.data.token);
                 this.toastr.success(res.message);
                 this.router.navigate(['/patients/patient-dashboard']);
+                this.disabled=false
               },
               err=>{
                 this.toastr.error("User with the given mobile number not found");

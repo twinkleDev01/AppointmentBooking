@@ -60,7 +60,7 @@ export class ModalComponent implements OnInit {
   public chartOptionsTwo!: Partial<ChartOptions>;
   public chartOptionsThree!: Partial<ChartOptions>;
   public chartOptionsFour!: Partial<ChartOptions>;
-
+  downloading:boolean=false
   constructor(private patientsService:PatientsService,private loaderServiceService:LoaderServiceService) {
     this.chartOptionsOne = {
       series: [
@@ -377,6 +377,7 @@ export class ModalComponent implements OnInit {
   
   downloadPDF() {
     this.loaderServiceService.show();
+    this.downloading=true
     const { clonedElement, hiddenDiv } = this.copyNodeElementinvoice()
     const DATA = clonedElement
 
@@ -396,6 +397,7 @@ export class ModalComponent implements OnInit {
       pdf.save('invoice.pdf');
       document.body.removeChild(hiddenDiv)
       this.loaderServiceService.hide()
+      this.downloading=false
       // Revert the width of the element to its original value
       DATA.style.width = '';
     });
@@ -413,6 +415,7 @@ export class ModalComponent implements OnInit {
 
   downloadPDFPrescription() {
     this.loaderServiceService.show();
+    this.downloading=true
     const { clonedElement, hiddenDiv } = this.copyNodeElement()
     const DATA = clonedElement
 
@@ -431,6 +434,7 @@ export class ModalComponent implements OnInit {
       pdf.save('prescription.pdf');
       document.body.removeChild(hiddenDiv)
       this.loaderServiceService.hide();
+      this.downloading=false
       DATA.style.width = '';
     });
   }
