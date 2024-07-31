@@ -479,14 +479,14 @@
 		}
 	}
 }
-.upload-wrap {
-    @extend %display-flex;
-    .upload-images {
-        & + .upload-images {
-            margin-left: 20px;
-        }
-    }
-}
+// .upload-wrap {
+//     @extend %display-flex;
+//     .upload-images {
+//         & + .upload-images {
+//             margin-left: 20px;
+//         }
+//     }
+// }
 .upload-images {
     position: $__relative;
     width: 80px;

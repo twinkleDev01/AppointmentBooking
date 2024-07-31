@@ -376,8 +376,8 @@ export class ModalComponent implements OnInit {
   // }
   
   downloadPDF() {
-    this.loaderServiceService.show();
     this.downloading=true
+    this.loaderServiceService.show();
     const { clonedElement, hiddenDiv } = this.copyNodeElementinvoice()
     const DATA = clonedElement
 
@@ -414,8 +414,8 @@ export class ModalComponent implements OnInit {
   }
 
   downloadPDFPrescription() {
-    this.loaderServiceService.show();
     this.downloading=true
+    this.loaderServiceService.show();
     const { clonedElement, hiddenDiv } = this.copyNodeElement()
     const DATA = clonedElement
 

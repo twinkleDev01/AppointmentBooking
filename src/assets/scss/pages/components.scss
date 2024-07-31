@@ -104,17 +104,17 @@
 	}
 }
 
-.upload-wrap {
-	@extend %equal-heights;
-	@extend %ul_reset;
-	li {
-		margin: 10px;
-		list-style: none;
-		&:first-child {
-			margin-left: 0;
-		}
-	}
-}
+// .upload-wrap {
+// 	@extend %equal-heights;
+// 	@extend %ul_reset;
+// 	li {
+// 		margin: 10px;
+// 		list-style: none;
+// 		&:first-child {
+// 			margin-left: 0;
+// 		}
+// 	}
+// }
 @include respond-below(custom575) {
 .custom-components {
 	margin-bottom: 10px;
