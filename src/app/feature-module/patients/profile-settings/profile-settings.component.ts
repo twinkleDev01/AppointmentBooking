@@ -164,7 +164,7 @@ this.patientsService.userSubject.next(data);
       return;
     }
     const formattedDate = this.formatDate(date);
-    this.profileForm.get('dateOfBirth')?.setValue(formattedDate, { emitEvent: false });
+    // this.profileForm.get('dateOfBirth')?.setValue(formattedDate, { emitEvent: false });
     this.dateOfBirth = formattedDate
   }
 
