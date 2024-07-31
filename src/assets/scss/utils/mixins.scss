@@ -169,15 +169,15 @@ $breakpoints: (
   -webkit-flex-wrap: wrap;
 }
 
-.css-equal-heights {
-	@extend %equal-heights;
-}
+// .css-equal-heights {
+// 	@extend %equal-heights;
+// }
 
-.css-equal-content {
-    @extend %equal-heights;
-    color: red;
-    float: left;
-}
+// .css-equal-content {
+//     @extend %equal-heights;
+//     color: red;
+//     float: left;
+// }
 
 .align-center {
   @extend %flex-align-center;
