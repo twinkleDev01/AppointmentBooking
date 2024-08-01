@@ -43,7 +43,6 @@ export class AuthInterceptor implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          console.log('got 401')
           const data = {
             LoginProvider: localStorage.getItem('token'),
             UserId: this.UserId,

@@ -148,11 +148,6 @@ export class Home1Component implements OnInit {
       this.isPatient = true
     }
   }
-ngAfterViewInit(){
-  
-    console.log(this.cal,"cal")
-  
-}
   get isMobileResolution(){
 return window.innerWidth < 767
   }
@@ -185,9 +180,7 @@ return window.innerWidth < 767
   onCheckboxChanges(selectedIssues: any) {
     this.choosenIssues = selectedIssues
   }
-  onRadioChange(value: string): void {
-    this.selectedValue = value;
-  }
+
   get concernControls() {
     return this.appointmentForm.get('selectedConcerns') as FormArray;
   }
@@ -345,7 +338,6 @@ return window.innerWidth < 767
   }
 
   filterAppointments(date: any) {
-    console.log(this.slots,"slots",this.selectedDate);
     this.greenDate = new Date(this.slots?.[0]?.date);
     this.filteredAppointments = this.slots.filter(
       (appointment:any) => appointment.date === date
@@ -397,13 +389,6 @@ return window.innerWidth < 767
     }
   }
 
-  // isConcernSelected(concernId: number): boolean {
-  //   const selectedConcerns = this.appointmentForm.get(
-  //     'selectedConcerns'
-  //   ) as FormArray;
-  //   return selectedConcerns.controls.some((x) => x.value === concernId);
-  // }
-
   openImageModal(imageUrl: string) {
     this.selectedImageUrl = imageUrl;
     this.isImageModalOpen = true;
@@ -416,7 +401,6 @@ return window.innerWidth < 767
   openModal(): void {
     this.isModalOpen = true;
     setTimeout(()=>{},1000)
-    console.log(this.cal,"after open",this.selectedDate);
   }
 
   closeModal(): void {
@@ -438,8 +422,6 @@ return window.innerWidth < 767
       this.filterAppointments(this.formatDate(this.selectedDate));
     });
   }
-
-  
 
   confirmSlot(): void {
     this.selectedTimeSlot = this.tempSelectedTimeSlot; // Confirm the time slot

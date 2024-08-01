@@ -45,24 +45,7 @@ export class PatientsService {
   setButtonState(state: boolean) {
     this.buttonStateSource.next(state);
   }
-  // updateUser(user: any) {
-  //   this.userSubject.next(user); // Update the BehaviorSubject
-  // }
-  // getUserDetail(): string | null {
-  //   const userDetail = localStorage.getItem('UserDetail');
-  //   console.log(userDetail,"24")
-  //     if (userDetail) {
-  //       try {
-  //         this.Detail=JSON.parse(userDetail);
-  //         return this.Detail;
-  //       } catch (e) {
-  //         console.error('Error parsing user detail from localStorage:', e);
-  //         return null;
-  //       }
-  //     }
-  //     return null;
-  //   }
-
+  
   getPrescription(){
   const url=`${this.baseUrl}${this.getprescription}?PatientId=${this.Detail?.nameid}`
     return this.http.get(url);

@@ -35,11 +35,9 @@ export class HeaderComponent {
     this.isMobile = window.innerWidth <= 991;
     this.auth.token.subscribe((res:any)=>{
       if(res){
-        console.log("34")
         this.isPatient = true
       }else{
         this.isPatient = false
-        console.log("37 home",this.isPatient)
       }
       })
       if(!localStorage.getItem('token')){
@@ -83,6 +81,5 @@ logout(route: string){
 }
 sendTrue() {
   this.patientsService.setButtonState(false);
-  console.log('84')
 }
 }

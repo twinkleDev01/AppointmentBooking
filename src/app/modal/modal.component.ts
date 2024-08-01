@@ -383,7 +383,6 @@ export class ModalComponent implements OnInit {
 
     // Set the width of the element to 1200px before capturing it
     DATA.style.width = '750px';
-    console.log(DATA)
     html2canvas(DATA, { scale: 2 }).then(canvas => {
       const imgWidth = 208; // A4 width in mm
       const pageHeight = 295; // A4 height in mm
@@ -420,7 +419,6 @@ export class ModalComponent implements OnInit {
     const DATA = clonedElement
 
     DATA.style.width = '750px';
-    console.log(DATA)
     html2canvas(DATA, { scale: 2 }).then(canvas => {
       const imgWidth = 208; 
       const pageHeight = 295; 

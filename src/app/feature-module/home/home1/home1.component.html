@@ -92,18 +92,6 @@
               <div *ngIf="submitted && (!choosenIssues?.length)" class="text-danger">
                 Please select issue
               </div>
-              <!-- Are you consulting for first time? -->
-              <!-- <div class="concerns mt-3">
-                <h5 class="text-center const form_title">
-                  Are you consulting for the first time?
-                </h5>
-                <div class="yes_no_btn d-flex align-items-center justify-content-center">
-                  <input type="radio" id="yes" value="true" formControlName="firstTimeConsult" (change)="onRadioChange('true')" />
-                  <label [ngClass]="{'selected-yes': selectedValue === 'true'}" for="yes">Yes</label>
-                  <input type="radio" id="no" value="false" formControlName="firstTimeConsult" (change)="onRadioChange('false')" />
-                  <label [ngClass]="{'selected-yes': selectedValue === 'false'}" for="no">No</label>
-                </div>
-              </div> -->
               <div class="mt-1 col-12 p-0">
                 <!-- <input type="text" placeholder="Enter description" formControlName="description"> -->
                 <textarea placeholder="Enter description" class="description" formControlName="description" rows="3"
