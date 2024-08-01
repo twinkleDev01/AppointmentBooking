@@ -309,6 +309,8 @@
   </section>
   <!-- /Work Section -->
 
+  <div id="lazy-load-target" >
+    <ng-container *ngIf="contentLoaded">
   <!-- Doctors Section -->
   <section class="doctors-section">
     <div class="container">
@@ -556,35 +558,9 @@
     </div>
   </section>
   <!-- /FAQ Section -->
-
-  <!-- Partners Section -->
-  <!-- <section class="partners-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="section-header-one text-center aos" data-aos="fade-up" data-aos-duration="2000">
-          <h2 class="section-title">Our Partners</h2>
-        </div>
-      </div>
-    </div>
-    <div class="partners-info aos" data-aos="fade-up" data-aos-duration="2000">
-      <ul class="partners-slider">
-        <owl-carousel-o [options]="partnersSliderOption">
-          @for (data of partnersSlider; track data) {
-          <ng-template carouselSlide>
-            <li>
-              <a href="javascript:void(0);">
-                <img loading="lazy" class="img-fluid" [src]="data.img" alt="partners" />
-              </a>
-            </li>
-          </ng-template>
-          }
-        </owl-carousel-o>
-      </ul>
-    </div>
-  </div>
-</section> -->
-  <!-- /Partners Section -->
+</ng-container>
+</div>
+ 
 </ng-container>
 
 <ng-container *ngIf="bookAppointmentbtn === true">

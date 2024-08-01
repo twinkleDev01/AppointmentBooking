@@ -10,6 +10,7 @@ import { PaymentService } from 'src/app/shared/payment/payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { environment } from 'src/environments/environment';
+import { ScrollService } from './scroll.service';
 
 declare var $: any;
 
@@ -97,6 +98,7 @@ export class Home1Component implements OnInit {
   Doctors:any;
   consultationFees:any
   greenDate!: Date;
+  contentLoaded = false;
   constructor(
     private data: DataService,
     private router: Router,
@@ -105,7 +107,8 @@ export class Home1Component implements OnInit {
     private paymentService: PaymentService,
     private el: ElementRef,
     private toastr: ToastrService,
-    private auth: AuthService
+    private auth: AuthService,
+    private scrollService: ScrollService
   ) {
     this.specialitiesSliderOne = this.data.specialitiesSliderOne;
     this.doctorSliderOne = this.data.doctorSliderOne;
@@ -168,6 +171,10 @@ return window.innerWidth < 767
     }
     this.patientsService.buttonState$.subscribe((state:boolean) => {
       this.bookAppointmentbtn = state;
+    });
+    this.scrollService.contentVisible.subscribe(() => {
+      console.log('Content is being loaded!'); // Log for verification
+      this.contentLoaded = true; // Show the content
     });
   }
   
