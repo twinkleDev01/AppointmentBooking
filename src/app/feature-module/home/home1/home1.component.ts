@@ -43,7 +43,7 @@ export class Home1Component implements OnInit {
   activeIndex = 0;
   slotConfirmed: boolean=false;
   files: { name: string, url: string, type: string }[] = [];
-  concerns: any;
+  concerns = [];
   bookAppointmentbtn: boolean = false;
   userDetails: any
   InfoForm: FormGroup; isMobile!: boolean;
@@ -156,14 +156,12 @@ return window.innerWidth < 767
   }
 
   ngOnInit() {
-    this.getIssues();
-    this.getAvailableSlots();
     this.checkScreenSize();
+    this.getAvailableSlots();
     const token = localStorage.getItem('token');
     if (token) {
       this.getUserInfo();
     }
-    this.getDoctors();
     if(!localStorage.getItem('token')){
       this.isPatient = false
     }else{
@@ -173,8 +171,9 @@ return window.innerWidth < 767
       this.bookAppointmentbtn = state;
     });
     this.scrollService.contentVisible.subscribe(() => {
-      console.log('Content is being loaded!'); // Log for verification
       this.contentLoaded = true; // Show the content
+    this.getDoctors();
+
     });
   }
   
@@ -407,7 +406,6 @@ return window.innerWidth < 767
 
   openModal(): void {
     this.isModalOpen = true;
-    setTimeout(()=>{},1000)
   }
 
   closeModal(): void {
@@ -415,10 +413,12 @@ return window.innerWidth < 767
   }
 
   getIssues() {
+    if(!this.concerns.length) {
     this.patientsService.getIssues().subscribe((issues:any) => {
       this.concerns = issues.issues;
       this.consultationFees=issues.consultationFees
     });
+  }
   }
 
   getAvailableSlots() {
@@ -679,5 +679,10 @@ deleteFile(file:any){
     
   } 
   
+}
+
+onMultiSelectClick() {
+  this.getIssues();
+
 }
 }

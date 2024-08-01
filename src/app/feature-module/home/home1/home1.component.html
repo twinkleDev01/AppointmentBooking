@@ -83,7 +83,7 @@
                   <!-- <p-multiSelect [options]="concerns" optionLabel="issueName"
                   (onChange)="onCheckboxChange($event, concerns)"   placeholder="Select Concerns" class="mutiselect">
    </p-multiSelect> -->
-                  <p-multiSelect [options]="concerns" optionLabel="issueName"
+                  <p-multiSelect [options]="concerns" optionLabel="issueName" (onClick)="onMultiSelectClick()"
                     (onChange)="onCheckboxChanges($event.value)" placeholder="Select Concerns" class="mutiselect">
                   </p-multiSelect>
 
