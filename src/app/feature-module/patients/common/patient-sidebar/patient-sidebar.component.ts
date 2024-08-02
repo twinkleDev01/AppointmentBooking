@@ -58,30 +58,9 @@ localStorage.removeItem('token')
     })
   }
 
-  calculateAge(dobString:any) {
-    // Convert the input date string to a Date object
-    if(dobString==null){
-      return 'Please Update DOB';
-    }
-    const dob = new Date(dobString);
-    const today = new Date();
-
-    // Calculate the age in years
-    let age = today.getFullYear() - dob.getFullYear();
-
-    // Adjust the age if the birthday hasn't occurred yet this year
-    const monthDiff = today.getMonth() - dob.getMonth();
-    const dayDiff = today.getDate() - dob.getDate();
-
-    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-        age--;
-    }
-
-    return `${age} years`;
-}
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
-  target.src = 'https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress'; // Specify the path to your default image
+  target.src = 'https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress'; 
 }
 generateImageUrl(imageId:any) {
   return `${this.baseUrl}${imageId}`;

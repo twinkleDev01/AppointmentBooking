@@ -25,8 +25,8 @@ export class PatientUpcomingAppointmentComponent implements OnInit {
 formatDate(inputDate:any) {
     const date = new Date(inputDate);
   
-    const day = date.getDate().toString().padStart(2, '0'); // Ensure two digits
-    const month = date.toLocaleString('default', { month: 'long' }); // Get full month name
+    const day = date.getDate().toString().padStart(2, '0'); 
+    const month = date.toLocaleString('default', { month: 'long' }); 
     const year = date.getFullYear();
   
     return `${day} ${month} ${year}`;
@@ -55,7 +55,6 @@ formatDate(inputDate:any) {
   convertToUrls(filePathsStr: string): string[] {
     const baseUrl = "https://bookingapi.asptask.in/Image/";
 
-    // Parse the string to get the array
     let filePaths: string[];
     try {
         filePaths = JSON.parse(filePathsStr);
@@ -84,7 +83,6 @@ isAttendButtonDisabled(startTime: string, endTime: string, date: string): boolea
   
   const baseDate = new Date(date);
   
-  // Create start and end DateTime by combining the base date with the given times
   const startDateTime = new Date(baseDate);
   const [startHours, startMinutes, startSeconds] = startTime.split(':').map(Number);
   startDateTime.setHours(startHours, startMinutes, startSeconds, 0);
@@ -94,13 +92,11 @@ isAttendButtonDisabled(startTime: string, endTime: string, date: string): boolea
   endDateTime.setHours(endHours, endMinutes, endSeconds, 0);
 
   if (isNaN(startDateTime.getTime()) || isNaN(endDateTime.getTime())) {
-    return true; // Disable button if the dates are invalid
+    return true;
   }
 
-  // Calculate 5 minutes before the start time
-  const startBufferTime = new Date(startDateTime.getTime() - 5 * 60000); // 5 minutes in milliseconds
+  const startBufferTime = new Date(startDateTime.getTime() - 5 * 60000); 
 
-  // Check if the current time is within the range
   const isWithinRange = currentDateTime >= startBufferTime && currentDateTime <= endDateTime;
   
   return !isWithinRange;

@@ -34,7 +34,6 @@ export class PatientAppointmentsComponent {
   selectedSlots: any[] = [];
   slotConfirmed: boolean=false;
   selectedAppointmentId:any
-  // @ViewChild('dateRangePicker') dateRangePicker!: ElementRef;
   @ViewChild(BsDaterangepickerDirective, { static: false }) datepicker!: BsDaterangepickerDirective;
   constructor(private patientsService:PatientsService,private datePipe: DatePipe,private router:Router, private renderer: Renderer2,private toastr:ToastrService) {
     this.bsRangeValue = [this.startDate, this.endDate];
@@ -80,8 +79,7 @@ export class PatientAppointmentsComponent {
   }
   tempSelectedTimeSlot:any
   onSelectTimeSlot(slot: any) {
-    // this.selectedTimeSlot = slot;
-    this.tempSelectedTimeSlot = slot; // Store the time slot temporarily
+    this.tempSelectedTimeSlot = slot; 
   }
   showFilterData(tabName: string) {
     this.activeTab = tabName;
@@ -93,7 +91,6 @@ export class PatientAppointmentsComponent {
     });
   }
   ngAfterViewInit() {
-   // Listen to the onShown event of the datepicker
    this.datepicker.onShown.subscribe(() => {
     const datepickerContainer = document.querySelector('bs-daterangepicker-container');
     if (datepickerContainer) {
@@ -106,7 +103,7 @@ export class PatientAppointmentsComponent {
   }
 handleImageError(event: Event): void {
   const target = event.target as HTMLImageElement;
-  target.src = 'https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress'; // Specify the path to your default image
+  target.src = 'https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress';
 }
 isButtonDisabled(appointmentDate: string, appointmentTime: string): boolean {
   const currentDateTime = new Date()
@@ -124,7 +121,6 @@ isAttendButtonDisabled(startTime: string, endTime: string, date: string): boolea
   
   const baseDate = new Date(date);
   
-  // Create start and end DateTime by combining the base date with the given times
   const startDateTime = new Date(baseDate);
   const [startHours, startMinutes, startSeconds] = startTime.split(':').map(Number);
   startDateTime.setHours(startHours, startMinutes, startSeconds, 0);
@@ -134,13 +130,11 @@ isAttendButtonDisabled(startTime: string, endTime: string, date: string): boolea
   endDateTime.setHours(endHours, endMinutes, endSeconds, 0);
 
   if (isNaN(startDateTime.getTime()) || isNaN(endDateTime.getTime())) {
-    return true; // Disable button if the dates are invalid
+    return true;
   }
 
-  // Calculate 5 minutes before the start time
   const startBufferTime = new Date(startDateTime.getTime() - 5 * 60000); // 5 minutes in milliseconds
 
-  // Check if the current time is within the range
   const isWithinRange = currentDateTime >= startBufferTime && currentDateTime <= endDateTime;
   
   return !isWithinRange;
@@ -176,15 +170,15 @@ onSelectDate(event: any) {
   }
 }
 isSameDay(slotDate: string, selectedDate: Date): boolean {
-  const slotDateTime = new Date(slotDate).toDateString(); // Extract date part only
-  const selectedDateTime = selectedDate.toDateString(); // Extract date part only
+  const slotDateTime = new Date(slotDate).toDateString(); 
+  const selectedDateTime = selectedDate.toDateString(); 
   return slotDateTime === selectedDateTime;
 }
 getAvailableSlots() {
   this.patientsService.getAvailableSlot().subscribe((availableSlots) => {
     this.slots = availableSlots;
     this.generateUniqueTimeSlots();
-    this.selectedDate = new Date();  // Initialize with the current date
+    this.selectedDate = new Date(); 
     this.filterAppointments(this.formatDate(this.selectedDate));
   });
 }
