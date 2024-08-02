@@ -54,44 +54,24 @@ export class Home1Component implements OnInit {
   existingUser:boolean = false;
   baseUrl: string = environment.ImgBaseUrl
   public slideConfig = {
+    loop: true,
+    margin: 10,
+    nav: true,
     dots: false,
-    autoplay: false,
-    infinite: true,
-    speed: 2000,
-    variableWidth: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+    autoplay: true,
+    autoplayTimeout: 1000, // Set autoplay timeout to 1 second
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1
       },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+      600: {
+        items: 2
       },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+      1000: {
+        items: 3
+      }
+    }
   };
   selectedValue!: any;
   minDate!: Date;
@@ -232,11 +212,13 @@ return window.innerWidth < 767
   };
 
   public doctorSlider: OwlOptions = {
-    loop: true,
-    margin: 24,
-    dots: false,
+  loop: true,
+    margin: 10,
     nav: false,
-    smartSpeed: 2000,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 1500, 
+    autoplayHoverPause: true,
     navText: [
       '<i class="fas fa-chevron-left"></i>',
       '<i class="fas fa-chevron-right"></i>',

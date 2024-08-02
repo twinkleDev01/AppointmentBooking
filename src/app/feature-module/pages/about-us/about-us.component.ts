@@ -18,10 +18,12 @@ export class AboutUsComponent implements OnInit {
   baseUrl: string = environment.ImgBaseUrl
   public doctorSlider: OwlOptions = {
     loop: true,
-    margin: 24,
-    dots: false,
+    margin: 10,
     nav: false,
-    smartSpeed: 2000,
+    dots: false,
+    autoplay: true,
+    autoplayTimeout: 1500, 
+    autoplayHoverPause: true,
     navText: [
       '<i class="fas fa-chevron-left"></i>',
       '<i class="fas fa-chevron-right"></i>',
