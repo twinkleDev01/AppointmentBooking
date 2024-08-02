@@ -133,37 +133,7 @@
               </div>
 
              
-              <div class="img-custom-modal" *ngIf="isImageModalOpen">
-                <div class="img-custom-modal-content">
-                  <button type="button" class="img-close" (click)="closeImageModal()">
-                    <i class="fa-regular fa-circle-xmark text-black"></i>
-                  </button>
-                  <div class="img-custom-modal-body">
-                    <div id="fileCarousel" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner">
-                        <div *ngFor="let file of files; let i = index" class="carousel-item carousel-items"
-                          [ngClass]="{ 'active': i === activeIndex }">
-                          <ng-container *ngIf="file.type.startsWith('image')">
-                            <img loading="lazy" [src]="file.url" class="d-block w-100 img-fluid" alt="File Preview" />
-                          </ng-container>
-                          <ng-container *ngIf="!file.type.startsWith('image')">
-                            <span>{{ file.name }}</span>
-                          </ng-container>
-                        </div>
-                      </div>
-                      <a class="carousel-control-prev" role="button" data-slide="prev" (click)="prev()">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" role="button" data-slide="next" (click)="next()">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="custom-modal-backdrop" *ngIf="isImageModalOpen" (click)="closeImageModal()"></div>
+              
               <ng-container *ngIf="slotConfirmed===false && submitted===true">
                 <div>
                   <p class="mb-0 text-center text-danger">Please select time slot</p>
