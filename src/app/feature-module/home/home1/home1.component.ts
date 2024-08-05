@@ -5,7 +5,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import { aboutUs, doctorSliderOne, partnersSlider, specialitiesSliderOne } from 'src/app/shared/models/models';
 import { Router } from '@angular/router';
 import { PatientsService } from 'src/app/shared/Service/patients.service';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { PaymentService } from 'src/app/shared/payment/payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/auth/auth.service';
@@ -107,8 +107,8 @@ export class Home1Component implements OnInit {
     });
     this.selectedValue = 'true';
     this.InfoForm = this.fb.group({
-      firstName: ['', [Validators.required, this.alphabeticValidator()]],
-      lastName: ['', [Validators.required, this.alphabeticValidator()]],
+      firstName: ['', [Validators.required,this.noWhitespaceValidators()]],
+      lastName: ['', [Validators.required,this.noWhitespaceValidators()]],
       city: ['', [Validators.required]],
       state: ['', [Validators.required]],
       address: ['', [Validators.required]],
@@ -117,7 +117,7 @@ export class Home1Component implements OnInit {
       email: ['', [Validators.required, this.emailValidator()]],
       phone: ['', [Validators.required, this.tenDigitNumberValidator()]]
     });
-    
+    // this.alphabeticValidator()
     this.isMobile = window.innerWidth <= 576;
     this.minDate = new Date();  // Set the minimum date to the current date (optional)
     this.auth.token.subscribe((res:any)=>{
@@ -157,6 +157,13 @@ return window.innerWidth < 767
     });
   }
   
+  noWhitespaceValidators(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const isWhitespace = (control.value || '').trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { whitespace: true };
+    };
+  }
   getDoctors(){
     this.patientsService.getDoctors().subscribe((res:any)=>{
       this.Doctors=res.result.data

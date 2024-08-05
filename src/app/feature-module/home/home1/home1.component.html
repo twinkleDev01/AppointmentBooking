@@ -548,9 +548,12 @@
                       <div *ngIf="InfoForm.get('firstName')?.errors?.['required'] && InfoForm.get('firstName')?.touched">
                         First Name is required
                       </div>
-                      <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('firstName')?.touched">
-                        First name must contain only letters.
+                      <div *ngIf="InfoForm.get('firstName')?.errors?.['whitespace'] && InfoForm.get('firstName')?.touched">
+                        First Name cannot be only spaces
                       </div>
+                      <!-- <div *ngIf="InfoForm.get('firstName')?.errors?.['alphabetic'] && InfoForm.get('firstName')?.touched">
+                        First name must contain only letters.
+                      </div> -->
                     </div>
                   </div>
                   <div class="col-md-6 col-sm-12">
@@ -560,9 +563,12 @@
                       <div *ngIf="InfoForm.get('lastName')?.errors?.['required'] && InfoForm.get('lastName')?.touched">
                         Last Name is required
                       </div>
-                      <div *ngIf="InfoForm.get('lastName')?.errors?.['alphabetic'] && InfoForm.get('lastName')?.touched">
-                        Last name must contain only letters.
+                      <div *ngIf="InfoForm.get('lastName')?.errors?.['whitespace'] && InfoForm.get('lastName')?.touched">
+                        Last Name cannot be only spaces
                       </div>
+                      <!-- <div *ngIf="InfoForm.get('lastName')?.errors?.['alphabetic'] && InfoForm.get('lastName')?.touched">
+                        Last name must contain only letters.
+                      </div> -->
                     </div>
                   </div>
                   <div class="col-md-4 col-sm-12">
