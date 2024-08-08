@@ -115,7 +115,8 @@ export class Home1Component implements OnInit {
       country: ['', [Validators.required]],
       pinCode: ['', Validators.required],
       email: ['', [Validators.required, this.emailValidator()]],
-      phone: ['', [Validators.required, this.tenDigitNumberValidator()]]
+      phone: ['', [Validators.required, this.tenDigitNumberValidator()]],
+      homeDelivery: [false]
     });
     // this.alphabeticValidator()
     this.isMobile = window.innerWidth <= 576;
@@ -471,6 +472,7 @@ return window.innerWidth < 767
   }
 
   initiatePayment() {
+console.log(this.InfoForm.value)
     const isValid = this.InfoForm.valid;
     const token = localStorage.getItem('token');
     if (isValid || token) {
@@ -499,7 +501,9 @@ return window.innerWidth < 767
         'user.Email': this.InfoForm.value.email,
         'user.Country': this.InfoForm.value.country,
         'user.Address':this.InfoForm.value.address,
-        Fees: `${this.consultationFees}.00`
+        Fees: `${this.consultationFees}.00`,
+        IsHomeDelivery: this.InfoForm.value.homeDelivery
+
       };
       const zoomData = {
         "accessToken": "",
