@@ -133,7 +133,7 @@ isAttendButtonDisabled(startTime: string, endTime: string, date: string): boolea
     return true;
   }
 
-  const startBufferTime = new Date(startDateTime.getTime() - 5 * 60000); // 5 minutes in milliseconds
+  const startBufferTime = new Date(startDateTime.getTime() - 10 * 60000); // 5 minutes in milliseconds
 
   const isWithinRange = currentDateTime >= startBufferTime && currentDateTime <= endDateTime;
   

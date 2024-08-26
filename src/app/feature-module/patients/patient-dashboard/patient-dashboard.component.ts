@@ -259,4 +259,17 @@ export class PatientDashboardComponent {
       const target = event.target as HTMLImageElement;
       target.src = 'https://images.prismic.io/skinify/ZqnVuR5LeNNTxoko_doload.jpg?auto=format,compress'; // Specify the path to your default image
     }
+    navigateToPatientUpcomingAppointment(data:any) {
+      this.router.navigate(['/patients/appointments/patient-upcoming-appointment'], {
+        state: { appointment: data },
+      });
+    }
+    sendPrescriptionData(){
+      const matchingObj = this.Prescriptions.find((Prescriptions:any)=>Prescriptions.id == Prescriptions.id);
+  this.patientsService.Prescriptions.next(matchingObj);
+    }
+    sendInvoiceData(invoiceObject:any){
+      const matchingObj = this.invoices.find((invoice:any)=>invoice.id == invoiceObject.id);
+  this.patientsService.invoiceData.next(matchingObj);
+    } 
 }

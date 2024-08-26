@@ -13,216 +13,7 @@
         </div>
         <div class="row">
           
-          <!-- <div class="col-xl-5">
-            <div class="dashboard-card w-100 card-appointment">
-              <div class="dashboard-card-head">
-                <div class="header-title">
-                  <h5><span class="card-head-icon"><i class="fa-solid fa-calendar-days"></i></span>Appointment</h5>
-                </div>
-                <div class="card-view-link">
-                  <div class="owl-nav slide-nav text-end nav-control"></div>
-                </div>
-              </div>
-              <div class="dashboard-card-body">
-                <div class="apponiment-dates">
-                  <ul class="appointment-calender-slider">
-                    <owl-carousel-o [options]="patientSliderOptions">
-                      <ng-template carouselSlide>
-                        <li>
-                          <a href="javascript:void(0);">
-                            <h5>19 <span>Mon</span></h5>
-                          </a>
-                        </li>
-                      </ng-template>
-                      <ng-template carouselSlide>
-                        <li>
-                          <a href="javascript:void(0);">
-                            <h5>20 <span>Mon</span></h5>
-                          </a>
-                        </li>
-                      </ng-template>
-                      <ng-template carouselSlide>
-                        <li>
-                          <a href="javascript:void(0);" class="available-date">
-                            <h5>21 <span>Tue</span></h5>
-                          </a>
-                        </li>
-                      </ng-template>
-                      <ng-template carouselSlide>
-                        <li>
-                          <a href="javascript:void(0);" class="available-date">
-                            <h5>22 <span>Wed</span></h5>
-                          </a>
-                        </li>
-                      </ng-template>
-                      <ng-template carouselSlide>
-                        <li>
-                          <a href="javascript:void(0);">
-                            <h5>23 <span>Thu</span></h5>
-                          </a>
-                        </li>
-                      </ng-template>
-                      <ng-template carouselSlide>
-                        <li>
-                          <a href="javascript:void(0);">
-                            <h5>24 <span>Fri</span></h5>
-                          </a>
-                        </li>
-                      </ng-template>
-                      <ng-template carouselSlide>
-                        <li>
-                          <a href="javascript:void(0);">
-                            <h5>25 <span>Sat</span></h5>
-                          </a>
-                        </li>
-                      </ng-template>
-                    </owl-carousel-o>
-                  </ul>
-                  @for (data of appointmentDetails?.data.appointments; track data){
-                  <div class="appointment-dash-card">
-                      <div class="doctor-fav-list">
-                        <div class="doctor-info-profile">
-                          <a href="javascript:void(0);" class="table-avatar">
-                            <img loading="lazy" src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
-                          </a>
-                          <div class="doctor-name-info">
-                            <h5><a href="javascript:void(0);">{{data.doctorName}}</a></h5>
-                            <span>Dentist</span>
-                          </div>
-                        </div>
-                        <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-hospital"></i></a>
-                      </div>
-                      <div class="date-time">
-                        <p><i class="fa-solid fa-clock"></i>{{formatDate(data.appointmentDate)}} - {{data.appointmentTime}} </p>
-                      </div>
-                      <div class="card-btns">
-                        <a [routerLink]="routes.chat" class="btn btn-gray"><i class="fa-solid fa-comment-dots"></i>Chat Now</a>
-                        <a class="btn btn-outline-primary"><i
-                            class="fa-solid fa-calendar-check"></i>Attend</a>
-                              [routerLink]="routes.patientAppointment" 
-                      </div>
-                    </div>
-                  }
-                  <div class="appointment-dash-card">
-                    <div class="doctor-fav-list">
-                      <div class="doctor-info-profile">
-                        <a href="javascript:void(0);" class="table-avatar">
-                          <img loading="lazy" src="assets/img/doctors/doctor-17.jpg" alt="Img">
-                        </a>
-                        <div class="doctor-name-info">
-                          <h5><a href="javascript:void(0);">Dr.Juliet Gabriel</a></h5>
-                          <span>Cardiologist</span>
-                        </div>
-                      </div>
-                      <a href="javascript:void(0);" class="cal-plus-icon"><i class="fa-solid fa-video"></i></a>
-                    </div>
-                    <div class="date-time">
-                      <p><i class="fa-solid fa-clock"></i>22 Mar 2024 - 10:30 PM </p>
-                    </div>
-                    <div class="card-btns">
-                      <a [routerLink]="routes.chat" class="btn btn-gray"><i class="fa-solid fa-comment-dots"></i>Chat Now</a>
-                      <a [routerLink]="routes.patientAppointment" class="btn btn-outline-primary"><i
-                          class="fa-solid fa-calendar-check"></i>Attend</a>
-                    </div>
-                  </div> 
-                </div>
-              </div>
-
-            </div>
-            
-          </div>
-          <div class="col-xl-7">
-           
-             <div class="favourites-dashboard w-100">
-              <div class="book-appointment-head">
-                <h3><span>Book a new</span>Appointment</h3>
-                <span class="add-icon"><a href="javascript:void(0);"><i class="fa-solid fa-circle-plus"></i></a></span>
-              </div>
-              
-            </div> 
-            <div class="dashboard-card w-100">
-              <div class="dashboard-card-head">
-                <div class="header-title">
-                  <h5>Past Appointments</h5>
-                </div>
-                <div class="card-view-link">
-                  <div class="owl-nav slide-nav2 text-end nav-control"></div>
-                </div>
-              </div>
-              <div class="dashboard-card-body">
-
-                <div class="past-appointments-slider">
-                  <owl-carousel-o [options]="doctorSliderOptions">
-                    <ng-template carouselSlide>
-                      <div class="appointment-dash-card past-appointment">
-                        <div class="appointment-date-info">
-                          <h4>Thursday, Mar 2024</h4>
-                          <ul>
-                            <li>
-                              <span><i class="fa-solid fa-clock"></i></span>Time : 04:00 PM - 04:30 PM (30 Min)
-                            </li>
-                            <li>
-                              <span><i class="fa-solid fa-location-dot"></i></span>Newyork, United States
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="doctor-fav-list">
-                          <div class="doctor-info-profile">
-                            <a href="javascript:void(0);" class="table-avatar">
-                              <img loading="lazy" src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="Img">
-                            </a>
-                            <div class="doctor-name-info">
-                              <h5><a href="javascript:void(0);">Dr.Edalin Hendry</a></h5>
-                              <span>Dental Specialist</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-btns">
-                          <a [routerLink]="routes.patientAppointment"
-                            class="btn btn-outline-primary ms-0 me-3">Reschedule</a>
-                          <a [routerLink]="routes.patientAppointmentDetails" class="btn btn-primary prime-btn">View
-                            Details</a>
-                        </div>
-                      </div>
-                    </ng-template>
-                    <ng-template carouselSlide>
-                      <div class="appointment-dash-card past-appointment">
-                        <div class="appointment-date-info">
-                          <h4>Friday, Mar 2024</h4>
-                          <ul>
-                            <li>
-                              <span><i class="fa-solid fa-clock"></i></span>Time : 03:00 PM - 03:30 PM (30 Min)
-                            </li>
-                            <li>
-                              <span><i class="fa-solid fa-location-dot"></i></span>Newyork, United States
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="doctor-fav-list">
-                          <div class="doctor-info-profile">
-                            <a href="javascript:void(0);" class="table-avatar">
-                              <img loading="lazy" src="assets/img/doctors/doctor-17.jpg" alt="Img">
-                            </a>
-                            <div class="doctor-name-info">
-                              <h5><a href="javascript:void(0);">Dr.Juliet Gabriel</a></h5>
-                              <span>Cardiologist</span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-btns">
-                          <a [routerLink]="routes.patientAppointment"
-                            class="btn btn-outline-primary ms-0 me-3">Reschedule</a>
-                          <a [routerLink]="routes.medicaldetails" class="btn btn-primary prime-btn">View Details</a>
-                        </div>
-                      </div>
-                    </ng-template>
-                  </owl-carousel-o>
-                </div>
-
-              </div>
-            </div>
-            
-          </div>  -->
+       
           <div class="col-xl-12 d-flex">
             <div class="dashboard-card w-100">
               <div class="dashboard-card-head">
@@ -267,28 +58,30 @@
                                 <th>Name</th>
                                 <th>Date</th>
                                 <th>Time</th>
-                                <th>Phone Number</th>
-                                <th>Email</th>
                                 <th>Status</th>
+                                <th>
+                                  View
+                                </th>
                               </tr>
                             </thead>
                             <tbody>
                               <ng-container *ngFor="let data of appointmentDetails?.data?.appointments,let i=index">
                                 <tr>
                                   <td>
-                                    <a href="javascript:void(0);"><span class="text-blue">{{i+1}}</span></a>
+                                    <a ><span class="text-blue">{{i+1}}</span></a>
                                   </td>
                                   <td>
                                     {{data.doctorName}}
                                   </td>
                                   <td>{{formatDate(data.appointmentDate)}}</td>
                                   <td>{{data.startTime}}</td>
-                                  <td>{{data.doctorPhone}}</td>
-                                  <td>{{data.doctorEmail}}</td>
                                   <td>
                                     <span *ngIf="data.isUpcomming === true" class="badge badge-warning-bg">Upcoming</span>
                                     <span *ngIf="data.isCancelled === true" class="badge badge-danger-bg">Cancelled</span>
                                     <span *ngIf="data.isCompleted === true" class="badge badge-success-bg">Completed</span>
+                                  </td>
+                                  <td>
+                                    <a (click)="navigateToPatientUpcomingAppointment(data)"><i class="fa-solid fa-eye"></i></a>
                                   </td>
                                 </tr>
                               </ng-container>
@@ -311,13 +104,13 @@
                                 <th>Name</th>
                                 <th>Created Date</th>
                                 <th>Prescriped By</th>
-                                <!-- <th>Action</th> -->
+                                <th>View</th>
                               </tr>
                             </thead>
                             <tbody>
                               <ng-container *ngFor="let data of Prescriptions,let i =index">
                                 <tr>
-                                  <td class="text-blue-600"><a href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#view_prescription">{{i+1}}</a></td>
+                                  <td class="text-blue-600"><a >{{i+1}}</a></td>
                                   <td>
                                     <a href="javascript:void(0);" class="lab-icon prescription">
                                       <span><i class="fa-solid fa-prescription"></i></span>Prescription
@@ -333,13 +126,13 @@
                                       <a >{{data.doctorName}}</a>
                                     </h2>
                                   </td>
-                                  <!-- <td>
+                                  <td>
                                     <div class="action-item">
-                                      <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription">
-                                        <i class="fa-solid fa-link"></i>
+                                      <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#view_prescription" (click)="sendPrescriptionData()">
+                                        <i class="fa-solid fa-eye"></i>
                                       </a>
                                     </div>
-                                  </td> -->
+                                  </td>
                                 </tr>
                               </ng-container>
                               
@@ -362,12 +155,13 @@
                                 <th>Appointment Date</th>
                                 <th>Booked on</th>
                                 <th>Amount</th>
+                                <th>View</th>
                               </tr>
                             </thead>
                             <tbody>
                               <ng-container *ngFor="let invoice of invoices;let i = index">
                                 <tr>
-                                  <td class="text-blue-600"><a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">{{i+1}}</a></td>
+                                  <td class="text-blue-600"><a>{{i+1}}</a></td>
                                   <td>
                                     <h2 class="table-avatar">
                                       <a  class="avatar avatar-sm me-2">
@@ -380,16 +174,13 @@
                                   <td>{{formatDate(invoice.appointmentDate)}}</td>
                                   <td>{{formatDate(invoice.bookedDate)}}</td>
                                   <td>{{invoice.fees}}</td>
-                                  <!-- <td>
+                                  <td>
                                     <div class="action-item">
-                                      <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view">
+                                      <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#invoice_view" (click)="sendInvoiceData(invoice)">
                                         <i class="fa-solid fa-link"></i>
-                                      </a>
-                                      <a href="javascript:void(0);">
-                                        <i class="fa-solid fa-print"></i>
-                                      </a>
+                                    </a>
                                     </div>
-                                  </td> -->
+                                  </td>
                                 </tr>
                               </ng-container>
                              
