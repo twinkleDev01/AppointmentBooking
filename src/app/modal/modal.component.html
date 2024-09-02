@@ -1710,8 +1710,8 @@
                   <h6 class="customer-text">Billing From</h6>
                   <p class="invoice-details invoice-details-two">
 SKINIFY <br>
-                    {{invoiceDetail.adminDetails.streetAddress}} <br>
-                    {{invoiceDetail.adminDetails.state}} &nbsp; {{invoiceDetail.adminDetails.country}}
+                    {{invoiceDetail?.adminDetails?.streetAddress}} <br>
+                    {{invoiceDetail?.adminDetails?.state}} &nbsp; {{invoiceDetail?.adminDetails?.country}}
                   </p>
                 </div>
               </div>
@@ -1719,9 +1719,9 @@ SKINIFY <br>
                 <div class="invoice-info">
                   <h6 class="customer-text">Billing To</h6>
                   <p class="invoice-details invoice-details-two">
-                    {{invoiceDetail.patientName}}<br>
-                    {{invoiceDetail.patientAddress}}&nbsp;{{invoiceDetail.patientState}}<br>
-                    {{invoiceDetail.patientCountry}}
+                    {{invoiceDetail?.patientName}}<br>
+                    {{invoiceDetail?.patientAddress}}&nbsp;{{invoiceDetail?.patientState}}<br>
+                    {{invoiceDetail?.patientCountry}}
                   </p>
                 </div>
               </div>
