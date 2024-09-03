@@ -264,10 +264,10 @@ export class PatientDashboardComponent {
         state: { appointment: data },
       });
     }
-    sendPrescriptionData(){
-      const matchingObj = this.Prescriptions.find((Prescriptions:any)=>Prescriptions.id == Prescriptions.id);
+    sendPrescriptionData(PrescriptionObject:any){
+      const matchingObj = this.Prescriptions.find((Prescriptions:any)=>Prescriptions.prescriptionID == PrescriptionObject.prescriptionID);
   this.patientsService.Prescriptions.next(matchingObj);
-    }
+    } 
     sendInvoiceData(invoiceObject:any){
       const matchingObj = this.invoices.find((invoice:any)=>invoice.id == invoiceObject.id);
   this.patientsService.invoiceData.next(matchingObj);

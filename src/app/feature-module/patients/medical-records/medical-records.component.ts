@@ -193,10 +193,10 @@ this.patientsService.deletePrescription(prescriptionID).subscribe((res)=>{
     }
   }
 
-  sendData(){
-    const matchingObj = this.Prescriptions.find((Prescriptions:any)=>Prescriptions.id == Prescriptions.id);
+  sendData(PrescriptionObject:any){
+    const matchingObj = this.Prescriptions.find((Prescriptions:any)=>Prescriptions.prescriptionID == PrescriptionObject.prescriptionID);
 this.patientsService.Prescriptions.next(matchingObj);
-  }
+  } 
 
   generateImageUrl(imageId:any) {
     return `${this.baseUrl}${imageId}`;
