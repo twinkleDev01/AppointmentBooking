@@ -39,6 +39,7 @@ disabled: boolean = false;
 
   isNumber:boolean=false
   sendLoginCode() {
+    this.disabled=true
     this.submitClicked = true;
     if (this.phoneNumber) {
       this.afAuth.signInWithPhoneNumber('+91'+this.phoneNumber, this.recaptchaVerifier!)
@@ -47,7 +48,7 @@ disabled: boolean = false;
         this.otpSent = true
         this.toastr.success('OTP sent Successfully', "Success");
         this.submitClicked = false;
-        this.disabled=true
+        
       })
       .catch((error) => {
         this.toastr.error('Error during signInWithPhoneNumber');
