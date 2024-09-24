@@ -179,7 +179,7 @@ export class routes {
 
   // User routes starts
   public static get home1(): string {
-    return this.baseUrl + '/home1';
+    return this.baseUrl + '/home';
   }
   public static get home2(): string {
     return this.baseUrl + '/home2';

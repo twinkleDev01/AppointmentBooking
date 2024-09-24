@@ -42,7 +42,7 @@ export class FeatureModuleComponent implements OnInit, AfterViewInit{
     this.common.page.next(splitVal[2]);
     this.common.last.next(splitVal[3]);
     if (
-      events.url.split('/')[1] === 'home1' ||
+      events.url.split('/')[1] === 'home' ||
       events.url.split('/')[1] === 'home2' ||
       events.url.split('/')[1] === 'home3' ||
       events.url.split('/')[1] === 'home4' ||

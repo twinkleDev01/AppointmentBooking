@@ -356,7 +356,7 @@ export class DataService {
           hasSubRoute: false,
           showSubRoute: false,
           openInNewTab: false,
-          base: "home1",
+          base: "home",
           subMenus: [],
         },
       ],

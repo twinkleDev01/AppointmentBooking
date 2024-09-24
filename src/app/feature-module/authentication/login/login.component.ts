@@ -51,12 +51,11 @@ disabled: boolean = false;
         
       })
       .catch((error) => {
-        this.toastr.error('Error during signInWithPhoneNumber');
+        this.toastr.error(error.message || 'Error during signInWithPhoneNumber');
         console.error('Error during signInWithPhoneNumber', error);
         this.disabled=false
       });
     }
-   
   }
 
   verifyLoginCode() {
