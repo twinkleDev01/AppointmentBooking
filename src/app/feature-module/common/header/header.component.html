@@ -10,44 +10,88 @@
           </span>
         </a>
         <a [routerLink]="routes.home1" class="navbar-brand logo">
-          <img loading="lazy" style="max-width: 56px;" src="../../../../assets/admin/img/appointment.svg" class="img-fluid" alt="Logo" />
+          <div class="nav_brand_div">
+            <img class="img-fluid" loading="lazy" 
+              src="../../../../assets/admin/img/appointment.svg"
+              alt=""
+              width="50px"
+            />
+            <div class="d-flex flex-column ms-1">
+              <span class="upper_text">Online Skin Clinic</span>
+              <span class="lower_text">Your Online Dermatologist</span>
+            </div>
+          </div>
         </a>
       </div>
       <div class="main-menu-wrapper">
         <div class="menu-header">
           <a [routerLink]="routes.adminLogin" class="menu-logo">
-            <img loading="lazy" style="max-width: 60px;" src="assets/admin/img/appointment.svg" alt="logo">
+            <img
+              loading="lazy"
+              style="max-width: 60px"
+              src="assets/admin/img/appointment.svg"
+              alt="logo"
+            />
           </a>
-          <a id="menu_close" (click)="hideSidebar()" class="menu-close" href="javascript:void(0);">
-            <i class="fas fa-times"></i></a>
+          <a
+            id="menu_close"
+            (click)="hideSidebar()"
+            class="menu-close"
+            href="javascript:void(0);"
+          >
+            <i class="fas fa-times"></i
+          ></a>
         </div>
         <ul class="main-nav gap-4">
           <li class="menu-item"><a [routerLink]="routes.home1">Home</a></li>
-          <li class="menu-item" *ngIf="isPatient && !isMobile"><a [routerLink]="routes.patientDashboard">Patient Dashboard</a></li>
-          <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.patientDashboard">Patient Dashboard</a></li>
-          <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.patientAppointment">My Appointments</a></li>
-          <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.medicalrecords">Prescriptions</a></li>
-          <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.patientInvoice">Invoices</a></li>
-          <li class="menu-item"  *ngIf="isMobile && isPatient"><a [routerLink]="routes.profileSettings">Profile Settings</a></li>
-          <li class="menu-item"  ><a [routerLink]="routes.aboutUs">About Us</a></li>
-          <li class="menu-item"  ><a [routerLink]="routes.contactUs">Contact Us</a></li>
-          <li class="menu-item" ><a [routerLink]="routes.termsCondition">T&C</a></li>
-          <li class="menu-item" ><a [routerLink]="routes.faq">FAQs</a></li>
-       
-      
-          <li class="login-link" *ngIf="!isPatient"><a [routerLink]="routes.userLogin">Login</a></li>
-          <li class="login-link" *ngIf="isPatient" (click)="logout()"><a [routerLink]="routes.userLogin">Logout</a></li>
+          <li class="menu-item" *ngIf="isPatient && !isMobile">
+            <a [routerLink]="routes.patientDashboard">Patient Dashboard</a>
+          </li>
+          <li class="menu-item" *ngIf="isMobile && isPatient">
+            <a [routerLink]="routes.patientDashboard">Patient Dashboard</a>
+          </li>
+          <li class="menu-item" *ngIf="isMobile && isPatient">
+            <a [routerLink]="routes.patientAppointment">My Appointments</a>
+          </li>
+          <li class="menu-item" *ngIf="isMobile && isPatient">
+            <a [routerLink]="routes.medicalrecords">Prescriptions</a>
+          </li>
+          <li class="menu-item" *ngIf="isMobile && isPatient">
+            <a [routerLink]="routes.patientInvoice">Invoices</a>
+          </li>
+          <li class="menu-item" *ngIf="isMobile && isPatient">
+            <a [routerLink]="routes.profileSettings">Profile Settings</a>
+          </li>
+          <li class="menu-item">
+            <a [routerLink]="routes.aboutUs">About Us</a>
+          </li>
+          <li class="menu-item">
+            <a [routerLink]="routes.contactUs">Contact Us</a>
+          </li>
+          <li class="menu-item">
+            <a [routerLink]="routes.termsCondition">T&C</a>
+          </li>
+          <li class="menu-item"><a [routerLink]="routes.faq">FAQs</a></li>
+
+          <li class="login-link" *ngIf="!isPatient">
+            <a [routerLink]="routes.userLogin">Login</a>
+          </li>
+          <li class="login-link" *ngIf="isPatient" (click)="logout()">
+            <a [routerLink]="routes.userLogin">Logout</a>
+          </li>
           <ul class="nav header-navbar-rht">
             <!-- <li class="register-btn">
               <a [routerLink]="routes.register" class="btn reg-btn"><i class="feather icon-user"></i>Register</a>
             </li> -->
             <li class="register-btn" *ngIf="!isPatient">
-              <a [routerLink]="routes.userLogin" class="btn btn-primary log-btn"><i
-                  class="feather icon-lock"></i>Login</a>
+              <a [routerLink]="routes.userLogin" class="btn btn-primary log-btn"
+                ><i class="feather icon-lock"></i>Login</a
+              >
             </li>
             <li class="register-btn" *ngIf="isPatient" (click)="logout()">
-              <a [routerLink]="routes.userLogin" class="btn btn-primary log-btn"><i
-                  class="feather icon-lock" ></i>Logout</a>
+              <a [routerLink]="routes.userLogin" class="btn btn-primary log-btn"
+                ><i class="feather icon-lock"></i>Logout</a
+              >
             </li>
           </ul>
         </ul>

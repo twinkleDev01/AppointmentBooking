@@ -1,0 +1,28 @@
+.lower_text {
+    font-size: 15px;
+    margin-left: 1px;
+    margin-top: -5px;
+    color: #0078f9;
+  }
+  
+  .nav_brand_div {
+    display: flex;
+  }
+  
+  .upper_text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0078f9;
+  }
+  @media (max-width: 992px) {
+    .nav_brand_div {
+      justify-content: end;
+    }
+    .lower_text {
+      font-size: 12px;
+    }
+    .upper_text {
+      font-size: 18px;
+    }
+  }
+  

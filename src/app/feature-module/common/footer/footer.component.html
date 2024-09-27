@@ -2,7 +2,19 @@
     <div class="container">
         <div class="top-footer">
             <div class="footer-logo">
-                <a [routerLink] = "routes.home1"><img loading="lazy" style="max-height: 70px;" src="../../../../assets/admin/img/appointment.svg" alt="logo"></a>
+                <a [routerLink] = "routes.home1"> <a [routerLink]="routes.home1" class="navbar-brand logo">
+          <div class="nav_brand_div">
+            <img class="img-fluid" loading="lazy" 
+              src="../../../../assets/admin/img/appointment.svg"
+              alt=""
+              width="50px"
+            />
+            <div class="d-flex flex-column ms-1">
+              <span class="upper_text">Online Skin Clinic</span>
+              <span class="lower_text">Your Online Dermatologist</span>
+            </div>
+          </div>
+        </a></a>
             </div>
             <div class="doccure-info">
                 <p>A trusted online clinic, providing expert skincare solutions and quality treatments at affordable prices for glowing, healthy skin.
