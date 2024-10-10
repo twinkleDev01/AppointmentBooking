@@ -43,7 +43,7 @@
           ></a>
         </div>
         <ul class="main-nav gap-4">
-          <li>
+          <li class="menu-item" *ngIf="isMobile && !isPatient">
           <a [routerLink]="routes.userLogin" class="btn btn-primary log-btn"
           ><i class="feather icon-lock"></i>Login</a
         >
